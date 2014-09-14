@@ -1,0 +1,710 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		B82A533419C4F5E6000C40D8 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B82A533319C4F5E6000C40D8 /* SystemConfiguration.framework */; };
+		B82A533619C4F5F1000C40D8 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B82A533519C4F5F1000C40D8 /* CFNetwork.framework */; };
+		B82A533819C4F612000C40D8 /* libstdc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B82A533719C4F612000C40D8 /* libstdc++.dylib */; };
+		B82A533A19C4F623000C40D8 /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B82A533919C4F623000C40D8 /* CoreAudio.framework */; };
+		B82A533C19C4F632000C40D8 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B82A533B19C4F632000C40D8 /* AudioToolbox.framework */; };
+		B82A533E19C4F63E000C40D8 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B82A533D19C4F63E000C40D8 /* AVFoundation.framework */; };
+		B82A534019C4F645000C40D8 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B82A533F19C4F645000C40D8 /* Security.framework */; };
+		B82A534C19C4FF5F000C40D8 /* libCocoaLibSpotify.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B82A534719C4FEF4000C40D8 /* libCocoaLibSpotify.a */; };
+		B885FE7119C488F400EC1D32 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B885FE7019C488F400EC1D32 /* Foundation.framework */; };
+		B885FE7319C488F400EC1D32 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B885FE7219C488F400EC1D32 /* CoreGraphics.framework */; };
+		B885FE7B19C488F400EC1D32 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = B885FE7919C488F400EC1D32 /* InfoPlist.strings */; };
+		B885FE7D19C488F400EC1D32 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B885FE7C19C488F400EC1D32 /* main.m */; };
+		B885FE8119C488F400EC1D32 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B885FE8019C488F400EC1D32 /* AppDelegate.m */; };
+		B885FE8419C488F400EC1D32 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B885FE8219C488F400EC1D32 /* Main.storyboard */; };
+		B885FE8719C488F400EC1D32 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B885FE8619C488F400EC1D32 /* ViewController.m */; };
+		B885FE8919C488F500EC1D32 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B885FE8819C488F500EC1D32 /* Images.xcassets */; };
+		B885FE9019C488F500EC1D32 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B885FE8F19C488F500EC1D32 /* XCTest.framework */; };
+		B885FE9119C488F500EC1D32 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B885FE7019C488F400EC1D32 /* Foundation.framework */; };
+		B885FE9219C488F500EC1D32 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B885FE7419C488F400EC1D32 /* UIKit.framework */; };
+		B885FE9A19C488F500EC1D32 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = B885FE9819C488F500EC1D32 /* InfoPlist.strings */; };
+		B885FE9C19C488F500EC1D32 /* SpotifyAlarmClockTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B885FE9B19C488F500EC1D32 /* SpotifyAlarmClockTests.m */; };
+		B885FEA819C48A6900EC1D32 /* ClockViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B885FEA719C48A6900EC1D32 /* ClockViewController.m */; };
+		B885FEAF19C4AB3000EC1D32 /* SpotifyPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = B885FEAE19C4AB3000EC1D32 /* SpotifyPlayer.m */; };
+		B885FEB419C4ABBC00EC1D32 /* audio.c in Sources */ = {isa = PBXBuildFile; fileRef = B885FEB019C4ABBC00EC1D32 /* audio.c */; };
+		B885FEB519C4ABBC00EC1D32 /* osx-audio.m in Sources */ = {isa = PBXBuildFile; fileRef = B885FEB219C4ABBC00EC1D32 /* osx-audio.m */; };
+		B885FEF719C4C7CE00EC1D32 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B885FE7419C488F400EC1D32 /* UIKit.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		B82A534619C4FEF4000C40D8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B82A534119C4FEF4000C40D8 /* CocoaLibSpotify iOS Library.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 50AF49DC1439CBFE00E4A5EF;
+			remoteInfo = CocoaLibSpotify;
+		};
+		B82A534819C4FEF4000C40D8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B82A534119C4FEF4000C40D8 /* CocoaLibSpotify iOS Library.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 50D4F52B156BCDE800E237DD;
+			remoteInfo = CocoaLSTests;
+		};
+		B82A534A19C4FF33000C40D8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B82A534119C4FEF4000C40D8 /* CocoaLibSpotify iOS Library.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 50AF49DB1439CBFE00E4A5EF;
+			remoteInfo = CocoaLibSpotify;
+		};
+		B885FE9319C488F500EC1D32 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B885FE6519C488F400EC1D32 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B885FE6C19C488F400EC1D32;
+			remoteInfo = SpotifyAlarmClock;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		B82A530D19C4E641000C40D8 /* appkey.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = appkey.h; path = SpotifyAlarmClock/appkey.h; sourceTree = "<group>"; };
+		B82A531619C4F45C000C40D8 /* api.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = api.h; path = "Libraries/Debug-iphoneos/cocoalibspotifyheaders/api.h"; sourceTree = SOURCE_ROOT; };
+		B82A531719C4F45C000C40D8 /* CocoaLibSpotify.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CocoaLibSpotify.h; path = "Libraries/Debug-iphoneos/cocoalibspotifyheaders/CocoaLibSpotify.h"; sourceTree = SOURCE_ROOT; };
+		B82A531819C4F45C000C40D8 /* CocoaLibSpotifyPlatformImports.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CocoaLibSpotifyPlatformImports.h; path = "Libraries/Debug-iphoneos/cocoalibspotifyheaders/CocoaLibSpotifyPlatformImports.h"; sourceTree = SOURCE_ROOT; };
+		B82A531919C4F45C000C40D8 /* SPAlbum.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SPAlbum.h; path = "Libraries/Debug-iphoneos/cocoalibspotifyheaders/SPAlbum.h"; sourceTree = SOURCE_ROOT; };
+		B82A531A19C4F45C000C40D8 /* SPAlbumBrowse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SPAlbumBrowse.h; path = "Libraries/Debug-iphoneos/cocoalibspotifyheaders/SPAlbumBrowse.h"; sourceTree = SOURCE_ROOT; };
+		B82A531B19C4F45C000C40D8 /* SPArtist.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SPArtist.h; path = "Libraries/Debug-iphoneos/cocoalibspotifyheaders/SPArtist.h"; sourceTree = SOURCE_ROOT; };
+		B82A531C19C4F45C000C40D8 /* SPArtistBrowse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SPArtistBrowse.h; path = "Libraries/Debug-iphoneos/cocoalibspotifyheaders/SPArtistBrowse.h"; sourceTree = SOURCE_ROOT; };
+		B82A531D19C4F45C000C40D8 /* SPAsyncLoading.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SPAsyncLoading.h; path = "Libraries/Debug-iphoneos/cocoalibspotifyheaders/SPAsyncLoading.h"; sourceTree = SOURCE_ROOT; };
+		B82A531E19C4F45C000C40D8 /* SPCircularBuffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SPCircularBuffer.h; path = "Libraries/Debug-iphoneos/cocoalibspotifyheaders/SPCircularBuffer.h"; sourceTree = SOURCE_ROOT; };
+		B82A531F19C4F45C000C40D8 /* SPCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SPCommon.h; path = "Libraries/Debug-iphoneos/cocoalibspotifyheaders/SPCommon.h"; sourceTree = SOURCE_ROOT; };
+		B82A532019C4F45C000C40D8 /* SPCoreAudioController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SPCoreAudioController.h; path = "Libraries/Debug-iphoneos/cocoalibspotifyheaders/SPCoreAudioController.h"; sourceTree = SOURCE_ROOT; };
+		B82A532119C4F45C000C40D8 /* SPErrorExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SPErrorExtensions.h; path = "Libraries/Debug-iphoneos/cocoalibspotifyheaders/SPErrorExtensions.h"; sourceTree = SOURCE_ROOT; };
+		B82A532219C4F45C000C40D8 /* SPImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SPImage.h; path = "Libraries/Debug-iphoneos/cocoalibspotifyheaders/SPImage.h"; sourceTree = SOURCE_ROOT; };
+		B82A532319C4F45C000C40D8 /* SPLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SPLoginViewController.h; path = "Libraries/Debug-iphoneos/cocoalibspotifyheaders/SPLoginViewController.h"; sourceTree = SOURCE_ROOT; };
+		B82A532419C4F45C000C40D8 /* SPPlaybackManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SPPlaybackManager.h; path = "Libraries/Debug-iphoneos/cocoalibspotifyheaders/SPPlaybackManager.h"; sourceTree = SOURCE_ROOT; };
+		B82A532519C4F45C000C40D8 /* SPPlaylist.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SPPlaylist.h; path = "Libraries/Debug-iphoneos/cocoalibspotifyheaders/SPPlaylist.h"; sourceTree = SOURCE_ROOT; };
+		B82A532619C4F45C000C40D8 /* SPPlaylistContainer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SPPlaylistContainer.h; path = "Libraries/Debug-iphoneos/cocoalibspotifyheaders/SPPlaylistContainer.h"; sourceTree = SOURCE_ROOT; };
+		B82A532719C4F45C000C40D8 /* SPPlaylistFolder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SPPlaylistFolder.h; path = "Libraries/Debug-iphoneos/cocoalibspotifyheaders/SPPlaylistFolder.h"; sourceTree = SOURCE_ROOT; };
+		B82A532819C4F45C000C40D8 /* SPPlaylistFolderInternal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SPPlaylistFolderInternal.h; path = "Libraries/Debug-iphoneos/cocoalibspotifyheaders/SPPlaylistFolderInternal.h"; sourceTree = SOURCE_ROOT; };
+		B82A532919C4F45C000C40D8 /* SPPlaylistItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SPPlaylistItem.h; path = "Libraries/Debug-iphoneos/cocoalibspotifyheaders/SPPlaylistItem.h"; sourceTree = SOURCE_ROOT; };
+		B82A532A19C4F45C000C40D8 /* SPPostTracksToInboxOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SPPostTracksToInboxOperation.h; path = "Libraries/Debug-iphoneos/cocoalibspotifyheaders/SPPostTracksToInboxOperation.h"; sourceTree = SOURCE_ROOT; };
+		B82A532B19C4F45C000C40D8 /* SPSearch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SPSearch.h; path = "Libraries/Debug-iphoneos/cocoalibspotifyheaders/SPSearch.h"; sourceTree = SOURCE_ROOT; };
+		B82A532C19C4F45C000C40D8 /* SPSession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SPSession.h; path = "Libraries/Debug-iphoneos/cocoalibspotifyheaders/SPSession.h"; sourceTree = SOURCE_ROOT; };
+		B82A532D19C4F45C000C40D8 /* SPSignupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SPSignupViewController.h; path = "Libraries/Debug-iphoneos/cocoalibspotifyheaders/SPSignupViewController.h"; sourceTree = SOURCE_ROOT; };
+		B82A532E19C4F45C000C40D8 /* SPToplist.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SPToplist.h; path = "Libraries/Debug-iphoneos/cocoalibspotifyheaders/SPToplist.h"; sourceTree = SOURCE_ROOT; };
+		B82A532F19C4F45C000C40D8 /* SPTrack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SPTrack.h; path = "Libraries/Debug-iphoneos/cocoalibspotifyheaders/SPTrack.h"; sourceTree = SOURCE_ROOT; };
+		B82A533019C4F45C000C40D8 /* SPUnknownPlaylist.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SPUnknownPlaylist.h; path = "Libraries/Debug-iphoneos/cocoalibspotifyheaders/SPUnknownPlaylist.h"; sourceTree = SOURCE_ROOT; };
+		B82A533119C4F45C000C40D8 /* SPURLExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SPURLExtensions.h; path = "Libraries/Debug-iphoneos/cocoalibspotifyheaders/SPURLExtensions.h"; sourceTree = SOURCE_ROOT; };
+		B82A533219C4F45C000C40D8 /* SPUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SPUser.h; path = "Libraries/Debug-iphoneos/cocoalibspotifyheaders/SPUser.h"; sourceTree = SOURCE_ROOT; };
+		B82A533319C4F5E6000C40D8 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		B82A533519C4F5F1000C40D8 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		B82A533719C4F612000C40D8 /* libstdc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.dylib"; path = "usr/lib/libstdc++.dylib"; sourceTree = SDKROOT; };
+		B82A533919C4F623000C40D8 /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
+		B82A533B19C4F632000C40D8 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		B82A533D19C4F63E000C40D8 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		B82A533F19C4F645000C40D8 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		B82A534119C4FEF4000C40D8 /* CocoaLibSpotify iOS Library.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = "CocoaLibSpotify iOS Library.xcodeproj"; path = "Libraries/cocoalibspotify-2.4.5/iOS Library/CocoaLibSpotify iOS Library.xcodeproj"; sourceTree = "<group>"; };
+		B885FE6D19C488F400EC1D32 /* SpotifyAlarmClock.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpotifyAlarmClock.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B885FE7019C488F400EC1D32 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		B885FE7219C488F400EC1D32 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		B885FE7419C488F400EC1D32 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		B885FE7819C488F400EC1D32 /* SpotifyAlarmClock-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SpotifyAlarmClock-Info.plist"; sourceTree = "<group>"; };
+		B885FE7A19C488F400EC1D32 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		B885FE7C19C488F400EC1D32 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		B885FE7E19C488F400EC1D32 /* SpotifyAlarmClock-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SpotifyAlarmClock-Prefix.pch"; sourceTree = "<group>"; };
+		B885FE7F19C488F400EC1D32 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		B885FE8019C488F400EC1D32 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		B885FE8319C488F400EC1D32 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		B885FE8519C488F400EC1D32 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		B885FE8619C488F400EC1D32 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		B885FE8819C488F500EC1D32 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		B885FE8E19C488F500EC1D32 /* SpotifyAlarmClockTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SpotifyAlarmClockTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		B885FE8F19C488F500EC1D32 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		B885FE9719C488F500EC1D32 /* SpotifyAlarmClockTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SpotifyAlarmClockTests-Info.plist"; sourceTree = "<group>"; };
+		B885FE9919C488F500EC1D32 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		B885FE9B19C488F500EC1D32 /* SpotifyAlarmClockTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SpotifyAlarmClockTests.m; sourceTree = "<group>"; };
+		B885FEA619C48A6900EC1D32 /* ClockViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClockViewController.h; sourceTree = "<group>"; };
+		B885FEA719C48A6900EC1D32 /* ClockViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClockViewController.m; sourceTree = "<group>"; };
+		B885FEAD19C4AB3000EC1D32 /* SpotifyPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpotifyPlayer.h; sourceTree = "<group>"; };
+		B885FEAE19C4AB3000EC1D32 /* SpotifyPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpotifyPlayer.m; sourceTree = "<group>"; };
+		B885FEB019C4ABBC00EC1D32 /* audio.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = audio.c; sourceTree = "<group>"; };
+		B885FEB119C4ABBC00EC1D32 /* audio.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = audio.h; sourceTree = "<group>"; };
+		B885FEB219C4ABBC00EC1D32 /* osx-audio.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "osx-audio.m"; sourceTree = "<group>"; };
+		B885FEB319C4ABBC00EC1D32 /* queue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = queue.h; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		B885FE6A19C488F400EC1D32 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B82A534C19C4FF5F000C40D8 /* libCocoaLibSpotify.a in Frameworks */,
+				B82A534019C4F645000C40D8 /* Security.framework in Frameworks */,
+				B82A533E19C4F63E000C40D8 /* AVFoundation.framework in Frameworks */,
+				B82A533C19C4F632000C40D8 /* AudioToolbox.framework in Frameworks */,
+				B82A533A19C4F623000C40D8 /* CoreAudio.framework in Frameworks */,
+				B82A533819C4F612000C40D8 /* libstdc++.dylib in Frameworks */,
+				B82A533619C4F5F1000C40D8 /* CFNetwork.framework in Frameworks */,
+				B82A533419C4F5E6000C40D8 /* SystemConfiguration.framework in Frameworks */,
+				B885FEF719C4C7CE00EC1D32 /* UIKit.framework in Frameworks */,
+				B885FE7319C488F400EC1D32 /* CoreGraphics.framework in Frameworks */,
+				B885FE7119C488F400EC1D32 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B885FE8B19C488F500EC1D32 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B885FE9019C488F500EC1D32 /* XCTest.framework in Frameworks */,
+				B885FE9219C488F500EC1D32 /* UIKit.framework in Frameworks */,
+				B885FE9119C488F500EC1D32 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		B82A531519C4F43D000C40D8 /* CocoaLibSpotifyHeaders */ = {
+			isa = PBXGroup;
+			children = (
+				B82A531619C4F45C000C40D8 /* api.h */,
+				B82A531719C4F45C000C40D8 /* CocoaLibSpotify.h */,
+				B82A531819C4F45C000C40D8 /* CocoaLibSpotifyPlatformImports.h */,
+				B82A531919C4F45C000C40D8 /* SPAlbum.h */,
+				B82A531A19C4F45C000C40D8 /* SPAlbumBrowse.h */,
+				B82A531B19C4F45C000C40D8 /* SPArtist.h */,
+				B82A531C19C4F45C000C40D8 /* SPArtistBrowse.h */,
+				B82A531D19C4F45C000C40D8 /* SPAsyncLoading.h */,
+				B82A531E19C4F45C000C40D8 /* SPCircularBuffer.h */,
+				B82A531F19C4F45C000C40D8 /* SPCommon.h */,
+				B82A532019C4F45C000C40D8 /* SPCoreAudioController.h */,
+				B82A532119C4F45C000C40D8 /* SPErrorExtensions.h */,
+				B82A532219C4F45C000C40D8 /* SPImage.h */,
+				B82A532319C4F45C000C40D8 /* SPLoginViewController.h */,
+				B82A532419C4F45C000C40D8 /* SPPlaybackManager.h */,
+				B82A532519C4F45C000C40D8 /* SPPlaylist.h */,
+				B82A532619C4F45C000C40D8 /* SPPlaylistContainer.h */,
+				B82A532719C4F45C000C40D8 /* SPPlaylistFolder.h */,
+				B82A532819C4F45C000C40D8 /* SPPlaylistFolderInternal.h */,
+				B82A532919C4F45C000C40D8 /* SPPlaylistItem.h */,
+				B82A532A19C4F45C000C40D8 /* SPPostTracksToInboxOperation.h */,
+				B82A532B19C4F45C000C40D8 /* SPSearch.h */,
+				B82A532C19C4F45C000C40D8 /* SPSession.h */,
+				B82A532D19C4F45C000C40D8 /* SPSignupViewController.h */,
+				B82A532E19C4F45C000C40D8 /* SPToplist.h */,
+				B82A532F19C4F45C000C40D8 /* SPTrack.h */,
+				B82A533019C4F45C000C40D8 /* SPUnknownPlaylist.h */,
+				B82A533119C4F45C000C40D8 /* SPURLExtensions.h */,
+				B82A533219C4F45C000C40D8 /* SPUser.h */,
+			);
+			name = CocoaLibSpotifyHeaders;
+			sourceTree = "<group>";
+		};
+		B82A534219C4FEF4000C40D8 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				B82A534719C4FEF4000C40D8 /* libCocoaLibSpotify.a */,
+				B82A534919C4FEF4000C40D8 /* CocoaLSTests.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		B885FE6419C488F400EC1D32 = {
+			isa = PBXGroup;
+			children = (
+				B82A534119C4FEF4000C40D8 /* CocoaLibSpotify iOS Library.xcodeproj */,
+				B82A530D19C4E641000C40D8 /* appkey.h */,
+				B885FE7619C488F400EC1D32 /* SpotifyAlarmClock */,
+				B885FE9519C488F500EC1D32 /* SpotifyAlarmClockTests */,
+				B885FE6F19C488F400EC1D32 /* Frameworks */,
+				B885FE6E19C488F400EC1D32 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		B885FE6E19C488F400EC1D32 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				B885FE6D19C488F400EC1D32 /* SpotifyAlarmClock.app */,
+				B885FE8E19C488F500EC1D32 /* SpotifyAlarmClockTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		B885FE6F19C488F400EC1D32 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B82A533F19C4F645000C40D8 /* Security.framework */,
+				B82A533D19C4F63E000C40D8 /* AVFoundation.framework */,
+				B82A533B19C4F632000C40D8 /* AudioToolbox.framework */,
+				B82A533919C4F623000C40D8 /* CoreAudio.framework */,
+				B82A533719C4F612000C40D8 /* libstdc++.dylib */,
+				B82A533519C4F5F1000C40D8 /* CFNetwork.framework */,
+				B82A533319C4F5E6000C40D8 /* SystemConfiguration.framework */,
+				B885FE7019C488F400EC1D32 /* Foundation.framework */,
+				B885FE7219C488F400EC1D32 /* CoreGraphics.framework */,
+				B885FE7419C488F400EC1D32 /* UIKit.framework */,
+				B885FE8F19C488F500EC1D32 /* XCTest.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		B885FE7619C488F400EC1D32 /* SpotifyAlarmClock */ = {
+			isa = PBXGroup;
+			children = (
+				B885FEAB19C4AB3000EC1D32 /* Helpers */,
+				B885FEA519C48A6900EC1D32 /* Clock */,
+				B885FE7F19C488F400EC1D32 /* AppDelegate.h */,
+				B885FE8019C488F400EC1D32 /* AppDelegate.m */,
+				B885FE8219C488F400EC1D32 /* Main.storyboard */,
+				B885FE8519C488F400EC1D32 /* ViewController.h */,
+				B885FE8619C488F400EC1D32 /* ViewController.m */,
+				B885FE8819C488F500EC1D32 /* Images.xcassets */,
+				B885FE7719C488F400EC1D32 /* Supporting Files */,
+			);
+			path = SpotifyAlarmClock;
+			sourceTree = "<group>";
+		};
+		B885FE7719C488F400EC1D32 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				B82A531519C4F43D000C40D8 /* CocoaLibSpotifyHeaders */,
+				B885FE7819C488F400EC1D32 /* SpotifyAlarmClock-Info.plist */,
+				B885FE7919C488F400EC1D32 /* InfoPlist.strings */,
+				B885FE7C19C488F400EC1D32 /* main.m */,
+				B885FE7E19C488F400EC1D32 /* SpotifyAlarmClock-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		B885FE9519C488F500EC1D32 /* SpotifyAlarmClockTests */ = {
+			isa = PBXGroup;
+			children = (
+				B885FE9B19C488F500EC1D32 /* SpotifyAlarmClockTests.m */,
+				B885FE9619C488F500EC1D32 /* Supporting Files */,
+			);
+			path = SpotifyAlarmClockTests;
+			sourceTree = "<group>";
+		};
+		B885FE9619C488F500EC1D32 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				B885FE9719C488F500EC1D32 /* SpotifyAlarmClockTests-Info.plist */,
+				B885FE9819C488F500EC1D32 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		B885FEA519C48A6900EC1D32 /* Clock */ = {
+			isa = PBXGroup;
+			children = (
+				B885FEA619C48A6900EC1D32 /* ClockViewController.h */,
+				B885FEA719C48A6900EC1D32 /* ClockViewController.m */,
+			);
+			path = Clock;
+			sourceTree = "<group>";
+		};
+		B885FEAB19C4AB3000EC1D32 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				B885FEAC19C4AB3000EC1D32 /* SpotifyPlayer */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		B885FEAC19C4AB3000EC1D32 /* SpotifyPlayer */ = {
+			isa = PBXGroup;
+			children = (
+				B885FEB019C4ABBC00EC1D32 /* audio.c */,
+				B885FEB119C4ABBC00EC1D32 /* audio.h */,
+				B885FEB219C4ABBC00EC1D32 /* osx-audio.m */,
+				B885FEB319C4ABBC00EC1D32 /* queue.h */,
+				B885FEAD19C4AB3000EC1D32 /* SpotifyPlayer.h */,
+				B885FEAE19C4AB3000EC1D32 /* SpotifyPlayer.m */,
+			);
+			path = SpotifyPlayer;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		B885FE6C19C488F400EC1D32 /* SpotifyAlarmClock */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B885FE9F19C488F500EC1D32 /* Build configuration list for PBXNativeTarget "SpotifyAlarmClock" */;
+			buildPhases = (
+				B885FE6919C488F400EC1D32 /* Sources */,
+				B885FE6A19C488F400EC1D32 /* Frameworks */,
+				B885FE6B19C488F400EC1D32 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B82A534B19C4FF33000C40D8 /* PBXTargetDependency */,
+			);
+			name = SpotifyAlarmClock;
+			productName = SpotifyAlarmClock;
+			productReference = B885FE6D19C488F400EC1D32 /* SpotifyAlarmClock.app */;
+			productType = "com.apple.product-type.application";
+		};
+		B885FE8D19C488F500EC1D32 /* SpotifyAlarmClockTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B885FEA219C488F500EC1D32 /* Build configuration list for PBXNativeTarget "SpotifyAlarmClockTests" */;
+			buildPhases = (
+				B885FE8A19C488F500EC1D32 /* Sources */,
+				B885FE8B19C488F500EC1D32 /* Frameworks */,
+				B885FE8C19C488F500EC1D32 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B885FE9419C488F500EC1D32 /* PBXTargetDependency */,
+			);
+			name = SpotifyAlarmClockTests;
+			productName = SpotifyAlarmClockTests;
+			productReference = B885FE8E19C488F500EC1D32 /* SpotifyAlarmClockTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		B885FE6519C488F400EC1D32 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0510;
+				ORGANIZATIONNAME = "Niels Vroegindeweij";
+				TargetAttributes = {
+					B885FE8D19C488F500EC1D32 = {
+						TestTargetID = B885FE6C19C488F400EC1D32;
+					};
+				};
+			};
+			buildConfigurationList = B885FE6819C488F400EC1D32 /* Build configuration list for PBXProject "SpotifyAlarmClock" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = B885FE6419C488F400EC1D32;
+			productRefGroup = B885FE6E19C488F400EC1D32 /* Products */;
+			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = B82A534219C4FEF4000C40D8 /* Products */;
+					ProjectRef = B82A534119C4FEF4000C40D8 /* CocoaLibSpotify iOS Library.xcodeproj */;
+				},
+			);
+			projectRoot = "";
+			targets = (
+				B885FE6C19C488F400EC1D32 /* SpotifyAlarmClock */,
+				B885FE8D19C488F500EC1D32 /* SpotifyAlarmClockTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		B82A534719C4FEF4000C40D8 /* libCocoaLibSpotify.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libCocoaLibSpotify.a;
+			remoteRef = B82A534619C4FEF4000C40D8 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		B82A534919C4FEF4000C40D8 /* CocoaLSTests.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = CocoaLSTests.app;
+			remoteRef = B82A534819C4FEF4000C40D8 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
+
+/* Begin PBXResourcesBuildPhase section */
+		B885FE6B19C488F400EC1D32 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B885FE8919C488F500EC1D32 /* Images.xcassets in Resources */,
+				B885FE7B19C488F400EC1D32 /* InfoPlist.strings in Resources */,
+				B885FE8419C488F400EC1D32 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B885FE8C19C488F500EC1D32 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B885FE9A19C488F500EC1D32 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		B885FE6919C488F400EC1D32 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B885FEB519C4ABBC00EC1D32 /* osx-audio.m in Sources */,
+				B885FEB419C4ABBC00EC1D32 /* audio.c in Sources */,
+				B885FE8719C488F400EC1D32 /* ViewController.m in Sources */,
+				B885FE8119C488F400EC1D32 /* AppDelegate.m in Sources */,
+				B885FEAF19C4AB3000EC1D32 /* SpotifyPlayer.m in Sources */,
+				B885FE7D19C488F400EC1D32 /* main.m in Sources */,
+				B885FEA819C48A6900EC1D32 /* ClockViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B885FE8A19C488F500EC1D32 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B885FE9C19C488F500EC1D32 /* SpotifyAlarmClockTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		B82A534B19C4FF33000C40D8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = CocoaLibSpotify;
+			targetProxy = B82A534A19C4FF33000C40D8 /* PBXContainerItemProxy */;
+		};
+		B885FE9419C488F500EC1D32 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B885FE6C19C488F400EC1D32 /* SpotifyAlarmClock */;
+			targetProxy = B885FE9319C488F500EC1D32 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		B885FE7919C488F400EC1D32 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B885FE7A19C488F400EC1D32 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		B885FE8219C488F400EC1D32 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B885FE8319C488F400EC1D32 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		B885FE9819C488F500EC1D32 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B885FE9919C488F500EC1D32 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		B885FE9D19C488F500EC1D32 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				LIBRARY_SEARCH_PATHS = "\"/Users/Niels/Documents/Development/Iphone Applicaties/SpotifyAlarmClock/Libraries\"";
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				VALID_ARCHS = "arm64 armv7 armv7s";
+			};
+			name = Debug;
+		};
+		B885FE9E19C488F500EC1D32 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				LIBRARY_SEARCH_PATHS = "\"/Users/Niels/Documents/Development/Iphone Applicaties/SpotifyAlarmClock/Libraries\"";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+				VALID_ARCHS = "arm64 armv7 armv7s";
+			};
+			name = Release;
+		};
+		B885FEA019C488F500EC1D32 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = (
+					armv7s,
+					armv7,
+				);
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				FRAMEWORK_SEARCH_PATHS = "";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "SpotifyAlarmClock/SpotifyAlarmClock-Prefix.pch";
+				INFOPLIST_FILE = "SpotifyAlarmClock/SpotifyAlarmClock-Info.plist";
+				LIBRARY_SEARCH_PATHS = "";
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-all_load",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				VALID_ARCHS = "armv7 armv7s";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		B885FEA119C488F500EC1D32 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = (
+					armv7s,
+					armv7,
+				);
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				FRAMEWORK_SEARCH_PATHS = "";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "SpotifyAlarmClock/SpotifyAlarmClock-Prefix.pch";
+				INFOPLIST_FILE = "SpotifyAlarmClock/SpotifyAlarmClock-Info.plist";
+				LIBRARY_SEARCH_PATHS = "";
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-all_load",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				VALID_ARCHS = "armv7 armv7s";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		B885FEA319C488F500EC1D32 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/SpotifyAlarmClock.app/SpotifyAlarmClock";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "SpotifyAlarmClock/SpotifyAlarmClock-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "SpotifyAlarmClockTests/SpotifyAlarmClockTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		B885FEA419C488F500EC1D32 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/SpotifyAlarmClock.app/SpotifyAlarmClock";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "SpotifyAlarmClock/SpotifyAlarmClock-Prefix.pch";
+				INFOPLIST_FILE = "SpotifyAlarmClockTests/SpotifyAlarmClockTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		B885FE6819C488F400EC1D32 /* Build configuration list for PBXProject "SpotifyAlarmClock" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B885FE9D19C488F500EC1D32 /* Debug */,
+				B885FE9E19C488F500EC1D32 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B885FE9F19C488F500EC1D32 /* Build configuration list for PBXNativeTarget "SpotifyAlarmClock" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B885FEA019C488F500EC1D32 /* Debug */,
+				B885FEA119C488F500EC1D32 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B885FEA219C488F500EC1D32 /* Build configuration list for PBXNativeTarget "SpotifyAlarmClockTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B885FEA319C488F500EC1D32 /* Debug */,
+				B885FEA419C488F500EC1D32 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = B885FE6519C488F400EC1D32 /* Project object */;
+}
