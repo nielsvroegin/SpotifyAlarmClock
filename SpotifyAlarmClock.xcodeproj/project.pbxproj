@@ -21,7 +21,6 @@
 		B885FE7D19C488F400EC1D32 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B885FE7C19C488F400EC1D32 /* main.m */; };
 		B885FE8119C488F400EC1D32 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B885FE8019C488F400EC1D32 /* AppDelegate.m */; };
 		B885FE8419C488F400EC1D32 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B885FE8219C488F400EC1D32 /* Main.storyboard */; };
-		B885FE8719C488F400EC1D32 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B885FE8619C488F400EC1D32 /* ViewController.m */; };
 		B885FE8919C488F500EC1D32 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B885FE8819C488F500EC1D32 /* Images.xcassets */; };
 		B885FE9019C488F500EC1D32 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B885FE8F19C488F500EC1D32 /* XCTest.framework */; };
 		B885FE9119C488F500EC1D32 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B885FE7019C488F400EC1D32 /* Foundation.framework */; };
@@ -116,8 +115,6 @@
 		B885FE7F19C488F400EC1D32 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		B885FE8019C488F400EC1D32 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		B885FE8319C488F400EC1D32 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		B885FE8519C488F400EC1D32 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		B885FE8619C488F400EC1D32 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		B885FE8819C488F500EC1D32 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		B885FE8E19C488F500EC1D32 /* SpotifyAlarmClockTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SpotifyAlarmClockTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B885FE8F19C488F500EC1D32 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
@@ -211,6 +208,21 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		B858223819C5D08500FAED7C /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				B858223A19C5D0A300FAED7C /* Alarms */,
+			);
+			name = Settings;
+			sourceTree = "<group>";
+		};
+		B858223A19C5D0A300FAED7C /* Alarms */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Alarms;
+			sourceTree = "<group>";
+		};
 		B885FE6419C488F400EC1D32 = {
 			isa = PBXGroup;
 			children = (
@@ -253,13 +265,12 @@
 		B885FE7619C488F400EC1D32 /* SpotifyAlarmClock */ = {
 			isa = PBXGroup;
 			children = (
+				B858223819C5D08500FAED7C /* Settings */,
 				B885FEAB19C4AB3000EC1D32 /* Helpers */,
 				B885FEA519C48A6900EC1D32 /* Clock */,
 				B885FE7F19C488F400EC1D32 /* AppDelegate.h */,
 				B885FE8019C488F400EC1D32 /* AppDelegate.m */,
 				B885FE8219C488F400EC1D32 /* Main.storyboard */,
-				B885FE8519C488F400EC1D32 /* ViewController.h */,
-				B885FE8619C488F400EC1D32 /* ViewController.m */,
 				B885FE8819C488F500EC1D32 /* Images.xcassets */,
 				B885FE7719C488F400EC1D32 /* Supporting Files */,
 			);
@@ -449,7 +460,6 @@
 			files = (
 				B885FEB519C4ABBC00EC1D32 /* osx-audio.m in Sources */,
 				B885FEB419C4ABBC00EC1D32 /* audio.c in Sources */,
-				B885FE8719C488F400EC1D32 /* ViewController.m in Sources */,
 				B885FE8119C488F400EC1D32 /* AppDelegate.m in Sources */,
 				B885FEAF19C4AB3000EC1D32 /* SpotifyPlayer.m in Sources */,
 				B885FE7D19C488F400EC1D32 /* main.m in Sources */,
