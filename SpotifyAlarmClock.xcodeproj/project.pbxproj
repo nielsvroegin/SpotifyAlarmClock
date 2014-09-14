@@ -15,6 +15,7 @@
 		B82A533E19C4F63E000C40D8 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B82A533D19C4F63E000C40D8 /* AVFoundation.framework */; };
 		B82A534019C4F645000C40D8 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B82A533F19C4F645000C40D8 /* Security.framework */; };
 		B82A534C19C4FF5F000C40D8 /* libCocoaLibSpotify.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B82A534719C4FEF4000C40D8 /* libCocoaLibSpotify.a */; };
+		B858224519C5D54E00FAED7C /* AlarmsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B858224419C5D54E00FAED7C /* AlarmsViewController.m */; };
 		B885FE7119C488F400EC1D32 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B885FE7019C488F400EC1D32 /* Foundation.framework */; };
 		B885FE7319C488F400EC1D32 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B885FE7219C488F400EC1D32 /* CoreGraphics.framework */; };
 		B885FE7B19C488F400EC1D32 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = B885FE7919C488F400EC1D32 /* InfoPlist.strings */; };
@@ -104,6 +105,8 @@
 		B82A533D19C4F63E000C40D8 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		B82A533F19C4F645000C40D8 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		B82A534119C4FEF4000C40D8 /* CocoaLibSpotify iOS Library.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = "CocoaLibSpotify iOS Library.xcodeproj"; path = "Libraries/cocoalibspotify-2.4.5/iOS Library/CocoaLibSpotify iOS Library.xcodeproj"; sourceTree = "<group>"; };
+		B858224319C5D54E00FAED7C /* AlarmsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlarmsViewController.h; sourceTree = "<group>"; };
+		B858224419C5D54E00FAED7C /* AlarmsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlarmsViewController.m; sourceTree = "<group>"; };
 		B885FE6D19C488F400EC1D32 /* SpotifyAlarmClock.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpotifyAlarmClock.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B885FE7019C488F400EC1D32 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		B885FE7219C488F400EC1D32 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -208,19 +211,21 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		B858223819C5D08500FAED7C /* Settings */ = {
+		B858224119C5D53A00FAED7C /* Settings */ = {
 			isa = PBXGroup;
 			children = (
-				B858223A19C5D0A300FAED7C /* Alarms */,
+				B858224219C5D53A00FAED7C /* Alarms */,
 			);
-			name = Settings;
+			path = Settings;
 			sourceTree = "<group>";
 		};
-		B858223A19C5D0A300FAED7C /* Alarms */ = {
+		B858224219C5D53A00FAED7C /* Alarms */ = {
 			isa = PBXGroup;
 			children = (
+				B858224319C5D54E00FAED7C /* AlarmsViewController.h */,
+				B858224419C5D54E00FAED7C /* AlarmsViewController.m */,
 			);
-			name = Alarms;
+			path = Alarms;
 			sourceTree = "<group>";
 		};
 		B885FE6419C488F400EC1D32 = {
@@ -265,7 +270,7 @@
 		B885FE7619C488F400EC1D32 /* SpotifyAlarmClock */ = {
 			isa = PBXGroup;
 			children = (
-				B858223819C5D08500FAED7C /* Settings */,
+				B858224119C5D53A00FAED7C /* Settings */,
 				B885FEAB19C4AB3000EC1D32 /* Helpers */,
 				B885FEA519C48A6900EC1D32 /* Clock */,
 				B885FE7F19C488F400EC1D32 /* AppDelegate.h */,
@@ -462,6 +467,7 @@
 				B885FEB419C4ABBC00EC1D32 /* audio.c in Sources */,
 				B885FE8119C488F400EC1D32 /* AppDelegate.m in Sources */,
 				B885FEAF19C4AB3000EC1D32 /* SpotifyPlayer.m in Sources */,
+				B858224519C5D54E00FAED7C /* AlarmsViewController.m in Sources */,
 				B885FE7D19C488F400EC1D32 /* main.m in Sources */,
 				B885FEA819C48A6900EC1D32 /* ClockViewController.m in Sources */,
 			);
