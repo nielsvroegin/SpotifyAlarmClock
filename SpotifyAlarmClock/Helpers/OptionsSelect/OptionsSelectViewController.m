@@ -1,18 +1,20 @@
 //
-//  AlarmsViewController.m
+//  OptionsSelectViewController.m
 //  SpotifyAlarmClock
 //
-//  Created by Niels Vroegindeweij on 14-09-14.
+//  Created by Niels Vroegindeweij on 16-09-14.
 //  Copyright (c) 2014 Niels Vroegindeweij. All rights reserved.
 //
 
-#import "AlarmsViewController.h"
+#import "OptionsSelectViewController.h"
 
-@interface AlarmsViewController ()
+@interface OptionsSelectViewController ()
 
 @end
 
-@implementation AlarmsViewController
+@implementation OptionsSelectViewController
+@synthesize options;
+@synthesize delegate;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -40,44 +42,29 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (IBAction)unwindToAlarms:(UIStoryboardSegue *)unwindSegue { }
-
-#pragma mark - Table view delegate
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if((indexPath.row +1) < 3)
-        return 90;
-    else
-        return 45;
-}
-
-- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
-{
-    return 0.5;
-}
-
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    // Return the number of sections.
     return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    // Return the number of rows in the section.
-    return 3;
+    return [self.options count];
 }
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell;
-    if(indexPath.row < 2)
-        cell = [tableView dequeueReusableCellWithIdentifier:@"AlarmCell" forIndexPath:indexPath];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"optionCell" forIndexPath:indexPath];
+    
+    Option * option = [self.options objectAtIndex:indexPath.row];
+    [[cell textLabel] setText:[option label]];
+    if(option.selected)
+        [cell setAccessoryType:UITableViewCellAccessoryCheckmark];
     else
-        cell = [tableView dequeueReusableCellWithIdentifier:@"AddAlarmCell" forIndexPath:indexPath];
+        [cell setAccessoryType:UITableViewCellAccessoryNone];
     
     return cell;
 }
@@ -122,15 +109,14 @@
 */
 
 /*
- #pragma mark - Navigation
- 
- // In a storyboard-based application, you will often want to do a little preparation before navigation
- - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
- {
- // Get the new view controller using [segue destinationViewController].
- // Pass the selected object to the new view controller.
- }
- */
+#pragma mark - Navigation
 
+// In a storyboard-based application, you will often want to do a little preparation before navigation
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    // Get the new view controller using [segue destinationViewController].
+    // Pass the selected object to the new view controller.
+}
+*/
 
 @end

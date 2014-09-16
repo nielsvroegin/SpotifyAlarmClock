@@ -10,4 +10,6 @@
 
 @interface AlarmsViewController : UITableViewController
 
+- (IBAction)unwindToAlarms:(UIStoryboardSegue *)unwindSegue;
+
 @end

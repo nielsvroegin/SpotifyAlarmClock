@@ -1,18 +1,20 @@
 //
-//  AlarmsViewController.m
+//  AddAlarmViewController.m
 //  SpotifyAlarmClock
 //
-//  Created by Niels Vroegindeweij on 14-09-14.
+//  Created by Niels Vroegindeweij on 16-09-14.
 //  Copyright (c) 2014 Niels Vroegindeweij. All rights reserved.
 //
 
-#import "AlarmsViewController.h"
+#import "AddAlarmViewController.h"
+#import "OptionsSelectViewController.h"
+#import "Option.h"
 
-@interface AlarmsViewController ()
+@interface AddAlarmViewController ()
 
 @end
 
-@implementation AlarmsViewController
+@implementation AddAlarmViewController
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -40,48 +42,34 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (IBAction)unwindToAlarms:(UIStoryboardSegue *)unwindSegue { }
-
-#pragma mark - Table view delegate
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if((indexPath.row +1) < 3)
-        return 90;
-    else
-        return 45;
-}
-
-- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
-{
-    return 0.5;
-}
-
 #pragma mark - Table view data source
 
+/*
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
+#warning Potentially incomplete method implementation.
     // Return the number of sections.
-    return 1;
+    return 0;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
+#warning Incomplete method implementation.
     // Return the number of rows in the section.
-    return 3;
+    return 0;
 }
+ */
 
-
+/*
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell;
-    if(indexPath.row < 2)
-        cell = [tableView dequeueReusableCellWithIdentifier:@"AlarmCell" forIndexPath:indexPath];
-    else
-        cell = [tableView dequeueReusableCellWithIdentifier:@"AddAlarmCell" forIndexPath:indexPath];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
+    
+    // Configure the cell...
     
     return cell;
 }
-
+*/
 
 /*
 // Override to support conditional editing of the table view.
@@ -121,16 +109,25 @@
 }
 */
 
-/*
- #pragma mark - Navigation
- 
- // In a storyboard-based application, you will often want to do a little preparation before navigation
- - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
- {
- // Get the new view controller using [segue destinationViewController].
- // Pass the selected object to the new view controller.
- }
- */
 
+#pragma mark - Navigation
+
+// In a storyboard-based application, you will often want to do a little preparation before navigation
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if([[segue identifier] isEqualToString:@"repeatOptionsSelect"])
+    {
+        OptionsSelectViewController* vw = [segue destinationViewController];
+        
+        NSArray * options = [NSArray arrayWithObjects:  [[Option alloc] initWithLabel:@"Every Sunday" selected:FALSE],
+                                                        [[Option alloc] initWithLabel:@"Every Monday" selected:FALSE],
+                                                        [[Option alloc] initWithLabel:@"Every Tuesday" selected:TRUE],
+                                                        [[Option alloc] initWithLabel:@"Every Wednesday" selected:FALSE],
+                                                        [[Option alloc] initWithLabel:@"Every Thursday" selected:FALSE],
+                                                        [[Option alloc] initWithLabel:@"Every Friday" selected:FALSE],
+                                                        [[Option alloc] initWithLabel:@"Every Saturday" selected:FALSE], nil];
+        [vw setOptions:options];
+    }
+}
 
 @end
