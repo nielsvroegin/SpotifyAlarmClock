@@ -11,13 +11,15 @@
 @implementation Option
 @synthesize label;
 @synthesize selected;
+@synthesize abbreviate;
 
 
-- initWithLabel:(NSString *)lb selected:(BOOL)sl
+- initWithLabel:(NSString *)lb abbreviate:(NSString *)abbr  selected:(BOOL)sl
 {
     self = [super init];
     if (self) {
         self.label = lb;
+        self.abbreviate = abbr;
         self.selected = sl;
     }
     return self;

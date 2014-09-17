@@ -11,7 +11,7 @@
 
 @interface OptionsSelectViewController : UITableViewController
 
-@property (nonatomic, assign) id<OptionsSelectDelegate> delegate;
+@property (nonatomic, weak) id<OptionsSelectDelegate> delegate;
 @property (nonatomic, strong) NSArray * options;
 
 @end

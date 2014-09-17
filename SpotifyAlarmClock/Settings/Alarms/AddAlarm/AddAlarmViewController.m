@@ -10,11 +10,23 @@
 #import "OptionsSelectViewController.h"
 #import "Option.h"
 
+#define kRepeat 0
+#define kSongs 1
+#define kSnooze 2
+#define kLabel 3
+
 @interface AddAlarmViewController ()
+
+@property (nonatomic, strong) NSArray * repeatOptions;
+
+- (BOOL) isOptionSelected:(NSUInteger)index;
+- (NSString *) repeatOptionsText;
+- (void) setSelectedRepeatOptionsToCellText;
 
 @end
 
 @implementation AddAlarmViewController
+@synthesize repeatOptions;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -27,13 +39,15 @@
 
 - (void)viewDidLoad
 {
+    self.repeatOptions = [NSArray arrayWithObjects: [[Option alloc] initWithLabel:@"Every Monday" abbreviate:@"Mon" selected:FALSE],
+                            [[Option alloc] initWithLabel:@"Every Tuesday" abbreviate:@"Tue" selected:FALSE],
+                            [[Option alloc] initWithLabel:@"Every Wednesday" abbreviate:@"Wed" selected:FALSE],
+                            [[Option alloc] initWithLabel:@"Every Thursday" abbreviate:@"Thu" selected:FALSE],
+                            [[Option alloc] initWithLabel:@"Every Friday" abbreviate:@"Fri" selected:FALSE],
+                            [[Option alloc] initWithLabel:@"Every Saturday" abbreviate:@"Sat" selected:FALSE],
+                            [[Option alloc] initWithLabel:@"Every Sunday" abbreviate:@"Sun" selected:FALSE], nil];
+    
     [super viewDidLoad];
-    
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
 - (void)didReceiveMemoryWarning
@@ -42,73 +56,44 @@
     // Dispose of any resources that can be recreated.
 }
 
-#pragma mark - Table view data source
-
-/*
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+#pragma mark - OptionsSelect delegate
+- (void)optionValueChanged:(Option *) option
 {
-#warning Potentially incomplete method implementation.
-    // Return the number of sections.
-    return 0;
+    [self setSelectedRepeatOptionsToCellText];
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+- (NSString *) repeatOptionsText
 {
-#warning Incomplete method implementation.
-    // Return the number of rows in the section.
-    return 0;
-}
- */
-
-/*
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
+    NSString *repeatOptionsText = @"";
     
-    // Configure the cell...
+    //Create text
+    if(![self isOptionSelected:0] && ![self isOptionSelected:1] && ![self isOptionSelected:2] && ![self isOptionSelected:3] && ![self isOptionSelected:4] && ![self isOptionSelected:5] && ![self isOptionSelected:6])
+        repeatOptionsText = @"Never";
+    if([self isOptionSelected:0] && [self isOptionSelected:1] && [self isOptionSelected:2] && [self isOptionSelected:3] && [self isOptionSelected:4] && [self isOptionSelected:5] && [self isOptionSelected:6])
+        repeatOptionsText = @"Every day";
+    else if([self isOptionSelected:0] && [self isOptionSelected:1] && [self isOptionSelected:2] && [self isOptionSelected:3] && [self isOptionSelected:4] && ![self isOptionSelected:5] && ![self isOptionSelected:6])
+        repeatOptionsText = @"Weekdays";
+    else if(![self isOptionSelected:0] && ![self isOptionSelected:1] && ![self isOptionSelected:2] && ![self isOptionSelected:3] && ![self isOptionSelected:4] && [self isOptionSelected:5] && [self isOptionSelected:6])
+        repeatOptionsText = @"Weekends";
+    else
+        for(NSUInteger i = 0; i < [self.repeatOptions count]; i++)
+            if([self isOptionSelected:i])
+                repeatOptionsText = [repeatOptionsText stringByAppendingFormat:@" %@", [[self.repeatOptions objectAtIndex:i] abbreviate]];
     
-    return cell;
+    return repeatOptionsText;
 }
-*/
 
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
+- (BOOL) isOptionSelected:(NSUInteger)index
 {
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
+    Option * option = [self.repeatOptions objectAtIndex:index];
+    return  option.selected;
 }
-*/
 
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+- (void) setSelectedRepeatOptionsToCellText
 {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
+    UITableViewCell *repeatCell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:kRepeat inSection:0]];
+    repeatCell.detailTextLabel.text = [self repeatOptionsText];
 }
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
 
 #pragma mark - Navigation
 
@@ -118,15 +103,8 @@
     if([[segue identifier] isEqualToString:@"repeatOptionsSelect"])
     {
         OptionsSelectViewController* vw = [segue destinationViewController];
-        
-        NSArray * options = [NSArray arrayWithObjects:  [[Option alloc] initWithLabel:@"Every Sunday" selected:FALSE],
-                                                        [[Option alloc] initWithLabel:@"Every Monday" selected:FALSE],
-                                                        [[Option alloc] initWithLabel:@"Every Tuesday" selected:TRUE],
-                                                        [[Option alloc] initWithLabel:@"Every Wednesday" selected:FALSE],
-                                                        [[Option alloc] initWithLabel:@"Every Thursday" selected:FALSE],
-                                                        [[Option alloc] initWithLabel:@"Every Friday" selected:FALSE],
-                                                        [[Option alloc] initWithLabel:@"Every Saturday" selected:FALSE], nil];
-        [vw setOptions:options];
+        [vw setDelegate:self];
+        [vw setOptions:[self repeatOptions]];
     }
 }
 

@@ -7,7 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "OptionsSelectDelegate.h"
 
-@interface AddAlarmViewController : UITableViewController
+@interface AddAlarmViewController : UITableViewController<OptionsSelectDelegate>
+
 
 @end

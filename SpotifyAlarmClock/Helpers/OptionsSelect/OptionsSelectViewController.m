@@ -69,6 +69,29 @@
     return cell;
 }
 
+#pragma mark - Table view delegate
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSInteger row = [indexPath row];
+    Option * option = [self.options objectAtIndex:row];
+    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+    
+    //Check or uncheck cell
+    if(!option.selected)
+        cell.accessoryType = UITableViewCellAccessoryCheckmark;
+    else
+        cell.accessoryType = UITableViewCellAccessoryNone;
+    
+    //Switch select value
+    option.selected ^= true;
+    
+    //Unselect cell
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    //Update datasource about changed row
+    [self.delegate optionValueChanged:option];
+}
+
 
 /*
 // Override to support conditional editing of the table view.
