@@ -8,6 +8,7 @@
 
 #import "AddAlarmViewController.h"
 #import "OptionsSelectViewController.h"
+#import "TextEditViewController.h"
 #import "Option.h"
 
 #define kRepeat 0
@@ -18,6 +19,7 @@
 @interface AddAlarmViewController ()
 
 @property (nonatomic, strong) NSArray * repeatOptions;
+@property (nonatomic, strong) NSString * label;
 
 - (BOOL) isOptionSelected:(NSUInteger)index;
 - (NSString *) repeatOptionsText;
@@ -27,6 +29,7 @@
 
 @implementation AddAlarmViewController
 @synthesize repeatOptions;
+@synthesize label;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -46,6 +49,8 @@
                             [[Option alloc] initWithLabel:@"Every Friday" abbreviate:@"Fri" selected:FALSE],
                             [[Option alloc] initWithLabel:@"Every Saturday" abbreviate:@"Sat" selected:FALSE],
                             [[Option alloc] initWithLabel:@"Every Sunday" abbreviate:@"Sun" selected:FALSE], nil];
+    
+    self.label = @"Alarm";
     
     [super viewDidLoad];
 }
@@ -95,6 +100,14 @@
     repeatCell.detailTextLabel.text = [self repeatOptionsText];
 }
 
+#pragma mark - TextEdit delegate
+- (void) textEditChanged:(TextEditViewController *)textEdit value:(NSString *)newValue
+{
+    UITableViewCell *labelCell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:kLabel inSection:0]];
+    self.label = newValue;
+    labelCell.detailTextLabel.text = [self label];
+}
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -103,8 +116,16 @@
     if([[segue identifier] isEqualToString:@"repeatOptionsSelect"])
     {
         OptionsSelectViewController* vw = [segue destinationViewController];
+        [vw setTitle:@"Repeat"];
         [vw setDelegate:self];
         [vw setOptions:[self repeatOptions]];
+    }
+    else if([[segue identifier] isEqualToString:@"labelTextEdit"])
+    {
+        TextEditViewController* vw = [segue destinationViewController];
+        [vw setTitle:@"Label"];
+        [vw setDelegate:self];
+        [vw setText:[self label]];
     }
 }
 

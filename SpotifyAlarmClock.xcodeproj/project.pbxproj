@@ -36,6 +36,7 @@
 		B885FEB419C4ABBC00EC1D32 /* audio.c in Sources */ = {isa = PBXBuildFile; fileRef = B885FEB019C4ABBC00EC1D32 /* audio.c */; };
 		B885FEB519C4ABBC00EC1D32 /* osx-audio.m in Sources */ = {isa = PBXBuildFile; fileRef = B885FEB219C4ABBC00EC1D32 /* osx-audio.m */; };
 		B885FEF719C4C7CE00EC1D32 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B885FE7419C488F400EC1D32 /* UIKit.framework */; };
+		B8F1031F19CB46B6005318F4 /* TextEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B8F1031E19CB46B6005318F4 /* TextEditViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -142,6 +143,9 @@
 		B885FEB119C4ABBC00EC1D32 /* audio.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = audio.h; sourceTree = "<group>"; };
 		B885FEB219C4ABBC00EC1D32 /* osx-audio.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "osx-audio.m"; sourceTree = "<group>"; };
 		B885FEB319C4ABBC00EC1D32 /* queue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = queue.h; sourceTree = "<group>"; };
+		B8F1031D19CB46B6005318F4 /* TextEditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextEditViewController.h; sourceTree = "<group>"; };
+		B8F1031E19CB46B6005318F4 /* TextEditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextEditViewController.m; sourceTree = "<group>"; };
+		B8F1032019CB4B31005318F4 /* TextEditDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TextEditDelegate.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -356,6 +360,7 @@
 		B885FEAB19C4AB3000EC1D32 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				B8F1031B19CB4697005318F4 /* TextEdit */,
 				B80473F919C8BA52001BC4CE /* OptionsSelect */,
 				B885FEAC19C4AB3000EC1D32 /* SpotifyPlayer */,
 			);
@@ -373,6 +378,16 @@
 				B885FEAE19C4AB3000EC1D32 /* SpotifyPlayer.m */,
 			);
 			path = SpotifyPlayer;
+			sourceTree = "<group>";
+		};
+		B8F1031B19CB4697005318F4 /* TextEdit */ = {
+			isa = PBXGroup;
+			children = (
+				B8F1031D19CB46B6005318F4 /* TextEditViewController.h */,
+				B8F1031E19CB46B6005318F4 /* TextEditViewController.m */,
+				B8F1032019CB4B31005318F4 /* TextEditDelegate.h */,
+			);
+			path = TextEdit;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -420,7 +435,7 @@
 		B885FE6519C488F400EC1D32 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0510;
+				LastUpgradeCheck = 0600;
 				ORGANIZATIONNAME = "Niels Vroegindeweij";
 				TargetAttributes = {
 					B885FE8D19C488F500EC1D32 = {
@@ -500,6 +515,7 @@
 				B885FEB419C4ABBC00EC1D32 /* audio.c in Sources */,
 				B885FE8119C488F400EC1D32 /* AppDelegate.m in Sources */,
 				B80473FD19C8BA72001BC4CE /* OptionsSelectViewController.m in Sources */,
+				B8F1031F19CB46B6005318F4 /* TextEditViewController.m in Sources */,
 				B804740519C8CD88001BC4CE /* AddAlarmViewController.m in Sources */,
 				B885FEAF19C4AB3000EC1D32 /* SpotifyPlayer.m in Sources */,
 				B858224519C5D54E00FAED7C /* AlarmsViewController.m in Sources */,
@@ -564,7 +580,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -595,9 +610,9 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LIBRARY_SEARCH_PATHS = "\"/Users/Niels/Documents/Development/Iphone Applicaties/SpotifyAlarmClock/Libraries\"";
-				ONLY_ACTIVE_ARCH = YES;
+				ONLY_ACTIVE_ARCH = NO;
 				SDKROOT = iphoneos;
-				VALID_ARCHS = "arm64 armv7 armv7s";
+				VALID_ARCHS = "armv7 armv7s";
 			};
 			name = Debug;
 		};
@@ -605,7 +620,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -632,7 +646,7 @@
 				LIBRARY_SEARCH_PATHS = "\"/Users/Niels/Documents/Development/Iphone Applicaties/SpotifyAlarmClock/Libraries\"";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
-				VALID_ARCHS = "arm64 armv7 armv7s";
+				VALID_ARCHS = "armv7 armv7s";
 			};
 			name = Release;
 		};
@@ -640,10 +654,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = (
-					armv7s,
-					armv7,
-				);
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				FRAMEWORK_SEARCH_PATHS = "";
@@ -665,10 +675,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = (
-					armv7s,
-					armv7,
-				);
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				FRAMEWORK_SEARCH_PATHS = "";

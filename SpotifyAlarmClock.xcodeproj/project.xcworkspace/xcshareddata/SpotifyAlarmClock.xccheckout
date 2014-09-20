@@ -10,29 +10,29 @@
 	<string>SpotifyAlarmClock</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>67C9EEAD-D2D0-4D14-B1D5-C5A3C7D71FBD</key>
+		<key>DEE882C757D1209665B07A5AA1494EEA9112F0C1</key>
 		<string>https://bitbucket.org/nielsvr/spotifyalarmclock.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>SpotifyAlarmClock.xcodeproj/project.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>67C9EEAD-D2D0-4D14-B1D5-C5A3C7D71FBD</key>
+		<key>DEE882C757D1209665B07A5AA1494EEA9112F0C1</key>
 		<string>../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>https://bitbucket.org/nielsvr/spotifyalarmclock.git</string>
 	<key>IDESourceControlProjectVersion</key>
-	<integer>110</integer>
+	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>67C9EEAD-D2D0-4D14-B1D5-C5A3C7D71FBD</string>
+	<string>DEE882C757D1209665B07A5AA1494EEA9112F0C1</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>67C9EEAD-D2D0-4D14-B1D5-C5A3C7D71FBD</string>
+			<string>DEE882C757D1209665B07A5AA1494EEA9112F0C1</string>
 			<key>IDESourceControlWCCName</key>
 			<string>SpotifyAlarmClock</string>
 		</dict>

@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "OptionsSelectDelegate.h"
+#import "TextEditDelegate.h"
 
-@interface AddAlarmViewController : UITableViewController<OptionsSelectDelegate>
+@interface AddAlarmViewController : UITableViewController<OptionsSelectDelegate, TextEditDelegate>
 
 
 @end
