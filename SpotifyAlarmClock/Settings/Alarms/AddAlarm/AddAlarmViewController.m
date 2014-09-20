@@ -6,6 +6,8 @@
 //  Copyright (c) 2014 Niels Vroegindeweij. All rights reserved.
 //
 
+#import "AppDelegate.h"
+#import "Alarm.h"
 #import "AddAlarmViewController.h"
 #import "OptionsSelectViewController.h"
 #import "TextEditViewController.h"
@@ -20,16 +22,22 @@
 
 @property (nonatomic, strong) NSArray * repeatOptions;
 @property (nonatomic, strong) NSString * label;
+@property (weak, nonatomic) IBOutlet UISwitch *snoozeSwitch;
+@property (weak, nonatomic) IBOutlet UIDatePicker *timePicker;
 
 - (BOOL) isOptionSelected:(NSUInteger)index;
 - (NSString *) repeatOptionsText;
 - (void) setSelectedRepeatOptionsToCellText;
+- (NSString *)repeatOptionsToString:(NSArray *)rpOptions;
+- (NSArray *)repeatOptionsFromString:(NSString *)rpOptions;
 
 @end
 
 @implementation AddAlarmViewController
 @synthesize repeatOptions;
 @synthesize label;
+@synthesize snoozeSwitch;
+@synthesize timePicker;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -59,6 +67,52 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)SaveAlarm
+{
+    /****** Get refs to Managed object context ******/
+    AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
+    NSManagedObjectContext *context = [appDelegate managedObjectContext];
+    NSError *error;
+    
+    /****** Create new object if managed object not exists ******/
+    if(self.alarmData == nil)
+        self.alarmData = [NSEntityDescription insertNewObjectForEntityForName:@"Alarm" inManagedObjectContext:context];
+    
+    /****** Set new values ******/
+    [self.alarmData setName:self.label];
+    [self.alarmData setRepeat:[self repeatOptionsToString:self.repeatOptions]];
+    [self.alarmData setEnabled:[NSNumber numberWithBool:NO]];
+    [self.alarmData setSnooze:[NSNumber numberWithBool:[self.snoozeSwitch isOn]]];
+    [self.alarmData setAlarmTime:[self.timePicker date]];
+   
+    /****** Save alarmData object ******/
+    if(![context save:&error])
+    {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Could not save Alarm!" delegate:nil cancelButtonTitle:@"Oke!" otherButtonTitles:nil];
+        [alert show];
+        
+        NSLog(@"Context save error: %@", error);
+    }
+}
+
+- (NSString *)repeatOptionsToString:(NSArray *)rpOptions
+{
+    NSString *repeatValue = @"";
+    for(int i = 0; i < [rpOptions count]; i++)
+        if([rpOptions[i] selected])
+            repeatValue = [repeatValue stringByAppendingFormat:@"%d,", i];
+    
+    if([repeatValue length] > 0)
+        repeatValue = [repeatValue substringToIndex:([repeatValue length]-1)];
+    
+    return repeatValue;
+}
+
+- (NSArray *)repeatOptionsFromString:(NSString *)rpOptions
+{
+    return nil;
 }
 
 #pragma mark - OptionsSelect delegate
@@ -127,6 +181,9 @@
         [vw setDelegate:self];
         [vw setText:[self label]];
     }
+    else if([[segue identifier] isEqualToString:@"saveAlarm"])
+    {
+        [self SaveAlarm];
+    }
 }
-
 @end

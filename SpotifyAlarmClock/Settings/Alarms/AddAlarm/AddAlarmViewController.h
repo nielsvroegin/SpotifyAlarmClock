@@ -10,7 +10,12 @@
 #import "OptionsSelectDelegate.h"
 #import "TextEditDelegate.h"
 
+@class Alarm;
+
 @interface AddAlarmViewController : UITableViewController<OptionsSelectDelegate, TextEditDelegate>
 
+@property (nonatomic, retain) Alarm *alarmData;
+
+- (void)SaveAlarm;
 
 @end

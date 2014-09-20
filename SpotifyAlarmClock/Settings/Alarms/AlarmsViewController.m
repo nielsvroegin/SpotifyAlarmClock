@@ -7,12 +7,18 @@
 //
 
 #import "AlarmsViewController.h"
+#import "AppDelegate.h"
+#import "AlarmCell.h"
+#import "Alarm.h"
 
 @interface AlarmsViewController ()
+
+@property (nonatomic, strong) NSArray *alarms;
 
 @end
 
 @implementation AlarmsViewController
+@synthesize alarms;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -25,13 +31,31 @@
 
 - (void)viewDidLoad
 {
+    [self loadAlarms];
+    
     [super viewDidLoad];
+}
+
+- (void)loadAlarms
+{
+    /****** Get refs to core date requirements ******/
+    AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
+    NSManagedObjectContext *context = [appDelegate managedObjectContext];
+    NSEntityDescription *entityDescription = [NSEntityDescription entityForName:@"Alarm" inManagedObjectContext:context];
+    NSFetchRequest *request = [[NSFetchRequest alloc] init];
+    NSError *error;
     
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
+    /****** Fetch alarms ******/
+    [request setEntity:entityDescription];
+    self.alarms = [context executeFetchRequest:request error:&error];
     
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    if(self.alarms == nil)
+    {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Could not load Alarms!" delegate:nil cancelButtonTitle:@"Oke!" otherButtonTitles:nil];
+        [alert show];
+        
+        NSLog(@"Context fetch error: %@", error);
+    }
 }
 
 - (void)didReceiveMemoryWarning
@@ -45,7 +69,7 @@
 #pragma mark - Table view delegate
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if((indexPath.row +1) < 3)
+    if(indexPath.row < [self.alarms count])
         return 90;
     else
         return 45;
@@ -60,24 +84,31 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    // Return the number of sections.
     return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    // Return the number of rows in the section.
-    return 3;
+    return [self.alarms count] + 1;
 }
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell;
-    if(indexPath.row < 2)
-        cell = [tableView dequeueReusableCellWithIdentifier:@"AlarmCell" forIndexPath:indexPath];
-    else
-        cell = [tableView dequeueReusableCellWithIdentifier:@"AddAlarmCell" forIndexPath:indexPath];
+    //Return AddAlarm cell when on last cell
+    if(indexPath.row == [self.alarms count])
+        return [tableView dequeueReusableCellWithIdentifier:@"AddAlarmCell" forIndexPath:indexPath];
+    
+    //Return alarm cell
+    AlarmCell *cell = [tableView dequeueReusableCellWithIdentifier:@"AlarmCell" forIndexPath:indexPath];
+    Alarm *alarm = [self.alarms objectAtIndex:[indexPath row]];
+   
+    NSDateFormatter *format = [[NSDateFormatter alloc] init];
+    [format setDateFormat:@"HH:mm"];
+    
+    [cell.lbLabel setText:alarm.Name];
+    [cell.lbTime setText:[format stringFromDate:alarm.AlarmTime]];
+    [cell.swAlarmEnabled setOn:[alarm.Enabled boolValue]];
     
     return cell;
 }

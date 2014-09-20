@@ -448,10 +448,14 @@
                         <barButtonItem key="rightBarButtonItem" title="Save" id="q5P-OX-SSB">
                             <color key="tintColor" red="0.093663677010000002" green="0.42857142860000003" blue="0.15435124059999999" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
-                                <segue destination="Vui-ll-yCO" kind="unwind" unwindAction="unwindToAlarms:" id="XMl-Lf-36P"/>
+                                <segue destination="Vui-ll-yCO" kind="unwind" identifier="saveAlarm" unwindAction="unwindToAlarms:" id="rQa-4s-F2u"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="snoozeSwitch" destination="LLN-KM-YWd" id="1Ey-Yy-Sx9"/>
+                        <outlet property="timePicker" destination="8hp-KM-Crj" id="7T5-qO-yed"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bL0-Yh-GO3" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="Vui-ll-yCO" userLabel="Exit" sceneMemberID="exit"/>
@@ -535,7 +539,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="AlarmCell" rowHeight="90" id="Peq-ro-Ew2">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="AlarmCell" rowHeight="90" id="Peq-ro-Ew2" customClass="AlarmCell">
                                 <rect key="frame" x="0.0" y="55" width="320" height="90"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Peq-ro-Ew2" id="TFT-qm-B5r">
@@ -559,6 +563,11 @@
                                         </switch>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="lbLabel" destination="84U-wj-4C9" id="a6z-oU-G4L"/>
+                                    <outlet property="lbTime" destination="7QA-BP-tm4" id="V5z-30-Kc5"/>
+                                    <outlet property="swAlarmEnabled" destination="PUE-lr-nxj" id="fWJ-hf-Wjl"/>
+                                </connections>
                             </tableViewCell>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="AddAlarmCell" id="1yb-9U-FwP">
                                 <rect key="frame" x="0.0" y="145" width="320" height="44"/>
