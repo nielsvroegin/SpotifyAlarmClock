@@ -14,7 +14,7 @@
 
 @interface AddAlarmViewController : UITableViewController<OptionsSelectDelegate, TextEditDelegate>
 
-@property (nonatomic, retain) Alarm *alarmData;
+@property (nonatomic, strong) Alarm *alarmData;
 
 - (void)SaveAlarm;
 

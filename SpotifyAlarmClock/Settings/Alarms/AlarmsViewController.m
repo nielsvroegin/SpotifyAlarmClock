@@ -7,14 +7,16 @@
 //
 
 #import "AlarmsViewController.h"
+#import "AddAlarmViewController.h"
 #import "AppDelegate.h"
 #import "AlarmCell.h"
 #import "Alarm.h"
 
 @interface AlarmsViewController ()
 
-@property (nonatomic, strong) NSArray *alarms;
-
+@property (nonatomic, strong) NSMutableArray *alarms;
+- (IBAction)EditAlarms:(id)sender;
+- (IBAction)enabledSwitchChanged:(id)sender;
 @end
 
 @implementation AlarmsViewController
@@ -47,7 +49,7 @@
     
     /****** Fetch alarms ******/
     [request setEntity:entityDescription];
-    self.alarms = [context executeFetchRequest:request error:&error];
+    self.alarms = [NSMutableArray arrayWithArray:[context executeFetchRequest:request error:&error]];
     
     if(self.alarms == nil)
     {
@@ -64,9 +66,115 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (IBAction)unwindToAlarms:(UIStoryboardSegue *)unwindSegue { }
+- (IBAction)unwindToAlarms:(UIStoryboardSegue *)unwindSegue
+{
+    if([[unwindSegue identifier] isEqualToString:@"saveAlarm"])
+    {
+        AddAlarmViewController *vw = [unwindSegue sourceViewController];
+        if(![self.alarms containsObject:vw.alarmData])
+        {
+            [self.alarms addObject:vw.alarmData];
+        }
+        
+        if(self.tableView.editing)
+            [self EditAlarms:nil];
+        [self.tableView reloadData];
+    }
+}
+
+- (IBAction)enabledSwitchChanged:(id)sender
+{
+    //Get context
+    AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
+    NSManagedObjectContext *context = [appDelegate managedObjectContext];
+    NSError *error;
+    
+    //Find switch and alarm object
+    UISwitch *sw = (UISwitch *)sender;
+    //Find corresponding AlarmCell
+    UIView *view = sw;
+    while (view != nil && ![view isKindOfClass:[AlarmCell class]]) {
+        view = [view superview];
+    }
+    AlarmCell *alarmCell = (AlarmCell *)view;
+    
+    Alarm *alarm = [self.alarms objectAtIndex:[[self.tableView indexPathForCell:alarmCell] row]] ;
+    [alarm setEnabled:[NSNumber numberWithBool:[sw isOn]]];
+    
+    //Save alarm
+    if(![context save:&error])
+    {
+        [sw setOn:!sw.on];
+        
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Could not save alarm switch!" delegate:nil cancelButtonTitle:@"Oke!" otherButtonTitles:nil];
+        [alert show];
+        
+        NSLog(@"Context save error: %@", error);
+    }
+}
+
+- (IBAction)EditAlarms:(id)sender
+{
+    CGFloat visible = 0.0f;
+
+    if(self.tableView.editing == NO)
+    {
+        self.navigationItem.rightBarButtonItem.title = @"Done";
+        visible = 0.0f;
+        [self.tableView setEditing:YES animated:YES];
+        
+        [self.tableView beginUpdates];
+        [self.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:[self.alarms count] inSection:0]] withRowAnimation:UITableViewRowAnimationAutomatic];
+        [self.tableView endUpdates];
+    }
+    else
+    {
+        self.navigationItem.rightBarButtonItem.title = @"Edit";
+        visible = 1.0f;
+        [self.tableView setEditing:NO animated:YES];
+        
+        [self.tableView beginUpdates];
+        [self.tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:[self.alarms count] inSection:0]] withRowAnimation:UITableViewRowAnimationAutomatic];
+        [self.tableView endUpdates];
+    }
+    
+    
+    
+    
+    //Show/Hide switches
+    [UIView animateWithDuration:0.3
+                     animations:^ {
+                         for (NSInteger i = 0; i < [self.alarms count]; i++) {
+                             AlarmCell *alarmCell = (AlarmCell*)[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:i inSection:0]];
+                             alarmCell.swAlarmEnabled.alpha = visible;
+                         }
+                     }
+     ];
+
+}
 
 #pragma mark - Table view delegate
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    //No action for AddAlarmCell necessary, handled by segue
+    if(indexPath.row >= [self.alarms count])
+        return;
+    
+    
+    if(tableView.editing && indexPath.row < [self.alarms count])
+    {
+        [self performSegueWithIdentifier:@"editAlarm" sender:[tableView cellForRowAtIndexPath:indexPath]];
+    }
+}
+
+- (BOOL)tableView:(UITableView *)tableView shouldHighlightRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if(!tableView.editing && indexPath.row < [self.alarms count])
+        return NO;
+    else
+        return YES;
+}
+
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if(indexPath.row < [self.alarms count])
@@ -80,6 +188,48 @@
     return 0.5;
 }
 
+- (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if(indexPath.row < [self.alarms count])
+        return UITableViewCellEditingStyleDelete;
+    else
+        return UITableViewCellEditingStyleNone;
+}
+
+- (BOOL)tableView:(UITableView *)tableView shouldIndentWhileEditingRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if(indexPath.row < [self.alarms count])
+        return YES;
+    else
+        return NO;
+}
+
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    //Load context
+    AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
+    NSManagedObjectContext *context = [appDelegate managedObjectContext];
+    NSError *error;
+    
+    //Remove selected object
+    [context deleteObject:[self.alarms objectAtIndex:[indexPath row]]];
+    
+    //Save context
+    if(![context save:&error])
+    {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Could not load Alarms!" delegate:nil cancelButtonTitle:@"Oke!" otherButtonTitles:nil];
+        [alert show];
+        
+        NSLog(@"Context save error: %@", error);
+    }
+    [self.alarms removeObjectAtIndex:[indexPath row]];
+    
+    //Animate table with change
+    [self.tableView beginUpdates];
+    [self.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+    [self.tableView endUpdates];
+}
+
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -89,7 +239,10 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [self.alarms count] + 1;
+    if(tableView.editing)
+        return [self.alarms count];
+    else
+        return [self.alarms count] + 1;
 }
 
 
@@ -109,59 +262,24 @@
     [cell.lbLabel setText:alarm.Name];
     [cell.lbTime setText:[format stringFromDate:alarm.AlarmTime]];
     [cell.swAlarmEnabled setOn:[alarm.Enabled boolValue]];
+    [cell.swAlarmEnabled setAlpha:1.0f];
     
     return cell;
 }
 
-
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
-/*
- #pragma mark - Navigation
+#pragma mark - Navigation
  
  // In a storyboard-based application, you will often want to do a little preparation before navigation
  - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
- {
- // Get the new view controller using [segue destinationViewController].
- // Pass the selected object to the new view controller.
- }
- */
+{
+    if([[segue identifier] isEqualToString:@"editAlarm"])
+    {
+        NSIndexPath* indexPath = [self.tableView indexPathForCell:(AlarmCell*) sender];
+        AddAlarmViewController *vw = (AddAlarmViewController *)[[segue destinationViewController] topViewController];
+        Alarm* alarm = [self.alarms objectAtIndex:[indexPath row]];
 
+        [vw setAlarmData:alarm];
+    }
+}
 
 @end

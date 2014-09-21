@@ -13,29 +13,25 @@
 #import "TextEditViewController.h"
 #import "Option.h"
 
-#define kRepeat 0
-#define kSongs 1
-#define kSnooze 2
-#define kLabel 3
-
 @interface AddAlarmViewController ()
 
 @property (nonatomic, strong) NSArray * repeatOptions;
-@property (nonatomic, strong) NSString * label;
+@property (weak, nonatomic) IBOutlet UILabel * lbRepeat;
+@property (weak, nonatomic) IBOutlet UILabel * lbLabel;
 @property (weak, nonatomic) IBOutlet UISwitch *snoozeSwitch;
 @property (weak, nonatomic) IBOutlet UIDatePicker *timePicker;
 
 - (BOOL) isOptionSelected:(NSUInteger)index;
 - (NSString *) repeatOptionsText;
-- (void) setSelectedRepeatOptionsToCellText;
-- (NSString *)repeatOptionsToString:(NSArray *)rpOptions;
-- (NSArray *)repeatOptionsFromString:(NSString *)rpOptions;
+- (NSString *)repeatOptionsToString;
+- (void)repeatOptionsFromString:(NSString *)rpOptions;
 
 @end
 
 @implementation AddAlarmViewController
 @synthesize repeatOptions;
-@synthesize label;
+@synthesize lbLabel;
+@synthesize lbRepeat;
 @synthesize snoozeSwitch;
 @synthesize timePicker;
 
@@ -58,7 +54,14 @@
                             [[Option alloc] initWithLabel:@"Every Saturday" abbreviate:@"Sat" selected:FALSE],
                             [[Option alloc] initWithLabel:@"Every Sunday" abbreviate:@"Sun" selected:FALSE], nil];
     
-    self.label = @"Alarm";
+    if(self.alarmData != nil)
+    {
+        [self repeatOptionsFromString:[self.alarmData Repeat]];
+        [self.lbRepeat setText:[self repeatOptionsText]];
+        [self.lbLabel setText:[self.alarmData Name]];
+        [self.snoozeSwitch setOn:[[self.alarmData Snooze] boolValue]];
+        [self.timePicker setDate:[self.alarmData AlarmTime]];
+    }
     
     [super viewDidLoad];
 }
@@ -81,9 +84,8 @@
         self.alarmData = [NSEntityDescription insertNewObjectForEntityForName:@"Alarm" inManagedObjectContext:context];
     
     /****** Set new values ******/
-    [self.alarmData setName:self.label];
-    [self.alarmData setRepeat:[self repeatOptionsToString:self.repeatOptions]];
-    [self.alarmData setEnabled:[NSNumber numberWithBool:NO]];
+    [self.alarmData setName:[self.lbLabel text]];
+    [self.alarmData setRepeat:[self repeatOptionsToString]];
     [self.alarmData setSnooze:[NSNumber numberWithBool:[self.snoozeSwitch isOn]]];
     [self.alarmData setAlarmTime:[self.timePicker date]];
    
@@ -97,11 +99,11 @@
     }
 }
 
-- (NSString *)repeatOptionsToString:(NSArray *)rpOptions
+- (NSString *)repeatOptionsToString
 {
     NSString *repeatValue = @"";
-    for(int i = 0; i < [rpOptions count]; i++)
-        if([rpOptions[i] selected])
+    for(int i = 0; i < [self.repeatOptions count]; i++)
+        if([self.repeatOptions[i] selected])
             repeatValue = [repeatValue stringByAppendingFormat:@"%d,", i];
     
     if([repeatValue length] > 0)
@@ -110,15 +112,21 @@
     return repeatValue;
 }
 
-- (NSArray *)repeatOptionsFromString:(NSString *)rpOptions
+- (void)repeatOptionsFromString:(NSString *)rpOptions
 {
-    return nil;
+    for(int i = 0; i < [self.repeatOptions count]; i++)
+    {
+        if(self.alarmData != nil && [[self.alarmData Repeat] rangeOfString:[NSString stringWithFormat:@"%d", i]].location != NSNotFound )
+            [[self.repeatOptions objectAtIndex:i] setSelected:YES];
+        else
+            [[self.repeatOptions objectAtIndex:i] setSelected:NO];
+    }
 }
 
 #pragma mark - OptionsSelect delegate
 - (void)optionValueChanged:(Option *) option
 {
-    [self setSelectedRepeatOptionsToCellText];
+    [self.lbRepeat setText:[self repeatOptionsText]];
 }
 
 - (NSString *) repeatOptionsText
@@ -148,18 +156,10 @@
     return  option.selected;
 }
 
-- (void) setSelectedRepeatOptionsToCellText
-{
-    UITableViewCell *repeatCell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:kRepeat inSection:0]];
-    repeatCell.detailTextLabel.text = [self repeatOptionsText];
-}
-
 #pragma mark - TextEdit delegate
 - (void) textEditChanged:(TextEditViewController *)textEdit value:(NSString *)newValue
 {
-    UITableViewCell *labelCell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:kLabel inSection:0]];
-    self.label = newValue;
-    labelCell.detailTextLabel.text = [self label];
+    [self.lbLabel setText:newValue];
 }
 
 #pragma mark - Navigation
@@ -179,7 +179,7 @@
         TextEditViewController* vw = [segue destinationViewController];
         [vw setTitle:@"Label"];
         [vw setDelegate:self];
-        [vw setText:[self label]];
+        [vw setText:[self.lbLabel text]];
     }
     else if([[segue identifier] isEqualToString:@"saveAlarm"])
     {
