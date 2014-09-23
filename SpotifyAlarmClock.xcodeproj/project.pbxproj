@@ -7,9 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		B80473FD19C8BA72001BC4CE /* OptionsSelectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B80473FC19C8BA72001BC4CE /* OptionsSelectViewController.m */; };
-		B804740019C8BB7D001BC4CE /* Option.m in Sources */ = {isa = PBXBuildFile; fileRef = B80473FF19C8BB7D001BC4CE /* Option.m */; };
-		B804740519C8CD88001BC4CE /* AddAlarmViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B804740419C8CD88001BC4CE /* AddAlarmViewController.m */; };
+		B812392319D1FC28005EABDB /* AddAlarmViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B812390F19D1FC28005EABDB /* AddAlarmViewController.m */; };
+		B812392419D1FC28005EABDB /* AlarmCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B812391219D1FC28005EABDB /* AlarmCell.m */; };
+		B812392519D1FC28005EABDB /* AlarmsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B812391419D1FC28005EABDB /* AlarmsViewController.m */; };
+		B812392619D1FC28005EABDB /* ClockViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B812391719D1FC28005EABDB /* ClockViewController.m */; };
+		B812392719D1FC28005EABDB /* Option.m in Sources */ = {isa = PBXBuildFile; fileRef = B812391A19D1FC28005EABDB /* Option.m */; };
+		B812392819D1FC28005EABDB /* OptionsSelectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B812391D19D1FC28005EABDB /* OptionsSelectViewController.m */; };
+		B812392919D1FC28005EABDB /* TextEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B812392219D1FC28005EABDB /* TextEditViewController.m */; };
 		B82A533419C4F5E6000C40D8 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B82A533319C4F5E6000C40D8 /* SystemConfiguration.framework */; };
 		B82A533619C4F5F1000C40D8 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B82A533519C4F5F1000C40D8 /* CFNetwork.framework */; };
 		B82A533819C4F612000C40D8 /* libstdc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B82A533719C4F612000C40D8 /* libstdc++.dylib */; };
@@ -18,12 +22,10 @@
 		B82A533E19C4F63E000C40D8 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B82A533D19C4F63E000C40D8 /* AVFoundation.framework */; };
 		B82A534019C4F645000C40D8 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B82A533F19C4F645000C40D8 /* Security.framework */; };
 		B82A534C19C4FF5F000C40D8 /* libCocoaLibSpotify.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B82A534719C4FEF4000C40D8 /* libCocoaLibSpotify.a */; };
-		B858224519C5D54E00FAED7C /* AlarmsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B858224419C5D54E00FAED7C /* AlarmsViewController.m */; };
 		B86104CC19CD9671001DB753 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B86104CB19CD9671001DB753 /* CoreData.framework */; };
 		B86104D419CDA16D001DB753 /* AlarmSong.m in Sources */ = {isa = PBXBuildFile; fileRef = B86104D319CDA16D001DB753 /* AlarmSong.m */; };
 		B86104D719CDA187001DB753 /* Alarm.m in Sources */ = {isa = PBXBuildFile; fileRef = B86104D619CDA187001DB753 /* Alarm.m */; };
 		B86104DA19CDA28E001DB753 /* SpotifyAlarmClock.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B86104D819CDA28E001DB753 /* SpotifyAlarmClock.xcdatamodeld */; };
-		B86104DE19CDB1A9001DB753 /* AlarmCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B86104DD19CDB1A9001DB753 /* AlarmCell.m */; };
 		B885FE7119C488F400EC1D32 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B885FE7019C488F400EC1D32 /* Foundation.framework */; };
 		B885FE7319C488F400EC1D32 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B885FE7219C488F400EC1D32 /* CoreGraphics.framework */; };
 		B885FE7B19C488F400EC1D32 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = B885FE7919C488F400EC1D32 /* InfoPlist.strings */; };
@@ -36,12 +38,10 @@
 		B885FE9219C488F500EC1D32 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B885FE7419C488F400EC1D32 /* UIKit.framework */; };
 		B885FE9A19C488F500EC1D32 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = B885FE9819C488F500EC1D32 /* InfoPlist.strings */; };
 		B885FE9C19C488F500EC1D32 /* SpotifyAlarmClockTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B885FE9B19C488F500EC1D32 /* SpotifyAlarmClockTests.m */; };
-		B885FEA819C48A6900EC1D32 /* ClockViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B885FEA719C48A6900EC1D32 /* ClockViewController.m */; };
 		B885FEAF19C4AB3000EC1D32 /* SpotifyPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = B885FEAE19C4AB3000EC1D32 /* SpotifyPlayer.m */; };
 		B885FEB419C4ABBC00EC1D32 /* audio.c in Sources */ = {isa = PBXBuildFile; fileRef = B885FEB019C4ABBC00EC1D32 /* audio.c */; };
 		B885FEB519C4ABBC00EC1D32 /* osx-audio.m in Sources */ = {isa = PBXBuildFile; fileRef = B885FEB219C4ABBC00EC1D32 /* osx-audio.m */; };
 		B885FEF719C4C7CE00EC1D32 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B885FE7419C488F400EC1D32 /* UIKit.framework */; };
-		B8F1031F19CB46B6005318F4 /* TextEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B8F1031E19CB46B6005318F4 /* TextEditViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -76,13 +76,22 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		B80473FB19C8BA72001BC4CE /* OptionsSelectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OptionsSelectViewController.h; sourceTree = "<group>"; };
-		B80473FC19C8BA72001BC4CE /* OptionsSelectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OptionsSelectViewController.m; sourceTree = "<group>"; };
-		B80473FE19C8BB7D001BC4CE /* Option.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Option.h; sourceTree = "<group>"; };
-		B80473FF19C8BB7D001BC4CE /* Option.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Option.m; sourceTree = "<group>"; };
-		B804740119C8C368001BC4CE /* OptionsSelectDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OptionsSelectDelegate.h; sourceTree = "<group>"; };
-		B804740319C8CD88001BC4CE /* AddAlarmViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddAlarmViewController.h; sourceTree = "<group>"; };
-		B804740419C8CD88001BC4CE /* AddAlarmViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddAlarmViewController.m; sourceTree = "<group>"; };
+		B812390E19D1FC28005EABDB /* AddAlarmViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddAlarmViewController.h; sourceTree = "<group>"; };
+		B812390F19D1FC28005EABDB /* AddAlarmViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddAlarmViewController.m; sourceTree = "<group>"; };
+		B812391119D1FC28005EABDB /* AlarmCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlarmCell.h; sourceTree = "<group>"; };
+		B812391219D1FC28005EABDB /* AlarmCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlarmCell.m; sourceTree = "<group>"; };
+		B812391319D1FC28005EABDB /* AlarmsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlarmsViewController.h; sourceTree = "<group>"; };
+		B812391419D1FC28005EABDB /* AlarmsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlarmsViewController.m; sourceTree = "<group>"; };
+		B812391619D1FC28005EABDB /* ClockViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClockViewController.h; sourceTree = "<group>"; };
+		B812391719D1FC28005EABDB /* ClockViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClockViewController.m; sourceTree = "<group>"; };
+		B812391919D1FC28005EABDB /* Option.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Option.h; sourceTree = "<group>"; };
+		B812391A19D1FC28005EABDB /* Option.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Option.m; sourceTree = "<group>"; };
+		B812391B19D1FC28005EABDB /* OptionsSelectDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OptionsSelectDelegate.h; sourceTree = "<group>"; };
+		B812391C19D1FC28005EABDB /* OptionsSelectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OptionsSelectViewController.h; sourceTree = "<group>"; };
+		B812391D19D1FC28005EABDB /* OptionsSelectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OptionsSelectViewController.m; sourceTree = "<group>"; };
+		B812392019D1FC28005EABDB /* TextEditDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextEditDelegate.h; sourceTree = "<group>"; };
+		B812392119D1FC28005EABDB /* TextEditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextEditViewController.h; sourceTree = "<group>"; };
+		B812392219D1FC28005EABDB /* TextEditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextEditViewController.m; sourceTree = "<group>"; };
 		B82A530D19C4E641000C40D8 /* appkey.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = appkey.h; path = SpotifyAlarmClock/appkey.h; sourceTree = "<group>"; };
 		B82A531619C4F45C000C40D8 /* api.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = api.h; path = "Libraries/Debug-iphoneos/cocoalibspotifyheaders/api.h"; sourceTree = SOURCE_ROOT; };
 		B82A531719C4F45C000C40D8 /* CocoaLibSpotify.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CocoaLibSpotify.h; path = "Libraries/Debug-iphoneos/cocoalibspotifyheaders/CocoaLibSpotify.h"; sourceTree = SOURCE_ROOT; };
@@ -121,16 +130,12 @@
 		B82A533D19C4F63E000C40D8 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		B82A533F19C4F645000C40D8 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		B82A534119C4FEF4000C40D8 /* CocoaLibSpotify iOS Library.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = "CocoaLibSpotify iOS Library.xcodeproj"; path = "Libraries/cocoalibspotify-2.4.5/iOS Library/CocoaLibSpotify iOS Library.xcodeproj"; sourceTree = "<group>"; };
-		B858224319C5D54E00FAED7C /* AlarmsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlarmsViewController.h; sourceTree = "<group>"; };
-		B858224419C5D54E00FAED7C /* AlarmsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlarmsViewController.m; sourceTree = "<group>"; };
 		B86104CB19CD9671001DB753 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		B86104D219CDA16D001DB753 /* AlarmSong.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlarmSong.h; sourceTree = "<group>"; };
 		B86104D319CDA16D001DB753 /* AlarmSong.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlarmSong.m; sourceTree = "<group>"; };
 		B86104D519CDA187001DB753 /* Alarm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Alarm.h; sourceTree = "<group>"; };
 		B86104D619CDA187001DB753 /* Alarm.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Alarm.m; sourceTree = "<group>"; };
 		B86104D919CDA28E001DB753 /* SpotifyAlarmClock.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SpotifyAlarmClock.xcdatamodel; sourceTree = "<group>"; };
-		B86104DC19CDB1A9001DB753 /* AlarmCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlarmCell.h; sourceTree = "<group>"; };
-		B86104DD19CDB1A9001DB753 /* AlarmCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlarmCell.m; sourceTree = "<group>"; };
 		B885FE6D19C488F400EC1D32 /* SpotifyAlarmClock.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpotifyAlarmClock.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B885FE7019C488F400EC1D32 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		B885FE7219C488F400EC1D32 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -148,17 +153,12 @@
 		B885FE9719C488F500EC1D32 /* SpotifyAlarmClockTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SpotifyAlarmClockTests-Info.plist"; sourceTree = "<group>"; };
 		B885FE9919C488F500EC1D32 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		B885FE9B19C488F500EC1D32 /* SpotifyAlarmClockTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SpotifyAlarmClockTests.m; sourceTree = "<group>"; };
-		B885FEA619C48A6900EC1D32 /* ClockViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClockViewController.h; sourceTree = "<group>"; };
-		B885FEA719C48A6900EC1D32 /* ClockViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClockViewController.m; sourceTree = "<group>"; };
 		B885FEAD19C4AB3000EC1D32 /* SpotifyPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpotifyPlayer.h; sourceTree = "<group>"; };
 		B885FEAE19C4AB3000EC1D32 /* SpotifyPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpotifyPlayer.m; sourceTree = "<group>"; };
 		B885FEB019C4ABBC00EC1D32 /* audio.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = audio.c; sourceTree = "<group>"; };
 		B885FEB119C4ABBC00EC1D32 /* audio.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = audio.h; sourceTree = "<group>"; };
 		B885FEB219C4ABBC00EC1D32 /* osx-audio.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "osx-audio.m"; sourceTree = "<group>"; };
 		B885FEB319C4ABBC00EC1D32 /* queue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = queue.h; sourceTree = "<group>"; };
-		B8F1031D19CB46B6005318F4 /* TextEditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextEditViewController.h; sourceTree = "<group>"; };
-		B8F1031E19CB46B6005318F4 /* TextEditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextEditViewController.m; sourceTree = "<group>"; };
-		B8F1032019CB4B31005318F4 /* TextEditDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TextEditDelegate.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -194,25 +194,75 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		B80473F919C8BA52001BC4CE /* OptionsSelect */ = {
+		B812390C19D1FC28005EABDB /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				B80473FB19C8BA72001BC4CE /* OptionsSelectViewController.h */,
-				B80473FC19C8BA72001BC4CE /* OptionsSelectViewController.m */,
-				B80473FE19C8BB7D001BC4CE /* Option.h */,
-				B80473FF19C8BB7D001BC4CE /* Option.m */,
-				B804740119C8C368001BC4CE /* OptionsSelectDelegate.h */,
+				B812390D19D1FC28005EABDB /* AddAlarm */,
+				B812391019D1FC28005EABDB /* Alarms */,
+				B812391519D1FC28005EABDB /* Clock */,
+				B812391819D1FC28005EABDB /* OptionsSelect */,
+				B812391E19D1FC28005EABDB /* Settings */,
+				B812391F19D1FC28005EABDB /* TextEdit */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		B812390D19D1FC28005EABDB /* AddAlarm */ = {
+			isa = PBXGroup;
+			children = (
+				B812390E19D1FC28005EABDB /* AddAlarmViewController.h */,
+				B812390F19D1FC28005EABDB /* AddAlarmViewController.m */,
+			);
+			path = AddAlarm;
+			sourceTree = "<group>";
+		};
+		B812391019D1FC28005EABDB /* Alarms */ = {
+			isa = PBXGroup;
+			children = (
+				B812391119D1FC28005EABDB /* AlarmCell.h */,
+				B812391219D1FC28005EABDB /* AlarmCell.m */,
+				B812391319D1FC28005EABDB /* AlarmsViewController.h */,
+				B812391419D1FC28005EABDB /* AlarmsViewController.m */,
+			);
+			path = Alarms;
+			sourceTree = "<group>";
+		};
+		B812391519D1FC28005EABDB /* Clock */ = {
+			isa = PBXGroup;
+			children = (
+				B812391619D1FC28005EABDB /* ClockViewController.h */,
+				B812391719D1FC28005EABDB /* ClockViewController.m */,
+			);
+			path = Clock;
+			sourceTree = "<group>";
+		};
+		B812391819D1FC28005EABDB /* OptionsSelect */ = {
+			isa = PBXGroup;
+			children = (
+				B812391919D1FC28005EABDB /* Option.h */,
+				B812391A19D1FC28005EABDB /* Option.m */,
+				B812391B19D1FC28005EABDB /* OptionsSelectDelegate.h */,
+				B812391C19D1FC28005EABDB /* OptionsSelectViewController.h */,
+				B812391D19D1FC28005EABDB /* OptionsSelectViewController.m */,
 			);
 			path = OptionsSelect;
 			sourceTree = "<group>";
 		};
-		B804740219C8CD69001BC4CE /* AddAlarm */ = {
+		B812391E19D1FC28005EABDB /* Settings */ = {
 			isa = PBXGroup;
 			children = (
-				B804740319C8CD88001BC4CE /* AddAlarmViewController.h */,
-				B804740419C8CD88001BC4CE /* AddAlarmViewController.m */,
 			);
-			path = AddAlarm;
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		B812391F19D1FC28005EABDB /* TextEdit */ = {
+			isa = PBXGroup;
+			children = (
+				B812392019D1FC28005EABDB /* TextEditDelegate.h */,
+				B812392119D1FC28005EABDB /* TextEditViewController.h */,
+				B812392219D1FC28005EABDB /* TextEditViewController.m */,
+			);
+			path = TextEdit;
 			sourceTree = "<group>";
 		};
 		B82A531519C4F43D000C40D8 /* CocoaLibSpotifyHeaders */ = {
@@ -258,26 +308,6 @@
 				B82A534919C4FEF4000C40D8 /* CocoaLSTests.app */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		B858224119C5D53A00FAED7C /* Settings */ = {
-			isa = PBXGroup;
-			children = (
-				B858224219C5D53A00FAED7C /* Alarms */,
-			);
-			path = Settings;
-			sourceTree = "<group>";
-		};
-		B858224219C5D53A00FAED7C /* Alarms */ = {
-			isa = PBXGroup;
-			children = (
-				B804740219C8CD69001BC4CE /* AddAlarm */,
-				B858224319C5D54E00FAED7C /* AlarmsViewController.h */,
-				B858224419C5D54E00FAED7C /* AlarmsViewController.m */,
-				B86104DC19CDB1A9001DB753 /* AlarmCell.h */,
-				B86104DD19CDB1A9001DB753 /* AlarmCell.m */,
-			);
-			path = Alarms;
 			sourceTree = "<group>";
 		};
 		B86104D119CDA139001DB753 /* Models */ = {
@@ -335,10 +365,9 @@
 		B885FE7619C488F400EC1D32 /* SpotifyAlarmClock */ = {
 			isa = PBXGroup;
 			children = (
+				B812390C19D1FC28005EABDB /* Controllers */,
 				B86104D119CDA139001DB753 /* Models */,
-				B858224119C5D53A00FAED7C /* Settings */,
 				B885FEAB19C4AB3000EC1D32 /* Helpers */,
-				B885FEA519C48A6900EC1D32 /* Clock */,
 				B885FE7F19C488F400EC1D32 /* AppDelegate.h */,
 				B885FE8019C488F400EC1D32 /* AppDelegate.m */,
 				B885FE8219C488F400EC1D32 /* Main.storyboard */,
@@ -378,20 +407,9 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		B885FEA519C48A6900EC1D32 /* Clock */ = {
-			isa = PBXGroup;
-			children = (
-				B885FEA619C48A6900EC1D32 /* ClockViewController.h */,
-				B885FEA719C48A6900EC1D32 /* ClockViewController.m */,
-			);
-			path = Clock;
-			sourceTree = "<group>";
-		};
 		B885FEAB19C4AB3000EC1D32 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
-				B8F1031B19CB4697005318F4 /* TextEdit */,
-				B80473F919C8BA52001BC4CE /* OptionsSelect */,
 				B885FEAC19C4AB3000EC1D32 /* SpotifyPlayer */,
 			);
 			path = Helpers;
@@ -408,16 +426,6 @@
 				B885FEAE19C4AB3000EC1D32 /* SpotifyPlayer.m */,
 			);
 			path = SpotifyPlayer;
-			sourceTree = "<group>";
-		};
-		B8F1031B19CB4697005318F4 /* TextEdit */ = {
-			isa = PBXGroup;
-			children = (
-				B8F1031D19CB46B6005318F4 /* TextEditViewController.h */,
-				B8F1031E19CB46B6005318F4 /* TextEditViewController.m */,
-				B8F1032019CB4B31005318F4 /* TextEditDelegate.h */,
-			);
-			path = TextEdit;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -541,21 +549,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B812392719D1FC28005EABDB /* Option.m in Sources */,
+				B812392319D1FC28005EABDB /* AddAlarmViewController.m in Sources */,
+				B812392919D1FC28005EABDB /* TextEditViewController.m in Sources */,
 				B885FEB519C4ABBC00EC1D32 /* osx-audio.m in Sources */,
 				B86104D719CDA187001DB753 /* Alarm.m in Sources */,
+				B812392619D1FC28005EABDB /* ClockViewController.m in Sources */,
 				B885FEB419C4ABBC00EC1D32 /* audio.c in Sources */,
 				B885FE8119C488F400EC1D32 /* AppDelegate.m in Sources */,
-				B80473FD19C8BA72001BC4CE /* OptionsSelectViewController.m in Sources */,
-				B8F1031F19CB46B6005318F4 /* TextEditViewController.m in Sources */,
-				B804740519C8CD88001BC4CE /* AddAlarmViewController.m in Sources */,
 				B885FEAF19C4AB3000EC1D32 /* SpotifyPlayer.m in Sources */,
-				B858224519C5D54E00FAED7C /* AlarmsViewController.m in Sources */,
 				B86104DA19CDA28E001DB753 /* SpotifyAlarmClock.xcdatamodeld in Sources */,
-				B804740019C8BB7D001BC4CE /* Option.m in Sources */,
+				B812392819D1FC28005EABDB /* OptionsSelectViewController.m in Sources */,
 				B885FE7D19C488F400EC1D32 /* main.m in Sources */,
 				B86104D419CDA16D001DB753 /* AlarmSong.m in Sources */,
-				B885FEA819C48A6900EC1D32 /* ClockViewController.m in Sources */,
-				B86104DE19CDB1A9001DB753 /* AlarmCell.m in Sources */,
+				B812392419D1FC28005EABDB /* AlarmCell.m in Sources */,
+				B812392519D1FC28005EABDB /* AlarmsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
