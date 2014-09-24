@@ -490,7 +490,7 @@
         <!--Songs-->
         <scene sceneID="1Fr-U2-4J1">
             <objects>
-                <tableViewController id="Anl-o5-ySN" sceneMemberID="viewController">
+                <tableViewController id="Anl-o5-ySN" customClass="SongsViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="05n-M6-fv9">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -562,14 +562,14 @@
             </objects>
             <point key="canvasLocation" x="4096" y="-331"/>
         </scene>
-        <!--Song Select-->
+        <!--Search Song-->
         <scene sceneID="eY5-QF-27r">
             <objects>
-                <tableViewController id="mgH-p2-COw" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="cdK-Pw-54I">
+                <tableViewController id="mgH-p2-COw" customClass="SongSearchViewController" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="cdK-Pw-54I">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <searchBar key="tableHeaderView" contentMode="redraw" id="Q2o-8H-MLF">
                             <rect key="frame" x="0.0" y="64" width="320" height="44"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
@@ -578,12 +578,29 @@
                                 <string>Title</string>
                                 <string>Title</string>
                             </scopeButtonTitles>
+                            <connections>
+                                <outlet property="delegate" destination="mgH-p2-COw" id="unu-f8-UpH"/>
+                            </connections>
                         </searchBar>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="Kks-ae-HR9">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="trackCell" textLabel="CLM-VA-wHm" detailTextLabel="1m2-Fb-Gxo" style="IBUITableViewCellStyleSubtitle" id="Kks-ae-HR9">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Kks-ae-HR9" id="ZAb-O4-su8">
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="CLM-VA-wHm">
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="1m2-Fb-Gxo">
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
                                 </tableViewCellContentView>
                             </tableViewCell>
                         </prototypes>
@@ -592,22 +609,19 @@
                             <outlet property="delegate" destination="mgH-p2-COw" id="l2O-ff-atB"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Song Select" id="MGe-eW-oMO">
-                        <barButtonItem key="rightBarButtonItem" title="Done" id="NI8-hc-sEU"/>
+                    <navigationItem key="navigationItem" title="Search Song" id="MGe-eW-oMO">
+                        <barButtonItem key="rightBarButtonItem" title="Done" id="NI8-hc-sEU">
+                            <connections>
+                                <segue destination="zgp-SW-w7m" kind="unwind" unwindAction="unwindToSongs:" id="IZ6-xU-ec9"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="searchDisplayController" destination="5Av-nY-w9Q" id="0Bz-L3-5jg"/>
+                        <outlet property="searchBar" destination="Q2o-8H-MLF" id="hs3-gt-eo7"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xnu-zh-gAD" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <searchDisplayController id="5Av-nY-w9Q">
-                    <connections>
-                        <outlet property="delegate" destination="mgH-p2-COw" id="LlO-Uc-bZ0"/>
-                        <outlet property="searchContentsController" destination="mgH-p2-COw" id="qaa-PN-hmP"/>
-                        <outlet property="searchResultsDataSource" destination="mgH-p2-COw" id="LX5-xV-Zib"/>
-                        <outlet property="searchResultsDelegate" destination="mgH-p2-COw" id="1hC-64-i8q"/>
-                    </connections>
-                </searchDisplayController>
+                <exit id="zgp-SW-w7m" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="4602" y="-333"/>
         </scene>
