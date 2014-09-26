@@ -8,6 +8,7 @@
 
 #import "SongSearchViewController.h"
 #import "CocoaLibSpotify.h"
+#import "MBProgressHUD.h"
 
 @interface SongSearchViewController ()
 @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
@@ -47,6 +48,8 @@
             self.search = nil;
             
             [self.tableView reloadData];
+            
+            [MBProgressHUD hideHUDForView:self.view animated:YES];
         }
     }
 }
@@ -56,6 +59,10 @@
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
 {
     [self.searchBar resignFirstResponder];
+    
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.tableView animated:YES];
+    hud.labelText = @"Loading";
+    hud.dimBackground = YES;
     
     [self addObserver:self forKeyPath:@"search.loaded" options:0 context:nil];
     self.search = [[SPSearch alloc] initWithSearchQuery:[self.searchBar text] pageSize:5 inSession:[SPSession sharedSession]];

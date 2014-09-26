@@ -138,11 +138,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SpotifyAlarmClock/Controllers/SongSearch/SongSearchViewController.m"
-            timestampString = "433280665.035575"
+            timestampString = "433457334.789921"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "41"
-            endingLineNumber = "41"
+            startingLineNumber = "42"
+            endingLineNumber = "42"
             landmarkName = "-observeValueForKeyPath:ofObject:change:context:"
             landmarkType = "5">
          </BreakpointContent>
@@ -154,11 +154,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SpotifyAlarmClock/Controllers/SongSearch/SongSearchViewController.m"
-            timestampString = "433281286.733962"
+            timestampString = "433457334.789921"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "58"
-            endingLineNumber = "58"
+            startingLineNumber = "61"
+            endingLineNumber = "61"
             landmarkName = "-searchBarSearchButtonClicked:"
             landmarkType = "5">
          </BreakpointContent>
@@ -170,11 +170,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SpotifyAlarmClock/Controllers/SongSearch/SongSearchViewController.m"
-            timestampString = "433281286.733962"
+            timestampString = "433458022.439805"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "93"
-            endingLineNumber = "93"
+            startingLineNumber = "100"
+            endingLineNumber = "100"
             landmarkName = "-numberOfSectionsInTableView:"
             landmarkType = "5">
          </BreakpointContent>
