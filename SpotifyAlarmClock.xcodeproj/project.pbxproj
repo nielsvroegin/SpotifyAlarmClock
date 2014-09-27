@@ -45,6 +45,9 @@
 		B885FEB419C4ABBC00EC1D32 /* audio.c in Sources */ = {isa = PBXBuildFile; fileRef = B885FEB019C4ABBC00EC1D32 /* audio.c */; };
 		B885FEB519C4ABBC00EC1D32 /* osx-audio.m in Sources */ = {isa = PBXBuildFile; fileRef = B885FEB219C4ABBC00EC1D32 /* osx-audio.m */; };
 		B885FEF719C4C7CE00EC1D32 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B885FE7419C488F400EC1D32 /* UIKit.framework */; };
+		B8DDB22519D7012D00534EAE /* ArtistCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B8DDB22419D7012D00534EAE /* ArtistCell.m */; };
+		B8DDB22819D7014700534EAE /* AlbumCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B8DDB22719D7014700534EAE /* AlbumCell.m */; };
+		B8DDB22B19D7016100534EAE /* TrackCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B8DDB22A19D7016100534EAE /* TrackCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -167,6 +170,12 @@
 		B885FEB119C4ABBC00EC1D32 /* audio.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = audio.h; sourceTree = "<group>"; };
 		B885FEB219C4ABBC00EC1D32 /* osx-audio.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "osx-audio.m"; sourceTree = "<group>"; };
 		B885FEB319C4ABBC00EC1D32 /* queue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = queue.h; sourceTree = "<group>"; };
+		B8DDB22319D7012D00534EAE /* ArtistCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArtistCell.h; sourceTree = "<group>"; };
+		B8DDB22419D7012D00534EAE /* ArtistCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArtistCell.m; sourceTree = "<group>"; };
+		B8DDB22619D7014700534EAE /* AlbumCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlbumCell.h; sourceTree = "<group>"; };
+		B8DDB22719D7014700534EAE /* AlbumCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlbumCell.m; sourceTree = "<group>"; };
+		B8DDB22919D7016100534EAE /* TrackCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrackCell.h; sourceTree = "<group>"; };
+		B8DDB22A19D7016100534EAE /* TrackCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TrackCell.m; sourceTree = "<group>"; };
 		B8F5F34EBE107A7EEBA2420D /* Pods-SpotifyAlarmClock.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SpotifyAlarmClock.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SpotifyAlarmClock/Pods-SpotifyAlarmClock.debug.xcconfig"; sourceTree = "<group>"; };
 		C92F5708CCED2BA4D9ECCF61 /* libPods-SpotifyAlarmClock.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SpotifyAlarmClock.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -301,6 +310,12 @@
 			children = (
 				B812392F19D201F2005EABDB /* SongSearchViewController.h */,
 				B812393019D201F2005EABDB /* SongSearchViewController.m */,
+				B8DDB22319D7012D00534EAE /* ArtistCell.h */,
+				B8DDB22419D7012D00534EAE /* ArtistCell.m */,
+				B8DDB22619D7014700534EAE /* AlbumCell.h */,
+				B8DDB22719D7014700534EAE /* AlbumCell.m */,
+				B8DDB22919D7016100534EAE /* TrackCell.h */,
+				B8DDB22A19D7016100534EAE /* TrackCell.m */,
 			);
 			path = SongSearch;
 			sourceTree = "<group>";
@@ -632,10 +647,13 @@
 				B812392719D1FC28005EABDB /* Option.m in Sources */,
 				B812392319D1FC28005EABDB /* AddAlarmViewController.m in Sources */,
 				B812393119D201F2005EABDB /* SongSearchViewController.m in Sources */,
+				B8DDB22B19D7016100534EAE /* TrackCell.m in Sources */,
 				B812392919D1FC28005EABDB /* TextEditViewController.m in Sources */,
 				B885FEB519C4ABBC00EC1D32 /* osx-audio.m in Sources */,
 				B86104D719CDA187001DB753 /* Alarm.m in Sources */,
+				B8DDB22519D7012D00534EAE /* ArtistCell.m in Sources */,
 				B812392619D1FC28005EABDB /* ClockViewController.m in Sources */,
+				B8DDB22819D7014700534EAE /* AlbumCell.m in Sources */,
 				B885FEB419C4ABBC00EC1D32 /* audio.c in Sources */,
 				B885FE8119C488F400EC1D32 /* AppDelegate.m in Sources */,
 				B885FEAF19C4AB3000EC1D32 /* SpotifyPlayer.m in Sources */,
