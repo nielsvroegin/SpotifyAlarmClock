@@ -13,17 +13,19 @@
 @interface SongSearchViewController ()
 @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
 @property (nonatomic, strong) SPSearch *searchResult;
-@property (nonatomic, strong) SPSearch *search;
 
+@property (atomic, assign) BOOL loading;
 @property (nonatomic, assign) NSInteger artistSection;
 @property (nonatomic, assign) NSInteger albumSection;
 @property (nonatomic, assign) NSInteger trackSection;
+
+-(void) performSearch;
 
 @end
 
 @implementation SongSearchViewController
 @synthesize searchBar;
-@synthesize search, searchResult;
+@synthesize searchResult;
 @synthesize artistSection, albumSection, trackSection;
 
 - (void)viewDidLoad {
@@ -37,21 +39,44 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
+-(void) performSearch
 {
-    if ([keyPath isEqualToString:@"search.loaded"])
-    {
-        if([self.search isLoaded])
-        {
-            [self removeObserver:self forKeyPath:@"search.loaded"];
-            self.searchResult = self.search;
-            self.search = nil;
-            
-            [self.tableView reloadData];
-            
-            [MBProgressHUD hideHUDForView:self.view animated:YES];
-        }
-    }
+    //Ignore search change when still loading
+    if(self.loading)
+        return;
+    
+    //Set loading and clean table
+    self.loading = true;
+    
+    //Perform search
+    SPSearch *search = [[SPSearch alloc] initWithSearchQuery:[self.searchBar text] pageSize:5 inSession:[SPSession sharedSession]];
+    [SPAsyncLoading waitUntilLoaded:search timeout:10.0 then:^(NSArray *loadedItems, NSArray *notLoadedItems)
+     {
+         //Disable loading HUD
+         [MBProgressHUD hideAllHUDsForView:self.tableView animated:YES];
+         
+         //Check if search wasn't timed out
+         if(loadedItems == nil || [loadedItems count] != 1 || ![[loadedItems firstObject] isKindOfClass:[SPSearch class]])
+         {
+             [[[UIAlertView alloc] initWithTitle:@"Error" message:@"Spotify Alarm Clock wasn't able to perform the search. Is your internet connection still active?" delegate:nil cancelButtonTitle:@"Oke!" otherButtonTitles:nil] show];
+             NSLog(@"Search request timedout");
+         }
+         
+         //Check if search text still the same, otherwise redo search
+         SPSearch *search = (SPSearch*)[loadedItems firstObject];
+         if(![search.searchQuery isEqualToString:[self.searchBar text]])
+         {
+             self.loading = false;
+             [self performSearch];
+         }
+         
+         //Search successful, add to search result and reload table
+         self.searchResult = search;
+         [self.tableView reloadData];
+         
+         self.loading = false;
+     }];
+    
 }
 
 #pragma mark - Searchbar delegate
@@ -60,13 +85,30 @@
 {
     [self.searchBar resignFirstResponder];
     
+}
+
+- (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText
+{
+    //Cancel any previous request if still waiting
+    [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(performSearch) object:nil];
+    
+    //Clear table
+    self.searchResult = nil;
+    [self.tableView reloadData];
+    
+    //No need to search if searchtext is empty
+    if([self.searchBar.text length] == 0)
+        return;
+    
+    //Enable loading HUD
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.tableView animated:YES];
     hud.labelText = @"Loading";
-    hud.dimBackground = YES;
     
-    [self addObserver:self forKeyPath:@"search.loaded" options:0 context:nil];
-    self.search = [[SPSearch alloc] initWithSearchQuery:[self.searchBar text] pageSize:5 inSession:[SPSession sharedSession]];
+    //Perform the search
+    [self performSelector:@selector(performSearch) withObject:nil afterDelay:0.5];
 }
+
+
 
 #pragma mark - Table view data source
 

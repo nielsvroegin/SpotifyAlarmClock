@@ -520,6 +520,9 @@
 				LastUpgradeCheck = 0600;
 				ORGANIZATIONNAME = "Niels Vroegindeweij";
 				TargetAttributes = {
+					B885FE6C19C488F400EC1D32 = {
+						DevelopmentTeam = 46H439Z8Z5;
+					};
 					B885FE8D19C488F500EC1D32 = {
 						TestTargetID = B885FE6C19C488F400EC1D32;
 					};
@@ -789,6 +792,7 @@
 					"-all_load",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 				VALID_ARCHS = "armv7 armv7s";
 				WRAPPER_EXTENSION = app;
 			};
@@ -812,6 +816,7 @@
 					"-all_load",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 				VALID_ARCHS = "armv7 armv7s";
 				WRAPPER_EXTENSION = app;
 			};
