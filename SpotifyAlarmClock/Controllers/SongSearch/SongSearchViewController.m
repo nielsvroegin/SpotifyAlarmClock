@@ -17,6 +17,7 @@
 @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
 @property (nonatomic, strong) SPSearch *searchResult;
 @property (nonatomic, strong) NSMutableArray *artistBrowseCollection;
+@property (nonatomic, strong) NSMutableArray *albumBrowseCollection;
 
 @property (atomic, assign) BOOL loading;
 @property (nonatomic, assign) NSInteger artistSection;
@@ -62,13 +63,13 @@
     
     //Not found so create
     artistBrowse = [[SPArtistBrowse alloc] initWithArtist:artist inSession:[SPSession sharedSession] type:SP_ARTISTBROWSE_NO_TRACKS];
+    [self.artistBrowseCollection addObject:artistBrowse];
     [SPAsyncLoading waitUntilLoaded:artistBrowse timeout:10.0 then:^(NSArray *loadedItems, NSArray *notLoadedItems)
      {
          if(loadedItems == nil || [loadedItems count] != 1 || ![[loadedItems firstObject] isKindOfClass:[SPArtistBrowse class]])
              return;
          
          SPArtistBrowse *artistBrowse = (SPArtistBrowse*)[loadedItems firstObject];
-         [self.artistBrowseCollection addObject:artistBrowse];
          
          SPImage* artistImage = nil;
          if([artistBrowse firstPortrait] != nil)
@@ -273,8 +274,6 @@
     [cell.artistImage layer].cornerRadius = [cell.artistImage layer].frame.size.height /2;
     [cell.artistImage layer].masksToBounds = YES;
     [cell.artistImage layer].borderWidth = 0;
-    [cell.artistImage setImage:[UIImage imageNamed:@"Artist"]];
-    [cell.artistImage sizeToFit];
     
     SPArtistBrowse * artistBrowse = [self ArtistBrowseForArtist:artist];
     
@@ -296,42 +295,43 @@
     [cell.lbArtist setText:[album.artist name]];
     [cell.lbAlbum setText:[album name]];
     
+    if([album.cover isLoaded])
+        [cell.albumImage setImage:[album.cover image]];
+    else
+    {
+        [cell.albumImage setImage:[UIImage imageNamed:@"Album"]];
+        
+//        if(album.cover.)
+        [album.cover startLoading];
+        [SPAsyncLoading waitUntilLoaded:album.cover timeout:10.0 then:^(NSArray *loadedItems, NSArray *notLoadedItems)
+         {
+             if(loadedItems == nil || [loadedItems count] != 1 || ![[loadedItems firstObject] isKindOfClass:[SPImage class]])
+                 return;
+             
+             SPImage *cover = (SPImage*)[loadedItems firstObject];
+             
+             [cell.albumImage setImage:[cover image]];
+         }];
+         
+    }
+    
+    [cell.albumImage sizeToFit];
+    
     return cell;
 }
 
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
+#pragma mark - UITableView delegate
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if(indexPath.section == artistSection)
+        return 75;
+    else if(indexPath.section == albumSection)
+        return 75;
+    else if(indexPath.section == trackSection)
+        return 55;
+    else
+        return 55;
 }
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
 
 
 #pragma mark - Navigation
