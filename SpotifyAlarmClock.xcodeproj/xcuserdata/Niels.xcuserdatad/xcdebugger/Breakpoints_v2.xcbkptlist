@@ -138,11 +138,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SpotifyAlarmClock/Controllers/SongSearch/SongSearchViewController.m"
-            timestampString = "433589343.177188"
+            timestampString = "433715912.931776"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "150"
-            endingLineNumber = "150"
+            startingLineNumber = "168"
+            endingLineNumber = "168"
             landmarkName = "-searchBarSearchButtonClicked:"
             landmarkType = "5">
          </BreakpointContent>
@@ -154,11 +154,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SpotifyAlarmClock/Controllers/SongSearch/SongSearchViewController.m"
-            timestampString = "433589343.177188"
+            timestampString = "433715912.931776"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "207"
-            endingLineNumber = "207"
+            startingLineNumber = "228"
+            endingLineNumber = "228"
             landmarkName = "-numberOfSectionsInTableView:"
             landmarkType = "5">
          </BreakpointContent>

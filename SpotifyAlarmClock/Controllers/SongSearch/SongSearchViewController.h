@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SpotifyPlayer.h"
 
-@interface SongSearchViewController : UITableViewController<UISearchBarDelegate>
+@interface SongSearchViewController : UITableViewController<UISearchBarDelegate, SpotifyPlayerDelegate>
 
 @end

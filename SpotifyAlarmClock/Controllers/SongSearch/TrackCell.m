@@ -9,7 +9,7 @@
 #import "TrackCell.h"
 
 @implementation TrackCell
-@synthesize lbArtist, lbTrack;
+@synthesize lbArtist, lbTrack, vwPlay;
 
 - (void)awakeFromNib {
     // Initialization code

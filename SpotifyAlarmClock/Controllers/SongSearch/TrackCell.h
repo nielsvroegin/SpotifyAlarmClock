@@ -11,5 +11,6 @@
 @interface TrackCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UILabel *lbTrack;
 @property (weak, nonatomic) IBOutlet UILabel *lbArtist;
+@property (weak, nonatomic) IBOutlet UIView *vwPlay;
 
 @end

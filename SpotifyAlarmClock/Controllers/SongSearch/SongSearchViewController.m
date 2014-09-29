@@ -12,12 +12,15 @@
 #import "ArtistCell.h"
 #import "AlbumCell.h"
 #import "TrackCell.h"
+#import "SpotifyPlayer.h"
+#import "FFCircularProgressView.h"
 
 @interface SongSearchViewController ()
 @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
 @property (nonatomic, strong) SPSearch *searchResult;
 @property (nonatomic, strong) NSMutableArray *artistBrowseCollection;
 @property (nonatomic, strong) NSMutableArray *albumBrowseCollection;
+@property (nonatomic, strong) FFCircularProgressView *musicProgressView;
 
 @property (atomic, assign) BOOL loading;
 @property (nonatomic, assign) NSInteger artistSection;
@@ -29,6 +32,7 @@
 - (ArtistCell *)cellForArtistAtIndexPath:(NSIndexPath *)indexPath;
 - (AlbumCell *)cellForAlbumAtIndexPath:(NSIndexPath *)indexPath;
 -(SPArtistBrowse *) ArtistBrowseForArtist:(SPArtist *)artist;
+- (void)addCircleMaskToView:(UIView *)view;
 
 @end
 
@@ -37,8 +41,14 @@
 @synthesize searchResult;
 @synthesize artistSection, albumSection, trackSection;
 @synthesize artistBrowseCollection;
+@synthesize musicProgressView;
 
 - (void)viewDidLoad {
+    [[SpotifyPlayer sharedSpotifyPlayer] setDelegate:self];
+    
+    musicProgressView = [[FFCircularProgressView alloc] init];
+    [musicProgressView setTintColor:[UIColor colorWithRed:(24 / 255.0) green:(109 / 255.0) blue:(39 / 255.0) alpha:1]];
+    
     [searchBar becomeFirstResponder];
 
     [super viewDidLoad];
@@ -128,7 +138,8 @@
          if(![search.searchQuery isEqualToString:[self.searchBar text]])
          {
              self.loading = false;
-             [self performSearch];
+             if([[self.searchBar text] length] > 0)
+                 [self performSearch];
              
              return;
          }
@@ -141,6 +152,14 @@
          self.loading = false;
      }];
     
+}
+
+- (void)addCircleMaskToView:(UIView *)view {
+    CAShapeLayer *maskLayer = [CAShapeLayer layer];
+    maskLayer.frame = view.bounds;
+    maskLayer.path = [UIBezierPath bezierPathWithOvalInRect:view.bounds].CGPath;
+    maskLayer.fillColor = [UIColor whiteColor].CGColor;
+    view.layer.mask = maskLayer;
 }
 
 #pragma mark - Searchbar delegate
@@ -163,7 +182,10 @@
     
     //No need to search if searchtext is empty
     if([self.searchBar.text length] == 0)
+    {
+        [MBProgressHUD hideAllHUDsForView:self.tableView animated:YES];
         return;
+    }
     
     //Enable loading HUD
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.tableView animated:YES];
@@ -261,6 +283,20 @@
     }
     [cell.lbArtist setText:artistsText];
     [cell.lbTrack setText:[track name]];
+    [self addCircleMaskToView:[cell vwPlay]];
+
+    for(UIView* subView in [cell.vwPlay subviews])
+        [subView removeFromSuperview];
+    
+    if([[SpotifyPlayer sharedSpotifyPlayer] currentTrack] == track)
+        [cell.vwPlay addSubview:musicProgressView];
+    else
+    {
+        UIImageView* playImageView = [[UIImageView alloc] initWithFrame:[cell.vwPlay bounds]];
+        [playImageView setImage:[UIImage imageNamed:@"Play"]];
+        [cell.vwPlay addSubview:playImageView];
+    }
+    
     
     return cell;
 }
@@ -300,8 +336,7 @@
     else
     {
         [cell.albumImage setImage:[UIImage imageNamed:@"Album"]];
-        
-//        if(album.cover.)
+
         [album.cover startLoading];
         [SPAsyncLoading waitUntilLoaded:album.cover timeout:10.0 then:^(NSArray *loadedItems, NSArray *notLoadedItems)
          {
@@ -333,6 +368,21 @@
         return 55;
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
+    [self.searchBar resignFirstResponder];
+    
+    if(indexPath.section == trackSection)
+    {
+        SPTrack *track = [self.searchResult.tracks objectAtIndex:[indexPath row]];
+        if([[SpotifyPlayer sharedSpotifyPlayer] currentTrack] == track)
+            [[SpotifyPlayer sharedSpotifyPlayer] stopTrack];
+        else
+            [[SpotifyPlayer sharedSpotifyPlayer] playTrack:track];
+    }
+}
+
 
 #pragma mark - Navigation
 
@@ -343,6 +393,53 @@
     
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
+}
+
+#pragma mark - Spotify Player delegate
+
+- (void)track:(SPTrack *)track progess:(double) progress
+{
+    if(progress >= 1.0) progress = 0.999;
+    [musicProgressView setProgress:progress];
+}
+
+- (void)trackStartedPlaying:(SPTrack *)track
+{
+    TrackCell *cell = (TrackCell*)[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:[self.searchResult.tracks indexOfObject:track] inSection:trackSection]];
+    [musicProgressView setFrame:[cell.vwPlay bounds]];
+    [musicProgressView setProgress:0.01];
+    
+    [UIView transitionWithView:cell.vwPlay
+                      duration:1.0
+                       options:UIViewAnimationOptionTransitionFlipFromLeft | UIViewAnimationOptionShowHideTransitionViews
+                    animations:^{
+                        for(UIView* subView in [cell.vwPlay subviews])
+                            [subView removeFromSuperview];
+
+                        [cell.vwPlay addSubview:musicProgressView];
+
+                    } completion:nil];
+    
+}
+
+- (void)trackStoppedPlaying:(SPTrack *)track
+{
+    TrackCell *cell = (TrackCell*)[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:[self.searchResult.tracks indexOfObject:track] inSection:trackSection]];
+    UIImageView* playImageView = [[UIImageView alloc] initWithFrame:[cell.vwPlay bounds]];
+    [playImageView setImage:[UIImage imageNamed:@"Play"]];
+    
+    [UIView transitionWithView:cell.vwPlay
+                      duration:1.0
+                       options:UIViewAnimationOptionTransitionFlipFromRight | UIViewAnimationOptionShowHideTransitionViews
+                    animations:^{
+                        for(UIView* subView in [cell.vwPlay subviews])
+                            [subView removeFromSuperview];
+                        
+                        [cell.vwPlay addSubview:playImageView];
+                        
+                    } completion:nil];
+    
+    [self.musicProgressView setProgress:0.01];
 }
 
 

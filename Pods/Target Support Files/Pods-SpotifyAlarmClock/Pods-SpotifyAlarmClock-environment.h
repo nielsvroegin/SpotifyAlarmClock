@@ -6,6 +6,12 @@
 // project.
 
 
+// FFCircularProgressView
+#define COCOAPODS_POD_AVAILABLE_FFCircularProgressView
+#define COCOAPODS_VERSION_MAJOR_FFCircularProgressView 0
+#define COCOAPODS_VERSION_MINOR_FFCircularProgressView 5
+#define COCOAPODS_VERSION_PATCH_FFCircularProgressView 0
+
 // MBProgressHUD
 #define COCOAPODS_POD_AVAILABLE_MBProgressHUD
 #define COCOAPODS_VERSION_MAJOR_MBProgressHUD 0

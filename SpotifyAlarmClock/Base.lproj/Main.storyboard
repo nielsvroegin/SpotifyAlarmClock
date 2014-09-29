@@ -596,34 +596,54 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Artist Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xxh-gP-xfR">
-                                            <rect key="frame" x="13" y="31" width="216" height="15"/>
-                                            <constraints>
-                                                <constraint firstAttribute="width" constant="216" id="vHZ-3e-WKE"/>
-                                            </constraints>
+                                            <rect key="frame" x="63" y="31" width="187" height="15"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Track" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yF4-62-vAv">
-                                            <rect key="frame" x="13" y="8" width="197" height="21"/>
-                                            <constraints>
-                                                <constraint firstAttribute="width" constant="197" id="yeb-5J-lav"/>
-                                            </constraints>
+                                            <rect key="frame" x="63" y="9" width="197" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="47j-4d-Hhr">
+                                            <rect key="frame" x="13" y="8" width="40" height="40"/>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="40" id="qvk-xg-ai2"/>
+                                                <constraint firstAttribute="width" constant="40" id="yre-t1-woh"/>
+                                            </constraints>
+                                        </view>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bOE-MA-dbb">
+                                            <rect key="frame" x="268" y="13" width="30" height="30"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="30" id="3Rj-rr-41O"/>
+                                                <constraint firstAttribute="height" constant="30" id="Vl8-9W-ybR"/>
+                                            </constraints>
+                                            <state key="normal" title="Button" image="AddMusicButton">
+                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                            </state>
+                                        </button>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="xxh-gP-xfR" firstAttribute="top" secondItem="yF4-62-vAv" secondAttribute="bottom" constant="2" id="7rW-Ci-I1P"/>
-                                        <constraint firstItem="yF4-62-vAv" firstAttribute="leading" secondItem="ZAb-O4-su8" secondAttribute="leadingMargin" constant="5" id="gRl-jU-yp9"/>
+                                        <constraint firstItem="xxh-gP-xfR" firstAttribute="trailing" secondItem="yF4-62-vAv" secondAttribute="trailing" constant="-10" id="1lP-cD-jZi"/>
+                                        <constraint firstItem="xxh-gP-xfR" firstAttribute="top" secondItem="yF4-62-vAv" secondAttribute="bottom" constant="1" id="7rW-Ci-I1P"/>
+                                        <constraint firstItem="47j-4d-Hhr" firstAttribute="leading" secondItem="ZAb-O4-su8" secondAttribute="leadingMargin" constant="5" id="8DU-3o-Sqj"/>
+                                        <constraint firstAttribute="centerY" secondItem="bOE-MA-dbb" secondAttribute="centerY" constant="-1" id="CNO-gD-jnJ"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="47j-4d-Hhr" secondAttribute="bottom" constant="-2" id="In9-5n-9Do"/>
+                                        <constraint firstItem="bOE-MA-dbb" firstAttribute="leading" secondItem="xxh-gP-xfR" secondAttribute="trailing" constant="18" id="Tb3-uN-gez"/>
+                                        <constraint firstItem="yF4-62-vAv" firstAttribute="leading" secondItem="47j-4d-Hhr" secondAttribute="trailing" constant="10" id="VDB-Zo-iEw"/>
+                                        <constraint firstItem="47j-4d-Hhr" firstAttribute="top" secondItem="ZAb-O4-su8" secondAttribute="topMargin" id="n1w-aU-9MU"/>
                                         <constraint firstItem="yF4-62-vAv" firstAttribute="leading" secondItem="xxh-gP-xfR" secondAttribute="leading" id="wBP-wL-Oza"/>
-                                        <constraint firstAttribute="centerY" secondItem="yF4-62-vAv" secondAttribute="centerY" constant="9" id="ztV-VG-Hvp"/>
+                                        <constraint firstAttribute="centerY" secondItem="yF4-62-vAv" secondAttribute="centerY" constant="7.5" id="ztV-VG-Hvp"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="bOE-MA-dbb" secondAttribute="trailing" constant="14" id="zzG-jR-l3G"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="lbArtist" destination="xxh-gP-xfR" id="1TQ-cq-xuU"/>
                                     <outlet property="lbTrack" destination="yF4-62-vAv" id="08a-Ac-TjR"/>
+                                    <outlet property="vwPlay" destination="47j-4d-Hhr" id="VyE-ua-yQ2"/>
                                 </connections>
                             </tableViewCell>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="artistCell" rowHeight="75" id="PrQ-WR-do7" customClass="ArtistCell">
@@ -726,7 +746,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xnu-zh-gAD" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="zgp-SW-w7m" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="4602" y="-339"/>
+            <point key="canvasLocation" x="4602" y="-342"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="mlx-uY-shS">
@@ -895,6 +915,9 @@
             <point key="canvasLocation" x="854" y="165"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="AddMusicButton" width="178" height="178"/>
+    </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
