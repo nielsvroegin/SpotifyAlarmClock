@@ -756,6 +756,7 @@
                     <connections>
                         <outlet property="searchBar" destination="Q2o-8H-MLF" id="hs3-gt-eo7"/>
                         <segue destination="SGl-ET-oql" kind="push" identifier="allTracksSegue" id="dWy-1l-9bN"/>
+                        <segue destination="9ua-46-BX1" kind="push" identifier="allArtistsSegue" id="WjV-Xm-tmJ"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xnu-zh-gAD" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -870,6 +871,93 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8Nk-8H-VQW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="5030" y="-891"/>
+        </scene>
+        <!--All Artists View Controller-->
+        <scene sceneID="GmH-ME-BwB">
+            <objects>
+                <tableViewController id="9ua-46-BX1" customClass="AllArtistsViewController" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="W8o-mH-Xgy">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <view key="tableFooterView" contentMode="scaleToFill" id="dhB-qe-nYQ">
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </view>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="artistCell" rowHeight="75" id="fnf-49-QIR" customClass="ArtistCell">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="fnf-49-QIR" id="wLL-Tk-9q2">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="5pH-ul-xoP">
+                                            <rect key="frame" x="13" y="8" width="58" height="58"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" secondItem="5pH-ul-xoP" secondAttribute="height" multiplier="1:1" id="2y4-c6-QPX"/>
+                                                <constraint firstAttribute="width" constant="58" id="6rM-wc-eKp"/>
+                                                <constraint firstAttribute="height" constant="58" id="hiS-AK-k6G"/>
+                                            </constraints>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Artist" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tKs-UV-1MZ">
+                                            <rect key="frame" x="81" y="26" width="193" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="5pH-ul-xoP" firstAttribute="leading" secondItem="wLL-Tk-9q2" secondAttribute="leadingMargin" constant="5" id="0OR-CE-ji1"/>
+                                        <constraint firstItem="5pH-ul-xoP" firstAttribute="top" secondItem="wLL-Tk-9q2" secondAttribute="topMargin" id="9hN-uD-4aH"/>
+                                        <constraint firstAttribute="centerY" secondItem="5pH-ul-xoP" secondAttribute="centerY" constant="0.5" id="eGl-8E-lF3"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="tKs-UV-1MZ" secondAttribute="trailing" constant="5" id="mbW-b8-GBc"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="5pH-ul-xoP" secondAttribute="bottom" id="q81-is-1Gq"/>
+                                        <constraint firstItem="tKs-UV-1MZ" firstAttribute="leading" secondItem="5pH-ul-xoP" secondAttribute="trailing" constant="10" id="sP3-cL-oT1"/>
+                                        <constraint firstAttribute="centerY" secondItem="tKs-UV-1MZ" secondAttribute="centerY" constant="0.5" id="v4B-0e-4sK"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="artistImage" destination="5pH-ul-xoP" id="nGC-13-rFu"/>
+                                    <outlet property="lbArtist" destination="tKs-UV-1MZ" id="Xye-vQ-3hn"/>
+                                </connections>
+                            </tableViewCell>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="loadingMoreTracks" rowHeight="40" id="Wbs-2Y-ylS" customClass="LoadMoreCell">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Wbs-2Y-ylS" id="Bwh-7m-54Y">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="nKv-Py-3uT">
+                                            <rect key="frame" x="13" y="10" width="20" height="20"/>
+                                        </activityIndicatorView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading more artists..." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wg3-KU-Ddv">
+                                            <rect key="frame" x="43" y="10" width="259" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="centerY" secondItem="nKv-Py-3uT" secondAttribute="centerY" constant="-0.5" id="1Fe-8U-wHH"/>
+                                        <constraint firstItem="nKv-Py-3uT" firstAttribute="leading" secondItem="Bwh-7m-54Y" secondAttribute="leadingMargin" constant="5" id="4K7-PS-NV0"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="Wg3-KU-Ddv" secondAttribute="trailing" constant="10" id="CSs-E5-tTe"/>
+                                        <constraint firstAttribute="centerY" secondItem="Wg3-KU-Ddv" secondAttribute="centerY" constant="-1" id="klg-c2-ead"/>
+                                        <constraint firstItem="Wg3-KU-Ddv" firstAttribute="leading" secondItem="nKv-Py-3uT" secondAttribute="trailing" constant="10" id="s58-2c-Pux"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="spinner" destination="nKv-Py-3uT" id="huo-vO-DaN"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="9ua-46-BX1" id="EN6-1W-hl7"/>
+                            <outlet property="delegate" destination="9ua-46-BX1" id="aLL-Fa-FKc"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="smO-dq-qfH"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="q5G-c0-rPE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5030" y="-252"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="mlx-uY-shS">

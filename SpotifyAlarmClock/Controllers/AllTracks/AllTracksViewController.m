@@ -56,7 +56,7 @@
 {
     [super viewDidAppear:animated];
     
-    SPSearch *search = [[SPSearch alloc] initWithSearchQuery:[self searchText] pageSize:20 inSession:[SPSession sharedSession] type:SP_SEARCH_STANDARD];
+    SPSearch *search = [[SPSearch alloc] initWithSearchQuery:[self searchText] pageSize:30 inSession:[SPSession sharedSession] type:SP_SEARCH_STANDARD];
     [SPAsyncLoading waitUntilLoaded:search timeout:10.0 then:^(NSArray *loadedItems, NSArray *notLoadedItems)
      {
          //Disable loading HUD
@@ -98,7 +98,8 @@
     [self.searchResult addTrackPage];
     [SPAsyncLoading waitUntilLoaded:self.searchResult timeout:10.0 then:^(NSArray *loadedItems, NSArray *notLoadedItems)
      {
-         [self.tableView reloadData];
+          if(loadedItems != nil && [loadedItems count] == 1 && [[loadedItems firstObject] isKindOfClass:[SPSearch class]])
+              [self.tableView reloadData];
      }];
 }
 
@@ -106,21 +107,24 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     if(self.searchResult != nil && [self.searchResult isLoaded])
+    {
         if([self.searchResult hasExhaustedTrackResults])
             return [self.searchResult.tracks count];
         else
             return [self.searchResult.tracks count] + 1;
+    }
     else
         return 0;
 }
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    //Load more tracks if still available
+    if([self.searchResult.tracks count] - 15 < [indexPath row])
+    [self loadMoreTracks];
+    
+    //Show more cells loading cell
     if([self.searchResult.tracks count] == [indexPath row])
     {
-        [self loadMoreTracks];
-        
         LoadMoreCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"loadingMoreTracks" forIndexPath:indexPath];
         [cell.spinner startAnimating];
         

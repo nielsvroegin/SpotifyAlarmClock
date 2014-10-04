@@ -51,6 +51,8 @@
 		B885FEB519C4ABBC00EC1D32 /* osx-audio.m in Sources */ = {isa = PBXBuildFile; fileRef = B885FEB219C4ABBC00EC1D32 /* osx-audio.m */; };
 		B885FEF719C4C7CE00EC1D32 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B885FE7419C488F400EC1D32 /* UIKit.framework */; };
 		B8DEF86619E03BBB00F2F453 /* LoadMoreCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B8DEF86519E03BBB00F2F453 /* LoadMoreCell.m */; };
+		B8DEF86B19E041F700F2F453 /* AllArtistsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B8DEF86A19E041F700F2F453 /* AllArtistsViewController.m */; };
+		B8DEF86E19E0474900F2F453 /* ArtistBrowseCache.m in Sources */ = {isa = PBXBuildFile; fileRef = B8DEF86D19E0474900F2F453 /* ArtistBrowseCache.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -156,6 +158,10 @@
 		B885FEB319C4ABBC00EC1D32 /* queue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = queue.h; sourceTree = "<group>"; };
 		B8DEF86419E03BBB00F2F453 /* LoadMoreCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoadMoreCell.h; sourceTree = "<group>"; };
 		B8DEF86519E03BBB00F2F453 /* LoadMoreCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoadMoreCell.m; sourceTree = "<group>"; };
+		B8DEF86919E041F700F2F453 /* AllArtistsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AllArtistsViewController.h; sourceTree = "<group>"; };
+		B8DEF86A19E041F700F2F453 /* AllArtistsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AllArtistsViewController.m; sourceTree = "<group>"; };
+		B8DEF86C19E0474900F2F453 /* ArtistBrowseCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArtistBrowseCache.h; sourceTree = "<group>"; };
+		B8DEF86D19E0474900F2F453 /* ArtistBrowseCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArtistBrowseCache.m; sourceTree = "<group>"; };
 		B8F5F34EBE107A7EEBA2420D /* Pods-SpotifyAlarmClock.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SpotifyAlarmClock.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SpotifyAlarmClock/Pods-SpotifyAlarmClock.debug.xcconfig"; sourceTree = "<group>"; };
 		C92F5708CCED2BA4D9ECCF61 /* libPods-SpotifyAlarmClock.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SpotifyAlarmClock.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -206,6 +212,7 @@
 		B812390C19D1FC28005EABDB /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				B8DEF86819E041C600F2F453 /* AllArtists */,
 				B885CC6D19E010C2003450F8 /* AllTracks */,
 				B812392B19D20177005EABDB /* SongSearch */,
 				B812392A19D20126005EABDB /* Songs */,
@@ -441,6 +448,8 @@
 				B885FEAC19C4AB3000EC1D32 /* SpotifyPlayer */,
 				B885CC8119E01B58003450F8 /* MaskHelper.h */,
 				B885CC8219E01B58003450F8 /* MaskHelper.m */,
+				B8DEF86C19E0474900F2F453 /* ArtistBrowseCache.h */,
+				B8DEF86D19E0474900F2F453 /* ArtistBrowseCache.m */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -456,6 +465,15 @@
 				B885FEAE19C4AB3000EC1D32 /* SpotifyPlayer.m */,
 			);
 			path = SpotifyPlayer;
+			sourceTree = "<group>";
+		};
+		B8DEF86819E041C600F2F453 /* AllArtists */ = {
+			isa = PBXGroup;
+			children = (
+				B8DEF86919E041F700F2F453 /* AllArtistsViewController.h */,
+				B8DEF86A19E041F700F2F453 /* AllArtistsViewController.m */,
+			);
+			path = AllArtists;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -632,6 +650,8 @@
 				B885FEAF19C4AB3000EC1D32 /* SpotifyPlayer.m in Sources */,
 				B812392E19D201A4005EABDB /* SongsViewController.m in Sources */,
 				B86104DA19CDA28E001DB753 /* SpotifyAlarmClock.xcdatamodeld in Sources */,
+				B8DEF86E19E0474900F2F453 /* ArtistBrowseCache.m in Sources */,
+				B8DEF86B19E041F700F2F453 /* AllArtistsViewController.m in Sources */,
 				B812392819D1FC28005EABDB /* OptionsSelectViewController.m in Sources */,
 				B885FE7D19C488F400EC1D32 /* main.m in Sources */,
 				B885CC8319E01B58003450F8 /* MaskHelper.m in Sources */,

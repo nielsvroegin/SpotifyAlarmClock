@@ -15,38 +15,39 @@
 #import "SpotifyPlayer.h"
 #import "FFCircularProgressView.h"
 #import "AllTracksViewController.h"
+#import "AllArtistsViewController.h"
 #import "MaskHelper.h"
+#import "ArtistBrowseCache.h"
 
 @interface SongSearchViewController ()
-@property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
-@property (nonatomic, strong) SPSearch *searchResult;
-@property (nonatomic, strong) NSMutableArray *artistBrowseCollection;
-@property (nonatomic, strong) NSMutableArray *albumBrowseCollection;
-@property (nonatomic, strong) FFCircularProgressView *musicProgressView;
+    @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
+    @property (nonatomic, strong) SPSearch *searchResult;
+    @property (nonatomic, strong) FFCircularProgressView *musicProgressView;
+    @property (nonatomic, strong) ArtistBrowseCache *artistBrowseCache;
 
-@property (atomic, assign) BOOL loading;
-@property (nonatomic, assign) NSInteger artistSection;
-@property (nonatomic, assign) NSInteger albumSection;
-@property (nonatomic, assign) NSInteger trackSection;
+    @property (atomic, assign) BOOL loading;
+    @property (nonatomic, assign) NSInteger artistSection;
+    @property (nonatomic, assign) NSInteger albumSection;
+    @property (nonatomic, assign) NSInteger trackSection;
 
-- (void) performSearch;
-- (TrackCell *)cellForTrackAtIndexPath:(NSIndexPath *)indexPath;
-- (ArtistCell *)cellForArtistAtIndexPath:(NSIndexPath *)indexPath;
-- (AlbumCell *)cellForAlbumAtIndexPath:(NSIndexPath *)indexPath;
-- (SPArtistBrowse *) ArtistBrowseForArtist:(SPArtist *)artist;
-
+    - (void) performSearch;
+    - (TrackCell *)cellForTrackAtIndexPath:(NSIndexPath *)indexPath;
+    - (ArtistCell *)cellForArtistAtIndexPath:(NSIndexPath *)indexPath;
+    - (AlbumCell *)cellForAlbumAtIndexPath:(NSIndexPath *)indexPath;
 @end
 
 @implementation SongSearchViewController
 @synthesize searchBar;
 @synthesize searchResult;
 @synthesize artistSection, albumSection, trackSection;
-@synthesize artistBrowseCollection;
 @synthesize musicProgressView;
+@synthesize artistBrowseCache;
 
 - (void)viewDidLoad {
     musicProgressView = [[FFCircularProgressView alloc] init];
     [musicProgressView setTintColor:[UIColor colorWithRed:(24 / 255.0) green:(109 / 255.0) blue:(39 / 255.0) alpha:1]];
+    
+    artistBrowseCache = [[ArtistBrowseCache alloc] init];
     
     [searchBar becomeFirstResponder];
 
@@ -72,54 +73,7 @@
     // Dispose of any resources that can be recreated.
 }
 
--(SPArtistBrowse *) ArtistBrowseForArtist:(SPArtist *)artist
-{
-    SPArtistBrowse * artistBrowse = nil;
-    
-    //Try to find artist browse in collection
-    for(SPArtistBrowse* ab in self.artistBrowseCollection)
-        if(ab.artist == artist)
-            artistBrowse = ab;
-    
-    if(artistBrowse != nil)
-        return artistBrowse;
-    
-    //Not found so create
-    artistBrowse = [[SPArtistBrowse alloc] initWithArtist:artist inSession:[SPSession sharedSession] type:SP_ARTISTBROWSE_NO_TRACKS];
-    [self.artistBrowseCollection addObject:artistBrowse];
-    [SPAsyncLoading waitUntilLoaded:artistBrowse timeout:10.0 then:^(NSArray *loadedItems, NSArray *notLoadedItems)
-     {
-         if(loadedItems == nil || [loadedItems count] != 1 || ![[loadedItems firstObject] isKindOfClass:[SPArtistBrowse class]])
-             return;
-         
-         SPArtistBrowse *artistBrowse = (SPArtistBrowse*)[loadedItems firstObject];
-         
-         SPImage* artistImage = nil;
-         if([artistBrowse firstPortrait] != nil)
-             artistImage = [artistBrowse firstPortrait];
-         else if(artistBrowse.albums != nil && [artistBrowse.albums count] > 0 && ((SPAlbum *)[artistBrowse.albums firstObject]).cover != nil)
-             artistImage = ((SPAlbum *)[artistBrowse.albums firstObject]).cover;
-         else
-             return;
-         
-         [artistImage startLoading];
-         [SPAsyncLoading waitUntilLoaded:artistImage timeout:10.0 then:^(NSArray *loadedPortraitItems, NSArray *notLoadedPortraitItems)
-          {
-              if(loadedPortraitItems == nil || [loadedPortraitItems count] != 1 || ![[loadedPortraitItems firstObject] isKindOfClass:[SPImage class]])
-                  return;
-              
-              SPImage *portrait = (SPImage*)[loadedPortraitItems firstObject];
-              NSInteger indexOfArtist = [self.searchResult.artists indexOfObject:artist];
-              if(indexOfArtist != NSNotFound)
-              {
-                  ArtistCell * cell = (ArtistCell*)[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:[self.searchResult.artists indexOfObject:artist] inSection:artistSection]];
-                  [cell.artistImage setImage:[portrait image]];
-              }
-          }];
-     }];
-    
-    return artistBrowse;
-}
+
 
 -(void) performSearch
 {
@@ -158,7 +112,7 @@
          }
          
          //Search successful, add to search result and reload table
-         self.artistBrowseCollection = [[NSMutableArray alloc] init];
+         [artistBrowseCache clear];
          self.searchResult = search;
          [self.tableView reloadData];
          
@@ -181,7 +135,7 @@
     [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(performSearch) object:nil];
     
     //Clear table
-    self.artistBrowseCollection = [[NSMutableArray alloc] init];
+    [artistBrowseCache clear];
     self.searchResult = nil;
     [self.tableView reloadData];
     
@@ -339,7 +293,7 @@
     [cell.artistImage layer].masksToBounds = YES;
     [cell.artistImage layer].borderWidth = 0;
     
-    SPArtistBrowse * artistBrowse = [self ArtistBrowseForArtist:artist];
+    SPArtistBrowse * artistBrowse = [artistBrowseCache ArtistBrowseForArtist:artist searchResult:self.searchResult tableView:self.tableView artistSection:artistSection];
     
     if(artistBrowse.loaded && artistBrowse.firstPortrait.loaded)
         [cell.artistImage setImage:[artistBrowse.firstPortrait image]];
@@ -429,6 +383,11 @@
                 [[SpotifyPlayer sharedSpotifyPlayer] playTrack:track];
         }
     }
+    else if(indexPath.section == artistSection)
+    {
+        if([indexPath row] == [self.searchResult.artists count])
+            [self performSegueWithIdentifier:@"allArtistsSegue" sender:nil];
+    }
 }
 
 
@@ -445,6 +404,12 @@
     {
         AllTracksViewController *vw = [segue destinationViewController];
         [vw.navigationItem setTitle:[NSString stringWithFormat:@"Tracks for \"%@\"", [self.searchBar text]]];
+        [vw setSearchText:[self.searchBar text]];
+    }
+    else if([[segue identifier] isEqualToString:@"allArtistsSegue"])
+    {
+        AllArtistsViewController *vw = [segue destinationViewController];
+        [vw.navigationItem setTitle:[NSString stringWithFormat:@"Artists for \"%@\"", [self.searchBar text]]];
         [vw setSearchText:[self.searchBar text]];
     }
 }
