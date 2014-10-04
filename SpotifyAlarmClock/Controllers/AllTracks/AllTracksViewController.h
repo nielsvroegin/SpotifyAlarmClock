@@ -7,7 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SpotifyPlayer.h"
 
-@interface AllTracksViewController : UITableViewController
+@interface AllTracksViewController : UITableViewController<SpotifyPlayerDelegate>
+    @property (nonatomic, strong) NSString *searchText;
 
 @end

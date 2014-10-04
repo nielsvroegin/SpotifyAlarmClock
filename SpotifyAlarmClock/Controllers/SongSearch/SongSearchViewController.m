@@ -14,6 +14,8 @@
 #import "TrackCell.h"
 #import "SpotifyPlayer.h"
 #import "FFCircularProgressView.h"
+#import "AllTracksViewController.h"
+#import "MaskHelper.h"
 
 @interface SongSearchViewController ()
 @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
@@ -32,7 +34,6 @@
 - (ArtistCell *)cellForArtistAtIndexPath:(NSIndexPath *)indexPath;
 - (AlbumCell *)cellForAlbumAtIndexPath:(NSIndexPath *)indexPath;
 - (SPArtistBrowse *) ArtistBrowseForArtist:(SPArtist *)artist;
-- (void)addCircleMaskToView:(UIView *)view;
 
 @end
 
@@ -44,14 +45,26 @@
 @synthesize musicProgressView;
 
 - (void)viewDidLoad {
-    [[SpotifyPlayer sharedSpotifyPlayer] setDelegate:self];
-    
     musicProgressView = [[FFCircularProgressView alloc] init];
     [musicProgressView setTintColor:[UIColor colorWithRed:(24 / 255.0) green:(109 / 255.0) blue:(39 / 255.0) alpha:1]];
     
     [searchBar becomeFirstResponder];
 
     [super viewDidLoad];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    [[SpotifyPlayer sharedSpotifyPlayer] setDelegate:self];
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    
+    [[SpotifyPlayer sharedSpotifyPlayer] stopTrack];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -152,14 +165,6 @@
          self.loading = false;
      }];
     
-}
-
-- (void)addCircleMaskToView:(UIView *)view {
-    CAShapeLayer *maskLayer = [CAShapeLayer layer];
-    maskLayer.frame = view.bounds;
-    maskLayer.path = [UIBezierPath bezierPathWithOvalInRect:view.bounds].CGPath;
-    maskLayer.fillColor = [UIColor whiteColor].CGColor;
-    view.layer.mask = maskLayer;
 }
 
 #pragma mark - Searchbar delegate
@@ -306,7 +311,7 @@
     }
     [cell.lbArtist setText:artistsText];
     [cell.lbTrack setText:[track name]];
-    [self addCircleMaskToView:[cell vwPlay]];
+    [MaskHelper addCircleMaskToView:[cell vwPlay]];
 
     for(UIView* subView in [cell.vwPlay subviews])
         [subView removeFromSuperview];
@@ -413,11 +418,16 @@
     
     if(indexPath.section == trackSection)
     {
-        SPTrack *track = [self.searchResult.tracks objectAtIndex:[indexPath row]];
-        if([[SpotifyPlayer sharedSpotifyPlayer] currentTrack] == track)
-            [[SpotifyPlayer sharedSpotifyPlayer] stopTrack];
+        if([indexPath row] == [self.searchResult.tracks count])
+            [self performSegueWithIdentifier:@"allTracksSegue" sender:nil];
         else
-            [[SpotifyPlayer sharedSpotifyPlayer] playTrack:track];
+        {
+            SPTrack *track = [self.searchResult.tracks objectAtIndex:[indexPath row]];
+            if([[SpotifyPlayer sharedSpotifyPlayer] currentTrack] == track)
+                [[SpotifyPlayer sharedSpotifyPlayer] stopTrack];
+            else
+                [[SpotifyPlayer sharedSpotifyPlayer] playTrack:track];
+        }
     }
 }
 
@@ -426,11 +436,17 @@
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    //First hide keyboard before performing segue
     if([self.searchBar isFirstResponder])
         [self.searchBar resignFirstResponder];
     
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    
+    if([[segue identifier] isEqualToString:@"allTracksSegue"])
+    {
+        AllTracksViewController *vw = [segue destinationViewController];
+        [vw.navigationItem setTitle:[NSString stringWithFormat:@"Tracks for \"%@\"", [self.searchBar text]]];
+        [vw setSearchText:[self.searchBar text]];
+    }
 }
 
 #pragma mark - Spotify Player delegate

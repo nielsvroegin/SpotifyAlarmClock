@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "3C50742F078D0931D2F4B89F"
+               BlueprintIdentifier = "FA6D7BABAA5511D19CD4CF63"
                BuildableName = "libPods-SpotifyAlarmClock-FFCircularProgressView.a"
                BlueprintName = "Pods-SpotifyAlarmClock-FFCircularProgressView"
                ReferencedContainer = "container:Pods.xcodeproj">
