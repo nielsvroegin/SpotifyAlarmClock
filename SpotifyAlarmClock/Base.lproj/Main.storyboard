@@ -757,6 +757,7 @@
                         <outlet property="searchBar" destination="Q2o-8H-MLF" id="hs3-gt-eo7"/>
                         <segue destination="SGl-ET-oql" kind="push" identifier="allTracksSegue" id="dWy-1l-9bN"/>
                         <segue destination="9ua-46-BX1" kind="push" identifier="allArtistsSegue" id="WjV-Xm-tmJ"/>
+                        <segue destination="kgr-FC-5RO" kind="push" identifier="allAlbumsSegue" id="psT-6V-u7U"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xnu-zh-gAD" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -920,7 +921,7 @@
                                     <outlet property="lbArtist" destination="tKs-UV-1MZ" id="Xye-vQ-3hn"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="loadingMoreTracks" rowHeight="40" id="Wbs-2Y-ylS" customClass="LoadMoreCell">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="loadingMoreArtists" rowHeight="40" id="Wbs-2Y-ylS" customClass="LoadMoreCell">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Wbs-2Y-ylS" id="Bwh-7m-54Y">
                                     <autoresizingMask key="autoresizingMask"/>
@@ -958,6 +959,103 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="q5G-c0-rPE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="5030" y="-252"/>
+        </scene>
+        <!--All Albums View Controller-->
+        <scene sceneID="T9z-gd-vft">
+            <objects>
+                <tableViewController id="kgr-FC-5RO" customClass="AllAlbumsViewController" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="qJl-LZ-mpn">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <view key="tableFooterView" contentMode="scaleToFill" id="s7u-Nt-717">
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </view>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="albumCell" rowHeight="75" id="CUe-Pe-0Tg" customClass="AlbumCell">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="CUe-Pe-0Tg" id="qDF-7X-VD3">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="zAZ-am-2u8">
+                                            <rect key="frame" x="13" y="8" width="58" height="58"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="58" id="5e7-EC-Yxc"/>
+                                                <constraint firstAttribute="height" constant="58" id="OTS-Py-k6g"/>
+                                                <constraint firstAttribute="width" secondItem="zAZ-am-2u8" secondAttribute="height" multiplier="1:1" id="w4z-U5-QA0"/>
+                                            </constraints>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Artist" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XUN-fY-Q1z">
+                                            <rect key="frame" x="81" y="19" width="185" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Album" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zaj-i1-byc">
+                                            <rect key="frame" x="81" y="42" width="185" height="15"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="trailingMargin" secondItem="XUN-fY-Q1z" secondAttribute="trailing" constant="13" id="2jH-1e-RMv"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="Zaj-i1-byc" secondAttribute="trailing" constant="13" id="7Ai-qr-t8K"/>
+                                        <constraint firstItem="zAZ-am-2u8" firstAttribute="top" secondItem="qDF-7X-VD3" secondAttribute="topMargin" id="8If-Jo-QnK"/>
+                                        <constraint firstItem="XUN-fY-Q1z" firstAttribute="leading" secondItem="zAZ-am-2u8" secondAttribute="trailing" constant="10" id="Lys-bu-z13"/>
+                                        <constraint firstItem="XUN-fY-Q1z" firstAttribute="leading" secondItem="Zaj-i1-byc" secondAttribute="leading" id="MlY-VV-OuB"/>
+                                        <constraint firstAttribute="centerY" secondItem="Zaj-i1-byc" secondAttribute="centerY" constant="-12.5" id="Pve-Z2-uFJ"/>
+                                        <constraint firstItem="zAZ-am-2u8" firstAttribute="leading" secondItem="qDF-7X-VD3" secondAttribute="leadingMargin" constant="5" id="VXA-Wr-ljm"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="zAZ-am-2u8" secondAttribute="bottom" id="XUQ-IA-4jp"/>
+                                        <constraint firstAttribute="centerY" secondItem="zAZ-am-2u8" secondAttribute="centerY" constant="0.5" id="flE-qU-vUS"/>
+                                        <constraint firstItem="Zaj-i1-byc" firstAttribute="top" secondItem="XUN-fY-Q1z" secondAttribute="bottom" constant="2" id="tKS-ua-0Bk"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="albumImage" destination="zAZ-am-2u8" id="J4x-AQ-0TT"/>
+                                    <outlet property="lbAlbum" destination="Zaj-i1-byc" id="S74-Jo-7oS"/>
+                                    <outlet property="lbArtist" destination="XUN-fY-Q1z" id="bzp-eA-iwG"/>
+                                </connections>
+                            </tableViewCell>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="loadingMoreAlbums" rowHeight="40" id="prV-oS-Un0" customClass="LoadMoreCell">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="prV-oS-Un0" id="Lv2-ve-GTl">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="aTe-hU-kjg">
+                                            <rect key="frame" x="13" y="10" width="20" height="20"/>
+                                        </activityIndicatorView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading more albums..." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YAX-I1-DA7">
+                                            <rect key="frame" x="43" y="10" width="259" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="trailingMargin" secondItem="YAX-I1-DA7" secondAttribute="trailing" constant="10" id="Anm-47-bgy"/>
+                                        <constraint firstItem="YAX-I1-DA7" firstAttribute="leading" secondItem="aTe-hU-kjg" secondAttribute="trailing" constant="10" id="XFd-rE-Wim"/>
+                                        <constraint firstAttribute="centerY" secondItem="YAX-I1-DA7" secondAttribute="centerY" constant="-1" id="cLh-TL-Wvl"/>
+                                        <constraint firstItem="aTe-hU-kjg" firstAttribute="leading" secondItem="Lv2-ve-GTl" secondAttribute="leadingMargin" constant="5" id="fWD-JF-DYG"/>
+                                        <constraint firstAttribute="centerY" secondItem="aTe-hU-kjg" secondAttribute="centerY" constant="-0.5" id="ryU-tT-nEy"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="spinner" destination="aTe-hU-kjg" id="k6c-xJ-B70"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="kgr-FC-5RO" id="juW-LX-mtW"/>
+                            <outlet property="delegate" destination="kgr-FC-5RO" id="exY-M9-EmE"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="2M5-PA-pVk"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zSY-ro-j5T" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5034" y="395"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="mlx-uY-shS">

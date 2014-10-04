@@ -1,44 +1,37 @@
 //
-//  AllArtistsViewController.m
+//  AllAlbumsViewController.m
 //  SpotifyAlarmClock
 //
 //  Created by Niels Vroegindeweij on 04-10-14.
 //  Copyright (c) 2014 Niels Vroegindeweij. All rights reserved.
 //
 
-#import "AllArtistsViewController.h"
+#import "AllAlbumsViewController.h"
 #import "CocoaLibSpotify.h"
 #import "MBProgressHud.h"
 #import "LoadMoreCell.h"
-#import "ArtistCell.h"
-#import "ArtistBrowseCache.h"
+#import "AlbumCell.h"
 
-@interface AllArtistsViewController ()
+@interface AllAlbumsViewController ()
 
 @property (nonatomic, strong) SPSearch *searchResult;
-@property (nonatomic, strong) ArtistBrowseCache *artistBrowseCache;
 
-- (ArtistCell *)cellForArtistAtIndexPath:(NSIndexPath *)indexPath;
-- (void)loadMoreArtists;
+- (void)loadMoreAlbums;
+- (AlbumCell *)cellForAlbumAtIndexPath:(NSIndexPath *)indexPath;
 
 @end
 
-@implementation AllArtistsViewController
+@implementation AllAlbumsViewController
 @synthesize searchText;
-@synthesize searchResult;
-@synthesize artistBrowseCache;
 
 - (void)viewDidLoad {
-    artistBrowseCache = [[ArtistBrowseCache alloc] init];
-    
     [super viewDidLoad];
-   
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
-    [super viewWillAppear:animated];  
-    
+    [super viewWillAppear:animated];
+        
     //Empty remaining search results
     self.searchResult = nil;
     [self.tableView reloadData];
@@ -46,6 +39,7 @@
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.tableView animated:YES];
     hud.labelText = @"Loading";
 }
+
 
 - (void)viewDidAppear:(BOOL)animated
 {
@@ -72,13 +66,13 @@
      }];
 }
 
-- (void)loadMoreArtists
+- (void)loadMoreAlbums
 {
     //Only load more tracks when searchresult is loaded
-    if(self.searchResult == nil || ![self.searchResult isLoaded] || [self.searchResult hasExhaustedArtistResults])
+    if(self.searchResult == nil || ![self.searchResult isLoaded] || [self.searchResult hasExhaustedAlbumResults])
         return;
     
-    [self.searchResult addArtistPage];
+    [self.searchResult addAlbumPage];
     [SPAsyncLoading waitUntilLoaded:self.searchResult timeout:10.0 then:^(NSArray *loadedItems, NSArray *notLoadedItems)
      {
          if(loadedItems != nil && [loadedItems count] == 1 && [[loadedItems firstObject] isKindOfClass:[SPSearch class]])
@@ -102,10 +96,10 @@
 {
     if(self.searchResult != nil && [self.searchResult isLoaded])
     {
-        if([self.searchResult hasExhaustedArtistResults])
-            return [self.searchResult.artists count];
+        if([self.searchResult hasExhaustedAlbumResults])
+            return [self.searchResult.albums count];
         else
-            return [self.searchResult.artists count] + 1;
+            return [self.searchResult.albums count] + 1;
     }
     else
         return 0;
@@ -114,39 +108,49 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     //Load more cells
-    if([self.searchResult.artists count] - 20 < [indexPath row])
-        [self loadMoreArtists];
+    if([self.searchResult.albums count] - 20 < [indexPath row])
+        [self loadMoreAlbums];
     
     //More cells loading
-    if([self.searchResult.artists count] == [indexPath row])
+    if([self.searchResult.albums count] == [indexPath row])
     {
-        LoadMoreCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"loadingMoreArtists" forIndexPath:indexPath];
+        LoadMoreCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"loadingMoreAlbums" forIndexPath:indexPath];
         [cell.spinner startAnimating];
         
         return cell;
     }
     else //Show track
-        return [self cellForArtistAtIndexPath:indexPath];
+        return [self cellForAlbumAtIndexPath:indexPath];
 }
 
-- (ArtistCell *)cellForArtistAtIndexPath:(NSIndexPath *)indexPath
+- (AlbumCell *)cellForAlbumAtIndexPath:(NSIndexPath *)indexPath
 {
-    SPArtist *artist = [self.searchResult.artists objectAtIndex:[indexPath row]];
+    SPAlbum *album = [self.searchResult.albums objectAtIndex:[indexPath row]];
     
-    ArtistCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"artistCell" forIndexPath:indexPath];
-    [cell.lbArtist setText:[artist name]];
-    [cell.artistImage layer].cornerRadius = [cell.artistImage layer].frame.size.height /2;
-    [cell.artistImage layer].masksToBounds = YES;
-    [cell.artistImage layer].borderWidth = 0;
+    AlbumCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"albumCell" forIndexPath:indexPath];
+    [cell.lbArtist setText:[album.artist name]];
+    [cell.lbAlbum setText:[album name]];
     
-    SPArtistBrowse * artistBrowse = [artistBrowseCache ArtistBrowseForArtist:artist searchResult:self.searchResult tableView:self.tableView artistSection:0];
-    
-    if(artistBrowse.loaded && artistBrowse.firstPortrait.loaded)
-        [cell.artistImage setImage:[artistBrowse.firstPortrait image]];
-    else if(artistBrowse.loaded && artistBrowse.albums != nil && [artistBrowse.albums count] > 0 && ((SPAlbum *)[artistBrowse.albums firstObject]).cover.loaded)
-        [cell.artistImage setImage:[((SPAlbum *)[artistBrowse.albums firstObject]).cover image]];
+    if([album.cover isLoaded])
+        [cell.albumImage setImage:[album.cover image]];
     else
-        [cell.artistImage setImage:[UIImage imageNamed:@"Artist"]];
+    {
+        [cell.albumImage setImage:[UIImage imageNamed:@"Album"]];
+        
+        [album.cover startLoading];
+        [SPAsyncLoading waitUntilLoaded:album.cover timeout:10.0 then:^(NSArray *loadedItems, NSArray *notLoadedItems)
+         {
+             if(loadedItems == nil || [loadedItems count] != 1 || ![[loadedItems firstObject] isKindOfClass:[SPImage class]])
+                 return;
+             
+             SPImage *cover = (SPImage*)[loadedItems firstObject];
+             
+             [cell.albumImage setImage:[cover image]];
+         }];
+        
+    }
+    
+    [cell.albumImage sizeToFit];
     
     return cell;
 }
@@ -154,12 +158,10 @@
 #pragma mark - UITableView delegate
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if([self.searchResult.artists count] == [indexPath row])
+    if([self.searchResult.albums count] == [indexPath row])
         return 40;
     else
         return 75;
 }
-
-
 
 @end

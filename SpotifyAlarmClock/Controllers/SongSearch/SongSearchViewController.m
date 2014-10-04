@@ -16,6 +16,7 @@
 #import "FFCircularProgressView.h"
 #import "AllTracksViewController.h"
 #import "AllArtistsViewController.h"
+#import "AllAlbumsViewController.h"
 #import "MaskHelper.h"
 #import "ArtistBrowseCache.h"
 
@@ -85,7 +86,7 @@
     self.loading = true;
     
     //Perform search
-    SPSearch *search = [[SPSearch alloc] initWithSearchQuery:[self.searchBar text] pageSize:4 inSession:[SPSession sharedSession] type:SP_SEARCH_SUGGEST];
+    SPSearch *search = [[SPSearch alloc] initWithSearchQuery:[self.searchBar text] pageSize:4 inSession:[SPSession sharedSession] type:SP_SEARCH_STANDARD];
     [SPAsyncLoading waitUntilLoaded:search timeout:10.0 then:^(NSArray *loadedItems, NSArray *notLoadedItems)
      {
          //Disable loading HUD
@@ -388,6 +389,11 @@
         if([indexPath row] == [self.searchResult.artists count])
             [self performSegueWithIdentifier:@"allArtistsSegue" sender:nil];
     }
+    else if(indexPath.section == albumSection)
+    {
+        if([indexPath row] == [self.searchResult.albums count])
+            [self performSegueWithIdentifier:@"allAlbumsSegue" sender:nil];
+    }
 }
 
 
@@ -410,6 +416,12 @@
     {
         AllArtistsViewController *vw = [segue destinationViewController];
         [vw.navigationItem setTitle:[NSString stringWithFormat:@"Artists for \"%@\"", [self.searchBar text]]];
+        [vw setSearchText:[self.searchBar text]];
+    }
+    else if([[segue identifier] isEqualToString:@"allAlbumsSegue"])
+    {
+        AllAlbumsViewController *vw = [segue destinationViewController];
+        [vw.navigationItem setTitle:[NSString stringWithFormat:@"Albums for \"%@\"", [self.searchBar text]]];
         [vw setSearchText:[self.searchBar text]];
     }
 }
