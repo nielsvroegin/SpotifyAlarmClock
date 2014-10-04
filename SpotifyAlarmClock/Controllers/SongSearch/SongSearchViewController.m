@@ -27,11 +27,11 @@
 @property (nonatomic, assign) NSInteger albumSection;
 @property (nonatomic, assign) NSInteger trackSection;
 
--(void) performSearch;
+- (void) performSearch;
 - (TrackCell *)cellForTrackAtIndexPath:(NSIndexPath *)indexPath;
 - (ArtistCell *)cellForArtistAtIndexPath:(NSIndexPath *)indexPath;
 - (AlbumCell *)cellForAlbumAtIndexPath:(NSIndexPath *)indexPath;
--(SPArtistBrowse *) ArtistBrowseForArtist:(SPArtist *)artist;
+- (SPArtistBrowse *) ArtistBrowseForArtist:(SPArtist *)artist;
 - (void)addCircleMaskToView:(UIView *)view;
 
 @end
@@ -118,7 +118,7 @@
     self.loading = true;
     
     //Perform search
-    SPSearch *search = [[SPSearch alloc] initWithSearchQuery:[self.searchBar text] pageSize:5 inSession:[SPSession sharedSession] type:SP_SEARCH_SUGGEST];
+    SPSearch *search = [[SPSearch alloc] initWithSearchQuery:[self.searchBar text] pageSize:4 inSession:[SPSession sharedSession] type:SP_SEARCH_SUGGEST];
     [SPAsyncLoading waitUntilLoaded:search timeout:10.0 then:^(NSArray *loadedItems, NSArray *notLoadedItems)
      {
          //Disable loading HUD
@@ -245,11 +245,11 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 
     if(self.trackSection == section)
-        return [self.searchResult.tracks count];
+        return [self.searchResult.tracks count] + 1;
     else if(self.artistSection == section)
-        return [self.searchResult.artists count];
+        return [self.searchResult.artists count] + 1;
     else if(self.albumSection == section)
-        return [self.searchResult.albums count];
+        return [self.searchResult.albums count] + 1;
     else
         return 0;
 }
@@ -259,11 +259,35 @@
     UITableViewCell *cell;
     
     if(self.trackSection == indexPath.section)
-        cell = [self cellForTrackAtIndexPath:indexPath];
+    {
+        if([indexPath row] == [self.searchResult.tracks count])
+        {
+            cell = [self.tableView dequeueReusableCellWithIdentifier:@"allCell" forIndexPath:indexPath];
+            [cell.textLabel setText:@"View all tracks"];
+        }
+        else
+            cell = [self cellForTrackAtIndexPath:indexPath];
+    }
     else if(self.artistSection == indexPath.section)
-        cell = [self cellForArtistAtIndexPath:indexPath];
+    {
+        if([indexPath row] == [self.searchResult.artists count])
+        {
+            cell = [self.tableView dequeueReusableCellWithIdentifier:@"allCell" forIndexPath:indexPath];
+            [cell.textLabel setText:@"View all artists"];
+        }
+        else
+            cell = [self cellForArtistAtIndexPath:indexPath];
+    }
     else if(self.albumSection == indexPath.section)
-        cell = [self cellForAlbumAtIndexPath:indexPath];
+    {
+        if([indexPath row] == [self.searchResult.albums count])
+        {
+            cell = [self.tableView dequeueReusableCellWithIdentifier:@"allCell" forIndexPath:indexPath];
+            [cell.textLabel setText:@"View all albums"];
+        }
+        else
+            cell = [self cellForAlbumAtIndexPath:indexPath];
+    }
     
     return cell;
 }
@@ -271,7 +295,6 @@
 - (TrackCell *)cellForTrackAtIndexPath:(NSIndexPath *)indexPath
 {
     SPTrack *track = [self.searchResult.tracks objectAtIndex:[indexPath row]];
-    
     TrackCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"trackCell" forIndexPath:indexPath];
 
     NSString *artistsText = @"";
@@ -359,13 +382,28 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if(indexPath.section == artistSection)
-        return 75;
+    {
+        if([indexPath row] == [self.searchResult.artists count])
+            return 40;
+        else
+            return 75;
+    }
     else if(indexPath.section == albumSection)
-        return 75;
+    {
+        if([indexPath row] == [self.searchResult.albums count])
+            return 40;
+        else
+            return 75;
+    }
     else if(indexPath.section == trackSection)
-        return 55;
-    else
-        return 55;
+    {
+        if([indexPath row] == [self.searchResult.tracks count])
+            return 40;
+        else
+            return 55;
+    }
+
+    return 0;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
