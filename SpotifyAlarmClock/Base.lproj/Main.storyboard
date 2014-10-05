@@ -964,15 +964,46 @@
         <!--Artist View Controller-->
         <scene sceneID="bBE-ER-0Sa">
             <objects>
-                <tableViewController id="kEK-8t-cMN" customClass="ArtistViewController" sceneMemberID="viewController">
+                <tableViewController automaticallyAdjustsScrollViewInsets="NO" id="kEK-8t-cMN" customClass="ArtistViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="erB-7v-ORh">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
-                        <imageView key="tableHeaderView" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="OQ4-Fu-3LC">
-                            <rect key="frame" x="0.0" y="64" width="320" height="320"/>
+                        <view key="tableHeaderView" contentMode="scaleToFill" id="ydX-In-cjV">
+                            <rect key="frame" x="0.0" y="64" width="320" height="200"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        </imageView>
+                            <subviews>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="OQ4-Fu-3LC">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="200"/>
+                                </imageView>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="uZw-jx-fcp">
+                                    <rect key="frame" x="110" y="50" width="100" height="100"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="100" id="DoM-u3-QfR"/>
+                                        <constraint firstAttribute="height" constant="100" id="SqA-To-u6g"/>
+                                    </constraints>
+                                </imageView>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Artist" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c1R-pg-hQf">
+                                    <rect key="frame" x="10" y="163" width="300" height="23"/>
+                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="19"/>
+                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstItem="c1R-pg-hQf" firstAttribute="top" secondItem="uZw-jx-fcp" secondAttribute="bottom" constant="13" id="55v-xh-IyO"/>
+                                <constraint firstItem="uZw-jx-fcp" firstAttribute="top" secondItem="OQ4-Fu-3LC" secondAttribute="top" constant="50" id="9EX-xB-bKb"/>
+                                <constraint firstItem="OQ4-Fu-3LC" firstAttribute="centerX" secondItem="c1R-pg-hQf" secondAttribute="centerX" id="Jnf-Ck-zeN"/>
+                                <constraint firstItem="uZw-jx-fcp" firstAttribute="centerX" secondItem="OQ4-Fu-3LC" secondAttribute="centerX" id="Msp-My-L7G"/>
+                                <constraint firstItem="c1R-pg-hQf" firstAttribute="leading" secondItem="ydX-In-cjV" secondAttribute="leading" constant="10" id="ZND-Bd-Bpv"/>
+                                <constraint firstItem="OQ4-Fu-3LC" firstAttribute="top" secondItem="ydX-In-cjV" secondAttribute="top" id="don-Th-oYH"/>
+                                <constraint firstAttribute="bottom" secondItem="OQ4-Fu-3LC" secondAttribute="bottom" id="oVI-mC-BfQ"/>
+                                <constraint firstItem="OQ4-Fu-3LC" firstAttribute="leading" secondItem="ydX-In-cjV" secondAttribute="leading" id="wtU-b9-zd1"/>
+                                <constraint firstAttribute="trailing" secondItem="c1R-pg-hQf" secondAttribute="trailing" constant="10" id="yrP-ah-Eql"/>
+                                <constraint firstAttribute="trailing" secondItem="OQ4-Fu-3LC" secondAttribute="trailing" id="zIk-p5-i8R"/>
+                            </constraints>
+                        </view>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="Ong-Dd-hZX">
                                 <autoresizingMask key="autoresizingMask"/>
@@ -988,7 +1019,10 @@
                     </tableView>
                     <navigationItem key="navigationItem" id="uj6-Zi-Nyz"/>
                     <connections>
+                        <outlet property="artistName" destination="c1R-pg-hQf" id="Ayf-5I-ONZ"/>
+                        <outlet property="artistPortrait" destination="uZw-jx-fcp" id="dRV-0d-Dd4"/>
                         <outlet property="artistPortraitBackground" destination="OQ4-Fu-3LC" id="H7F-3j-Wcq"/>
+                        <outlet property="containerArtistPortrait" destination="ydX-In-cjV" id="b1R-BR-3al"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NIi-4g-uqr" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -9,21 +9,31 @@
 #import "ArtistViewController.h"
 #import "CocoaLibSpotify.h"
 #import "MBProgressHud.h"
+#import "UIImage+ImageEffects.h"
 
 @interface ArtistViewController ()
 
 @property (weak, nonatomic) IBOutlet UIImageView *artistPortrait;
 @property (weak, nonatomic) IBOutlet UIImageView *artistPortraitBackground;
 @property (nonatomic, strong) SPArtistBrowse *artistBrowse;
+@property (weak, nonatomic) IBOutlet UILabel *artistName;
+@property (weak, nonatomic) IBOutlet UIView *containerArtistPortrait;
+//@property (nonatomic, assign) CGRect initialHeaderFrame;
+
 
 - (void)loadArtistBrowse;
+
+
 
 @end
 
 @implementation ArtistViewController
 @synthesize artist;
+@synthesize artistName;
+@synthesize containerArtistPortrait;
 @synthesize artistPortrait, artistPortraitBackground;
 @synthesize artistBrowse;
+//@synthesize initialHeaderFrame;
 
 - (void)viewDidLoad
 {
@@ -39,18 +49,51 @@
 {
     [super viewWillAppear:animated];
     
+    //Set artist name
+    [self.artistName setText:[artist name]];
+    
+    //Completely transparant navigationbar
+    [self.navigationController.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
+    self.navigationController.navigationBar.shadowImage = [UIImage new];
+    self.navigationController.navigationBar.translucent = YES;
+    self.navigationController.view.backgroundColor = [UIColor clearColor];
+    self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
+    
+    //Bottom border
+    CALayer *bottomBorder = [CALayer layer];
+    bottomBorder.frame = CGRectMake(0.0f, containerArtistPortrait.frame.size.height, containerArtistPortrait.frame.size.width, 1.0f);
+    bottomBorder.backgroundColor = [UIColor blackColor].CGColor;
+    [containerArtistPortrait.layer addSublayer:bottomBorder];
+    
     //Empty remaining search results
     self.artistBrowse = nil;
     [self.tableView reloadData];
     
+    //initialHeaderFrame = containerArtistPortrait.frame;
+    
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.tableView animated:YES];
     hud.labelText = @"Loading";
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [self.navigationController.navigationBar setBackgroundImage:nil forBarMetrics:UIBarMetricsDefault];
+    self.navigationController.navigationBar.tintColor = [UIColor colorWithRed:(24 / 255.0) green:(109 / 255.0) blue:(39 / 255.0) alpha:1];
 }
 
 - (void)viewDidAppear:(BOOL)animated
 {
     [self loadArtistBrowse];
 }
+
+/*-(void)scrollViewDidScroll:(UIScrollView*)scrollView {
+    if(scrollView.contentOffset.y < 0) {
+        scrollView.contentInset = UIEdgeInsetsMake(scrollView.contentOffset.y, 0, 0, 0);
+        CGRect newFrame = CGRectMake(0, 0, initialHeaderFrame.size.width, initialHeaderFrame.size.height - scrollView.contentOffset.y) ;
+        containerArtistPortrait.frame = newFrame;
+    }
+}*/
+
 
 - (void)loadArtistBrowse
 {
@@ -90,17 +133,16 @@
               SPImage *portrait = (SPImage*)[loadedPortraitItems firstObject];
               
               //Portrait
-              /*self.artistPortrait.contentMode = UIViewContentModeScaleAspectFill;
+              self.artistPortrait.contentMode = UIViewContentModeScaleAspectFill;
               [self.artistPortrait layer].cornerRadius = [self.artistPortrait layer].frame.size.height /2;
               [self.artistPortrait layer].masksToBounds = YES;
               [self.artistPortrait layer].borderWidth = 0;
-              [self.artistPortrait setImage:[portrait image]];*/
+              [self.artistPortrait setImage:[portrait image]];
               
               //Background portrait
+              UIImage *blurredImage = [portrait.image applyBlurWithRadius:30 tintColor:[UIColor colorWithWhite:0.25 alpha:0.2] saturationDeltaFactor:1.5 maskImage:nil];
               self.artistPortraitBackground.contentMode = UIViewContentModeScaleToFill;
-              // Create the underlying imageview and offset it
-
-              [self.artistPortraitBackground setImage:[portrait image]];
+              [self.artistPortraitBackground setImage:blurredImage];
 
           }];
      }];

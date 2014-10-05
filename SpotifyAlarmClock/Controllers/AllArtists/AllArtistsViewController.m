@@ -170,7 +170,6 @@
         ArtistViewController *vw = [segue destinationViewController];
         NSIndexPath *indexPath = [self.tableView indexPathForCell:(UITableViewCell*)sender];
         SPArtist *artist = [self.searchResult.artists objectAtIndex:[indexPath row]];
-        [vw.navigationItem setTitle:[artist name]];
         [vw setArtist:artist];
     }
 }

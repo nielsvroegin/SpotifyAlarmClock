@@ -14,6 +14,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Pods-SpotifyAlarmClock-UIImageEffects.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-SpotifyAlarmClock.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -22,17 +27,22 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>3A98DF6ACF0426713036BD86</key>
+		<key>1650F4364947B0CAEB431A0A</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>5C69E1FB17D320CA10E972A0</key>
+		<key>79E23BB641B989E3E1FD30E9</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>FA6D7BABAA5511D19CD4CF63</key>
+		<key>D6CC58A4D0A351969805E401</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>FBFA467257C5EE7ADEDDEF9F</key>
 		<dict>
 			<key>primary</key>
 			<true/>

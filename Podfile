@@ -6,6 +6,7 @@ source 'https://github.com/CocoaPods/Specs.git'
 target "SpotifyAlarmClock" do
 pod 'MBProgressHUD', '~> 0.8'
 pod 'FFCircularProgressView', '~> 0.4'
+pod 'UIImageEffects'
 end
 
 target "SpotifyAlarmClockTests" do

@@ -12,4 +12,5 @@
 
 @interface ArtistViewController : UITableViewController
     @property (nonatomic, strong) SPArtist *artist;
+
 @end
