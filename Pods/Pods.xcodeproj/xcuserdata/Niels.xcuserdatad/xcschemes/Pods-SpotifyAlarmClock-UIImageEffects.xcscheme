@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "79E23BB641B989E3E1FD30E9"
+               BlueprintIdentifier = "673C6E8C6B502AD9EE21AED8"
                BuildableName = "libPods-SpotifyAlarmClock-UIImageEffects.a"
                BlueprintName = "Pods-SpotifyAlarmClock-UIImageEffects"
                ReferencedContainer = "container:Pods.xcodeproj">

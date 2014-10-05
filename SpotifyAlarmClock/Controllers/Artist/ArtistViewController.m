@@ -10,34 +10,37 @@
 #import "CocoaLibSpotify.h"
 #import "MBProgressHud.h"
 #import "UIImage+ImageEffects.h"
+#import "UIScrollView+APParallaxHeader.h"
+#import "BlurredHeaderView.h"
+#import "TrackCell.h"
+#import "MaskHelper.h"
+#import "SpotifyPlayer.h"
 
 @interface ArtistViewController ()
 
-@property (weak, nonatomic) IBOutlet UIImageView *artistPortrait;
-@property (weak, nonatomic) IBOutlet UIImageView *artistPortraitBackground;
 @property (nonatomic, strong) SPArtistBrowse *artistBrowse;
-@property (weak, nonatomic) IBOutlet UILabel *artistName;
-@property (weak, nonatomic) IBOutlet UIView *containerArtistPortrait;
-//@property (nonatomic, assign) CGRect initialHeaderFrame;
-
+@property (nonatomic, strong) BlurredHeaderView *blurredHeaderView;
 
 - (void)loadArtistBrowse;
-
+- (TrackCell *)cellForTrackAtIndexPath:(NSIndexPath *)indexPath;
 
 
 @end
 
 @implementation ArtistViewController
 @synthesize artist;
-@synthesize artistName;
-@synthesize containerArtistPortrait;
-@synthesize artistPortrait, artistPortraitBackground;
 @synthesize artistBrowse;
-//@synthesize initialHeaderFrame;
+@synthesize blurredHeaderView;
+
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    NSArray* nibViews = [[NSBundle mainBundle] loadNibNamed:@"BlurredHeader" owner:self options:nil];
+    blurredHeaderView = [nibViews firstObject];
+    
+    [self.tableView addParallaxWithView:blurredHeaderView andHeight:220];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -50,26 +53,18 @@
     [super viewWillAppear:animated];
     
     //Set artist name
-    [self.artistName setText:[artist name]];
+    [self.navigationItem setTitle:[artist name]];
     
     //Completely transparant navigationbar
-    [self.navigationController.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
-    self.navigationController.navigationBar.shadowImage = [UIImage new];
-    self.navigationController.navigationBar.translucent = YES;
-    self.navigationController.view.backgroundColor = [UIColor clearColor];
-    self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
-    
-    //Bottom border
-    CALayer *bottomBorder = [CALayer layer];
-    bottomBorder.frame = CGRectMake(0.0f, containerArtistPortrait.frame.size.height, containerArtistPortrait.frame.size.width, 1.0f);
-    bottomBorder.backgroundColor = [UIColor blackColor].CGColor;
-    [containerArtistPortrait.layer addSublayer:bottomBorder];
-    
+    //[self.navigationController.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
+    //self.navigationController.navigationBar.shadowImage = [UIImage new];
+    //self.navigationController.navigationBar.translucent = YES;
+    //self.navigationController.view.backgroundColor = [UIColor clearColor];
+    //self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
+        
     //Empty remaining search results
     self.artistBrowse = nil;
     [self.tableView reloadData];
-    
-    //initialHeaderFrame = containerArtistPortrait.frame;
     
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.tableView animated:YES];
     hud.labelText = @"Loading";
@@ -85,14 +80,6 @@
 {
     [self loadArtistBrowse];
 }
-
-/*-(void)scrollViewDidScroll:(UIScrollView*)scrollView {
-    if(scrollView.contentOffset.y < 0) {
-        scrollView.contentInset = UIEdgeInsetsMake(scrollView.contentOffset.y, 0, 0, 0);
-        CGRect newFrame = CGRectMake(0, 0, initialHeaderFrame.size.width, initialHeaderFrame.size.height - scrollView.contentOffset.y) ;
-        containerArtistPortrait.frame = newFrame;
-    }
-}*/
 
 
 - (void)loadArtistBrowse
@@ -133,17 +120,11 @@
               SPImage *portrait = (SPImage*)[loadedPortraitItems firstObject];
               
               //Portrait
-              self.artistPortrait.contentMode = UIViewContentModeScaleAspectFill;
-              [self.artistPortrait layer].cornerRadius = [self.artistPortrait layer].frame.size.height /2;
-              [self.artistPortrait layer].masksToBounds = YES;
-              [self.artistPortrait layer].borderWidth = 0;
-              [self.artistPortrait setImage:[portrait image]];
+              [self.blurredHeaderView.circularImage setImage:[portrait image]];
               
               //Background portrait
               UIImage *blurredImage = [portrait.image applyBlurWithRadius:30 tintColor:[UIColor colorWithWhite:0.25 alpha:0.2] saturationDeltaFactor:1.5 maskImage:nil];
-              self.artistPortraitBackground.contentMode = UIViewContentModeScaleToFill;
-              [self.artistPortraitBackground setImage:blurredImage];
-
+              [self.blurredHeaderView.backgroundImage setImage:blurredImage];
           }];
      }];
 }
@@ -162,22 +143,58 @@
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 0;
+    //return [artistBrowse.albums count] + 1;
+    if(artistBrowse != nil && [artistBrowse isLoaded])
+        return 1;
+    else
+        return 0;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 0;
+//    if(section == 0)
+        return [artistBrowse.topTracks count];
 }
 
-/*
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
+    return [self cellForTrackAtIndexPath:indexPath];
+}
+
+- (TrackCell *)cellForTrackAtIndexPath:(NSIndexPath *)indexPath
+{
+    SPTrack *track = [self.artistBrowse.topTracks objectAtIndex:[indexPath row]];
+    TrackCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"trackCell" forIndexPath:indexPath];
     
-    // Configure the cell...
+    NSString *artistsText = @"";
+    for(NSInteger i = 0; i < [track.artists count]; i++)
+    {
+        artistsText = [artistsText stringByAppendingString:[[track.artists objectAtIndex:i] name]];
+        if(i < ([track.artists count] -1))
+            artistsText = [artistsText stringByAppendingString:@" - "];
+    }
+    [cell.lbArtist setText:artistsText];
+    [cell.lbTrack setText:[track name]];
+    [MaskHelper addCircleMaskToView:[cell vwPlay]];
+    
+    for(UIView* subView in [cell.vwPlay subviews])
+        [subView removeFromSuperview];
+    
+    if([[SpotifyPlayer sharedSpotifyPlayer] currentTrack] == track)
+        ;//[cell.vwPlay addSubview:musicProgressView];
+    else
+    {
+        UIImageView* playImageView = [[UIImageView alloc] initWithFrame:[cell.vwPlay bounds]];
+        [playImageView setImage:[UIImage imageNamed:@"Play"]];
+        [cell.vwPlay addSubview:playImageView];
+    }
     
     return cell;
 }
-*/
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
+    return @"Top tracks";
+}
 
 /*
 // Override to support conditional editing of the table view.

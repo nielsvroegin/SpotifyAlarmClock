@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "D6CC58A4D0A351969805E401"
+               BlueprintIdentifier = "AAEB7715B1613C85ED3272D5"
                BuildableName = "libPods-SpotifyAlarmClock.a"
                BlueprintName = "Pods-SpotifyAlarmClock"
                ReferencedContainer = "container:Pods.xcodeproj">

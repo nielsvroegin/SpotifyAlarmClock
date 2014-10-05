@@ -4,6 +4,11 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>Pods-SpotifyAlarmClock-APParallaxHeader.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-SpotifyAlarmClock-FFCircularProgressView.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -27,22 +32,27 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>1650F4364947B0CAEB431A0A</key>
+		<key>19A4F79DEC123BD4F5D26CD2</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>79E23BB641B989E3E1FD30E9</key>
+		<key>673C6E8C6B502AD9EE21AED8</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>D6CC58A4D0A351969805E401</key>
+		<key>77B707D9D33CE5F0F071C0CD</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>FBFA467257C5EE7ADEDDEF9F</key>
+		<key>AAEB7715B1613C85ED3272D5</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>B222D5C5EC7F8D2EB885EE8D</key>
 		<dict>
 			<key>primary</key>
 			<true/>

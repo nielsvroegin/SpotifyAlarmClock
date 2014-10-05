@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6245" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment defaultVersion="1808" identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="Lq1-7d-X9O" customClass="BlurredHeaderView">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="220"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="8Oa-7O-78z">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="220"/>
+                </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="CwU-po-xhU">
+                    <rect key="frame" x="110" y="95" width="100" height="100"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="100" id="Bp6-lU-RzC"/>
+                        <constraint firstAttribute="height" constant="100" id="Q4P-V5-axi"/>
+                    </constraints>
+                </imageView>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="8Oa-7O-78z" secondAttribute="trailing" id="CG0-H8-pFz"/>
+                <constraint firstItem="8Oa-7O-78z" firstAttribute="top" secondItem="Lq1-7d-X9O" secondAttribute="top" id="K6c-8F-Y5l"/>
+                <constraint firstItem="8Oa-7O-78z" firstAttribute="leading" secondItem="Lq1-7d-X9O" secondAttribute="leading" id="PYm-YB-nyK"/>
+                <constraint firstItem="CwU-po-xhU" firstAttribute="centerX" secondItem="8Oa-7O-78z" secondAttribute="centerX" id="aDQ-et-6xy"/>
+                <constraint firstAttribute="bottom" secondItem="8Oa-7O-78z" secondAttribute="bottom" id="k0Z-KZ-3x8"/>
+                <constraint firstItem="CwU-po-xhU" firstAttribute="top" secondItem="8Oa-7O-78z" secondAttribute="bottom" constant="-125" id="slE-ij-r5N"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="backgroundImage" destination="8Oa-7O-78z" id="Owy-Tf-PLW"/>
+                <outlet property="circularImage" destination="CwU-po-xhU" id="V31-eO-15X"/>
+            </connections>
+            <point key="canvasLocation" x="140" y="139"/>
+        </view>
+    </objects>
+</document>

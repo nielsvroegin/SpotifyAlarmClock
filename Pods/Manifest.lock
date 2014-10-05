@@ -1,14 +1,17 @@
 PODS:
+  - APParallaxHeader (0.1.6)
   - FFCircularProgressView (0.5)
   - MBProgressHUD (0.9)
   - UIImageEffects (0.0.1)
 
 DEPENDENCIES:
+  - APParallaxHeader
   - FFCircularProgressView (~> 0.4)
   - MBProgressHUD (~> 0.8)
   - UIImageEffects
 
 SPEC CHECKSUMS:
+  APParallaxHeader: 6e7cc27c052be34e1a5655dc2fab6c40eecbbe55
   FFCircularProgressView: 723b7a84c412b5d9d2a5531bc716b99965ad7192
   MBProgressHUD: 2038dbcf3dce73215abed6001657043d53aa79a8
   UIImageEffects: 69cd1e1f8fc4042a8fefcf4a0727cbf213e4dbfb

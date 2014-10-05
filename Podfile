@@ -7,6 +7,7 @@ target "SpotifyAlarmClock" do
 pod 'MBProgressHUD', '~> 0.8'
 pod 'FFCircularProgressView', '~> 0.4'
 pod 'UIImageEffects'
+pod 'APParallaxHeader'
 end
 
 target "SpotifyAlarmClockTests" do

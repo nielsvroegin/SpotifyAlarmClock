@@ -1,2611 +1,970 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
-<plist version="1.0">
-<dict>
-	<key>archiveVersion</key>
-	<string>1</string>
-	<key>classes</key>
-	<dict/>
-	<key>objectVersion</key>
-	<string>46</string>
-	<key>objects</key>
-	<dict>
-		<key>1171D0A98CF3340716EFFB96</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>B8F5F34EBE107A7EEBA2420D</string>
-				<string>8E9EC42A6CF7103BBBA32316</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>name</key>
-			<string>Pods</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>349CEB9FD7339389AF16EA91</key>
-		<dict>
-			<key>fileRef</key>
-			<string>C92F5708CCED2BA4D9ECCF61</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>359F0F1764F0F07C35A1BC8B</key>
-		<dict>
-			<key>buildActionMask</key>
-			<string>2147483647</string>
-			<key>files</key>
-			<array/>
-			<key>inputPaths</key>
-			<array/>
-			<key>isa</key>
-			<string>PBXShellScriptBuildPhase</string>
-			<key>name</key>
-			<string>Check Pods Manifest.lock</string>
-			<key>outputPaths</key>
-			<array/>
-			<key>runOnlyForDeploymentPostprocessing</key>
-			<string>0</string>
-			<key>shellPath</key>
-			<string>/bin/sh</string>
-			<key>shellScript</key>
-			<string>diff "${PODS_ROOT}/../Podfile.lock" "${PODS_ROOT}/Manifest.lock" &gt; /dev/null
-if [[ $? != 0 ]] ; then
-    cat &lt;&lt; EOM
-error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.
-EOM
-    exit 1
-fi
-</string>
-			<key>showEnvVarsInLog</key>
-			<string>0</string>
-		</dict>
-		<key>3644111C96B7D757AB6DD609</key>
-		<dict>
-			<key>buildActionMask</key>
-			<string>2147483647</string>
-			<key>files</key>
-			<array/>
-			<key>inputPaths</key>
-			<array/>
-			<key>isa</key>
-			<string>PBXShellScriptBuildPhase</string>
-			<key>name</key>
-			<string>Copy Pods Resources</string>
-			<key>outputPaths</key>
-			<array/>
-			<key>runOnlyForDeploymentPostprocessing</key>
-			<string>0</string>
-			<key>shellPath</key>
-			<string>/bin/sh</string>
-			<key>shellScript</key>
-			<string>"${SRCROOT}/Pods/Target Support Files/Pods-SpotifyAlarmClock/Pods-SpotifyAlarmClock-resources.sh"
-</string>
-			<key>showEnvVarsInLog</key>
-			<string>0</string>
-		</dict>
-		<key>8E9EC42A6CF7103BBBA32316</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>text.xcconfig</string>
-			<key>name</key>
-			<string>Pods-SpotifyAlarmClock.release.xcconfig</string>
-			<key>path</key>
-			<string>Pods/Target Support Files/Pods-SpotifyAlarmClock/Pods-SpotifyAlarmClock.release.xcconfig</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>B812390C19D1FC28005EABDB</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>B8DEF87619E07A7C00F2F453</string>
-				<string>B8DEF87219E06F8A00F2F453</string>
-				<string>B8DEF86819E041C600F2F453</string>
-				<string>B885CC6D19E010C2003450F8</string>
-				<string>B812392B19D20177005EABDB</string>
-				<string>B812392A19D20126005EABDB</string>
-				<string>B812390D19D1FC28005EABDB</string>
-				<string>B812391019D1FC28005EABDB</string>
-				<string>B812391519D1FC28005EABDB</string>
-				<string>B812391819D1FC28005EABDB</string>
-				<string>B812391E19D1FC28005EABDB</string>
-				<string>B812391F19D1FC28005EABDB</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>path</key>
-			<string>Controllers</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>B812390D19D1FC28005EABDB</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>B812390E19D1FC28005EABDB</string>
-				<string>B812390F19D1FC28005EABDB</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>path</key>
-			<string>AddAlarm</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>B812390E19D1FC28005EABDB</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>path</key>
-			<string>AddAlarmViewController.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>B812390F19D1FC28005EABDB</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>path</key>
-			<string>AddAlarmViewController.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>B812391019D1FC28005EABDB</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>B812391319D1FC28005EABDB</string>
-				<string>B812391419D1FC28005EABDB</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>path</key>
-			<string>Alarms</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>B812391319D1FC28005EABDB</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>path</key>
-			<string>AlarmsViewController.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>B812391419D1FC28005EABDB</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>path</key>
-			<string>AlarmsViewController.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>B812391519D1FC28005EABDB</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>B812391619D1FC28005EABDB</string>
-				<string>B812391719D1FC28005EABDB</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>path</key>
-			<string>Clock</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>B812391619D1FC28005EABDB</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>path</key>
-			<string>ClockViewController.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>B812391719D1FC28005EABDB</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>path</key>
-			<string>ClockViewController.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>B812391819D1FC28005EABDB</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>B812391919D1FC28005EABDB</string>
-				<string>B812391A19D1FC28005EABDB</string>
-				<string>B812391B19D1FC28005EABDB</string>
-				<string>B812391C19D1FC28005EABDB</string>
-				<string>B812391D19D1FC28005EABDB</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>path</key>
-			<string>OptionsSelect</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>B812391919D1FC28005EABDB</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>path</key>
-			<string>Option.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>B812391A19D1FC28005EABDB</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>path</key>
-			<string>Option.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>B812391B19D1FC28005EABDB</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>path</key>
-			<string>OptionsSelectDelegate.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>B812391C19D1FC28005EABDB</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>path</key>
-			<string>OptionsSelectViewController.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>B812391D19D1FC28005EABDB</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>path</key>
-			<string>OptionsSelectViewController.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>B812391E19D1FC28005EABDB</key>
-		<dict>
-			<key>children</key>
-			<array/>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>path</key>
-			<string>Settings</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>B812391F19D1FC28005EABDB</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>B812392019D1FC28005EABDB</string>
-				<string>B812392119D1FC28005EABDB</string>
-				<string>B812392219D1FC28005EABDB</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>path</key>
-			<string>TextEdit</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>B812392019D1FC28005EABDB</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>path</key>
-			<string>TextEditDelegate.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>B812392119D1FC28005EABDB</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>path</key>
-			<string>TextEditViewController.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>B812392219D1FC28005EABDB</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>path</key>
-			<string>TextEditViewController.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>B812392319D1FC28005EABDB</key>
-		<dict>
-			<key>fileRef</key>
-			<string>B812390F19D1FC28005EABDB</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>B812392519D1FC28005EABDB</key>
-		<dict>
-			<key>fileRef</key>
-			<string>B812391419D1FC28005EABDB</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>B812392619D1FC28005EABDB</key>
-		<dict>
-			<key>fileRef</key>
-			<string>B812391719D1FC28005EABDB</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>B812392719D1FC28005EABDB</key>
-		<dict>
-			<key>fileRef</key>
-			<string>B812391A19D1FC28005EABDB</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>B812392819D1FC28005EABDB</key>
-		<dict>
-			<key>fileRef</key>
-			<string>B812391D19D1FC28005EABDB</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>B812392919D1FC28005EABDB</key>
-		<dict>
-			<key>fileRef</key>
-			<string>B812392219D1FC28005EABDB</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>B812392A19D20126005EABDB</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>B812392C19D201A4005EABDB</string>
-				<string>B812392D19D201A4005EABDB</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>path</key>
-			<string>Songs</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>B812392B19D20177005EABDB</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>B812392F19D201F2005EABDB</string>
-				<string>B812393019D201F2005EABDB</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>path</key>
-			<string>SongSearch</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>B812392C19D201A4005EABDB</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>path</key>
-			<string>SongsViewController.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>B812392D19D201A4005EABDB</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>path</key>
-			<string>SongsViewController.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>B812392E19D201A4005EABDB</key>
-		<dict>
-			<key>fileRef</key>
-			<string>B812392D19D201A4005EABDB</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>B812392F19D201F2005EABDB</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>path</key>
-			<string>SongSearchViewController.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>B812393019D201F2005EABDB</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>path</key>
-			<string>SongSearchViewController.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>B812393119D201F2005EABDB</key>
-		<dict>
-			<key>fileRef</key>
-			<string>B812393019D201F2005EABDB</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>B82A530D19C4E641000C40D8</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>name</key>
-			<string>appkey.h</string>
-			<key>path</key>
-			<string>SpotifyAlarmClock/appkey.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>B82A533319C4F5E6000C40D8</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>wrapper.framework</string>
-			<key>name</key>
-			<string>SystemConfiguration.framework</string>
-			<key>path</key>
-			<string>System/Library/Frameworks/SystemConfiguration.framework</string>
-			<key>sourceTree</key>
-			<string>SDKROOT</string>
-		</dict>
-		<key>B82A533419C4F5E6000C40D8</key>
-		<dict>
-			<key>fileRef</key>
-			<string>B82A533319C4F5E6000C40D8</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>B82A533519C4F5F1000C40D8</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>wrapper.framework</string>
-			<key>name</key>
-			<string>CFNetwork.framework</string>
-			<key>path</key>
-			<string>System/Library/Frameworks/CFNetwork.framework</string>
-			<key>sourceTree</key>
-			<string>SDKROOT</string>
-		</dict>
-		<key>B82A533619C4F5F1000C40D8</key>
-		<dict>
-			<key>fileRef</key>
-			<string>B82A533519C4F5F1000C40D8</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>B82A533719C4F612000C40D8</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>compiled.mach-o.dylib</string>
-			<key>name</key>
-			<string>libstdc++.dylib</string>
-			<key>path</key>
-			<string>usr/lib/libstdc++.dylib</string>
-			<key>sourceTree</key>
-			<string>SDKROOT</string>
-		</dict>
-		<key>B82A533819C4F612000C40D8</key>
-		<dict>
-			<key>fileRef</key>
-			<string>B82A533719C4F612000C40D8</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>B82A533919C4F623000C40D8</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>wrapper.framework</string>
-			<key>name</key>
-			<string>CoreAudio.framework</string>
-			<key>path</key>
-			<string>System/Library/Frameworks/CoreAudio.framework</string>
-			<key>sourceTree</key>
-			<string>SDKROOT</string>
-		</dict>
-		<key>B82A533A19C4F623000C40D8</key>
-		<dict>
-			<key>fileRef</key>
-			<string>B82A533919C4F623000C40D8</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>B82A533B19C4F632000C40D8</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>wrapper.framework</string>
-			<key>name</key>
-			<string>AudioToolbox.framework</string>
-			<key>path</key>
-			<string>System/Library/Frameworks/AudioToolbox.framework</string>
-			<key>sourceTree</key>
-			<string>SDKROOT</string>
-		</dict>
-		<key>B82A533C19C4F632000C40D8</key>
-		<dict>
-			<key>fileRef</key>
-			<string>B82A533B19C4F632000C40D8</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>B82A533D19C4F63E000C40D8</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>wrapper.framework</string>
-			<key>name</key>
-			<string>AVFoundation.framework</string>
-			<key>path</key>
-			<string>System/Library/Frameworks/AVFoundation.framework</string>
-			<key>sourceTree</key>
-			<string>SDKROOT</string>
-		</dict>
-		<key>B82A533E19C4F63E000C40D8</key>
-		<dict>
-			<key>fileRef</key>
-			<string>B82A533D19C4F63E000C40D8</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>B82A533F19C4F645000C40D8</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>wrapper.framework</string>
-			<key>name</key>
-			<string>Security.framework</string>
-			<key>path</key>
-			<string>System/Library/Frameworks/Security.framework</string>
-			<key>sourceTree</key>
-			<string>SDKROOT</string>
-		</dict>
-		<key>B82A534019C4F645000C40D8</key>
-		<dict>
-			<key>fileRef</key>
-			<string>B82A533F19C4F645000C40D8</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>B82A534119C4FEF4000C40D8</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>wrapper.pb-project</string>
-			<key>name</key>
-			<string>CocoaLibSpotify iOS Library.xcodeproj</string>
-			<key>path</key>
-			<string>Libraries/cocoalibspotify-2.4.5/iOS Library/CocoaLibSpotify iOS Library.xcodeproj</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>B82A534219C4FEF4000C40D8</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>B82A534719C4FEF4000C40D8</string>
-				<string>B82A534919C4FEF4000C40D8</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>name</key>
-			<string>Products</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>B82A534619C4FEF4000C40D8</key>
-		<dict>
-			<key>containerPortal</key>
-			<string>B82A534119C4FEF4000C40D8</string>
-			<key>isa</key>
-			<string>PBXContainerItemProxy</string>
-			<key>proxyType</key>
-			<string>2</string>
-			<key>remoteGlobalIDString</key>
-			<string>50AF49DC1439CBFE00E4A5EF</string>
-			<key>remoteInfo</key>
-			<string>CocoaLibSpotify</string>
-		</dict>
-		<key>B82A534719C4FEF4000C40D8</key>
-		<dict>
-			<key>fileType</key>
-			<string>archive.ar</string>
-			<key>isa</key>
-			<string>PBXReferenceProxy</string>
-			<key>path</key>
-			<string>libCocoaLibSpotify.a</string>
-			<key>remoteRef</key>
-			<string>B82A534619C4FEF4000C40D8</string>
-			<key>sourceTree</key>
-			<string>BUILT_PRODUCTS_DIR</string>
-		</dict>
-		<key>B82A534819C4FEF4000C40D8</key>
-		<dict>
-			<key>containerPortal</key>
-			<string>B82A534119C4FEF4000C40D8</string>
-			<key>isa</key>
-			<string>PBXContainerItemProxy</string>
-			<key>proxyType</key>
-			<string>2</string>
-			<key>remoteGlobalIDString</key>
-			<string>50D4F52B156BCDE800E237DD</string>
-			<key>remoteInfo</key>
-			<string>CocoaLSTests</string>
-		</dict>
-		<key>B82A534919C4FEF4000C40D8</key>
-		<dict>
-			<key>fileType</key>
-			<string>wrapper.application</string>
-			<key>isa</key>
-			<string>PBXReferenceProxy</string>
-			<key>path</key>
-			<string>CocoaLSTests.app</string>
-			<key>remoteRef</key>
-			<string>B82A534819C4FEF4000C40D8</string>
-			<key>sourceTree</key>
-			<string>BUILT_PRODUCTS_DIR</string>
-		</dict>
-		<key>B82A534A19C4FF33000C40D8</key>
-		<dict>
-			<key>containerPortal</key>
-			<string>B82A534119C4FEF4000C40D8</string>
-			<key>isa</key>
-			<string>PBXContainerItemProxy</string>
-			<key>proxyType</key>
-			<string>1</string>
-			<key>remoteGlobalIDString</key>
-			<string>50AF49DB1439CBFE00E4A5EF</string>
-			<key>remoteInfo</key>
-			<string>CocoaLibSpotify</string>
-		</dict>
-		<key>B82A534B19C4FF33000C40D8</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXTargetDependency</string>
-			<key>name</key>
-			<string>CocoaLibSpotify</string>
-			<key>targetProxy</key>
-			<string>B82A534A19C4FF33000C40D8</string>
-		</dict>
-		<key>B82A534C19C4FF5F000C40D8</key>
-		<dict>
-			<key>fileRef</key>
-			<string>B82A534719C4FEF4000C40D8</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>B86104CB19CD9671001DB753</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>wrapper.framework</string>
-			<key>name</key>
-			<string>CoreData.framework</string>
-			<key>path</key>
-			<string>System/Library/Frameworks/CoreData.framework</string>
-			<key>sourceTree</key>
-			<string>SDKROOT</string>
-		</dict>
-		<key>B86104CC19CD9671001DB753</key>
-		<dict>
-			<key>fileRef</key>
-			<string>B86104CB19CD9671001DB753</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>B86104D119CDA139001DB753</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>B86104D819CDA28E001DB753</string>
-				<string>B86104D219CDA16D001DB753</string>
-				<string>B86104D319CDA16D001DB753</string>
-				<string>B86104D519CDA187001DB753</string>
-				<string>B86104D619CDA187001DB753</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>path</key>
-			<string>Models</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>B86104D219CDA16D001DB753</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>path</key>
-			<string>AlarmSong.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>B86104D319CDA16D001DB753</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>path</key>
-			<string>AlarmSong.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>B86104D419CDA16D001DB753</key>
-		<dict>
-			<key>fileRef</key>
-			<string>B86104D319CDA16D001DB753</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>B86104D519CDA187001DB753</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>path</key>
-			<string>Alarm.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>B86104D619CDA187001DB753</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>path</key>
-			<string>Alarm.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>B86104D719CDA187001DB753</key>
-		<dict>
-			<key>fileRef</key>
-			<string>B86104D619CDA187001DB753</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>B86104D819CDA28E001DB753</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>B86104D919CDA28E001DB753</string>
-			</array>
-			<key>currentVersion</key>
-			<string>B86104D919CDA28E001DB753</string>
-			<key>isa</key>
-			<string>XCVersionGroup</string>
-			<key>path</key>
-			<string>SpotifyAlarmClock.xcdatamodeld</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-			<key>versionGroupType</key>
-			<string>wrapper.xcdatamodel</string>
-		</dict>
-		<key>B86104D919CDA28E001DB753</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>wrapper.xcdatamodel</string>
-			<key>path</key>
-			<string>SpotifyAlarmClock.xcdatamodel</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>B86104DA19CDA28E001DB753</key>
-		<dict>
-			<key>fileRef</key>
-			<string>B86104D819CDA28E001DB753</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>B885CC6D19E010C2003450F8</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>B885CC6F19E010E5003450F8</string>
-				<string>B885CC7019E010E5003450F8</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>path</key>
-			<string>AllTracks</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>B885CC6F19E010E5003450F8</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>path</key>
-			<string>AllTracksViewController.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>B885CC7019E010E5003450F8</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>path</key>
-			<string>AllTracksViewController.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>B885CC7119E010E5003450F8</key>
-		<dict>
-			<key>fileRef</key>
-			<string>B885CC7019E010E5003450F8</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>B885CC7219E01227003450F8</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>B885FE8219C488F400EC1D32</string>
-				<string>B885CC7419E013BD003450F8</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>path</key>
-			<string>Views</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>B885CC7419E013BD003450F8</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>B885CC7519E013BD003450F8</string>
-				<string>B885CC7619E013BD003450F8</string>
-				<string>B885CC7719E013BD003450F8</string>
-				<string>B885CC7819E013BD003450F8</string>
-				<string>B885CC7919E013BD003450F8</string>
-				<string>B885CC7A19E013BD003450F8</string>
-				<string>B885CC7B19E013BD003450F8</string>
-				<string>B885CC7C19E013BD003450F8</string>
-				<string>B8DEF86419E03BBB00F2F453</string>
-				<string>B8DEF86519E03BBB00F2F453</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>path</key>
-			<string>Cells</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>B885CC7519E013BD003450F8</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>path</key>
-			<string>AlarmCell.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>B885CC7619E013BD003450F8</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>path</key>
-			<string>AlarmCell.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>B885CC7719E013BD003450F8</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>path</key>
-			<string>AlbumCell.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>B885CC7819E013BD003450F8</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>path</key>
-			<string>AlbumCell.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>B885CC7919E013BD003450F8</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>path</key>
-			<string>ArtistCell.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>B885CC7A19E013BD003450F8</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>path</key>
-			<string>ArtistCell.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>B885CC7B19E013BD003450F8</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>path</key>
-			<string>TrackCell.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>B885CC7C19E013BD003450F8</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>path</key>
-			<string>TrackCell.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>B885CC7D19E013BD003450F8</key>
-		<dict>
-			<key>fileRef</key>
-			<string>B885CC7619E013BD003450F8</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>B885CC7E19E013BD003450F8</key>
-		<dict>
-			<key>fileRef</key>
-			<string>B885CC7819E013BD003450F8</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>B885CC7F19E013BD003450F8</key>
-		<dict>
-			<key>fileRef</key>
-			<string>B885CC7A19E013BD003450F8</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>B885CC8019E013BD003450F8</key>
-		<dict>
-			<key>fileRef</key>
-			<string>B885CC7C19E013BD003450F8</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>B885CC8119E01B58003450F8</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>path</key>
-			<string>MaskHelper.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>B885CC8219E01B58003450F8</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>path</key>
-			<string>MaskHelper.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>B885CC8319E01B58003450F8</key>
-		<dict>
-			<key>fileRef</key>
-			<string>B885CC8219E01B58003450F8</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>B885FE6419C488F400EC1D32</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>B82A534119C4FEF4000C40D8</string>
-				<string>B82A530D19C4E641000C40D8</string>
-				<string>B885FE7619C488F400EC1D32</string>
-				<string>B885FE9519C488F500EC1D32</string>
-				<string>B885FE6F19C488F400EC1D32</string>
-				<string>B885FE6E19C488F400EC1D32</string>
-				<string>1171D0A98CF3340716EFFB96</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>B885FE6519C488F400EC1D32</key>
-		<dict>
-			<key>attributes</key>
-			<dict>
-				<key>LastUpgradeCheck</key>
-				<string>0600</string>
-				<key>ORGANIZATIONNAME</key>
-				<string>Niels Vroegindeweij</string>
-				<key>TargetAttributes</key>
-				<dict>
-					<key>B885FE6C19C488F400EC1D32</key>
-					<dict>
-						<key>DevelopmentTeam</key>
-						<string>46H439Z8Z5</string>
-					</dict>
-					<key>B885FE8D19C488F500EC1D32</key>
-					<dict>
-						<key>TestTargetID</key>
-						<string>B885FE6C19C488F400EC1D32</string>
-					</dict>
-				</dict>
-			</dict>
-			<key>buildConfigurationList</key>
-			<string>B885FE6819C488F400EC1D32</string>
-			<key>compatibilityVersion</key>
-			<string>Xcode 3.2</string>
-			<key>developmentRegion</key>
-			<string>English</string>
-			<key>hasScannedForEncodings</key>
-			<string>0</string>
-			<key>isa</key>
-			<string>PBXProject</string>
-			<key>knownRegions</key>
-			<array>
-				<string>en</string>
-				<string>Base</string>
-			</array>
-			<key>mainGroup</key>
-			<string>B885FE6419C488F400EC1D32</string>
-			<key>productRefGroup</key>
-			<string>B885FE6E19C488F400EC1D32</string>
-			<key>projectDirPath</key>
-			<string></string>
-			<key>projectReferences</key>
-			<array>
-				<dict>
-					<key>ProductGroup</key>
-					<string>B82A534219C4FEF4000C40D8</string>
-					<key>ProjectRef</key>
-					<string>B82A534119C4FEF4000C40D8</string>
-				</dict>
-			</array>
-			<key>projectRoot</key>
-			<string></string>
-			<key>targets</key>
-			<array>
-				<string>B885FE6C19C488F400EC1D32</string>
-				<string>B885FE8D19C488F500EC1D32</string>
-			</array>
-		</dict>
-		<key>B885FE6819C488F400EC1D32</key>
-		<dict>
-			<key>buildConfigurations</key>
-			<array>
-				<string>B885FE9D19C488F500EC1D32</string>
-				<string>B885FE9E19C488F500EC1D32</string>
-			</array>
-			<key>defaultConfigurationIsVisible</key>
-			<string>0</string>
-			<key>defaultConfigurationName</key>
-			<string>Release</string>
-			<key>isa</key>
-			<string>XCConfigurationList</string>
-		</dict>
-		<key>B885FE6919C488F400EC1D32</key>
-		<dict>
-			<key>buildActionMask</key>
-			<string>2147483647</string>
-			<key>files</key>
-			<array>
-				<string>B812392719D1FC28005EABDB</string>
-				<string>B812392319D1FC28005EABDB</string>
-				<string>B885CC8019E013BD003450F8</string>
-				<string>B812393119D201F2005EABDB</string>
-				<string>B8DEF87919E07A8F00F2F453</string>
-				<string>B812392919D1FC28005EABDB</string>
-				<string>B885FEB519C4ABBC00EC1D32</string>
-				<string>B885CC7119E010E5003450F8</string>
-				<string>B86104D719CDA187001DB753</string>
-				<string>B812392619D1FC28005EABDB</string>
-				<string>B885CC7E19E013BD003450F8</string>
-				<string>B8DEF87519E06FA100F2F453</string>
-				<string>B885FEB419C4ABBC00EC1D32</string>
-				<string>B885FE8119C488F400EC1D32</string>
-				<string>B885FEAF19C4AB3000EC1D32</string>
-				<string>B812392E19D201A4005EABDB</string>
-				<string>B86104DA19CDA28E001DB753</string>
-				<string>B8DEF86E19E0474900F2F453</string>
-				<string>B8DEF86B19E041F700F2F453</string>
-				<string>B812392819D1FC28005EABDB</string>
-				<string>B885FE7D19C488F400EC1D32</string>
-				<string>B885CC8319E01B58003450F8</string>
-				<string>B86104D419CDA16D001DB753</string>
-				<string>B812392519D1FC28005EABDB</string>
-				<string>B8DEF86619E03BBB00F2F453</string>
-				<string>B885CC7F19E013BD003450F8</string>
-				<string>B885CC7D19E013BD003450F8</string>
-			</array>
-			<key>isa</key>
-			<string>PBXSourcesBuildPhase</string>
-			<key>runOnlyForDeploymentPostprocessing</key>
-			<string>0</string>
-		</dict>
-		<key>B885FE6A19C488F400EC1D32</key>
-		<dict>
-			<key>buildActionMask</key>
-			<string>2147483647</string>
-			<key>files</key>
-			<array>
-				<string>B86104CC19CD9671001DB753</string>
-				<string>B82A534C19C4FF5F000C40D8</string>
-				<string>B82A534019C4F645000C40D8</string>
-				<string>B82A533E19C4F63E000C40D8</string>
-				<string>B82A533C19C4F632000C40D8</string>
-				<string>B82A533A19C4F623000C40D8</string>
-				<string>B82A533819C4F612000C40D8</string>
-				<string>B82A533619C4F5F1000C40D8</string>
-				<string>B82A533419C4F5E6000C40D8</string>
-				<string>B885FEF719C4C7CE00EC1D32</string>
-				<string>B885FE7319C488F400EC1D32</string>
-				<string>B885FE7119C488F400EC1D32</string>
-				<string>349CEB9FD7339389AF16EA91</string>
-			</array>
-			<key>isa</key>
-			<string>PBXFrameworksBuildPhase</string>
-			<key>runOnlyForDeploymentPostprocessing</key>
-			<string>0</string>
-		</dict>
-		<key>B885FE6B19C488F400EC1D32</key>
-		<dict>
-			<key>buildActionMask</key>
-			<string>2147483647</string>
-			<key>files</key>
-			<array>
-				<string>B885FE8919C488F500EC1D32</string>
-				<string>B885FE7B19C488F400EC1D32</string>
-				<string>B885FE8419C488F400EC1D32</string>
-			</array>
-			<key>isa</key>
-			<string>PBXResourcesBuildPhase</string>
-			<key>runOnlyForDeploymentPostprocessing</key>
-			<string>0</string>
-		</dict>
-		<key>B885FE6C19C488F400EC1D32</key>
-		<dict>
-			<key>buildConfigurationList</key>
-			<string>B885FE9F19C488F500EC1D32</string>
-			<key>buildPhases</key>
-			<array>
-				<string>359F0F1764F0F07C35A1BC8B</string>
-				<string>B885FE6919C488F400EC1D32</string>
-				<string>B885FE6A19C488F400EC1D32</string>
-				<string>B885FE6B19C488F400EC1D32</string>
-				<string>3644111C96B7D757AB6DD609</string>
-			</array>
-			<key>buildRules</key>
-			<array/>
-			<key>dependencies</key>
-			<array>
-				<string>B82A534B19C4FF33000C40D8</string>
-			</array>
-			<key>isa</key>
-			<string>PBXNativeTarget</string>
-			<key>name</key>
-			<string>SpotifyAlarmClock</string>
-			<key>productName</key>
-			<string>SpotifyAlarmClock</string>
-			<key>productReference</key>
-			<string>B885FE6D19C488F400EC1D32</string>
-			<key>productType</key>
-			<string>com.apple.product-type.application</string>
-		</dict>
-		<key>B885FE6D19C488F400EC1D32</key>
-		<dict>
-			<key>explicitFileType</key>
-			<string>wrapper.application</string>
-			<key>includeInIndex</key>
-			<string>0</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>path</key>
-			<string>SpotifyAlarmClock.app</string>
-			<key>sourceTree</key>
-			<string>BUILT_PRODUCTS_DIR</string>
-		</dict>
-		<key>B885FE6E19C488F400EC1D32</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>B885FE6D19C488F400EC1D32</string>
-				<string>B885FE8E19C488F500EC1D32</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>name</key>
-			<string>Products</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>B885FE6F19C488F400EC1D32</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>B86104CB19CD9671001DB753</string>
-				<string>B82A533F19C4F645000C40D8</string>
-				<string>B82A533D19C4F63E000C40D8</string>
-				<string>B82A533B19C4F632000C40D8</string>
-				<string>B82A533919C4F623000C40D8</string>
-				<string>B82A533719C4F612000C40D8</string>
-				<string>B82A533519C4F5F1000C40D8</string>
-				<string>B82A533319C4F5E6000C40D8</string>
-				<string>B885FE7019C488F400EC1D32</string>
-				<string>B885FE7219C488F400EC1D32</string>
-				<string>B885FE7419C488F400EC1D32</string>
-				<string>B885FE8F19C488F500EC1D32</string>
-				<string>C92F5708CCED2BA4D9ECCF61</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>name</key>
-			<string>Frameworks</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>B885FE7019C488F400EC1D32</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>wrapper.framework</string>
-			<key>name</key>
-			<string>Foundation.framework</string>
-			<key>path</key>
-			<string>System/Library/Frameworks/Foundation.framework</string>
-			<key>sourceTree</key>
-			<string>SDKROOT</string>
-		</dict>
-		<key>B885FE7119C488F400EC1D32</key>
-		<dict>
-			<key>fileRef</key>
-			<string>B885FE7019C488F400EC1D32</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>B885FE7219C488F400EC1D32</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>wrapper.framework</string>
-			<key>name</key>
-			<string>CoreGraphics.framework</string>
-			<key>path</key>
-			<string>System/Library/Frameworks/CoreGraphics.framework</string>
-			<key>sourceTree</key>
-			<string>SDKROOT</string>
-		</dict>
-		<key>B885FE7319C488F400EC1D32</key>
-		<dict>
-			<key>fileRef</key>
-			<string>B885FE7219C488F400EC1D32</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>B885FE7419C488F400EC1D32</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>wrapper.framework</string>
-			<key>name</key>
-			<string>UIKit.framework</string>
-			<key>path</key>
-			<string>System/Library/Frameworks/UIKit.framework</string>
-			<key>sourceTree</key>
-			<string>SDKROOT</string>
-		</dict>
-		<key>B885FE7619C488F400EC1D32</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>B885CC7219E01227003450F8</string>
-				<string>B812390C19D1FC28005EABDB</string>
-				<string>B86104D119CDA139001DB753</string>
-				<string>B885FEAB19C4AB3000EC1D32</string>
-				<string>B885FE7719C488F400EC1D32</string>
-				<string>B885FE8019C488F400EC1D32</string>
-				<string>B885FE7F19C488F400EC1D32</string>
-				<string>B885FE8819C488F500EC1D32</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>path</key>
-			<string>SpotifyAlarmClock</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>B885FE7719C488F400EC1D32</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>B885FE7819C488F400EC1D32</string>
-				<string>B885FE7919C488F400EC1D32</string>
-				<string>B885FE7C19C488F400EC1D32</string>
-				<string>B885FE7E19C488F400EC1D32</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>name</key>
-			<string>Supporting Files</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>B885FE7819C488F400EC1D32</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>text.plist.xml</string>
-			<key>path</key>
-			<string>SpotifyAlarmClock-Info.plist</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>B885FE7919C488F400EC1D32</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>B885FE7A19C488F400EC1D32</string>
-			</array>
-			<key>isa</key>
-			<string>PBXVariantGroup</string>
-			<key>name</key>
-			<string>InfoPlist.strings</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>B885FE7A19C488F400EC1D32</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>text.plist.strings</string>
-			<key>name</key>
-			<string>en</string>
-			<key>path</key>
-			<string>en.lproj/InfoPlist.strings</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>B885FE7B19C488F400EC1D32</key>
-		<dict>
-			<key>fileRef</key>
-			<string>B885FE7919C488F400EC1D32</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>B885FE7C19C488F400EC1D32</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>path</key>
-			<string>main.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>B885FE7D19C488F400EC1D32</key>
-		<dict>
-			<key>fileRef</key>
-			<string>B885FE7C19C488F400EC1D32</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>B885FE7E19C488F400EC1D32</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>path</key>
-			<string>SpotifyAlarmClock-Prefix.pch</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>B885FE7F19C488F400EC1D32</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>path</key>
-			<string>AppDelegate.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>B885FE8019C488F400EC1D32</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>path</key>
-			<string>AppDelegate.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>B885FE8119C488F400EC1D32</key>
-		<dict>
-			<key>fileRef</key>
-			<string>B885FE8019C488F400EC1D32</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>B885FE8219C488F400EC1D32</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>B885FE8319C488F400EC1D32</string>
-			</array>
-			<key>isa</key>
-			<string>PBXVariantGroup</string>
-			<key>name</key>
-			<string>Main.storyboard</string>
-			<key>path</key>
-			<string>..</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>B885FE8319C488F400EC1D32</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>file.storyboard</string>
-			<key>name</key>
-			<string>Base</string>
-			<key>path</key>
-			<string>Base.lproj/Main.storyboard</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>B885FE8419C488F400EC1D32</key>
-		<dict>
-			<key>fileRef</key>
-			<string>B885FE8219C488F400EC1D32</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>B885FE8819C488F500EC1D32</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>folder.assetcatalog</string>
-			<key>path</key>
-			<string>Images.xcassets</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>B885FE8919C488F500EC1D32</key>
-		<dict>
-			<key>fileRef</key>
-			<string>B885FE8819C488F500EC1D32</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>B885FE8A19C488F500EC1D32</key>
-		<dict>
-			<key>buildActionMask</key>
-			<string>2147483647</string>
-			<key>files</key>
-			<array>
-				<string>B885FE9C19C488F500EC1D32</string>
-			</array>
-			<key>isa</key>
-			<string>PBXSourcesBuildPhase</string>
-			<key>runOnlyForDeploymentPostprocessing</key>
-			<string>0</string>
-		</dict>
-		<key>B885FE8B19C488F500EC1D32</key>
-		<dict>
-			<key>buildActionMask</key>
-			<string>2147483647</string>
-			<key>files</key>
-			<array>
-				<string>B885FE9019C488F500EC1D32</string>
-				<string>B885FE9219C488F500EC1D32</string>
-				<string>B885FE9119C488F500EC1D32</string>
-			</array>
-			<key>isa</key>
-			<string>PBXFrameworksBuildPhase</string>
-			<key>runOnlyForDeploymentPostprocessing</key>
-			<string>0</string>
-		</dict>
-		<key>B885FE8C19C488F500EC1D32</key>
-		<dict>
-			<key>buildActionMask</key>
-			<string>2147483647</string>
-			<key>files</key>
-			<array>
-				<string>B885FE9A19C488F500EC1D32</string>
-			</array>
-			<key>isa</key>
-			<string>PBXResourcesBuildPhase</string>
-			<key>runOnlyForDeploymentPostprocessing</key>
-			<string>0</string>
-		</dict>
-		<key>B885FE8D19C488F500EC1D32</key>
-		<dict>
-			<key>buildConfigurationList</key>
-			<string>B885FEA219C488F500EC1D32</string>
-			<key>buildPhases</key>
-			<array>
-				<string>B885FE8A19C488F500EC1D32</string>
-				<string>B885FE8B19C488F500EC1D32</string>
-				<string>B885FE8C19C488F500EC1D32</string>
-			</array>
-			<key>buildRules</key>
-			<array/>
-			<key>dependencies</key>
-			<array>
-				<string>B885FE9419C488F500EC1D32</string>
-			</array>
-			<key>isa</key>
-			<string>PBXNativeTarget</string>
-			<key>name</key>
-			<string>SpotifyAlarmClockTests</string>
-			<key>productName</key>
-			<string>SpotifyAlarmClockTests</string>
-			<key>productReference</key>
-			<string>B885FE8E19C488F500EC1D32</string>
-			<key>productType</key>
-			<string>com.apple.product-type.bundle.unit-test</string>
-		</dict>
-		<key>B885FE8E19C488F500EC1D32</key>
-		<dict>
-			<key>explicitFileType</key>
-			<string>wrapper.cfbundle</string>
-			<key>includeInIndex</key>
-			<string>0</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>path</key>
-			<string>SpotifyAlarmClockTests.xctest</string>
-			<key>sourceTree</key>
-			<string>BUILT_PRODUCTS_DIR</string>
-		</dict>
-		<key>B885FE8F19C488F500EC1D32</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>wrapper.framework</string>
-			<key>name</key>
-			<string>XCTest.framework</string>
-			<key>path</key>
-			<string>Library/Frameworks/XCTest.framework</string>
-			<key>sourceTree</key>
-			<string>DEVELOPER_DIR</string>
-		</dict>
-		<key>B885FE9019C488F500EC1D32</key>
-		<dict>
-			<key>fileRef</key>
-			<string>B885FE8F19C488F500EC1D32</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>B885FE9119C488F500EC1D32</key>
-		<dict>
-			<key>fileRef</key>
-			<string>B885FE7019C488F400EC1D32</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>B885FE9219C488F500EC1D32</key>
-		<dict>
-			<key>fileRef</key>
-			<string>B885FE7419C488F400EC1D32</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>B885FE9319C488F500EC1D32</key>
-		<dict>
-			<key>containerPortal</key>
-			<string>B885FE6519C488F400EC1D32</string>
-			<key>isa</key>
-			<string>PBXContainerItemProxy</string>
-			<key>proxyType</key>
-			<string>1</string>
-			<key>remoteGlobalIDString</key>
-			<string>B885FE6C19C488F400EC1D32</string>
-			<key>remoteInfo</key>
-			<string>SpotifyAlarmClock</string>
-		</dict>
-		<key>B885FE9419C488F500EC1D32</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXTargetDependency</string>
-			<key>target</key>
-			<string>B885FE6C19C488F400EC1D32</string>
-			<key>targetProxy</key>
-			<string>B885FE9319C488F500EC1D32</string>
-		</dict>
-		<key>B885FE9519C488F500EC1D32</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>B885FE9B19C488F500EC1D32</string>
-				<string>B885FE9619C488F500EC1D32</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>path</key>
-			<string>SpotifyAlarmClockTests</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>B885FE9619C488F500EC1D32</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>B885FE9719C488F500EC1D32</string>
-				<string>B885FE9819C488F500EC1D32</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>name</key>
-			<string>Supporting Files</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>B885FE9719C488F500EC1D32</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>text.plist.xml</string>
-			<key>path</key>
-			<string>SpotifyAlarmClockTests-Info.plist</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>B885FE9819C488F500EC1D32</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>B885FE9919C488F500EC1D32</string>
-			</array>
-			<key>isa</key>
-			<string>PBXVariantGroup</string>
-			<key>name</key>
-			<string>InfoPlist.strings</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>B885FE9919C488F500EC1D32</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>text.plist.strings</string>
-			<key>name</key>
-			<string>en</string>
-			<key>path</key>
-			<string>en.lproj/InfoPlist.strings</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>B885FE9A19C488F500EC1D32</key>
-		<dict>
-			<key>fileRef</key>
-			<string>B885FE9819C488F500EC1D32</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>B885FE9B19C488F500EC1D32</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>path</key>
-			<string>SpotifyAlarmClockTests.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>B885FE9C19C488F500EC1D32</key>
-		<dict>
-			<key>fileRef</key>
-			<string>B885FE9B19C488F500EC1D32</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>B885FE9D19C488F500EC1D32</key>
-		<dict>
-			<key>buildSettings</key>
-			<dict>
-				<key>ALWAYS_SEARCH_USER_PATHS</key>
-				<string>NO</string>
-				<key>CLANG_CXX_LANGUAGE_STANDARD</key>
-				<string>gnu++0x</string>
-				<key>CLANG_CXX_LIBRARY</key>
-				<string>libc++</string>
-				<key>CLANG_ENABLE_MODULES</key>
-				<string>YES</string>
-				<key>CLANG_ENABLE_OBJC_ARC</key>
-				<string>YES</string>
-				<key>CLANG_WARN_BOOL_CONVERSION</key>
-				<string>YES</string>
-				<key>CLANG_WARN_CONSTANT_CONVERSION</key>
-				<string>YES</string>
-				<key>CLANG_WARN_DIRECT_OBJC_ISA_USAGE</key>
-				<string>YES_ERROR</string>
-				<key>CLANG_WARN_EMPTY_BODY</key>
-				<string>YES</string>
-				<key>CLANG_WARN_ENUM_CONVERSION</key>
-				<string>YES</string>
-				<key>CLANG_WARN_INT_CONVERSION</key>
-				<string>YES</string>
-				<key>CLANG_WARN_OBJC_ROOT_CLASS</key>
-				<string>YES_ERROR</string>
-				<key>CLANG_WARN__DUPLICATE_METHOD_MATCH</key>
-				<string>YES</string>
-				<key>CODE_SIGN_IDENTITY[sdk=iphoneos*]</key>
-				<string>iPhone Developer</string>
-				<key>COPY_PHASE_STRIP</key>
-				<string>NO</string>
-				<key>GCC_C_LANGUAGE_STANDARD</key>
-				<string>gnu99</string>
-				<key>GCC_DYNAMIC_NO_PIC</key>
-				<string>NO</string>
-				<key>GCC_OPTIMIZATION_LEVEL</key>
-				<string>0</string>
-				<key>GCC_PREPROCESSOR_DEFINITIONS</key>
-				<array>
-					<string>DEBUG=1</string>
-					<string>$(inherited)</string>
-				</array>
-				<key>GCC_SYMBOLS_PRIVATE_EXTERN</key>
-				<string>NO</string>
-				<key>GCC_WARN_64_TO_32_BIT_CONVERSION</key>
-				<string>YES</string>
-				<key>GCC_WARN_ABOUT_RETURN_TYPE</key>
-				<string>YES_ERROR</string>
-				<key>GCC_WARN_UNDECLARED_SELECTOR</key>
-				<string>YES</string>
-				<key>GCC_WARN_UNINITIALIZED_AUTOS</key>
-				<string>YES_AGGRESSIVE</string>
-				<key>GCC_WARN_UNUSED_FUNCTION</key>
-				<string>YES</string>
-				<key>GCC_WARN_UNUSED_VARIABLE</key>
-				<string>YES</string>
-				<key>IPHONEOS_DEPLOYMENT_TARGET</key>
-				<string>7.1</string>
-				<key>LIBRARY_SEARCH_PATHS</key>
-				<string>"/Users/Niels/Documents/Development/Iphone Applicaties/SpotifyAlarmClock/Libraries"</string>
-				<key>ONLY_ACTIVE_ARCH</key>
-				<string>NO</string>
-				<key>SDKROOT</key>
-				<string>iphoneos</string>
-				<key>VALID_ARCHS</key>
-				<string>armv7 armv7s</string>
-			</dict>
-			<key>isa</key>
-			<string>XCBuildConfiguration</string>
-			<key>name</key>
-			<string>Debug</string>
-		</dict>
-		<key>B885FE9E19C488F500EC1D32</key>
-		<dict>
-			<key>buildSettings</key>
-			<dict>
-				<key>ALWAYS_SEARCH_USER_PATHS</key>
-				<string>NO</string>
-				<key>CLANG_CXX_LANGUAGE_STANDARD</key>
-				<string>gnu++0x</string>
-				<key>CLANG_CXX_LIBRARY</key>
-				<string>libc++</string>
-				<key>CLANG_ENABLE_MODULES</key>
-				<string>YES</string>
-				<key>CLANG_ENABLE_OBJC_ARC</key>
-				<string>YES</string>
-				<key>CLANG_WARN_BOOL_CONVERSION</key>
-				<string>YES</string>
-				<key>CLANG_WARN_CONSTANT_CONVERSION</key>
-				<string>YES</string>
-				<key>CLANG_WARN_DIRECT_OBJC_ISA_USAGE</key>
-				<string>YES_ERROR</string>
-				<key>CLANG_WARN_EMPTY_BODY</key>
-				<string>YES</string>
-				<key>CLANG_WARN_ENUM_CONVERSION</key>
-				<string>YES</string>
-				<key>CLANG_WARN_INT_CONVERSION</key>
-				<string>YES</string>
-				<key>CLANG_WARN_OBJC_ROOT_CLASS</key>
-				<string>YES_ERROR</string>
-				<key>CLANG_WARN__DUPLICATE_METHOD_MATCH</key>
-				<string>YES</string>
-				<key>CODE_SIGN_IDENTITY[sdk=iphoneos*]</key>
-				<string>iPhone Developer</string>
-				<key>COPY_PHASE_STRIP</key>
-				<string>YES</string>
-				<key>ENABLE_NS_ASSERTIONS</key>
-				<string>NO</string>
-				<key>GCC_C_LANGUAGE_STANDARD</key>
-				<string>gnu99</string>
-				<key>GCC_WARN_64_TO_32_BIT_CONVERSION</key>
-				<string>YES</string>
-				<key>GCC_WARN_ABOUT_RETURN_TYPE</key>
-				<string>YES_ERROR</string>
-				<key>GCC_WARN_UNDECLARED_SELECTOR</key>
-				<string>YES</string>
-				<key>GCC_WARN_UNINITIALIZED_AUTOS</key>
-				<string>YES_AGGRESSIVE</string>
-				<key>GCC_WARN_UNUSED_FUNCTION</key>
-				<string>YES</string>
-				<key>GCC_WARN_UNUSED_VARIABLE</key>
-				<string>YES</string>
-				<key>IPHONEOS_DEPLOYMENT_TARGET</key>
-				<string>7.1</string>
-				<key>LIBRARY_SEARCH_PATHS</key>
-				<string>"/Users/Niels/Documents/Development/Iphone Applicaties/SpotifyAlarmClock/Libraries"</string>
-				<key>SDKROOT</key>
-				<string>iphoneos</string>
-				<key>VALIDATE_PRODUCT</key>
-				<string>YES</string>
-				<key>VALID_ARCHS</key>
-				<string>armv7 armv7s</string>
-			</dict>
-			<key>isa</key>
-			<string>XCBuildConfiguration</string>
-			<key>name</key>
-			<string>Release</string>
-		</dict>
-		<key>B885FE9F19C488F500EC1D32</key>
-		<dict>
-			<key>buildConfigurations</key>
-			<array>
-				<string>B885FEA019C488F500EC1D32</string>
-				<string>B885FEA119C488F500EC1D32</string>
-			</array>
-			<key>defaultConfigurationIsVisible</key>
-			<string>0</string>
-			<key>defaultConfigurationName</key>
-			<string>Release</string>
-			<key>isa</key>
-			<string>XCConfigurationList</string>
-		</dict>
-		<key>B885FEA019C488F500EC1D32</key>
-		<dict>
-			<key>baseConfigurationReference</key>
-			<string>B8F5F34EBE107A7EEBA2420D</string>
-			<key>buildSettings</key>
-			<dict>
-				<key>ALWAYS_SEARCH_USER_PATHS</key>
-				<string>NO</string>
-				<key>ASSETCATALOG_COMPILER_APPICON_NAME</key>
-				<string>AppIcon</string>
-				<key>ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME</key>
-				<string>LaunchImage</string>
-				<key>CODE_SIGN_IDENTITY</key>
-				<string>iPhone Developer</string>
-				<key>CODE_SIGN_IDENTITY[sdk=iphoneos*]</key>
-				<string>iPhone Developer</string>
-				<key>FRAMEWORK_SEARCH_PATHS</key>
-				<string></string>
-				<key>GCC_PRECOMPILE_PREFIX_HEADER</key>
-				<string>YES</string>
-				<key>GCC_PREFIX_HEADER</key>
-				<string>SpotifyAlarmClock/SpotifyAlarmClock-Prefix.pch</string>
-				<key>INFOPLIST_FILE</key>
-				<string>SpotifyAlarmClock/SpotifyAlarmClock-Info.plist</string>
-				<key>LIBRARY_SEARCH_PATHS</key>
-				<string></string>
-				<key>OTHER_LDFLAGS</key>
-				<array>
-					<string>$(inherited)</string>
-					<string>-ObjC</string>
-					<string>-all_load</string>
-				</array>
-				<key>PRODUCT_NAME</key>
-				<string>$(TARGET_NAME)</string>
-				<key>PROVISIONING_PROFILE</key>
-				<string></string>
-				<key>TARGETED_DEVICE_FAMILY</key>
-				<string>1,2</string>
-				<key>VALID_ARCHS</key>
-				<string>armv7 armv7s</string>
-				<key>WRAPPER_EXTENSION</key>
-				<string>app</string>
-			</dict>
-			<key>isa</key>
-			<string>XCBuildConfiguration</string>
-			<key>name</key>
-			<string>Debug</string>
-		</dict>
-		<key>B885FEA119C488F500EC1D32</key>
-		<dict>
-			<key>baseConfigurationReference</key>
-			<string>8E9EC42A6CF7103BBBA32316</string>
-			<key>buildSettings</key>
-			<dict>
-				<key>ALWAYS_SEARCH_USER_PATHS</key>
-				<string>NO</string>
-				<key>ASSETCATALOG_COMPILER_APPICON_NAME</key>
-				<string>AppIcon</string>
-				<key>ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME</key>
-				<string>LaunchImage</string>
-				<key>CODE_SIGN_IDENTITY</key>
-				<string>iPhone Developer</string>
-				<key>CODE_SIGN_IDENTITY[sdk=iphoneos*]</key>
-				<string>iPhone Developer</string>
-				<key>FRAMEWORK_SEARCH_PATHS</key>
-				<string></string>
-				<key>GCC_PRECOMPILE_PREFIX_HEADER</key>
-				<string>YES</string>
-				<key>GCC_PREFIX_HEADER</key>
-				<string>SpotifyAlarmClock/SpotifyAlarmClock-Prefix.pch</string>
-				<key>INFOPLIST_FILE</key>
-				<string>SpotifyAlarmClock/SpotifyAlarmClock-Info.plist</string>
-				<key>LIBRARY_SEARCH_PATHS</key>
-				<string></string>
-				<key>OTHER_LDFLAGS</key>
-				<array>
-					<string>$(inherited)</string>
-					<string>-ObjC</string>
-					<string>-all_load</string>
-				</array>
-				<key>PRODUCT_NAME</key>
-				<string>$(TARGET_NAME)</string>
-				<key>PROVISIONING_PROFILE</key>
-				<string></string>
-				<key>TARGETED_DEVICE_FAMILY</key>
-				<string>1,2</string>
-				<key>VALID_ARCHS</key>
-				<string>armv7 armv7s</string>
-				<key>WRAPPER_EXTENSION</key>
-				<string>app</string>
-			</dict>
-			<key>isa</key>
-			<string>XCBuildConfiguration</string>
-			<key>name</key>
-			<string>Release</string>
-		</dict>
-		<key>B885FEA219C488F500EC1D32</key>
-		<dict>
-			<key>buildConfigurations</key>
-			<array>
-				<string>B885FEA319C488F500EC1D32</string>
-				<string>B885FEA419C488F500EC1D32</string>
-			</array>
-			<key>defaultConfigurationIsVisible</key>
-			<string>0</string>
-			<key>defaultConfigurationName</key>
-			<string>Release</string>
-			<key>isa</key>
-			<string>XCConfigurationList</string>
-		</dict>
-		<key>B885FEA319C488F500EC1D32</key>
-		<dict>
-			<key>buildSettings</key>
-			<dict>
-				<key>BUNDLE_LOADER</key>
-				<string>$(BUILT_PRODUCTS_DIR)/SpotifyAlarmClock.app/SpotifyAlarmClock</string>
-				<key>FRAMEWORK_SEARCH_PATHS</key>
-				<array>
-					<string>$(SDKROOT)/Developer/Library/Frameworks</string>
-					<string>$(inherited)</string>
-					<string>$(DEVELOPER_FRAMEWORKS_DIR)</string>
-				</array>
-				<key>GCC_PRECOMPILE_PREFIX_HEADER</key>
-				<string>YES</string>
-				<key>GCC_PREFIX_HEADER</key>
-				<string>SpotifyAlarmClock/SpotifyAlarmClock-Prefix.pch</string>
-				<key>GCC_PREPROCESSOR_DEFINITIONS</key>
-				<array>
-					<string>DEBUG=1</string>
-					<string>$(inherited)</string>
-				</array>
-				<key>INFOPLIST_FILE</key>
-				<string>SpotifyAlarmClockTests/SpotifyAlarmClockTests-Info.plist</string>
-				<key>PRODUCT_NAME</key>
-				<string>$(TARGET_NAME)</string>
-				<key>TEST_HOST</key>
-				<string>$(BUNDLE_LOADER)</string>
-				<key>WRAPPER_EXTENSION</key>
-				<string>xctest</string>
-			</dict>
-			<key>isa</key>
-			<string>XCBuildConfiguration</string>
-			<key>name</key>
-			<string>Debug</string>
-		</dict>
-		<key>B885FEA419C488F500EC1D32</key>
-		<dict>
-			<key>buildSettings</key>
-			<dict>
-				<key>BUNDLE_LOADER</key>
-				<string>$(BUILT_PRODUCTS_DIR)/SpotifyAlarmClock.app/SpotifyAlarmClock</string>
-				<key>FRAMEWORK_SEARCH_PATHS</key>
-				<array>
-					<string>$(SDKROOT)/Developer/Library/Frameworks</string>
-					<string>$(inherited)</string>
-					<string>$(DEVELOPER_FRAMEWORKS_DIR)</string>
-				</array>
-				<key>GCC_PRECOMPILE_PREFIX_HEADER</key>
-				<string>YES</string>
-				<key>GCC_PREFIX_HEADER</key>
-				<string>SpotifyAlarmClock/SpotifyAlarmClock-Prefix.pch</string>
-				<key>INFOPLIST_FILE</key>
-				<string>SpotifyAlarmClockTests/SpotifyAlarmClockTests-Info.plist</string>
-				<key>PRODUCT_NAME</key>
-				<string>$(TARGET_NAME)</string>
-				<key>TEST_HOST</key>
-				<string>$(BUNDLE_LOADER)</string>
-				<key>WRAPPER_EXTENSION</key>
-				<string>xctest</string>
-			</dict>
-			<key>isa</key>
-			<string>XCBuildConfiguration</string>
-			<key>name</key>
-			<string>Release</string>
-		</dict>
-		<key>B885FEAB19C4AB3000EC1D32</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>B885FEAC19C4AB3000EC1D32</string>
-				<string>B885CC8119E01B58003450F8</string>
-				<string>B885CC8219E01B58003450F8</string>
-				<string>B8DEF86C19E0474900F2F453</string>
-				<string>B8DEF86D19E0474900F2F453</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>path</key>
-			<string>Helpers</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>B885FEAC19C4AB3000EC1D32</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>B885FEB019C4ABBC00EC1D32</string>
-				<string>B885FEB119C4ABBC00EC1D32</string>
-				<string>B885FEB219C4ABBC00EC1D32</string>
-				<string>B885FEB319C4ABBC00EC1D32</string>
-				<string>B885FEAD19C4AB3000EC1D32</string>
-				<string>B885FEAE19C4AB3000EC1D32</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>path</key>
-			<string>SpotifyPlayer</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>B885FEAD19C4AB3000EC1D32</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>path</key>
-			<string>SpotifyPlayer.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>B885FEAE19C4AB3000EC1D32</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>path</key>
-			<string>SpotifyPlayer.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>B885FEAF19C4AB3000EC1D32</key>
-		<dict>
-			<key>fileRef</key>
-			<string>B885FEAE19C4AB3000EC1D32</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>B885FEB019C4ABBC00EC1D32</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.c</string>
-			<key>path</key>
-			<string>audio.c</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>B885FEB119C4ABBC00EC1D32</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>path</key>
-			<string>audio.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>B885FEB219C4ABBC00EC1D32</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>path</key>
-			<string>osx-audio.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>B885FEB319C4ABBC00EC1D32</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>path</key>
-			<string>queue.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>B885FEB419C4ABBC00EC1D32</key>
-		<dict>
-			<key>fileRef</key>
-			<string>B885FEB019C4ABBC00EC1D32</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>B885FEB519C4ABBC00EC1D32</key>
-		<dict>
-			<key>fileRef</key>
-			<string>B885FEB219C4ABBC00EC1D32</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>B885FEF719C4C7CE00EC1D32</key>
-		<dict>
-			<key>fileRef</key>
-			<string>B885FE7419C488F400EC1D32</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>B8DEF86419E03BBB00F2F453</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>path</key>
-			<string>LoadMoreCell.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>B8DEF86519E03BBB00F2F453</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>path</key>
-			<string>LoadMoreCell.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>B8DEF86619E03BBB00F2F453</key>
-		<dict>
-			<key>fileRef</key>
-			<string>B8DEF86519E03BBB00F2F453</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>B8DEF86819E041C600F2F453</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>B8DEF86919E041F700F2F453</string>
-				<string>B8DEF86A19E041F700F2F453</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>path</key>
-			<string>AllArtists</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>B8DEF86919E041F700F2F453</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>path</key>
-			<string>AllArtistsViewController.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>B8DEF86A19E041F700F2F453</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>path</key>
-			<string>AllArtistsViewController.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>B8DEF86B19E041F700F2F453</key>
-		<dict>
-			<key>fileRef</key>
-			<string>B8DEF86A19E041F700F2F453</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>B8DEF86C19E0474900F2F453</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>path</key>
-			<string>ArtistBrowseCache.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>B8DEF86D19E0474900F2F453</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>path</key>
-			<string>ArtistBrowseCache.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>B8DEF86E19E0474900F2F453</key>
-		<dict>
-			<key>fileRef</key>
-			<string>B8DEF86D19E0474900F2F453</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>B8DEF87219E06F8A00F2F453</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>B8DEF87319E06FA100F2F453</string>
-				<string>B8DEF87419E06FA100F2F453</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>path</key>
-			<string>AllAlbums</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>B8DEF87319E06FA100F2F453</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>path</key>
-			<string>AllAlbumsViewController.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>B8DEF87419E06FA100F2F453</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>path</key>
-			<string>AllAlbumsViewController.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>B8DEF87519E06FA100F2F453</key>
-		<dict>
-			<key>fileRef</key>
-			<string>B8DEF87419E06FA100F2F453</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>B8DEF87619E07A7C00F2F453</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>B8DEF87719E07A8F00F2F453</string>
-				<string>B8DEF87819E07A8F00F2F453</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>path</key>
-			<string>Artist</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>B8DEF87719E07A8F00F2F453</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>path</key>
-			<string>ArtistViewController.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>B8DEF87819E07A8F00F2F453</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>path</key>
-			<string>ArtistViewController.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>B8DEF87919E07A8F00F2F453</key>
-		<dict>
-			<key>fileRef</key>
-			<string>B8DEF87819E07A8F00F2F453</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>B8F5F34EBE107A7EEBA2420D</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>text.xcconfig</string>
-			<key>name</key>
-			<string>Pods-SpotifyAlarmClock.debug.xcconfig</string>
-			<key>path</key>
-			<string>Pods/Target Support Files/Pods-SpotifyAlarmClock/Pods-SpotifyAlarmClock.debug.xcconfig</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>C92F5708CCED2BA4D9ECCF61</key>
-		<dict>
-			<key>explicitFileType</key>
-			<string>archive.ar</string>
-			<key>includeInIndex</key>
-			<string>0</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>path</key>
-			<string>libPods-SpotifyAlarmClock.a</string>
-			<key>sourceTree</key>
-			<string>BUILT_PRODUCTS_DIR</string>
-		</dict>
-	</dict>
-	<key>rootObject</key>
-	<string>B885FE6519C488F400EC1D32</string>
-</dict>
-</plist>
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		349CEB9FD7339389AF16EA91 /* libPods-SpotifyAlarmClock.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C92F5708CCED2BA4D9ECCF61 /* libPods-SpotifyAlarmClock.a */; };
+		B812392319D1FC28005EABDB /* AddAlarmViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B812390F19D1FC28005EABDB /* AddAlarmViewController.m */; };
+		B812392519D1FC28005EABDB /* AlarmsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B812391419D1FC28005EABDB /* AlarmsViewController.m */; };
+		B812392619D1FC28005EABDB /* ClockViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B812391719D1FC28005EABDB /* ClockViewController.m */; };
+		B812392719D1FC28005EABDB /* Option.m in Sources */ = {isa = PBXBuildFile; fileRef = B812391A19D1FC28005EABDB /* Option.m */; };
+		B812392819D1FC28005EABDB /* OptionsSelectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B812391D19D1FC28005EABDB /* OptionsSelectViewController.m */; };
+		B812392919D1FC28005EABDB /* TextEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B812392219D1FC28005EABDB /* TextEditViewController.m */; };
+		B812392E19D201A4005EABDB /* SongsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B812392D19D201A4005EABDB /* SongsViewController.m */; };
+		B812393119D201F2005EABDB /* SongSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B812393019D201F2005EABDB /* SongSearchViewController.m */; };
+		B82A533419C4F5E6000C40D8 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B82A533319C4F5E6000C40D8 /* SystemConfiguration.framework */; };
+		B82A533619C4F5F1000C40D8 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B82A533519C4F5F1000C40D8 /* CFNetwork.framework */; };
+		B82A533819C4F612000C40D8 /* libstdc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B82A533719C4F612000C40D8 /* libstdc++.dylib */; };
+		B82A533A19C4F623000C40D8 /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B82A533919C4F623000C40D8 /* CoreAudio.framework */; };
+		B82A533C19C4F632000C40D8 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B82A533B19C4F632000C40D8 /* AudioToolbox.framework */; };
+		B82A533E19C4F63E000C40D8 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B82A533D19C4F63E000C40D8 /* AVFoundation.framework */; };
+		B82A534019C4F645000C40D8 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B82A533F19C4F645000C40D8 /* Security.framework */; };
+		B82A534C19C4FF5F000C40D8 /* libCocoaLibSpotify.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B82A534719C4FEF4000C40D8 /* libCocoaLibSpotify.a */; };
+		B86104CC19CD9671001DB753 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B86104CB19CD9671001DB753 /* CoreData.framework */; };
+		B86104D419CDA16D001DB753 /* AlarmSong.m in Sources */ = {isa = PBXBuildFile; fileRef = B86104D319CDA16D001DB753 /* AlarmSong.m */; };
+		B86104D719CDA187001DB753 /* Alarm.m in Sources */ = {isa = PBXBuildFile; fileRef = B86104D619CDA187001DB753 /* Alarm.m */; };
+		B86104DA19CDA28E001DB753 /* SpotifyAlarmClock.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B86104D819CDA28E001DB753 /* SpotifyAlarmClock.xcdatamodeld */; };
+		B885CC7119E010E5003450F8 /* AllTracksViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B885CC7019E010E5003450F8 /* AllTracksViewController.m */; };
+		B885CC7D19E013BD003450F8 /* AlarmCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B885CC7619E013BD003450F8 /* AlarmCell.m */; };
+		B885CC7E19E013BD003450F8 /* AlbumCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B885CC7819E013BD003450F8 /* AlbumCell.m */; };
+		B885CC7F19E013BD003450F8 /* ArtistCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B885CC7A19E013BD003450F8 /* ArtistCell.m */; };
+		B885CC8019E013BD003450F8 /* TrackCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B885CC7C19E013BD003450F8 /* TrackCell.m */; };
+		B885CC8319E01B58003450F8 /* MaskHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = B885CC8219E01B58003450F8 /* MaskHelper.m */; };
+		B885FE7119C488F400EC1D32 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B885FE7019C488F400EC1D32 /* Foundation.framework */; };
+		B885FE7319C488F400EC1D32 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B885FE7219C488F400EC1D32 /* CoreGraphics.framework */; };
+		B885FE7B19C488F400EC1D32 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = B885FE7919C488F400EC1D32 /* InfoPlist.strings */; };
+		B885FE7D19C488F400EC1D32 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B885FE7C19C488F400EC1D32 /* main.m */; };
+		B885FE8119C488F400EC1D32 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B885FE8019C488F400EC1D32 /* AppDelegate.m */; };
+		B885FE8419C488F400EC1D32 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B885FE8219C488F400EC1D32 /* Main.storyboard */; };
+		B885FE8919C488F500EC1D32 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B885FE8819C488F500EC1D32 /* Images.xcassets */; };
+		B885FE9019C488F500EC1D32 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B885FE8F19C488F500EC1D32 /* XCTest.framework */; };
+		B885FE9119C488F500EC1D32 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B885FE7019C488F400EC1D32 /* Foundation.framework */; };
+		B885FE9219C488F500EC1D32 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B885FE7419C488F400EC1D32 /* UIKit.framework */; };
+		B885FE9A19C488F500EC1D32 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = B885FE9819C488F500EC1D32 /* InfoPlist.strings */; };
+		B885FE9C19C488F500EC1D32 /* SpotifyAlarmClockTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B885FE9B19C488F500EC1D32 /* SpotifyAlarmClockTests.m */; };
+		B885FEAF19C4AB3000EC1D32 /* SpotifyPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = B885FEAE19C4AB3000EC1D32 /* SpotifyPlayer.m */; };
+		B885FEB419C4ABBC00EC1D32 /* audio.c in Sources */ = {isa = PBXBuildFile; fileRef = B885FEB019C4ABBC00EC1D32 /* audio.c */; };
+		B885FEB519C4ABBC00EC1D32 /* osx-audio.m in Sources */ = {isa = PBXBuildFile; fileRef = B885FEB219C4ABBC00EC1D32 /* osx-audio.m */; };
+		B885FEF719C4C7CE00EC1D32 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B885FE7419C488F400EC1D32 /* UIKit.framework */; };
+		B8D16E0519E1C94500B375D2 /* BlurredHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8D16E0419E1C94500B375D2 /* BlurredHeader.xib */; };
+		B8D16E0919E1CBF900B375D2 /* BlurredHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = B8D16E0819E1CBF900B375D2 /* BlurredHeaderView.m */; };
+		B8DEF86619E03BBB00F2F453 /* LoadMoreCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B8DEF86519E03BBB00F2F453 /* LoadMoreCell.m */; };
+		B8DEF86B19E041F700F2F453 /* AllArtistsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B8DEF86A19E041F700F2F453 /* AllArtistsViewController.m */; };
+		B8DEF86E19E0474900F2F453 /* ArtistBrowseCache.m in Sources */ = {isa = PBXBuildFile; fileRef = B8DEF86D19E0474900F2F453 /* ArtistBrowseCache.m */; };
+		B8DEF87519E06FA100F2F453 /* AllAlbumsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B8DEF87419E06FA100F2F453 /* AllAlbumsViewController.m */; };
+		B8DEF87919E07A8F00F2F453 /* ArtistViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B8DEF87819E07A8F00F2F453 /* ArtistViewController.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		B82A534619C4FEF4000C40D8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B82A534119C4FEF4000C40D8 /* CocoaLibSpotify iOS Library.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 50AF49DC1439CBFE00E4A5EF;
+			remoteInfo = CocoaLibSpotify;
+		};
+		B82A534819C4FEF4000C40D8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B82A534119C4FEF4000C40D8 /* CocoaLibSpotify iOS Library.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 50D4F52B156BCDE800E237DD;
+			remoteInfo = CocoaLSTests;
+		};
+		B82A534A19C4FF33000C40D8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B82A534119C4FEF4000C40D8 /* CocoaLibSpotify iOS Library.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 50AF49DB1439CBFE00E4A5EF;
+			remoteInfo = CocoaLibSpotify;
+		};
+		B885FE9319C488F500EC1D32 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B885FE6519C488F400EC1D32 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B885FE6C19C488F400EC1D32;
+			remoteInfo = SpotifyAlarmClock;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		8E9EC42A6CF7103BBBA32316 /* Pods-SpotifyAlarmClock.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SpotifyAlarmClock.release.xcconfig"; path = "Pods/Target Support Files/Pods-SpotifyAlarmClock/Pods-SpotifyAlarmClock.release.xcconfig"; sourceTree = "<group>"; };
+		B812390E19D1FC28005EABDB /* AddAlarmViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddAlarmViewController.h; sourceTree = "<group>"; };
+		B812390F19D1FC28005EABDB /* AddAlarmViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddAlarmViewController.m; sourceTree = "<group>"; };
+		B812391319D1FC28005EABDB /* AlarmsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlarmsViewController.h; sourceTree = "<group>"; };
+		B812391419D1FC28005EABDB /* AlarmsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlarmsViewController.m; sourceTree = "<group>"; };
+		B812391619D1FC28005EABDB /* ClockViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClockViewController.h; sourceTree = "<group>"; };
+		B812391719D1FC28005EABDB /* ClockViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClockViewController.m; sourceTree = "<group>"; };
+		B812391919D1FC28005EABDB /* Option.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Option.h; sourceTree = "<group>"; };
+		B812391A19D1FC28005EABDB /* Option.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Option.m; sourceTree = "<group>"; };
+		B812391B19D1FC28005EABDB /* OptionsSelectDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OptionsSelectDelegate.h; sourceTree = "<group>"; };
+		B812391C19D1FC28005EABDB /* OptionsSelectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OptionsSelectViewController.h; sourceTree = "<group>"; };
+		B812391D19D1FC28005EABDB /* OptionsSelectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OptionsSelectViewController.m; sourceTree = "<group>"; };
+		B812392019D1FC28005EABDB /* TextEditDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextEditDelegate.h; sourceTree = "<group>"; };
+		B812392119D1FC28005EABDB /* TextEditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextEditViewController.h; sourceTree = "<group>"; };
+		B812392219D1FC28005EABDB /* TextEditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextEditViewController.m; sourceTree = "<group>"; };
+		B812392C19D201A4005EABDB /* SongsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SongsViewController.h; sourceTree = "<group>"; };
+		B812392D19D201A4005EABDB /* SongsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SongsViewController.m; sourceTree = "<group>"; };
+		B812392F19D201F2005EABDB /* SongSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SongSearchViewController.h; sourceTree = "<group>"; };
+		B812393019D201F2005EABDB /* SongSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SongSearchViewController.m; sourceTree = "<group>"; };
+		B82A530D19C4E641000C40D8 /* appkey.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = appkey.h; path = SpotifyAlarmClock/appkey.h; sourceTree = "<group>"; };
+		B82A533319C4F5E6000C40D8 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		B82A533519C4F5F1000C40D8 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		B82A533719C4F612000C40D8 /* libstdc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.dylib"; path = "usr/lib/libstdc++.dylib"; sourceTree = SDKROOT; };
+		B82A533919C4F623000C40D8 /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
+		B82A533B19C4F632000C40D8 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		B82A533D19C4F63E000C40D8 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		B82A533F19C4F645000C40D8 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		B82A534119C4FEF4000C40D8 /* CocoaLibSpotify iOS Library.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = "CocoaLibSpotify iOS Library.xcodeproj"; path = "Libraries/cocoalibspotify-2.4.5/iOS Library/CocoaLibSpotify iOS Library.xcodeproj"; sourceTree = "<group>"; };
+		B86104CB19CD9671001DB753 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		B86104D219CDA16D001DB753 /* AlarmSong.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlarmSong.h; sourceTree = "<group>"; };
+		B86104D319CDA16D001DB753 /* AlarmSong.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlarmSong.m; sourceTree = "<group>"; };
+		B86104D519CDA187001DB753 /* Alarm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Alarm.h; sourceTree = "<group>"; };
+		B86104D619CDA187001DB753 /* Alarm.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Alarm.m; sourceTree = "<group>"; };
+		B86104D919CDA28E001DB753 /* SpotifyAlarmClock.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SpotifyAlarmClock.xcdatamodel; sourceTree = "<group>"; };
+		B885CC6F19E010E5003450F8 /* AllTracksViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AllTracksViewController.h; sourceTree = "<group>"; };
+		B885CC7019E010E5003450F8 /* AllTracksViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AllTracksViewController.m; sourceTree = "<group>"; };
+		B885CC7519E013BD003450F8 /* AlarmCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlarmCell.h; sourceTree = "<group>"; };
+		B885CC7619E013BD003450F8 /* AlarmCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlarmCell.m; sourceTree = "<group>"; };
+		B885CC7719E013BD003450F8 /* AlbumCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlbumCell.h; sourceTree = "<group>"; };
+		B885CC7819E013BD003450F8 /* AlbumCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlbumCell.m; sourceTree = "<group>"; };
+		B885CC7919E013BD003450F8 /* ArtistCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArtistCell.h; sourceTree = "<group>"; };
+		B885CC7A19E013BD003450F8 /* ArtistCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArtistCell.m; sourceTree = "<group>"; };
+		B885CC7B19E013BD003450F8 /* TrackCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrackCell.h; sourceTree = "<group>"; };
+		B885CC7C19E013BD003450F8 /* TrackCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TrackCell.m; sourceTree = "<group>"; };
+		B885CC8119E01B58003450F8 /* MaskHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MaskHelper.h; sourceTree = "<group>"; };
+		B885CC8219E01B58003450F8 /* MaskHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MaskHelper.m; sourceTree = "<group>"; };
+		B885FE6D19C488F400EC1D32 /* SpotifyAlarmClock.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpotifyAlarmClock.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B885FE7019C488F400EC1D32 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		B885FE7219C488F400EC1D32 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		B885FE7419C488F400EC1D32 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		B885FE7819C488F400EC1D32 /* SpotifyAlarmClock-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SpotifyAlarmClock-Info.plist"; sourceTree = "<group>"; };
+		B885FE7A19C488F400EC1D32 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		B885FE7C19C488F400EC1D32 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		B885FE7E19C488F400EC1D32 /* SpotifyAlarmClock-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SpotifyAlarmClock-Prefix.pch"; sourceTree = "<group>"; };
+		B885FE7F19C488F400EC1D32 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		B885FE8019C488F400EC1D32 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		B885FE8319C488F400EC1D32 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		B885FE8819C488F500EC1D32 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		B885FE8E19C488F500EC1D32 /* SpotifyAlarmClockTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SpotifyAlarmClockTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		B885FE8F19C488F500EC1D32 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		B885FE9719C488F500EC1D32 /* SpotifyAlarmClockTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SpotifyAlarmClockTests-Info.plist"; sourceTree = "<group>"; };
+		B885FE9919C488F500EC1D32 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		B885FE9B19C488F500EC1D32 /* SpotifyAlarmClockTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SpotifyAlarmClockTests.m; sourceTree = "<group>"; };
+		B885FEAD19C4AB3000EC1D32 /* SpotifyPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpotifyPlayer.h; sourceTree = "<group>"; };
+		B885FEAE19C4AB3000EC1D32 /* SpotifyPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpotifyPlayer.m; sourceTree = "<group>"; };
+		B885FEB019C4ABBC00EC1D32 /* audio.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = audio.c; sourceTree = "<group>"; };
+		B885FEB119C4ABBC00EC1D32 /* audio.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = audio.h; sourceTree = "<group>"; };
+		B885FEB219C4ABBC00EC1D32 /* osx-audio.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "osx-audio.m"; sourceTree = "<group>"; };
+		B885FEB319C4ABBC00EC1D32 /* queue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = queue.h; sourceTree = "<group>"; };
+		B8D16E0419E1C94500B375D2 /* BlurredHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BlurredHeader.xib; sourceTree = "<group>"; };
+		B8D16E0719E1CBF900B375D2 /* BlurredHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlurredHeaderView.h; sourceTree = "<group>"; };
+		B8D16E0819E1CBF900B375D2 /* BlurredHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlurredHeaderView.m; sourceTree = "<group>"; };
+		B8DEF86419E03BBB00F2F453 /* LoadMoreCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoadMoreCell.h; sourceTree = "<group>"; };
+		B8DEF86519E03BBB00F2F453 /* LoadMoreCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoadMoreCell.m; sourceTree = "<group>"; };
+		B8DEF86919E041F700F2F453 /* AllArtistsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AllArtistsViewController.h; sourceTree = "<group>"; };
+		B8DEF86A19E041F700F2F453 /* AllArtistsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AllArtistsViewController.m; sourceTree = "<group>"; };
+		B8DEF86C19E0474900F2F453 /* ArtistBrowseCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArtistBrowseCache.h; sourceTree = "<group>"; };
+		B8DEF86D19E0474900F2F453 /* ArtistBrowseCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArtistBrowseCache.m; sourceTree = "<group>"; };
+		B8DEF87319E06FA100F2F453 /* AllAlbumsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AllAlbumsViewController.h; sourceTree = "<group>"; };
+		B8DEF87419E06FA100F2F453 /* AllAlbumsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AllAlbumsViewController.m; sourceTree = "<group>"; };
+		B8DEF87719E07A8F00F2F453 /* ArtistViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArtistViewController.h; sourceTree = "<group>"; };
+		B8DEF87819E07A8F00F2F453 /* ArtistViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArtistViewController.m; sourceTree = "<group>"; };
+		B8F5F34EBE107A7EEBA2420D /* Pods-SpotifyAlarmClock.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SpotifyAlarmClock.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SpotifyAlarmClock/Pods-SpotifyAlarmClock.debug.xcconfig"; sourceTree = "<group>"; };
+		C92F5708CCED2BA4D9ECCF61 /* libPods-SpotifyAlarmClock.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SpotifyAlarmClock.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		B885FE6A19C488F400EC1D32 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B86104CC19CD9671001DB753 /* CoreData.framework in Frameworks */,
+				B82A534C19C4FF5F000C40D8 /* libCocoaLibSpotify.a in Frameworks */,
+				B82A534019C4F645000C40D8 /* Security.framework in Frameworks */,
+				B82A533E19C4F63E000C40D8 /* AVFoundation.framework in Frameworks */,
+				B82A533C19C4F632000C40D8 /* AudioToolbox.framework in Frameworks */,
+				B82A533A19C4F623000C40D8 /* CoreAudio.framework in Frameworks */,
+				B82A533819C4F612000C40D8 /* libstdc++.dylib in Frameworks */,
+				B82A533619C4F5F1000C40D8 /* CFNetwork.framework in Frameworks */,
+				B82A533419C4F5E6000C40D8 /* SystemConfiguration.framework in Frameworks */,
+				B885FEF719C4C7CE00EC1D32 /* UIKit.framework in Frameworks */,
+				B885FE7319C488F400EC1D32 /* CoreGraphics.framework in Frameworks */,
+				B885FE7119C488F400EC1D32 /* Foundation.framework in Frameworks */,
+				349CEB9FD7339389AF16EA91 /* libPods-SpotifyAlarmClock.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B885FE8B19C488F500EC1D32 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B885FE9019C488F500EC1D32 /* XCTest.framework in Frameworks */,
+				B885FE9219C488F500EC1D32 /* UIKit.framework in Frameworks */,
+				B885FE9119C488F500EC1D32 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		1171D0A98CF3340716EFFB96 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				B8F5F34EBE107A7EEBA2420D /* Pods-SpotifyAlarmClock.debug.xcconfig */,
+				8E9EC42A6CF7103BBBA32316 /* Pods-SpotifyAlarmClock.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		B812390C19D1FC28005EABDB /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				B8DEF87619E07A7C00F2F453 /* Artist */,
+				B8DEF87219E06F8A00F2F453 /* AllAlbums */,
+				B8DEF86819E041C600F2F453 /* AllArtists */,
+				B885CC6D19E010C2003450F8 /* AllTracks */,
+				B812392B19D20177005EABDB /* SongSearch */,
+				B812392A19D20126005EABDB /* Songs */,
+				B812390D19D1FC28005EABDB /* AddAlarm */,
+				B812391019D1FC28005EABDB /* Alarms */,
+				B812391519D1FC28005EABDB /* Clock */,
+				B812391819D1FC28005EABDB /* OptionsSelect */,
+				B812391E19D1FC28005EABDB /* Settings */,
+				B812391F19D1FC28005EABDB /* TextEdit */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		B812390D19D1FC28005EABDB /* AddAlarm */ = {
+			isa = PBXGroup;
+			children = (
+				B812390E19D1FC28005EABDB /* AddAlarmViewController.h */,
+				B812390F19D1FC28005EABDB /* AddAlarmViewController.m */,
+			);
+			path = AddAlarm;
+			sourceTree = "<group>";
+		};
+		B812391019D1FC28005EABDB /* Alarms */ = {
+			isa = PBXGroup;
+			children = (
+				B812391319D1FC28005EABDB /* AlarmsViewController.h */,
+				B812391419D1FC28005EABDB /* AlarmsViewController.m */,
+			);
+			path = Alarms;
+			sourceTree = "<group>";
+		};
+		B812391519D1FC28005EABDB /* Clock */ = {
+			isa = PBXGroup;
+			children = (
+				B812391619D1FC28005EABDB /* ClockViewController.h */,
+				B812391719D1FC28005EABDB /* ClockViewController.m */,
+			);
+			path = Clock;
+			sourceTree = "<group>";
+		};
+		B812391819D1FC28005EABDB /* OptionsSelect */ = {
+			isa = PBXGroup;
+			children = (
+				B812391919D1FC28005EABDB /* Option.h */,
+				B812391A19D1FC28005EABDB /* Option.m */,
+				B812391B19D1FC28005EABDB /* OptionsSelectDelegate.h */,
+				B812391C19D1FC28005EABDB /* OptionsSelectViewController.h */,
+				B812391D19D1FC28005EABDB /* OptionsSelectViewController.m */,
+			);
+			path = OptionsSelect;
+			sourceTree = "<group>";
+		};
+		B812391E19D1FC28005EABDB /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		B812391F19D1FC28005EABDB /* TextEdit */ = {
+			isa = PBXGroup;
+			children = (
+				B812392019D1FC28005EABDB /* TextEditDelegate.h */,
+				B812392119D1FC28005EABDB /* TextEditViewController.h */,
+				B812392219D1FC28005EABDB /* TextEditViewController.m */,
+			);
+			path = TextEdit;
+			sourceTree = "<group>";
+		};
+		B812392A19D20126005EABDB /* Songs */ = {
+			isa = PBXGroup;
+			children = (
+				B812392C19D201A4005EABDB /* SongsViewController.h */,
+				B812392D19D201A4005EABDB /* SongsViewController.m */,
+			);
+			path = Songs;
+			sourceTree = "<group>";
+		};
+		B812392B19D20177005EABDB /* SongSearch */ = {
+			isa = PBXGroup;
+			children = (
+				B812392F19D201F2005EABDB /* SongSearchViewController.h */,
+				B812393019D201F2005EABDB /* SongSearchViewController.m */,
+			);
+			path = SongSearch;
+			sourceTree = "<group>";
+		};
+		B82A534219C4FEF4000C40D8 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				B82A534719C4FEF4000C40D8 /* libCocoaLibSpotify.a */,
+				B82A534919C4FEF4000C40D8 /* CocoaLSTests.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		B86104D119CDA139001DB753 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				B86104D819CDA28E001DB753 /* SpotifyAlarmClock.xcdatamodeld */,
+				B86104D219CDA16D001DB753 /* AlarmSong.h */,
+				B86104D319CDA16D001DB753 /* AlarmSong.m */,
+				B86104D519CDA187001DB753 /* Alarm.h */,
+				B86104D619CDA187001DB753 /* Alarm.m */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		B885CC6D19E010C2003450F8 /* AllTracks */ = {
+			isa = PBXGroup;
+			children = (
+				B885CC6F19E010E5003450F8 /* AllTracksViewController.h */,
+				B885CC7019E010E5003450F8 /* AllTracksViewController.m */,
+			);
+			path = AllTracks;
+			sourceTree = "<group>";
+		};
+		B885CC7219E01227003450F8 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				B885FE8219C488F400EC1D32 /* Main.storyboard */,
+				B8D16E0419E1C94500B375D2 /* BlurredHeader.xib */,
+				B8D16E0719E1CBF900B375D2 /* BlurredHeaderView.h */,
+				B8D16E0819E1CBF900B375D2 /* BlurredHeaderView.m */,
+				B885CC7419E013BD003450F8 /* Cells */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		B885CC7419E013BD003450F8 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				B885CC7519E013BD003450F8 /* AlarmCell.h */,
+				B885CC7619E013BD003450F8 /* AlarmCell.m */,
+				B885CC7719E013BD003450F8 /* AlbumCell.h */,
+				B885CC7819E013BD003450F8 /* AlbumCell.m */,
+				B885CC7919E013BD003450F8 /* ArtistCell.h */,
+				B885CC7A19E013BD003450F8 /* ArtistCell.m */,
+				B885CC7B19E013BD003450F8 /* TrackCell.h */,
+				B885CC7C19E013BD003450F8 /* TrackCell.m */,
+				B8DEF86419E03BBB00F2F453 /* LoadMoreCell.h */,
+				B8DEF86519E03BBB00F2F453 /* LoadMoreCell.m */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		B885FE6419C488F400EC1D32 = {
+			isa = PBXGroup;
+			children = (
+				B82A534119C4FEF4000C40D8 /* CocoaLibSpotify iOS Library.xcodeproj */,
+				B82A530D19C4E641000C40D8 /* appkey.h */,
+				B885FE7619C488F400EC1D32 /* SpotifyAlarmClock */,
+				B885FE9519C488F500EC1D32 /* SpotifyAlarmClockTests */,
+				B885FE6F19C488F400EC1D32 /* Frameworks */,
+				B885FE6E19C488F400EC1D32 /* Products */,
+				1171D0A98CF3340716EFFB96 /* Pods */,
+			);
+			sourceTree = "<group>";
+		};
+		B885FE6E19C488F400EC1D32 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				B885FE6D19C488F400EC1D32 /* SpotifyAlarmClock.app */,
+				B885FE8E19C488F500EC1D32 /* SpotifyAlarmClockTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		B885FE6F19C488F400EC1D32 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B86104CB19CD9671001DB753 /* CoreData.framework */,
+				B82A533F19C4F645000C40D8 /* Security.framework */,
+				B82A533D19C4F63E000C40D8 /* AVFoundation.framework */,
+				B82A533B19C4F632000C40D8 /* AudioToolbox.framework */,
+				B82A533919C4F623000C40D8 /* CoreAudio.framework */,
+				B82A533719C4F612000C40D8 /* libstdc++.dylib */,
+				B82A533519C4F5F1000C40D8 /* CFNetwork.framework */,
+				B82A533319C4F5E6000C40D8 /* SystemConfiguration.framework */,
+				B885FE7019C488F400EC1D32 /* Foundation.framework */,
+				B885FE7219C488F400EC1D32 /* CoreGraphics.framework */,
+				B885FE7419C488F400EC1D32 /* UIKit.framework */,
+				B885FE8F19C488F500EC1D32 /* XCTest.framework */,
+				C92F5708CCED2BA4D9ECCF61 /* libPods-SpotifyAlarmClock.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		B885FE7619C488F400EC1D32 /* SpotifyAlarmClock */ = {
+			isa = PBXGroup;
+			children = (
+				B885CC7219E01227003450F8 /* Views */,
+				B812390C19D1FC28005EABDB /* Controllers */,
+				B86104D119CDA139001DB753 /* Models */,
+				B885FEAB19C4AB3000EC1D32 /* Helpers */,
+				B885FE7719C488F400EC1D32 /* Supporting Files */,
+				B885FE8019C488F400EC1D32 /* AppDelegate.m */,
+				B885FE7F19C488F400EC1D32 /* AppDelegate.h */,
+				B885FE8819C488F500EC1D32 /* Images.xcassets */,
+			);
+			path = SpotifyAlarmClock;
+			sourceTree = "<group>";
+		};
+		B885FE7719C488F400EC1D32 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				B885FE7819C488F400EC1D32 /* SpotifyAlarmClock-Info.plist */,
+				B885FE7919C488F400EC1D32 /* InfoPlist.strings */,
+				B885FE7C19C488F400EC1D32 /* main.m */,
+				B885FE7E19C488F400EC1D32 /* SpotifyAlarmClock-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		B885FE9519C488F500EC1D32 /* SpotifyAlarmClockTests */ = {
+			isa = PBXGroup;
+			children = (
+				B885FE9B19C488F500EC1D32 /* SpotifyAlarmClockTests.m */,
+				B885FE9619C488F500EC1D32 /* Supporting Files */,
+			);
+			path = SpotifyAlarmClockTests;
+			sourceTree = "<group>";
+		};
+		B885FE9619C488F500EC1D32 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				B885FE9719C488F500EC1D32 /* SpotifyAlarmClockTests-Info.plist */,
+				B885FE9819C488F500EC1D32 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		B885FEAB19C4AB3000EC1D32 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				B885FEAC19C4AB3000EC1D32 /* SpotifyPlayer */,
+				B885CC8119E01B58003450F8 /* MaskHelper.h */,
+				B885CC8219E01B58003450F8 /* MaskHelper.m */,
+				B8DEF86C19E0474900F2F453 /* ArtistBrowseCache.h */,
+				B8DEF86D19E0474900F2F453 /* ArtistBrowseCache.m */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		B885FEAC19C4AB3000EC1D32 /* SpotifyPlayer */ = {
+			isa = PBXGroup;
+			children = (
+				B885FEB019C4ABBC00EC1D32 /* audio.c */,
+				B885FEB119C4ABBC00EC1D32 /* audio.h */,
+				B885FEB219C4ABBC00EC1D32 /* osx-audio.m */,
+				B885FEB319C4ABBC00EC1D32 /* queue.h */,
+				B885FEAD19C4AB3000EC1D32 /* SpotifyPlayer.h */,
+				B885FEAE19C4AB3000EC1D32 /* SpotifyPlayer.m */,
+			);
+			path = SpotifyPlayer;
+			sourceTree = "<group>";
+		};
+		B8DEF86819E041C600F2F453 /* AllArtists */ = {
+			isa = PBXGroup;
+			children = (
+				B8DEF86919E041F700F2F453 /* AllArtistsViewController.h */,
+				B8DEF86A19E041F700F2F453 /* AllArtistsViewController.m */,
+			);
+			path = AllArtists;
+			sourceTree = "<group>";
+		};
+		B8DEF87219E06F8A00F2F453 /* AllAlbums */ = {
+			isa = PBXGroup;
+			children = (
+				B8DEF87319E06FA100F2F453 /* AllAlbumsViewController.h */,
+				B8DEF87419E06FA100F2F453 /* AllAlbumsViewController.m */,
+			);
+			path = AllAlbums;
+			sourceTree = "<group>";
+		};
+		B8DEF87619E07A7C00F2F453 /* Artist */ = {
+			isa = PBXGroup;
+			children = (
+				B8DEF87719E07A8F00F2F453 /* ArtistViewController.h */,
+				B8DEF87819E07A8F00F2F453 /* ArtistViewController.m */,
+			);
+			path = Artist;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		B885FE6C19C488F400EC1D32 /* SpotifyAlarmClock */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B885FE9F19C488F500EC1D32 /* Build configuration list for PBXNativeTarget "SpotifyAlarmClock" */;
+			buildPhases = (
+				359F0F1764F0F07C35A1BC8B /* Check Pods Manifest.lock */,
+				B885FE6919C488F400EC1D32 /* Sources */,
+				B885FE6A19C488F400EC1D32 /* Frameworks */,
+				B885FE6B19C488F400EC1D32 /* Resources */,
+				3644111C96B7D757AB6DD609 /* Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B82A534B19C4FF33000C40D8 /* PBXTargetDependency */,
+			);
+			name = SpotifyAlarmClock;
+			productName = SpotifyAlarmClock;
+			productReference = B885FE6D19C488F400EC1D32 /* SpotifyAlarmClock.app */;
+			productType = "com.apple.product-type.application";
+		};
+		B885FE8D19C488F500EC1D32 /* SpotifyAlarmClockTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B885FEA219C488F500EC1D32 /* Build configuration list for PBXNativeTarget "SpotifyAlarmClockTests" */;
+			buildPhases = (
+				B885FE8A19C488F500EC1D32 /* Sources */,
+				B885FE8B19C488F500EC1D32 /* Frameworks */,
+				B885FE8C19C488F500EC1D32 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B885FE9419C488F500EC1D32 /* PBXTargetDependency */,
+			);
+			name = SpotifyAlarmClockTests;
+			productName = SpotifyAlarmClockTests;
+			productReference = B885FE8E19C488F500EC1D32 /* SpotifyAlarmClockTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		B885FE6519C488F400EC1D32 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0600;
+				ORGANIZATIONNAME = "Niels Vroegindeweij";
+				TargetAttributes = {
+					B885FE6C19C488F400EC1D32 = {
+						DevelopmentTeam = 46H439Z8Z5;
+					};
+					B885FE8D19C488F500EC1D32 = {
+						TestTargetID = B885FE6C19C488F400EC1D32;
+					};
+				};
+			};
+			buildConfigurationList = B885FE6819C488F400EC1D32 /* Build configuration list for PBXProject "SpotifyAlarmClock" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = B885FE6419C488F400EC1D32;
+			productRefGroup = B885FE6E19C488F400EC1D32 /* Products */;
+			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = B82A534219C4FEF4000C40D8 /* Products */;
+					ProjectRef = B82A534119C4FEF4000C40D8 /* CocoaLibSpotify iOS Library.xcodeproj */;
+				},
+			);
+			projectRoot = "";
+			targets = (
+				B885FE6C19C488F400EC1D32 /* SpotifyAlarmClock */,
+				B885FE8D19C488F500EC1D32 /* SpotifyAlarmClockTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		B82A534719C4FEF4000C40D8 /* libCocoaLibSpotify.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libCocoaLibSpotify.a;
+			remoteRef = B82A534619C4FEF4000C40D8 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		B82A534919C4FEF4000C40D8 /* CocoaLSTests.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = CocoaLSTests.app;
+			remoteRef = B82A534819C4FEF4000C40D8 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
+
+/* Begin PBXResourcesBuildPhase section */
+		B885FE6B19C488F400EC1D32 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B885FE8919C488F500EC1D32 /* Images.xcassets in Resources */,
+				B885FE7B19C488F400EC1D32 /* InfoPlist.strings in Resources */,
+				B885FE8419C488F400EC1D32 /* Main.storyboard in Resources */,
+				B8D16E0519E1C94500B375D2 /* BlurredHeader.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B885FE8C19C488F500EC1D32 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B885FE9A19C488F500EC1D32 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		359F0F1764F0F07C35A1BC8B /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		3644111C96B7D757AB6DD609 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SpotifyAlarmClock/Pods-SpotifyAlarmClock-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		B885FE6919C488F400EC1D32 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B812392719D1FC28005EABDB /* Option.m in Sources */,
+				B812392319D1FC28005EABDB /* AddAlarmViewController.m in Sources */,
+				B885CC8019E013BD003450F8 /* TrackCell.m in Sources */,
+				B812393119D201F2005EABDB /* SongSearchViewController.m in Sources */,
+				B8DEF87919E07A8F00F2F453 /* ArtistViewController.m in Sources */,
+				B812392919D1FC28005EABDB /* TextEditViewController.m in Sources */,
+				B885FEB519C4ABBC00EC1D32 /* osx-audio.m in Sources */,
+				B885CC7119E010E5003450F8 /* AllTracksViewController.m in Sources */,
+				B86104D719CDA187001DB753 /* Alarm.m in Sources */,
+				B812392619D1FC28005EABDB /* ClockViewController.m in Sources */,
+				B885CC7E19E013BD003450F8 /* AlbumCell.m in Sources */,
+				B8DEF87519E06FA100F2F453 /* AllAlbumsViewController.m in Sources */,
+				B885FEB419C4ABBC00EC1D32 /* audio.c in Sources */,
+				B885FE8119C488F400EC1D32 /* AppDelegate.m in Sources */,
+				B885FEAF19C4AB3000EC1D32 /* SpotifyPlayer.m in Sources */,
+				B812392E19D201A4005EABDB /* SongsViewController.m in Sources */,
+				B86104DA19CDA28E001DB753 /* SpotifyAlarmClock.xcdatamodeld in Sources */,
+				B8DEF86E19E0474900F2F453 /* ArtistBrowseCache.m in Sources */,
+				B8DEF86B19E041F700F2F453 /* AllArtistsViewController.m in Sources */,
+				B812392819D1FC28005EABDB /* OptionsSelectViewController.m in Sources */,
+				B885FE7D19C488F400EC1D32 /* main.m in Sources */,
+				B885CC8319E01B58003450F8 /* MaskHelper.m in Sources */,
+				B8D16E0919E1CBF900B375D2 /* BlurredHeaderView.m in Sources */,
+				B86104D419CDA16D001DB753 /* AlarmSong.m in Sources */,
+				B812392519D1FC28005EABDB /* AlarmsViewController.m in Sources */,
+				B8DEF86619E03BBB00F2F453 /* LoadMoreCell.m in Sources */,
+				B885CC7F19E013BD003450F8 /* ArtistCell.m in Sources */,
+				B885CC7D19E013BD003450F8 /* AlarmCell.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B885FE8A19C488F500EC1D32 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B885FE9C19C488F500EC1D32 /* SpotifyAlarmClockTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		B82A534B19C4FF33000C40D8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = CocoaLibSpotify;
+			targetProxy = B82A534A19C4FF33000C40D8 /* PBXContainerItemProxy */;
+		};
+		B885FE9419C488F500EC1D32 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B885FE6C19C488F400EC1D32 /* SpotifyAlarmClock */;
+			targetProxy = B885FE9319C488F500EC1D32 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		B885FE7919C488F400EC1D32 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B885FE7A19C488F400EC1D32 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		B885FE8219C488F400EC1D32 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B885FE8319C488F400EC1D32 /* Base */,
+			);
+			name = Main.storyboard;
+			path = ..;
+			sourceTree = "<group>";
+		};
+		B885FE9819C488F500EC1D32 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B885FE9919C488F500EC1D32 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		B885FE9D19C488F500EC1D32 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				LIBRARY_SEARCH_PATHS = "\"/Users/Niels/Documents/Development/Iphone Applicaties/SpotifyAlarmClock/Libraries\"";
+				ONLY_ACTIVE_ARCH = NO;
+				SDKROOT = iphoneos;
+				VALID_ARCHS = "armv7 armv7s";
+			};
+			name = Debug;
+		};
+		B885FE9E19C488F500EC1D32 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				LIBRARY_SEARCH_PATHS = "\"/Users/Niels/Documents/Development/Iphone Applicaties/SpotifyAlarmClock/Libraries\"";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+				VALID_ARCHS = "armv7 armv7s";
+			};
+			name = Release;
+		};
+		B885FEA019C488F500EC1D32 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B8F5F34EBE107A7EEBA2420D /* Pods-SpotifyAlarmClock.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = "";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "SpotifyAlarmClock/SpotifyAlarmClock-Prefix.pch";
+				INFOPLIST_FILE = "SpotifyAlarmClock/SpotifyAlarmClock-Info.plist";
+				LIBRARY_SEARCH_PATHS = "";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+					"-all_load",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALID_ARCHS = "armv7 armv7s";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		B885FEA119C488F500EC1D32 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8E9EC42A6CF7103BBBA32316 /* Pods-SpotifyAlarmClock.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = "";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "SpotifyAlarmClock/SpotifyAlarmClock-Prefix.pch";
+				INFOPLIST_FILE = "SpotifyAlarmClock/SpotifyAlarmClock-Info.plist";
+				LIBRARY_SEARCH_PATHS = "";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+					"-all_load",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALID_ARCHS = "armv7 armv7s";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		B885FEA319C488F500EC1D32 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/SpotifyAlarmClock.app/SpotifyAlarmClock";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "SpotifyAlarmClock/SpotifyAlarmClock-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "SpotifyAlarmClockTests/SpotifyAlarmClockTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		B885FEA419C488F500EC1D32 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/SpotifyAlarmClock.app/SpotifyAlarmClock";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "SpotifyAlarmClock/SpotifyAlarmClock-Prefix.pch";
+				INFOPLIST_FILE = "SpotifyAlarmClockTests/SpotifyAlarmClockTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		B885FE6819C488F400EC1D32 /* Build configuration list for PBXProject "SpotifyAlarmClock" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B885FE9D19C488F500EC1D32 /* Debug */,
+				B885FE9E19C488F500EC1D32 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B885FE9F19C488F500EC1D32 /* Build configuration list for PBXNativeTarget "SpotifyAlarmClock" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B885FEA019C488F500EC1D32 /* Debug */,
+				B885FEA119C488F500EC1D32 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B885FEA219C488F500EC1D32 /* Build configuration list for PBXNativeTarget "SpotifyAlarmClockTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B885FEA319C488F500EC1D32 /* Debug */,
+				B885FEA419C488F500EC1D32 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		B86104D819CDA28E001DB753 /* SpotifyAlarmClock.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				B86104D919CDA28E001DB753 /* SpotifyAlarmClock.xcdatamodel */,
+			);
+			currentVersion = B86104D919CDA28E001DB753 /* SpotifyAlarmClock.xcdatamodel */;
+			path = SpotifyAlarmClock.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = B885FE6519C488F400EC1D32 /* Project object */;
+}
