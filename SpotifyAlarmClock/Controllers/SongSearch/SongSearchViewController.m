@@ -17,6 +17,7 @@
 #import "AllTracksViewController.h"
 #import "AllArtistsViewController.h"
 #import "AllAlbumsViewController.h"
+#import "ArtistViewController.h"
 #import "MaskHelper.h"
 #import "ArtistBrowseCache.h"
 
@@ -423,6 +424,14 @@
         AllAlbumsViewController *vw = [segue destinationViewController];
         [vw.navigationItem setTitle:[NSString stringWithFormat:@"Albums for \"%@\"", [self.searchBar text]]];
         [vw setSearchText:[self.searchBar text]];
+    }
+    else if([[segue identifier] isEqualToString:@"artistSegue"])
+    {
+        ArtistViewController *vw = [segue destinationViewController];
+        NSIndexPath *indexPath = [self.tableView indexPathForCell:(UITableViewCell*)sender];
+        SPArtist *artist = [self.searchResult.artists objectAtIndex:[indexPath row]];
+        [vw.navigationItem setTitle:[artist name]];
+        [vw setArtist:artist];
     }
 }
 

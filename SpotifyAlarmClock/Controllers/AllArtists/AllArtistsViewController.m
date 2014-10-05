@@ -12,6 +12,7 @@
 #import "LoadMoreCell.h"
 #import "ArtistCell.h"
 #import "ArtistBrowseCache.h"
+#import "ArtistViewController.h"
 
 @interface AllArtistsViewController ()
 
@@ -160,6 +161,19 @@
         return 75;
 }
 
+#pragma mark - Navigation
+
+// In a storyboard-based application, you will often want to do a little preparation before navigation
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if([[segue identifier] isEqualToString:@"artistSegue"])
+    {
+        ArtistViewController *vw = [segue destinationViewController];
+        NSIndexPath *indexPath = [self.tableView indexPathForCell:(UITableViewCell*)sender];
+        SPArtist *artist = [self.searchResult.artists objectAtIndex:[indexPath row]];
+        [vw.navigationItem setTitle:[artist name]];
+        [vw setArtist:artist];
+    }
+}
 
 
 @end

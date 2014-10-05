@@ -54,6 +54,7 @@
 		B8DEF86B19E041F700F2F453 /* AllArtistsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B8DEF86A19E041F700F2F453 /* AllArtistsViewController.m */; };
 		B8DEF86E19E0474900F2F453 /* ArtistBrowseCache.m in Sources */ = {isa = PBXBuildFile; fileRef = B8DEF86D19E0474900F2F453 /* ArtistBrowseCache.m */; };
 		B8DEF87519E06FA100F2F453 /* AllAlbumsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B8DEF87419E06FA100F2F453 /* AllAlbumsViewController.m */; };
+		B8DEF87919E07A8F00F2F453 /* ArtistViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B8DEF87819E07A8F00F2F453 /* ArtistViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -165,6 +166,8 @@
 		B8DEF86D19E0474900F2F453 /* ArtistBrowseCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArtistBrowseCache.m; sourceTree = "<group>"; };
 		B8DEF87319E06FA100F2F453 /* AllAlbumsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AllAlbumsViewController.h; sourceTree = "<group>"; };
 		B8DEF87419E06FA100F2F453 /* AllAlbumsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AllAlbumsViewController.m; sourceTree = "<group>"; };
+		B8DEF87719E07A8F00F2F453 /* ArtistViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArtistViewController.h; sourceTree = "<group>"; };
+		B8DEF87819E07A8F00F2F453 /* ArtistViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArtistViewController.m; sourceTree = "<group>"; };
 		B8F5F34EBE107A7EEBA2420D /* Pods-SpotifyAlarmClock.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SpotifyAlarmClock.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SpotifyAlarmClock/Pods-SpotifyAlarmClock.debug.xcconfig"; sourceTree = "<group>"; };
 		C92F5708CCED2BA4D9ECCF61 /* libPods-SpotifyAlarmClock.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SpotifyAlarmClock.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -215,6 +218,7 @@
 		B812390C19D1FC28005EABDB /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				B8DEF87619E07A7C00F2F453 /* Artist */,
 				B8DEF87219E06F8A00F2F453 /* AllAlbums */,
 				B8DEF86819E041C600F2F453 /* AllArtists */,
 				B885CC6D19E010C2003450F8 /* AllTracks */,
@@ -489,6 +493,15 @@
 			path = AllAlbums;
 			sourceTree = "<group>";
 		};
+		B8DEF87619E07A7C00F2F453 /* Artist */ = {
+			isa = PBXGroup;
+			children = (
+				B8DEF87719E07A8F00F2F453 /* ArtistViewController.h */,
+				B8DEF87819E07A8F00F2F453 /* ArtistViewController.m */,
+			);
+			path = Artist;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -652,6 +665,7 @@
 				B812392319D1FC28005EABDB /* AddAlarmViewController.m in Sources */,
 				B885CC8019E013BD003450F8 /* TrackCell.m in Sources */,
 				B812393119D201F2005EABDB /* SongSearchViewController.m in Sources */,
+				B8DEF87919E07A8F00F2F453 /* ArtistViewController.m in Sources */,
 				B812392919D1FC28005EABDB /* TextEditViewController.m in Sources */,
 				B885FEB519C4ABBC00EC1D32 /* osx-audio.m in Sources */,
 				B885CC7119E010E5003450F8 /* AllTracksViewController.m in Sources */,
