@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ArtistBrowseCache.h"
 
-@interface AllArtistsViewController : UITableViewController
+@interface AllArtistsViewController : UITableViewController<ArtistBrowseCacheDelegate>
     @property (nonatomic, strong) NSString *searchText;
 @end

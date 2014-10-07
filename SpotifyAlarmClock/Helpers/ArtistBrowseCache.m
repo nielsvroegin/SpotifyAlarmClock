@@ -15,6 +15,7 @@
 @end
 
 @implementation ArtistBrowseCache
+@synthesize delegate;
 @synthesize artistBrowseCollection;
 
 - (id)init {
@@ -26,7 +27,7 @@
 }
 
 
--(SPArtistBrowse *) ArtistBrowseForArtist:(SPArtist *)artist searchResult:(SPSearch *)searchResult tableView:(UITableView *)tableView artistSection:(NSInteger)artistSection
+-(SPArtistBrowse *) artistBrowseForArtist:(SPArtist *)artist
 {
     SPArtistBrowse * artistBrowse = nil;
     
@@ -48,6 +49,10 @@
          
          SPArtistBrowse *artistBrowse = (SPArtistBrowse*)[loadedItems firstObject];
          
+         //Notify delegate
+         if ([self.delegate respondsToSelector:@selector(artistBrowseLoaded:)])
+             [self.delegate artistBrowseLoaded:artistBrowse];
+         
          SPImage* artistImage = nil;
          if([artistBrowse firstPortrait] != nil)
              artistImage = [artistBrowse firstPortrait];
@@ -63,12 +68,10 @@
                   return;
               
               SPImage *portrait = (SPImage*)[loadedPortraitItems firstObject];
-              NSInteger indexOfArtist = [searchResult.artists indexOfObject:artist];
-              if(indexOfArtist != NSNotFound)
-              {
-                  ArtistCell * cell = (ArtistCell*)[tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:[searchResult.artists indexOfObject:artist] inSection:artistSection]];
-                  [cell.artistImage setImage:[portrait image]];
-              }
+              
+              //Notify delegate
+              if ([self.delegate respondsToSelector:@selector(artistPortraitLoaded:artist:)])
+                  [self.delegate artistPortraitLoaded:[portrait image] artist:artist];
           }];
      }];
     

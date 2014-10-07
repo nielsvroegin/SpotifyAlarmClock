@@ -9,8 +9,9 @@
 #import <UIKit/UIKit.h>
 
 @class SPArtist;
+@class SPArtistBrowse;
 
 @interface ArtistViewController : UITableViewController
-    @property (nonatomic, strong) SPArtist *artist;
+    @property (nonatomic, strong) SPArtistBrowse *artistBrowse;
 
 @end

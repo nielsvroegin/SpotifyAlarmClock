@@ -19,7 +19,6 @@
 #import "AllAlbumsViewController.h"
 #import "ArtistViewController.h"
 #import "MaskHelper.h"
-#import "ArtistBrowseCache.h"
 
 @interface SongSearchViewController ()
     @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
@@ -50,6 +49,7 @@
     [musicProgressView setTintColor:[UIColor colorWithRed:(24 / 255.0) green:(109 / 255.0) blue:(39 / 255.0) alpha:1]];
     
     artistBrowseCache = [[ArtistBrowseCache alloc] init];
+    [artistBrowseCache setDelegate:self];
     
     [searchBar becomeFirstResponder];
 
@@ -295,7 +295,7 @@
     [cell.artistImage layer].masksToBounds = YES;
     [cell.artistImage layer].borderWidth = 0;
     
-    SPArtistBrowse * artistBrowse = [artistBrowseCache ArtistBrowseForArtist:artist searchResult:self.searchResult tableView:self.tableView artistSection:artistSection];
+    SPArtistBrowse * artistBrowse = [artistBrowseCache artistBrowseForArtist:artist];
     
     if(artistBrowse.loaded && artistBrowse.firstPortrait.loaded)
         [cell.artistImage setImage:[artistBrowse.firstPortrait image]];
@@ -430,7 +430,7 @@
         ArtistViewController *vw = [segue destinationViewController];
         NSIndexPath *indexPath = [self.tableView indexPathForCell:(UITableViewCell*)sender];
         SPArtist *artist = [self.searchResult.artists objectAtIndex:[indexPath row]];
-        [vw setArtist:artist];
+        [vw setArtistBrowse:[artistBrowseCache artistBrowseForArtist:artist]];
     }
 }
 
@@ -481,5 +481,16 @@
     [self.musicProgressView setProgress:0.01];
 }
 
+#pragma mark - ArtistBrowseCache delegate
+
+- (void)artistPortraitLoaded:(UIImage *) artistPortrait artist:(SPArtist*)artist
+{
+    NSInteger indexOfArtist = [self.searchResult.artists indexOfObject:artist];
+    if(indexOfArtist != NSNotFound)
+    {
+        ArtistCell * cell = (ArtistCell*)[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:[searchResult.artists indexOfObject:artist] inSection:artistSection]];
+        [cell.artistImage setImage:artistPortrait];
+    }
+}
 
 @end

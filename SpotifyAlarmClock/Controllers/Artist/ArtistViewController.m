@@ -18,12 +18,13 @@
 
 @interface ArtistViewController ()
 
-@property (nonatomic, strong) SPArtistBrowse *artistBrowse;
+@property (nonatomic, strong) SPArtist *artist;
+@property (nonatomic, assign) bool headerRendered;
 @property (nonatomic, strong) BlurredHeaderView *blurredHeaderView;
 
 - (void)loadArtistBrowse;
 - (TrackCell *)cellForTrackAtIndexPath:(NSIndexPath *)indexPath;
-
+- (void)renderArtistHeader:(UIImage *)portrait;
 
 @end
 
@@ -31,15 +32,25 @@
 @synthesize artist;
 @synthesize artistBrowse;
 @synthesize blurredHeaderView;
+@synthesize headerRendered;
+
+
 
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
+    //Load header view from nib
     NSArray* nibViews = [[NSBundle mainBundle] loadNibNamed:@"BlurredHeader" owner:self options:nil];
     blurredHeaderView = [nibViews firstObject];
     
+    //Set header to max width
+    CGRect frame = blurredHeaderView.frame;
+    frame.size.width = self.view.bounds.size.width;
+    blurredHeaderView.frame = frame;
+    
+    //Add parallax header
     [self.tableView addParallaxWithView:blurredHeaderView andHeight:220];
 }
 
@@ -52,39 +63,23 @@
 {
     [super viewWillAppear:animated];
     
+    //Set artist by artistbrowse
+    self.artist = [artistBrowse artist];
+    
     //Set artist name
     [self.navigationItem setTitle:[artist name]];
     
-    //Completely transparant navigationbar
-    //[self.navigationController.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
-    //self.navigationController.navigationBar.shadowImage = [UIImage new];
-    //self.navigationController.navigationBar.translucent = YES;
-    //self.navigationController.view.backgroundColor = [UIColor clearColor];
-    //self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
-        
-    //Empty remaining search results
-    self.artistBrowse = nil;
-    [self.tableView reloadData];
-    
-    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.tableView animated:YES];
-    hud.labelText = @"Loading";
-}
-
-- (void)viewWillDisappear:(BOOL)animated
-{
-    [self.navigationController.navigationBar setBackgroundImage:nil forBarMetrics:UIBarMetricsDefault];
-    self.navigationController.navigationBar.tintColor = [UIColor colorWithRed:(24 / 255.0) green:(109 / 255.0) blue:(39 / 255.0) alpha:1];
-}
-
-- (void)viewDidAppear:(BOOL)animated
-{
+    //Load artist information
     [self loadArtistBrowse];
 }
 
-
 - (void)loadArtistBrowse
 {
-    self.artistBrowse = [[SPArtistBrowse alloc] initWithArtist:artist inSession:[SPSession sharedSession] type:SP_ARTISTBROWSE_FULL];
+    //Show loading HUD
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.tableView animated:YES];
+    hud.labelText = @"Loading";
+    
+    //Async loading
     [SPAsyncLoading waitUntilLoaded:artistBrowse timeout:10.0 then:^(NSArray *loadedItems, NSArray *notLoadedItems)
      {
          //Check if databrowse could be loaded
@@ -119,26 +114,38 @@
               
               SPImage *portrait = (SPImage*)[loadedPortraitItems firstObject];
               
-              //Portrait
-              [self.blurredHeaderView.circularImage setImage:[portrait image]];
-              
-              //Background portrait
-              UIImage *blurredImage = [portrait.image applyBlurWithRadius:30 tintColor:[UIColor colorWithWhite:0.25 alpha:0.2] saturationDeltaFactor:1.5 maskImage:nil];
-              [self.blurredHeaderView.backgroundImage setImage:blurredImage];
+              //Show artist header
+              [self renderArtistHeader:[portrait image]];
           }];
      }];
 }
 
-/*-(void)scrollViewDidScroll:(UIScrollView*)scrollView {
+- (void)renderArtistHeader:(UIImage*)portrait
+{
+    //Only render header once
+    if(headerRendered)
+        return;
     
-    CGRect initialFrame = CGRectMake(0, 0, 320, 160);
+    //Background portrait
+    UIImage *blurredImage = [portrait applyBlurWithRadius:30 tintColor:[UIColor colorWithWhite:0.25 alpha:0.2] saturationDeltaFactor:1.5 maskImage:nil];
+    [UIView transitionWithView:self.blurredHeaderView.backgroundImage
+                      duration:0.5f
+                       options:UIViewAnimationOptionTransitionCrossDissolve
+                    animations:^{
+                        [self.blurredHeaderView.backgroundImage setImage:blurredImage];
+                    } completion:NULL];
     
-    if (scrollView.contentOffset.y < 0) {
-        
-        initialFrame.size.height =! scrollView.contentOffset.y;
-        self.artistPortraitBackground.frame = initialFrame;
-    }
-}*/
+    //Portrait
+    [UIView transitionWithView:self.blurredHeaderView.circularImage
+                      duration:0.5f
+                       options:UIViewAnimationOptionTransitionCrossDissolve
+                    animations:^{
+                        [self.blurredHeaderView.circularImage setImage:portrait];
+                    } completion:NULL];
+    
+    headerRendered = true;
+}
+
 
 #pragma mark - Table view data source
 

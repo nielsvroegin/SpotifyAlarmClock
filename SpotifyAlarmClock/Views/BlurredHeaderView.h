@@ -11,6 +11,5 @@
 @interface BlurredHeaderView : UIView
 @property (weak, nonatomic) IBOutlet UIImageView *circularImage;
 @property (weak, nonatomic) IBOutlet UIImageView *backgroundImage;
-@property (weak, nonatomic) IBOutlet UILabel *artist;
 
 @end

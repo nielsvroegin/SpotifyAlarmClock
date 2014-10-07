@@ -9,7 +9,7 @@
 #import "BlurredHeaderView.h"
 
 @implementation BlurredHeaderView
-@synthesize artist, backgroundImage, circularImage;
+@synthesize backgroundImage, circularImage;
 
 
 // Only override drawRect: if you perform custom drawing.

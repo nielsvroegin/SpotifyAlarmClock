@@ -11,7 +11,6 @@
 #import "MBProgressHud.h"
 #import "LoadMoreCell.h"
 #import "ArtistCell.h"
-#import "ArtistBrowseCache.h"
 #import "ArtistViewController.h"
 
 @interface AllArtistsViewController ()
@@ -31,6 +30,7 @@
 
 - (void)viewDidLoad {
     artistBrowseCache = [[ArtistBrowseCache alloc] init];
+    [artistBrowseCache setDelegate:self];
     
     [super viewDidLoad];
    
@@ -140,7 +140,7 @@
     [cell.artistImage layer].masksToBounds = YES;
     [cell.artistImage layer].borderWidth = 0;
     
-    SPArtistBrowse * artistBrowse = [artistBrowseCache ArtistBrowseForArtist:artist searchResult:self.searchResult tableView:self.tableView artistSection:0];
+    SPArtistBrowse * artistBrowse = [artistBrowseCache artistBrowseForArtist:artist];
     
     if(artistBrowse.loaded && artistBrowse.firstPortrait.loaded)
         [cell.artistImage setImage:[artistBrowse.firstPortrait image]];
@@ -170,9 +170,20 @@
         ArtistViewController *vw = [segue destinationViewController];
         NSIndexPath *indexPath = [self.tableView indexPathForCell:(UITableViewCell*)sender];
         SPArtist *artist = [self.searchResult.artists objectAtIndex:[indexPath row]];
-        [vw setArtist:artist];
+        [vw setArtistBrowse:[artistBrowseCache artistBrowseForArtist:artist]];
     }
 }
 
+#pragma mark - ArtistBrowseCache delegate
+
+- (void)artistPortraitLoaded:(UIImage *) artistPortrait artist:(SPArtist*)artist
+{
+    NSInteger indexOfArtist = [self.searchResult.artists indexOfObject:artist];
+    if(indexOfArtist != NSNotFound)
+    {
+        ArtistCell * cell = (ArtistCell*)[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:[searchResult.artists indexOfObject:artist] inSection:0]];
+        [cell.artistImage setImage:artistPortrait];
+    }
+}
 
 @end

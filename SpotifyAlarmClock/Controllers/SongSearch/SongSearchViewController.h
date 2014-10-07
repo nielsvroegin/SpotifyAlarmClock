@@ -8,7 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import "SpotifyPlayer.h"
+#import "ArtistBrowseCache.h"
 
-@interface SongSearchViewController : UITableViewController<UISearchBarDelegate, SpotifyPlayerDelegate>
+@interface SongSearchViewController : UITableViewController<UISearchBarDelegate, SpotifyPlayerDelegate, ArtistBrowseCacheDelegate>
 
 @end

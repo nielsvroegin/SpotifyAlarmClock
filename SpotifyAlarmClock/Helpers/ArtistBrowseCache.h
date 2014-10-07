@@ -12,9 +12,19 @@
 @class SPArtist;
 @class SPSearch;
 
+@protocol ArtistBrowseCacheDelegate <NSObject>
+
+@optional
+- (void)artistBrowseLoaded:(SPArtistBrowse *) artistBrowse;
+- (void)artistPortraitLoaded:(UIImage *) artistPortrait artist:(SPArtist*)artist;
+
+@end
+
 @interface ArtistBrowseCache : NSObject
 
--(SPArtistBrowse *) ArtistBrowseForArtist:(SPArtist *)artist searchResult:(SPSearch *)searchResult tableView:(UITableView *)tableView artistSection:(NSInteger)artistSection;
+@property (nonatomic, weak) id<ArtistBrowseCacheDelegate> delegate;
+
+-(SPArtistBrowse *) artistBrowseForArtist:(SPArtist *)artist;
 -(void) clear;
 
 @end
