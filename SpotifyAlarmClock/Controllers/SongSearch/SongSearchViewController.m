@@ -45,12 +45,20 @@
 @synthesize artistBrowseCache;
 
 - (void)viewDidLoad {
+    //Register cells
+    [self.tableView registerNib:[UINib nibWithNibName:@"AlbumCell" bundle:nil] forCellReuseIdentifier:@"albumCell"];
+    [self.tableView registerNib:[UINib nibWithNibName:@"ArtistCell" bundle:nil] forCellReuseIdentifier:@"artistCell"];
+    [self.tableView registerNib:[UINib nibWithNibName:@"TrackCell" bundle:nil] forCellReuseIdentifier:@"trackCell"];
+    
+    //Create music progress view
     musicProgressView = [[FFCircularProgressView alloc] init];
     [musicProgressView setTintColor:[UIColor colorWithRed:(24 / 255.0) green:(109 / 255.0) blue:(39 / 255.0) alpha:1]];
     
+    //Set up artist browse cache
     artistBrowseCache = [[ArtistBrowseCache alloc] init];
     [artistBrowseCache setDelegate:self];
     
+    //Show searchbar keyboard
     [searchBar becomeFirstResponder];
 
     [super viewDidLoad];
@@ -389,6 +397,8 @@
     {
         if([indexPath row] == [self.searchResult.artists count])
             [self performSegueWithIdentifier:@"allArtistsSegue" sender:nil];
+        else
+            [self performSegueWithIdentifier:@"artistSegue" sender:[self.tableView cellForRowAtIndexPath:indexPath]];
     }
     else if(indexPath.section == albumSection)
     {

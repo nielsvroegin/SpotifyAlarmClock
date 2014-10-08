@@ -10,5 +10,6 @@
 
 @interface LoadMoreCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *spinner;
+@property (weak, nonatomic) IBOutlet UILabel *loadingText;
 
 @end

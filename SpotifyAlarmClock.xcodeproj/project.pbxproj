@@ -52,6 +52,10 @@
 		B885FEF719C4C7CE00EC1D32 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B885FE7419C488F400EC1D32 /* UIKit.framework */; };
 		B8D16E0519E1C94500B375D2 /* BlurredHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8D16E0419E1C94500B375D2 /* BlurredHeader.xib */; };
 		B8D16E0919E1CBF900B375D2 /* BlurredHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = B8D16E0819E1CBF900B375D2 /* BlurredHeaderView.m */; };
+		B8D7690A19E5B1F300988A71 /* AlbumCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8D7690919E5B1F300988A71 /* AlbumCell.xib */; };
+		B8D7690D19E5B20F00988A71 /* ArtistCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8D7690C19E5B20F00988A71 /* ArtistCell.xib */; };
+		B8D7690F19E5B22C00988A71 /* TrackCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8D7690E19E5B22C00988A71 /* TrackCell.xib */; };
+		B8D7691119E5B23A00988A71 /* LoadMoreCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8D7691019E5B23A00988A71 /* LoadMoreCell.xib */; };
 		B8DEF86619E03BBB00F2F453 /* LoadMoreCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B8DEF86519E03BBB00F2F453 /* LoadMoreCell.m */; };
 		B8DEF86B19E041F700F2F453 /* AllArtistsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B8DEF86A19E041F700F2F453 /* AllArtistsViewController.m */; };
 		B8DEF86E19E0474900F2F453 /* ArtistBrowseCache.m in Sources */ = {isa = PBXBuildFile; fileRef = B8DEF86D19E0474900F2F453 /* ArtistBrowseCache.m */; };
@@ -163,6 +167,10 @@
 		B8D16E0419E1C94500B375D2 /* BlurredHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BlurredHeader.xib; sourceTree = "<group>"; };
 		B8D16E0719E1CBF900B375D2 /* BlurredHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlurredHeaderView.h; sourceTree = "<group>"; };
 		B8D16E0819E1CBF900B375D2 /* BlurredHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlurredHeaderView.m; sourceTree = "<group>"; };
+		B8D7690919E5B1F300988A71 /* AlbumCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AlbumCell.xib; sourceTree = "<group>"; };
+		B8D7690C19E5B20F00988A71 /* ArtistCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ArtistCell.xib; sourceTree = "<group>"; };
+		B8D7690E19E5B22C00988A71 /* TrackCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TrackCell.xib; sourceTree = "<group>"; };
+		B8D7691019E5B23A00988A71 /* LoadMoreCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoadMoreCell.xib; sourceTree = "<group>"; };
 		B8DEF86419E03BBB00F2F453 /* LoadMoreCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoadMoreCell.h; sourceTree = "<group>"; };
 		B8DEF86519E03BBB00F2F453 /* LoadMoreCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoadMoreCell.m; sourceTree = "<group>"; };
 		B8DEF86919E041F700F2F453 /* AllArtistsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AllArtistsViewController.h; sourceTree = "<group>"; };
@@ -362,12 +370,16 @@
 				B885CC7619E013BD003450F8 /* AlarmCell.m */,
 				B885CC7719E013BD003450F8 /* AlbumCell.h */,
 				B885CC7819E013BD003450F8 /* AlbumCell.m */,
+				B8D7690919E5B1F300988A71 /* AlbumCell.xib */,
 				B885CC7919E013BD003450F8 /* ArtistCell.h */,
 				B885CC7A19E013BD003450F8 /* ArtistCell.m */,
+				B8D7690C19E5B20F00988A71 /* ArtistCell.xib */,
 				B885CC7B19E013BD003450F8 /* TrackCell.h */,
 				B885CC7C19E013BD003450F8 /* TrackCell.m */,
+				B8D7690E19E5B22C00988A71 /* TrackCell.xib */,
 				B8DEF86419E03BBB00F2F453 /* LoadMoreCell.h */,
 				B8DEF86519E03BBB00F2F453 /* LoadMoreCell.m */,
+				B8D7691019E5B23A00988A71 /* LoadMoreCell.xib */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -615,8 +627,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B8D7690D19E5B20F00988A71 /* ArtistCell.xib in Resources */,
 				B885FE8919C488F500EC1D32 /* Images.xcassets in Resources */,
 				B885FE7B19C488F400EC1D32 /* InfoPlist.strings in Resources */,
+				B8D7690F19E5B22C00988A71 /* TrackCell.xib in Resources */,
+				B8D7691119E5B23A00988A71 /* LoadMoreCell.xib in Resources */,
+				B8D7690A19E5B1F300988A71 /* AlbumCell.xib in Resources */,
 				B885FE8419C488F400EC1D32 /* Main.storyboard in Resources */,
 				B8D16E0519E1C94500B375D2 /* BlurredHeader.xib in Resources */,
 			);

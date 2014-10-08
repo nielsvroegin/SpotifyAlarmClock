@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6245" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment defaultVersion="1808" identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="trackCell" rowHeight="55" id="Nn2-mr-8JF" customClass="TrackCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="55"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Nn2-mr-8JF" id="QzJ-5H-bTu">
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Artist Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cHu-oG-A9w">
+                        <rect key="frame" x="63" y="31" width="187" height="15"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Track" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2fS-Sz-1dW">
+                        <rect key="frame" x="63" y="9" width="197" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SO0-Dg-8CN">
+                        <rect key="frame" x="13" y="8" width="40" height="40"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="40" id="QIp-PE-hYH"/>
+                            <constraint firstAttribute="width" constant="40" id="vDH-ZH-ozB"/>
+                        </constraints>
+                    </view>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2FK-CX-1ht">
+                        <rect key="frame" x="268" y="13" width="30" height="30"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="30" id="UaI-6R-OYI"/>
+                            <constraint firstAttribute="height" constant="30" id="eB8-el-4H3"/>
+                        </constraints>
+                        <state key="normal" title="Button" image="AddMusicButton">
+                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                        </state>
+                    </button>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="centerY" secondItem="2fS-Sz-1dW" secondAttribute="centerY" constant="7.5" id="AKe-Ij-Myc"/>
+                    <constraint firstItem="SO0-Dg-8CN" firstAttribute="leading" secondItem="QzJ-5H-bTu" secondAttribute="leadingMargin" constant="5" id="Aj3-Fr-Lyh"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="2FK-CX-1ht" secondAttribute="trailing" constant="14" id="CJo-kR-ScI"/>
+                    <constraint firstItem="cHu-oG-A9w" firstAttribute="trailing" secondItem="2fS-Sz-1dW" secondAttribute="trailing" constant="-10" id="JQJ-RR-HDt"/>
+                    <constraint firstItem="2FK-CX-1ht" firstAttribute="leading" secondItem="cHu-oG-A9w" secondAttribute="trailing" constant="18" id="M3D-om-dC9"/>
+                    <constraint firstItem="2fS-Sz-1dW" firstAttribute="leading" secondItem="cHu-oG-A9w" secondAttribute="leading" id="NFw-0t-bcS"/>
+                    <constraint firstItem="2fS-Sz-1dW" firstAttribute="leading" secondItem="SO0-Dg-8CN" secondAttribute="trailing" constant="10" id="VtJ-oe-ll6"/>
+                    <constraint firstItem="SO0-Dg-8CN" firstAttribute="top" secondItem="QzJ-5H-bTu" secondAttribute="topMargin" id="dIY-vn-vAy"/>
+                    <constraint firstItem="cHu-oG-A9w" firstAttribute="top" secondItem="2fS-Sz-1dW" secondAttribute="bottom" constant="1" id="g3J-qa-JS4"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="SO0-Dg-8CN" secondAttribute="bottom" constant="-2" id="i3B-cJ-h5C"/>
+                    <constraint firstAttribute="centerY" secondItem="2FK-CX-1ht" secondAttribute="centerY" constant="-1" id="x3V-0r-KBg"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="lbArtist" destination="cHu-oG-A9w" id="yhy-dw-ZTj"/>
+                <outlet property="lbTrack" destination="2fS-Sz-1dW" id="4w6-gF-ydL"/>
+                <outlet property="vwPlay" destination="SO0-Dg-8CN" id="8nQ-D1-oab"/>
+            </connections>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="AddMusicButton" width="178" height="178"/>
+    </resources>
+</document>

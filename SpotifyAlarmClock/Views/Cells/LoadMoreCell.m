@@ -10,6 +10,7 @@
 
 @implementation LoadMoreCell
 @synthesize spinner;
+@synthesize loadingText;
 
 - (void)awakeFromNib {
     // Initialization code

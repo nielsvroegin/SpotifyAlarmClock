@@ -29,12 +29,17 @@
 @synthesize searchText;
 @synthesize musicProgressView;
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    
+    //Register cells
+    [self.tableView registerNib:[UINib nibWithNibName:@"TrackCell" bundle:nil] forCellReuseIdentifier:@"trackCell"];
+    [self.tableView registerNib:[UINib nibWithNibName:@"LoadMoreCell" bundle:nil] forCellReuseIdentifier:@"loadingMoreCells"];
+    
+    //Init music progress view
     musicProgressView = [[FFCircularProgressView alloc] init];
     [musicProgressView setTintColor:[UIColor colorWithRed:(24 / 255.0) green:(109 / 255.0) blue:(39 / 255.0) alpha:1]];
-    
-    
-    [super viewDidLoad];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -126,6 +131,7 @@
     if([self.searchResult.tracks count] == [indexPath row])
     {
         LoadMoreCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"loadingMoreTracks" forIndexPath:indexPath];
+        [cell.loadingText setText:@"Loading more tracks..."];
         [cell.spinner startAnimating];
         
         return cell;

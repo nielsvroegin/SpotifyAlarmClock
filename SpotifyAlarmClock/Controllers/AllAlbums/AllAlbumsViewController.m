@@ -26,6 +26,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    //Register cells
+    [self.tableView registerNib:[UINib nibWithNibName:@"AlbumCell" bundle:nil] forCellReuseIdentifier:@"albumCell"];
+    [self.tableView registerNib:[UINib nibWithNibName:@"LoadMoreCell" bundle:nil] forCellReuseIdentifier:@"loadingMoreCells"];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -115,6 +119,7 @@
     if([self.searchResult.albums count] == [indexPath row])
     {
         LoadMoreCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"loadingMoreAlbums" forIndexPath:indexPath];
+        [cell.loadingText setText:@"Loading more albums..."];
         [cell.spinner startAnimating];
         
         return cell;

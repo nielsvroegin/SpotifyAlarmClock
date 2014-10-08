@@ -29,11 +29,15 @@
 @synthesize artistBrowseCache;
 
 - (void)viewDidLoad {
+    [super viewDidLoad];
+    
+    //Register cells
+    [self.tableView registerNib:[UINib nibWithNibName:@"ArtistCell" bundle:nil] forCellReuseIdentifier:@"artistCell"];
+    [self.tableView registerNib:[UINib nibWithNibName:@"LoadMoreCell" bundle:nil] forCellReuseIdentifier:@"loadingMoreCells"];
+    
+    //Set up artist browse cache
     artistBrowseCache = [[ArtistBrowseCache alloc] init];
     [artistBrowseCache setDelegate:self];
-    
-    [super viewDidLoad];
-   
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -122,6 +126,7 @@
     if([self.searchResult.artists count] == [indexPath row])
     {
         LoadMoreCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"loadingMoreArtists" forIndexPath:indexPath];
+        [cell.loadingText setText:@"Loading more artists..."];
         [cell.spinner startAnimating];
         
         return cell;
@@ -159,6 +164,14 @@
         return 40;
     else
         return 75;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    if([self.searchResult.artists count] != [indexPath row])
+        [self performSegueWithIdentifier:@"artistSegue" sender:[self.tableView cellForRowAtIndexPath:indexPath]];
 }
 
 #pragma mark - Navigation

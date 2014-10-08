@@ -41,6 +41,9 @@
 {
     [super viewDidLoad];
     
+    //Register cells
+    [self.tableView registerNib:[UINib nibWithNibName:@"TrackCell" bundle:nil] forCellReuseIdentifier:@"trackCell"];
+        
     //Load header view from nib
     NSArray* nibViews = [[NSBundle mainBundle] loadNibNamed:@"BlurredHeader" owner:self options:nil];
     blurredHeaderView = [nibViews firstObject];
