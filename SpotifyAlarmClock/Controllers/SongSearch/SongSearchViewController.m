@@ -18,7 +18,7 @@
 #import "AllArtistsViewController.h"
 #import "AllAlbumsViewController.h"
 #import "ArtistViewController.h"
-#import "MaskHelper.h"
+#import "CellConstructHelper.h"
 
 @interface SongSearchViewController ()
     @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
@@ -32,9 +32,6 @@
     @property (nonatomic, assign) NSInteger trackSection;
 
     - (void) performSearch;
-    - (TrackCell *)cellForTrackAtIndexPath:(NSIndexPath *)indexPath;
-    - (ArtistCell *)cellForArtistAtIndexPath:(NSIndexPath *)indexPath;
-    - (AlbumCell *)cellForAlbumAtIndexPath:(NSIndexPath *)indexPath;
 @end
 
 @implementation SongSearchViewController
@@ -235,7 +232,7 @@
             [cell.textLabel setText:@"View all tracks"];
         }
         else
-            cell = [self cellForTrackAtIndexPath:indexPath];
+            cell = [CellConstructHelper tableView:tableView cellForTrack:[self.searchResult.tracks objectAtIndex:[indexPath row]] atIndexPath:indexPath musicProgressView:musicProgressView];
     }
     else if(self.artistSection == indexPath.section)
     {
@@ -245,7 +242,7 @@
             [cell.textLabel setText:@"View all artists"];
         }
         else
-            cell = [self cellForArtistAtIndexPath:indexPath];
+            cell = [CellConstructHelper tableView:tableView cellForArtist:[self.searchResult.artists objectAtIndex:[indexPath row]] atIndexPath:indexPath artistBrowseCache:artistBrowseCache];
     }
     else if(self.albumSection == indexPath.section)
     {
@@ -255,97 +252,13 @@
             [cell.textLabel setText:@"View all albums"];
         }
         else
-            cell = [self cellForAlbumAtIndexPath:indexPath];
+            cell = [CellConstructHelper tableView:tableView cellForAlbum:[self.searchResult.albums objectAtIndex:[indexPath row]] atIndexPath:indexPath];
     }
     
     return cell;
 }
 
-- (TrackCell *)cellForTrackAtIndexPath:(NSIndexPath *)indexPath
-{
-    SPTrack *track = [self.searchResult.tracks objectAtIndex:[indexPath row]];
-    TrackCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"trackCell" forIndexPath:indexPath];
 
-    NSString *artistsText = @"";
-    for(NSInteger i = 0; i < [track.artists count]; i++)
-    {
-        artistsText = [artistsText stringByAppendingString:[[track.artists objectAtIndex:i] name]];
-        if(i < ([track.artists count] -1))
-            artistsText = [artistsText stringByAppendingString:@" - "];
-    }
-    [cell.lbArtist setText:artistsText];
-    [cell.lbTrack setText:[track name]];
-    [MaskHelper addCircleMaskToView:[cell vwPlay]];
-
-    for(UIView* subView in [cell.vwPlay subviews])
-        [subView removeFromSuperview];
-    
-    if([[SpotifyPlayer sharedSpotifyPlayer] currentTrack] == track)
-        [cell.vwPlay addSubview:musicProgressView];
-    else
-    {
-        UIImageView* playImageView = [[UIImageView alloc] initWithFrame:[cell.vwPlay bounds]];
-        [playImageView setImage:[UIImage imageNamed:@"Play"]];
-        [cell.vwPlay addSubview:playImageView];
-    }
-    
-    
-    return cell;
-}
-
-- (ArtistCell *)cellForArtistAtIndexPath:(NSIndexPath *)indexPath
-{
-    SPArtist *artist = [self.searchResult.artists objectAtIndex:[indexPath row]];
-    
-    ArtistCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"artistCell" forIndexPath:indexPath];
-    [cell.lbArtist setText:[artist name]];
-    [cell.artistImage layer].cornerRadius = [cell.artistImage layer].frame.size.height /2;
-    [cell.artistImage layer].masksToBounds = YES;
-    [cell.artistImage layer].borderWidth = 0;
-    
-    SPArtistBrowse * artistBrowse = [artistBrowseCache artistBrowseForArtist:artist];
-    
-    if(artistBrowse.loaded && artistBrowse.firstPortrait.loaded)
-        [cell.artistImage setImage:[artistBrowse.firstPortrait image]];
-    else if(artistBrowse.loaded && artistBrowse.albums != nil && [artistBrowse.albums count] > 0 && ((SPAlbum *)[artistBrowse.albums firstObject]).cover.loaded)
-        [cell.artistImage setImage:[((SPAlbum *)[artistBrowse.albums firstObject]).cover image]];
-    else
-        [cell.artistImage setImage:[UIImage imageNamed:@"Artist"]];
-    
-    return cell;
-}
-
-- (AlbumCell *)cellForAlbumAtIndexPath:(NSIndexPath *)indexPath
-{
-    SPAlbum *album = [self.searchResult.albums objectAtIndex:[indexPath row]];
-    
-    AlbumCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"albumCell" forIndexPath:indexPath];
-    [cell.lbArtist setText:[album.artist name]];
-    [cell.lbAlbum setText:[album name]];
-    
-    if([album.cover isLoaded])
-        [cell.albumImage setImage:[album.cover image]];
-    else
-    {
-        [cell.albumImage setImage:[UIImage imageNamed:@"Album"]];
-
-        [album.cover startLoading];
-        [SPAsyncLoading waitUntilLoaded:album.cover timeout:10.0 then:^(NSArray *loadedItems, NSArray *notLoadedItems)
-         {
-             if(loadedItems == nil || [loadedItems count] != 1 || ![[loadedItems firstObject] isKindOfClass:[SPImage class]])
-                 return;
-             
-             SPImage *cover = (SPImage*)[loadedItems firstObject];
-             
-             [cell.albumImage setImage:[cover image]];
-         }];
-         
-    }
-    
-    [cell.albumImage sizeToFit];
-    
-    return cell;
-}
 
 #pragma mark - UITableView delegate
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath

@@ -9,18 +9,17 @@
 #import "AllTracksViewController.h"
 #import "CocoaLibSpotify.h"
 #import "TrackCell.h"
-#import "MaskHelper.h"
 #import "SpotifyPlayer.h"
 #import "FFCircularProgressView.h"
 #import "MBProgressHUD.h"
 #import "LoadMoreCell.h"
+#import "CellConstructHelper.h"
 
 @interface AllTracksViewController ()
 
 @property (nonatomic, strong) FFCircularProgressView *musicProgressView;
 @property (nonatomic, strong) SPSearch *searchResult;
 
-- (TrackCell *)cellForTrackAtIndexPath:(NSIndexPath *)indexPath;
 - (void)loadMoreTracks;
 
 @end
@@ -137,39 +136,7 @@
         return cell;
     }
     else //Show track
-        return [self cellForTrackAtIndexPath:indexPath];
-}
-
-- (TrackCell *)cellForTrackAtIndexPath:(NSIndexPath *)indexPath
-{
-    SPTrack *track = [self.searchResult.tracks objectAtIndex:[indexPath row]];
-    TrackCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"trackCell" forIndexPath:indexPath];
-    
-    NSString *artistsText = @"";
-    for(NSInteger i = 0; i < [track.artists count]; i++)
-    {
-        artistsText = [artistsText stringByAppendingString:[[track.artists objectAtIndex:i] name]];
-        if(i < ([track.artists count] -1))
-            artistsText = [artistsText stringByAppendingString:@" - "];
-    }
-    [cell.lbArtist setText:artistsText];
-    [cell.lbTrack setText:[track name]];
-    [MaskHelper addCircleMaskToView:[cell vwPlay]];
-    
-    for(UIView* subView in [cell.vwPlay subviews])
-        [subView removeFromSuperview];
-    
-    if([[SpotifyPlayer sharedSpotifyPlayer] currentTrack] == track)
-        [cell.vwPlay addSubview:musicProgressView];
-    else
-    {
-        UIImageView* playImageView = [[UIImageView alloc] initWithFrame:[cell.vwPlay bounds]];
-        [playImageView setImage:[UIImage imageNamed:@"Play"]];
-        [cell.vwPlay addSubview:playImageView];
-    }
-    
-    
-    return cell;
+        return [CellConstructHelper tableView:tableView cellForTrack:[self.searchResult.tracks objectAtIndex:[indexPath row]] atIndexPath:indexPath musicProgressView:musicProgressView];
 }
 
 #pragma mark - UITableView delegate

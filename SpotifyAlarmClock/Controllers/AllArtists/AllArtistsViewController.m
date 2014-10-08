@@ -12,13 +12,13 @@
 #import "LoadMoreCell.h"
 #import "ArtistCell.h"
 #import "ArtistViewController.h"
+#import "CellConstructHelper.h"
 
 @interface AllArtistsViewController ()
 
 @property (nonatomic, strong) SPSearch *searchResult;
 @property (nonatomic, strong) ArtistBrowseCache *artistBrowseCache;
 
-- (ArtistCell *)cellForArtistAtIndexPath:(NSIndexPath *)indexPath;
 - (void)loadMoreArtists;
 
 @end
@@ -132,29 +132,7 @@
         return cell;
     }
     else //Show track
-        return [self cellForArtistAtIndexPath:indexPath];
-}
-
-- (ArtistCell *)cellForArtistAtIndexPath:(NSIndexPath *)indexPath
-{
-    SPArtist *artist = [self.searchResult.artists objectAtIndex:[indexPath row]];
-    
-    ArtistCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"artistCell" forIndexPath:indexPath];
-    [cell.lbArtist setText:[artist name]];
-    [cell.artistImage layer].cornerRadius = [cell.artistImage layer].frame.size.height /2;
-    [cell.artistImage layer].masksToBounds = YES;
-    [cell.artistImage layer].borderWidth = 0;
-    
-    SPArtistBrowse * artistBrowse = [artistBrowseCache artistBrowseForArtist:artist];
-    
-    if(artistBrowse.loaded && artistBrowse.firstPortrait.loaded)
-        [cell.artistImage setImage:[artistBrowse.firstPortrait image]];
-    else if(artistBrowse.loaded && artistBrowse.albums != nil && [artistBrowse.albums count] > 0 && ((SPAlbum *)[artistBrowse.albums firstObject]).cover.loaded)
-        [cell.artistImage setImage:[((SPAlbum *)[artistBrowse.albums firstObject]).cover image]];
-    else
-        [cell.artistImage setImage:[UIImage imageNamed:@"Artist"]];
-    
-    return cell;
+        return [CellConstructHelper tableView:tableView cellForArtist:[self.searchResult.artists objectAtIndex:[indexPath row]] atIndexPath:indexPath artistBrowseCache:artistBrowseCache];
 }
 
 #pragma mark - UITableView delegate

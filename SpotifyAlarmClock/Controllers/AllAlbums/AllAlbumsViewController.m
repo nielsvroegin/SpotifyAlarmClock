@@ -11,13 +11,13 @@
 #import "MBProgressHud.h"
 #import "LoadMoreCell.h"
 #import "AlbumCell.h"
+#import "CellConstructHelper.h"
 
 @interface AllAlbumsViewController ()
 
 @property (nonatomic, strong) SPSearch *searchResult;
 
 - (void)loadMoreAlbums;
-- (AlbumCell *)cellForAlbumAtIndexPath:(NSIndexPath *)indexPath;
 
 @end
 
@@ -125,39 +125,7 @@
         return cell;
     }
     else //Show track
-        return [self cellForAlbumAtIndexPath:indexPath];
-}
-
-- (AlbumCell *)cellForAlbumAtIndexPath:(NSIndexPath *)indexPath
-{
-    SPAlbum *album = [self.searchResult.albums objectAtIndex:[indexPath row]];
-    
-    AlbumCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"albumCell" forIndexPath:indexPath];
-    [cell.lbArtist setText:[album.artist name]];
-    [cell.lbAlbum setText:[album name]];
-    
-    if([album.cover isLoaded])
-        [cell.albumImage setImage:[album.cover image]];
-    else
-    {
-        [cell.albumImage setImage:[UIImage imageNamed:@"Album"]];
-        
-        [album.cover startLoading];
-        [SPAsyncLoading waitUntilLoaded:album.cover timeout:10.0 then:^(NSArray *loadedItems, NSArray *notLoadedItems)
-         {
-             if(loadedItems == nil || [loadedItems count] != 1 || ![[loadedItems firstObject] isKindOfClass:[SPImage class]])
-                 return;
-             
-             SPImage *cover = (SPImage*)[loadedItems firstObject];
-             
-             [cell.albumImage setImage:[cover image]];
-         }];
-        
-    }
-    
-    [cell.albumImage sizeToFit];
-    
-    return cell;
+        return [CellConstructHelper tableView:tableView cellForAlbum:[self.searchResult.albums objectAtIndex:[indexPath row]] atIndexPath:indexPath];
 }
 
 #pragma mark - UITableView delegate

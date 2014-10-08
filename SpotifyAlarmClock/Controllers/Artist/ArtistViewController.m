@@ -13,8 +13,8 @@
 #import "UIScrollView+APParallaxHeader.h"
 #import "BlurredHeaderView.h"
 #import "TrackCell.h"
-#import "MaskHelper.h"
 #import "SpotifyPlayer.h"
+#import "CellConstructHelper.h"
 
 @interface ArtistViewController ()
 
@@ -23,7 +23,6 @@
 @property (nonatomic, strong) BlurredHeaderView *blurredHeaderView;
 
 - (void)loadArtistBrowse;
-- (TrackCell *)cellForTrackAtIndexPath:(NSIndexPath *)indexPath;
 - (void)renderArtistHeader:(UIImage *)portrait;
 
 @end
@@ -167,38 +166,7 @@
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return [self cellForTrackAtIndexPath:indexPath];
-}
-
-- (TrackCell *)cellForTrackAtIndexPath:(NSIndexPath *)indexPath
-{
-    SPTrack *track = [self.artistBrowse.topTracks objectAtIndex:[indexPath row]];
-    TrackCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"trackCell" forIndexPath:indexPath];
-    
-    NSString *artistsText = @"";
-    for(NSInteger i = 0; i < [track.artists count]; i++)
-    {
-        artistsText = [artistsText stringByAppendingString:[[track.artists objectAtIndex:i] name]];
-        if(i < ([track.artists count] -1))
-            artistsText = [artistsText stringByAppendingString:@" - "];
-    }
-    [cell.lbArtist setText:artistsText];
-    [cell.lbTrack setText:[track name]];
-    [MaskHelper addCircleMaskToView:[cell vwPlay]];
-    
-    for(UIView* subView in [cell.vwPlay subviews])
-        [subView removeFromSuperview];
-    
-    if([[SpotifyPlayer sharedSpotifyPlayer] currentTrack] == track)
-        ;//[cell.vwPlay addSubview:musicProgressView];
-    else
-    {
-        UIImageView* playImageView = [[UIImageView alloc] initWithFrame:[cell.vwPlay bounds]];
-        [playImageView setImage:[UIImage imageNamed:@"Play"]];
-        [cell.vwPlay addSubview:playImageView];
-    }
-    
-    return cell;
+    return [CellConstructHelper tableView:tableView cellForTrack:[self.artistBrowse.topTracks objectAtIndex:[indexPath row]] atIndexPath:indexPath musicProgressView:nil];
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
