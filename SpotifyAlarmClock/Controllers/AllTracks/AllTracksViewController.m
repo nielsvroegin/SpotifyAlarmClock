@@ -10,14 +10,12 @@
 #import "CocoaLibSpotify.h"
 #import "TrackCell.h"
 #import "SpotifyPlayer.h"
-#import "FFCircularProgressView.h"
 #import "MBProgressHUD.h"
 #import "LoadMoreCell.h"
 #import "CellConstructHelper.h"
 
 @interface AllTracksViewController ()
 
-@property (nonatomic, strong) FFCircularProgressView *musicProgressView;
 @property (nonatomic, strong) SPSearch *searchResult;
 
 - (void)loadMoreTracks;
@@ -26,7 +24,6 @@
 
 @implementation AllTracksViewController
 @synthesize searchText;
-@synthesize musicProgressView;
 
 - (void)viewDidLoad
 {
@@ -35,10 +32,6 @@
     //Register cells
     [self.tableView registerNib:[UINib nibWithNibName:@"TrackCell" bundle:nil] forCellReuseIdentifier:@"trackCell"];
     [self.tableView registerNib:[UINib nibWithNibName:@"LoadMoreCell" bundle:nil] forCellReuseIdentifier:@"loadingMoreCells"];
-    
-    //Init music progress view
-    musicProgressView = [[FFCircularProgressView alloc] init];
-    [musicProgressView setTintColor:[UIColor colorWithRed:(24 / 255.0) green:(109 / 255.0) blue:(39 / 255.0) alpha:1]];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -136,7 +129,7 @@
         return cell;
     }
     else //Show track
-        return [CellConstructHelper tableView:tableView cellForTrack:[self.searchResult.tracks objectAtIndex:[indexPath row]] atIndexPath:indexPath musicProgressView:musicProgressView];
+        return [CellConstructHelper tableView:tableView cellForTrack:[self.searchResult.tracks objectAtIndex:[indexPath row]] atIndexPath:indexPath];
 }
 
 #pragma mark - UITableView delegate
@@ -162,49 +155,24 @@
 
 #pragma mark - Spotify Player delegate
 
+#pragma mark - Spotify Player delegate
+
 - (void)track:(SPTrack *)track progess:(double) progress
 {
-    if(progress >= 1.0) progress = 0.999;
-    [musicProgressView setProgress:progress];
+    TrackCell *cell = (TrackCell*)[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:[self.searchResult.tracks indexOfObject:track] inSection:0]];
+    [cell setProgress:progress];
 }
 
 - (void)trackStartedPlaying:(SPTrack *)track
 {
     TrackCell *cell = (TrackCell*)[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:[self.searchResult.tracks indexOfObject:track] inSection:0]];
-    [musicProgressView setFrame:[cell.vwPlay bounds]];
-    [musicProgressView setProgress:0.01];
-    
-    [UIView transitionWithView:cell.vwPlay
-                      duration:1.0
-                       options:UIViewAnimationOptionTransitionFlipFromLeft | UIViewAnimationOptionShowHideTransitionViews
-                    animations:^{
-                        for(UIView* subView in [cell.vwPlay subviews])
-                            [subView removeFromSuperview];
-                        
-                        [cell.vwPlay addSubview:musicProgressView];
-                        
-                    } completion:nil];
-    
+    [cell showPlayProgress:YES animated:YES];
 }
 
 - (void)trackStoppedPlaying:(SPTrack *)track
 {
     TrackCell *cell = (TrackCell*)[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:[self.searchResult.tracks indexOfObject:track] inSection:0]];
-    UIImageView* playImageView = [[UIImageView alloc] initWithFrame:[cell.vwPlay bounds]];
-    [playImageView setImage:[UIImage imageNamed:@"Play"]];
-    
-    [UIView transitionWithView:cell.vwPlay
-                      duration:1.0
-                       options:UIViewAnimationOptionTransitionFlipFromRight | UIViewAnimationOptionShowHideTransitionViews
-                    animations:^{
-                        for(UIView* subView in [cell.vwPlay subviews])
-                            [subView removeFromSuperview];
-                        
-                        [cell.vwPlay addSubview:playImageView];
-                        
-                    } completion:nil];
-    
-    [self.musicProgressView setProgress:0.01];
+    [cell showPlayProgress:NO animated:YES];
 }
 
 

@@ -12,7 +12,9 @@
 @synthesize artistImage, lbArtist;
 
 - (void)awakeFromNib {
-    // Initialization code
+    [artistImage layer].cornerRadius = [artistImage layer].frame.size.height /2;
+    [artistImage layer].masksToBounds = YES;
+    [artistImage layer].borderWidth = 0;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

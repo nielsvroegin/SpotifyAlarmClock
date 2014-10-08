@@ -11,14 +11,12 @@
 #import "TrackCell.h"
 #import "AlbumCell.h"
 #import "ArtistCell.h"
-#import "MaskHelper.h"
 #import "ArtistBrowseCache.h"
 #import "SpotifyPlayer.h"
-#import "FFCircularProgressView.h"
 
 @implementation CellConstructHelper
 
-+ (TrackCell *)tableView:(UITableView*)tableView cellForTrack:(SPTrack *)track atIndexPath:(NSIndexPath *)indexPath musicProgressView:(FFCircularProgressView *)musicProgressView;
++ (TrackCell *)tableView:(UITableView*)tableView cellForTrack:(SPTrack *)track atIndexPath:(NSIndexPath *)indexPath;
 {
     TrackCell *cell = [tableView dequeueReusableCellWithIdentifier:@"trackCell" forIndexPath:indexPath];
     
@@ -31,20 +29,10 @@
     }
     [cell.lbArtist setText:artistsText];
     [cell.lbTrack setText:[track name]];
-    [MaskHelper addCircleMaskToView:[cell vwPlay]];
     
-    for(UIView* subView in [cell.vwPlay subviews])
-        [subView removeFromSuperview];
     
-    if([[SpotifyPlayer sharedSpotifyPlayer] currentTrack] == track)
-        [cell.vwPlay addSubview:musicProgressView];
-    else
-    {
-        UIImageView* playImageView = [[UIImageView alloc] initWithFrame:[cell.vwPlay bounds]];
-        [playImageView setImage:[UIImage imageNamed:@"Play"]];
-        [cell.vwPlay addSubview:playImageView];
-    }
-    
+    bool trackPlaying = ([[SpotifyPlayer sharedSpotifyPlayer] currentTrack] == track);
+    [cell showPlayProgress:trackPlaying];
     
     return cell;
 }
@@ -52,10 +40,7 @@
 + (ArtistCell *)tableView:(UITableView*)tableView cellForArtist:(SPArtist *)artist atIndexPath:(NSIndexPath *)indexPath  artistBrowseCache:(ArtistBrowseCache *) artistBrowseCache;
 {
     ArtistCell *cell = [tableView dequeueReusableCellWithIdentifier:@"artistCell" forIndexPath:indexPath];
-    [cell.lbArtist setText:[artist name]];
-    [cell.artistImage layer].cornerRadius = [cell.artistImage layer].frame.size.height /2;
-    [cell.artistImage layer].masksToBounds = YES;
-    [cell.artistImage layer].borderWidth = 0;
+    [cell.lbArtist setText:[artist name]];    
     
     SPArtistBrowse * artistBrowse = [artistBrowseCache artistBrowseForArtist:artist];
     

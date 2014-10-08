@@ -13,4 +13,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *lbArtist;
 @property (weak, nonatomic) IBOutlet UIView *vwPlay;
 
+-(void) showPlayProgress:(bool)showPlayProgress;
+-(void) showPlayProgress:(bool)showPlayProgress animated:(bool)animated;
+-(void) setProgress:(CGFloat)progress;
+
 @end

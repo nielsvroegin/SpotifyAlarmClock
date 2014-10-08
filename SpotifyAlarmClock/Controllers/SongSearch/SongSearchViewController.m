@@ -13,7 +13,6 @@
 #import "AlbumCell.h"
 #import "TrackCell.h"
 #import "SpotifyPlayer.h"
-#import "FFCircularProgressView.h"
 #import "AllTracksViewController.h"
 #import "AllArtistsViewController.h"
 #import "AllAlbumsViewController.h"
@@ -23,7 +22,6 @@
 @interface SongSearchViewController ()
     @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
     @property (nonatomic, strong) SPSearch *searchResult;
-    @property (nonatomic, strong) FFCircularProgressView *musicProgressView;
     @property (nonatomic, strong) ArtistBrowseCache *artistBrowseCache;
 
     @property (atomic, assign) BOOL loading;
@@ -38,7 +36,6 @@
 @synthesize searchBar;
 @synthesize searchResult;
 @synthesize artistSection, albumSection, trackSection;
-@synthesize musicProgressView;
 @synthesize artistBrowseCache;
 
 - (void)viewDidLoad {
@@ -47,9 +44,6 @@
     [self.tableView registerNib:[UINib nibWithNibName:@"ArtistCell" bundle:nil] forCellReuseIdentifier:@"artistCell"];
     [self.tableView registerNib:[UINib nibWithNibName:@"TrackCell" bundle:nil] forCellReuseIdentifier:@"trackCell"];
     
-    //Create music progress view
-    musicProgressView = [[FFCircularProgressView alloc] init];
-    [musicProgressView setTintColor:[UIColor colorWithRed:(24 / 255.0) green:(109 / 255.0) blue:(39 / 255.0) alpha:1]];
     
     //Set up artist browse cache
     artistBrowseCache = [[ArtistBrowseCache alloc] init];
@@ -232,7 +226,7 @@
             [cell.textLabel setText:@"View all tracks"];
         }
         else
-            cell = [CellConstructHelper tableView:tableView cellForTrack:[self.searchResult.tracks objectAtIndex:[indexPath row]] atIndexPath:indexPath musicProgressView:musicProgressView];
+            cell = [CellConstructHelper tableView:tableView cellForTrack:[self.searchResult.tracks objectAtIndex:[indexPath row]] atIndexPath:indexPath];
     }
     else if(self.artistSection == indexPath.section)
     {
@@ -361,47 +355,20 @@
 
 - (void)track:(SPTrack *)track progess:(double) progress
 {
-    if(progress >= 1.0) progress = 0.999;
-    [musicProgressView setProgress:progress];
+    TrackCell *cell = (TrackCell*)[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:[self.searchResult.tracks indexOfObject:track] inSection:trackSection]];
+    [cell setProgress:progress];
 }
 
 - (void)trackStartedPlaying:(SPTrack *)track
 {
     TrackCell *cell = (TrackCell*)[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:[self.searchResult.tracks indexOfObject:track] inSection:trackSection]];
-    [musicProgressView setFrame:[cell.vwPlay bounds]];
-    [musicProgressView setProgress:0.01];
-    
-    [UIView transitionWithView:cell.vwPlay
-                      duration:1.0
-                       options:UIViewAnimationOptionTransitionFlipFromLeft | UIViewAnimationOptionShowHideTransitionViews
-                    animations:^{
-                        for(UIView* subView in [cell.vwPlay subviews])
-                            [subView removeFromSuperview];
-
-                        [cell.vwPlay addSubview:musicProgressView];
-
-                    } completion:nil];
-    
+    [cell showPlayProgress:YES animated:YES];
 }
 
 - (void)trackStoppedPlaying:(SPTrack *)track
 {
     TrackCell *cell = (TrackCell*)[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:[self.searchResult.tracks indexOfObject:track] inSection:trackSection]];
-    UIImageView* playImageView = [[UIImageView alloc] initWithFrame:[cell.vwPlay bounds]];
-    [playImageView setImage:[UIImage imageNamed:@"Play"]];
-    
-    [UIView transitionWithView:cell.vwPlay
-                      duration:1.0
-                       options:UIViewAnimationOptionTransitionFlipFromRight | UIViewAnimationOptionShowHideTransitionViews
-                    animations:^{
-                        for(UIView* subView in [cell.vwPlay subviews])
-                            [subView removeFromSuperview];
-                        
-                        [cell.vwPlay addSubview:playImageView];
-                        
-                    } completion:nil];
-    
-    [self.musicProgressView setProgress:0.01];
+    [cell showPlayProgress:NO animated:YES];
 }
 
 #pragma mark - ArtistBrowseCache delegate
