@@ -9,17 +9,14 @@
 #import "BlurredHeaderView.h"
 
 @implementation BlurredHeaderView
-@synthesize backgroundImage, circularImage;
+@synthesize backgroundImage, image;
 
 
 // Only override drawRect: if you perform custom drawing.
 // An empty implementation adversely affects performance during animation.
 - (void)drawRect:(CGRect)rect {
     //Set content mode / Create circular mask for circular image
-    self.circularImage.contentMode = UIViewContentModeScaleAspectFill;
-    [self.circularImage layer].cornerRadius = [self.circularImage layer].frame.size.height /2;
-    [self.circularImage layer].masksToBounds = YES;
-    [self.circularImage layer].borderWidth = 0;
+    self.image.contentMode = UIViewContentModeScaleAspectFill;
     
     //Set content mode background image
     self.backgroundImage.contentMode = UIViewContentModeScaleToFill;

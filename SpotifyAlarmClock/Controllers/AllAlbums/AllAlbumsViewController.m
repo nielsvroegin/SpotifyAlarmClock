@@ -12,6 +12,7 @@
 #import "LoadMoreCell.h"
 #import "AlbumCell.h"
 #import "CellConstructHelper.h"
+#import "AlbumViewController.h"
 
 @interface AllAlbumsViewController ()
 
@@ -135,6 +136,28 @@
         return 40;
     else
         return 75;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    if([self.searchResult.albums count] != [indexPath row])
+        [self performSegueWithIdentifier:@"albumSegue" sender:[self.tableView cellForRowAtIndexPath:indexPath]];
+}
+
+#pragma mark - Navigation
+
+// In a storyboard-based application, you will often want to do a little preparation before navigation
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if([[segue identifier] isEqualToString:@"albumSegue"])
+    {
+        AlbumViewController *vw = [segue destinationViewController];
+        NSIndexPath *indexPath = [self.tableView indexPathForCell:(UITableViewCell*)sender];
+        
+        SPAlbum *album = [self.searchResult.albums objectAtIndex:[indexPath row]];
+        [vw setAlbum:album];
+    }
 }
 
 @end

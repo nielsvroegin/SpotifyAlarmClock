@@ -9,7 +9,6 @@
 #import <UIKit/UIKit.h>
 #import "SpotifyPlayer.h"
 
-@class SPArtist;
 @class SPArtistBrowse;
 
 @interface ArtistViewController : UITableViewController<SpotifyPlayerDelegate>

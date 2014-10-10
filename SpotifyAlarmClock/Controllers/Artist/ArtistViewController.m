@@ -16,6 +16,7 @@
 #import "AlbumCell.h"
 #import "SpotifyPlayer.h"
 #import "CellConstructHelper.h"
+#import "AlbumViewController.h"
 
 @interface ArtistViewController ()
 
@@ -60,8 +61,11 @@
     frame.size.width = self.view.bounds.size.width;
     blurredHeaderView.frame = frame;
     
+    //Set default artistportrait
+    [blurredHeaderView.image setImage:[UIImage imageNamed:@"ArtistPortrait"]];
+    
     //Add parallax header
-    [self.tableView addParallaxWithView:blurredHeaderView andHeight:220];
+    [self.tableView addParallaxWithView:blurredHeaderView andHeight:150];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -159,11 +163,14 @@
                     } completion:NULL];
     
     //Portrait
-    [UIView transitionWithView:self.blurredHeaderView.circularImage
+    [UIView transitionWithView:self.blurredHeaderView.image
                       duration:0.5f
                        options:UIViewAnimationOptionTransitionCrossDissolve
                     animations:^{
-                        [self.blurredHeaderView.circularImage setImage:portrait];
+                        [self.blurredHeaderView.image setImage:portrait];
+                        [self.blurredHeaderView.image layer].cornerRadius = [self.blurredHeaderView.image layer].frame.size.height /2;
+                        [self.blurredHeaderView.image layer].masksToBounds = YES;
+                        [self.blurredHeaderView.image layer].borderWidth = 0;
                     } completion:NULL];
     
     headerRendered = true;
@@ -278,6 +285,8 @@
         else
             [[SpotifyPlayer sharedSpotifyPlayer] playTrack:track];
     }
+    else if(indexPath.section == albumSection || indexPath.section == singleSection)
+        [self performSegueWithIdentifier:@"albumSegue" sender:[tableView cellForRowAtIndexPath:indexPath]];
 }
 
 #pragma mark - Spotify Player delegate
@@ -298,6 +307,25 @@
 {
     TrackCell *cell = (TrackCell*)[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:[self.artistBrowse.topTracks indexOfObject:track] inSection:0]];
     [cell showPlayProgress:NO animated:YES];
+}
+
+#pragma mark - Navigation
+
+// In a storyboard-based application, you will often want to do a little preparation before navigation
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if([[segue identifier] isEqualToString:@"albumSegue"])
+    {
+        AlbumViewController *vw = [segue destinationViewController];
+        NSIndexPath *indexPath = [self.tableView indexPathForCell:(UITableViewCell*)sender];
+        
+        SPAlbum *album;
+        if(indexPath.section == albumSection)
+            album = [self.albums objectAtIndex:[indexPath row]];
+        else if(indexPath.section == singleSection)
+            album = [self.singles objectAtIndex:[indexPath row]];
+        
+        [vw setAlbum:album];
+    }
 }
 
 @end

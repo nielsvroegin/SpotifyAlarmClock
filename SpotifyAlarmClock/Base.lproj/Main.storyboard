@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="vXZ-lx-hvc">
     <dependencies>
+        <deployment defaultVersion="1808" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
         <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -621,6 +622,7 @@
                         <segue destination="9ua-46-BX1" kind="push" identifier="allArtistsSegue" id="WjV-Xm-tmJ"/>
                         <segue destination="kgr-FC-5RO" kind="push" identifier="allAlbumsSegue" id="psT-6V-u7U"/>
                         <segue destination="kEK-8t-cMN" kind="push" identifier="artistSegue" id="odI-h1-XeF"/>
+                        <segue destination="moy-Xe-ReM" kind="push" identifier="albumSegue" id="jc4-iH-A1a"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xnu-zh-gAD" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -651,6 +653,25 @@
             </objects>
             <point key="canvasLocation" x="5030" y="-891"/>
         </scene>
+        <!--Album View Controller-->
+        <scene sceneID="eW0-Ho-ga7">
+            <objects>
+                <tableViewController id="moy-Xe-ReM" customClass="AlbumViewController" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="2Lb-wf-GOG">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <connections>
+                            <outlet property="dataSource" destination="moy-Xe-ReM" id="6tQ-0T-ClO"/>
+                            <outlet property="delegate" destination="moy-Xe-ReM" id="aFP-f6-hGf"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="Wor-ki-BNB"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rem-zl-KMY" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5494" y="-897"/>
+        </scene>
         <!--All Artists View Controller-->
         <scene sceneID="GmH-ME-BwB">
             <objects>
@@ -680,7 +701,7 @@
         <!--Artist View Controller-->
         <scene sceneID="bBE-ER-0Sa">
             <objects>
-                <tableViewController automaticallyAdjustsScrollViewInsets="NO" id="kEK-8t-cMN" customClass="ArtistViewController" sceneMemberID="viewController">
+                <tableViewController id="kEK-8t-cMN" customClass="ArtistViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="erB-7v-ORh">
                         <rect key="frame" x="0.0" y="64" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -691,6 +712,9 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="uj6-Zi-Nyz"/>
+                    <connections>
+                        <segue destination="moy-Xe-ReM" kind="push" identifier="albumSegue" id="1oT-SB-l6V"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NIi-4g-uqr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -714,6 +738,9 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="2M5-PA-pVk"/>
+                    <connections>
+                        <segue destination="moy-Xe-ReM" kind="push" identifier="albumSegue" id="SDo-MT-6ED"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zSY-ro-j5T" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -893,6 +920,7 @@
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="i1N-E3-qx4"/>
-        <segue reference="dpd-fJ-gwS"/>
+        <segue reference="odI-h1-XeF"/>
+        <segue reference="SDo-MT-6ED"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -17,6 +17,7 @@
 #import "AllArtistsViewController.h"
 #import "AllAlbumsViewController.h"
 #import "ArtistViewController.h"
+#import "AlbumViewController.h"
 #import "CellConstructHelper.h"
 
 @interface SongSearchViewController ()
@@ -311,6 +312,8 @@
     {
         if([indexPath row] == [self.searchResult.albums count])
             [self performSegueWithIdentifier:@"allAlbumsSegue" sender:nil];
+        else
+            [self performSegueWithIdentifier:@"albumSegue" sender:[self.tableView cellForRowAtIndexPath:indexPath]];
     }
 }
 
@@ -348,6 +351,13 @@
         NSIndexPath *indexPath = [self.tableView indexPathForCell:(UITableViewCell*)sender];
         SPArtist *artist = [self.searchResult.artists objectAtIndex:[indexPath row]];
         [vw setArtistBrowse:[artistBrowseCache artistBrowseForArtist:artist]];
+    }
+    else if([[segue identifier] isEqualToString:@"albumSegue"])
+    {
+        AlbumViewController *vw = [segue destinationViewController];
+        NSIndexPath *indexPath = [self.tableView indexPathForCell:(UITableViewCell*)sender];
+        SPAlbum *album = [self.searchResult.albums objectAtIndex:[indexPath row]];
+        [vw setAlbum:album];
     }
 }
 

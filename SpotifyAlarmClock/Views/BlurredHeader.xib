@@ -1,20 +1,21 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6245" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
+        <deployment defaultVersion="1808" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="Lq1-7d-X9O" customClass="BlurredHeaderView">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="220"/>
+            <rect key="frame" x="0.0" y="0.0" width="320" height="150"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BlurredHeader" translatesAutoresizingMaskIntoConstraints="NO" id="8Oa-7O-78z">
-                    <rect key="frame" x="0.0" y="0.0" width="320" height="220"/>
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="150"/>
                 </imageView>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ArtistPortrait" translatesAutoresizingMaskIntoConstraints="NO" id="CwU-po-xhU">
-                    <rect key="frame" x="110" y="95" width="100" height="100"/>
+                    <rect key="frame" x="110" y="25" width="100" height="100"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="100" id="Bp6-lU-RzC"/>
                         <constraint firstAttribute="height" constant="100" id="Q4P-V5-axi"/>
@@ -33,7 +34,7 @@
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
                 <outlet property="backgroundImage" destination="8Oa-7O-78z" id="Owy-Tf-PLW"/>
-                <outlet property="circularImage" destination="CwU-po-xhU" id="V31-eO-15X"/>
+                <outlet property="image" destination="CwU-po-xhU" id="BmC-L5-E9x"/>
             </connections>
             <point key="canvasLocation" x="140" y="139"/>
         </view>

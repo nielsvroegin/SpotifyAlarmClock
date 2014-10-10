@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface BlurredHeaderView : UIView
-@property (weak, nonatomic) IBOutlet UIImageView *circularImage;
+@property (weak, nonatomic) IBOutlet UIImageView *image;
 @property (weak, nonatomic) IBOutlet UIImageView *backgroundImage;
 
 @end
