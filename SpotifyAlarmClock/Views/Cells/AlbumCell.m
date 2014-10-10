@@ -9,7 +9,7 @@
 #import "AlbumCell.h"
 
 @implementation AlbumCell
-@synthesize albumImage, lbArtist, lbAlbum;
+@synthesize albumImage, lbName, lbSubTitle;
 
 - (void)awakeFromNib {
     // Initialization code

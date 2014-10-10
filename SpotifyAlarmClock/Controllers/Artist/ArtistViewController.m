@@ -13,6 +13,7 @@
 #import "UIScrollView+APParallaxHeader.h"
 #import "BlurredHeaderView.h"
 #import "TrackCell.h"
+#import "AlbumCell.h"
 #import "SpotifyPlayer.h"
 #import "CellConstructHelper.h"
 
@@ -21,6 +22,11 @@
 @property (nonatomic, strong) SPArtist *artist;
 @property (nonatomic, assign) bool headerRendered;
 @property (nonatomic, strong) BlurredHeaderView *blurredHeaderView;
+@property (nonatomic, assign) NSInteger singleSection;
+@property (nonatomic, assign) NSInteger albumSection;
+@property (nonatomic, assign) NSInteger trackSection;
+@property (nonatomic, strong) NSArray *albums;
+@property (nonatomic, strong) NSArray *singles;
 
 - (void)loadArtistBrowse;
 - (void)renderArtistHeader:(UIImage *)portrait;
@@ -28,12 +34,13 @@
 @end
 
 @implementation ArtistViewController
+@synthesize singleSection, albumSection, trackSection;
 @synthesize artist;
 @synthesize artistBrowse;
 @synthesize blurredHeaderView;
 @synthesize headerRendered;
-
-
+@synthesize albums;
+@synthesize singles;
 
 
 - (void)viewDidLoad
@@ -42,6 +49,7 @@
     
     //Register cells
     [self.tableView registerNib:[UINib nibWithNibName:@"TrackCell" bundle:nil] forCellReuseIdentifier:@"trackCell"];
+    [self.tableView registerNib:[UINib nibWithNibName:@"AlbumCell" bundle:nil] forCellReuseIdentifier:@"albumCell"];
         
     //Load header view from nib
     NSArray* nibViews = [[NSBundle mainBundle] loadNibNamed:@"BlurredHeader" owner:self options:nil];
@@ -78,6 +86,12 @@
     [self loadArtistBrowse];
 }
 
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    [[SpotifyPlayer sharedSpotifyPlayer] stopTrack];
+}
+
 - (void)loadArtistBrowse
 {
     //Show loading HUD
@@ -95,6 +109,10 @@
              
              return;
          }
+
+         //Get albums/singles of artist
+         albums = [self.artistBrowse.albums filteredArrayUsingPredicate:[NSPredicate predicateWithFormat: @"(type = %d OR type = %d) AND available = YES AND artist = %@", SP_ALBUMTYPE_ALBUM, SP_ALBUMTYPE_UNKNOWN, artist]];
+         singles = [self.artistBrowse.albums filteredArrayUsingPredicate:[NSPredicate predicateWithFormat: @"type = %d AND available = YES AND artist = %@", SP_ALBUMTYPE_SINGLE, artist]];
          
          //Disable loading HUD
          [MBProgressHUD hideAllHUDsForView:self.tableView animated:YES];
@@ -155,43 +173,111 @@
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    //return [artistBrowse.albums count] + 1;
-    if(artistBrowse != nil && [artistBrowse isLoaded])
-        return 1;
-    else
+    //Hide results as long as no artist browse loaded;
+    if(artistBrowse == nil || ![artistBrowse isLoaded])
         return 0;
-}
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-//    if(section == 0)
-        return [artistBrowse.topTracks count];
-}
-
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return [CellConstructHelper tableView:tableView cellForTrack:[self.artistBrowse.topTracks objectAtIndex:[indexPath row]] atIndexPath:indexPath];
+    
+    NSInteger sections = 0;
+    
+    if([[self.artistBrowse topTracks] count] > 0)
+    {
+        self.trackSection = sections;
+        sections++;
+    }
+    else
+        self.trackSection = -1;
+    
+    if([self.albums count] > 0)
+    {
+        self.albumSection = sections;
+        sections++;
+    }
+    else
+        self.albumSection = -1;
+    
+    if([self.singles count] > 0)
+    {
+        self.singleSection = sections;
+        sections++;
+    }
+    else
+        self.singleSection = -1;
+    
+    return sections;
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
-    return @"Top tracks";
+    NSString* sectionTitle;
+    
+    if(self.trackSection == section)
+        sectionTitle = @"Top tracks";
+    else if(self.albumSection == section)
+        sectionTitle = @"Albums";
+    else if(self.singleSection == section)
+        sectionTitle = @"Singles";
+
+    return sectionTitle;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    NSInteger rows = 0;
+    
+    if(section == trackSection)
+    {
+        rows = [artistBrowse.topTracks count];
+        if (rows > 5) rows = 5;
+    }
+    else if(section == albumSection)
+        rows = [albums count];
+    else if(section == singleSection)
+        rows = [singles count];
+    
+    return rows;
+}
+
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    UITableViewCell *cell;
+    NSInteger section = [indexPath section];
+    
+    if(section == trackSection)
+        cell = [CellConstructHelper tableView:tableView cellForTrack:[self.artistBrowse.topTracks objectAtIndex:[indexPath row]] atIndexPath:indexPath];
+    else if(section == albumSection)
+        cell = [CellConstructHelper tableView:tableView cellForAlbum:[self.albums objectAtIndex:[indexPath row]] atIndexPath:indexPath];
+    else if(section == singleSection)
+        cell = [CellConstructHelper tableView:tableView cellForAlbum:[self.singles objectAtIndex:[indexPath row]] atIndexPath:indexPath];
+    
+    return cell;
 }
 
 #pragma mark - UITableView delegate
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-        return 55;
+    CGFloat cellHeight;
+    
+    if(indexPath.section == trackSection)
+        cellHeight = 55;
+    else if(indexPath.section == albumSection)
+        cellHeight = 75;
+    else if(indexPath.section == singleSection)
+        cellHeight = 75;
+    
+    return cellHeight;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    SPTrack *track = [self.artistBrowse.topTracks objectAtIndex:[indexPath row]];
-    if([[SpotifyPlayer sharedSpotifyPlayer] currentTrack] == track)
-        [[SpotifyPlayer sharedSpotifyPlayer] stopTrack];
-    else
-        [[SpotifyPlayer sharedSpotifyPlayer] playTrack:track];
+    if(indexPath.section == trackSection)
+    {
+        SPTrack *track = [self.artistBrowse.topTracks objectAtIndex:[indexPath row]];
+        if([[SpotifyPlayer sharedSpotifyPlayer] currentTrack] == track)
+            [[SpotifyPlayer sharedSpotifyPlayer] stopTrack];
+        else
+            [[SpotifyPlayer sharedSpotifyPlayer] playTrack:track];
+    }
 }
 
 #pragma mark - Spotify Player delegate

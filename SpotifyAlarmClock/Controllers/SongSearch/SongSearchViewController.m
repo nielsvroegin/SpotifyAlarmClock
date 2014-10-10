@@ -246,7 +246,7 @@
             [cell.textLabel setText:@"View all albums"];
         }
         else
-            cell = [CellConstructHelper tableView:tableView cellForAlbum:[self.searchResult.albums objectAtIndex:[indexPath row]] atIndexPath:indexPath];
+            cell = [CellConstructHelper tableView:tableView cellForAlbum:[self.searchResult.albums objectAtIndex:[indexPath row]] atIndexPath:indexPath artistNameOnTop:YES];
     }
     
     return cell;

@@ -23,5 +23,6 @@
 + (TrackCell *)tableView:(UITableView*)tableView cellForTrack:(SPTrack *)track atIndexPath:(NSIndexPath *)indexPath;
 + (ArtistCell *)tableView:(UITableView*)tableView cellForArtist:(SPArtist *)artist atIndexPath:(NSIndexPath *)indexPath artistBrowseCache:(ArtistBrowseCache *) artistBrowseCache;
 + (AlbumCell *)tableView:(UITableView*)tableView cellForAlbum:(SPAlbum *)album atIndexPath:(NSIndexPath *)indexPath;
++ (AlbumCell *)tableView:(UITableView*)tableView cellForAlbum:(SPAlbum *)album atIndexPath:(NSIndexPath *)indexPath artistNameOnTop:(bool)artistNameOnTop;
 
 @end

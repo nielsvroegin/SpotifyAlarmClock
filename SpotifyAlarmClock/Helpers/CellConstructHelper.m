@@ -16,7 +16,7 @@
 
 @implementation CellConstructHelper
 
-+ (TrackCell *)tableView:(UITableView*)tableView cellForTrack:(SPTrack *)track atIndexPath:(NSIndexPath *)indexPath;
++ (TrackCell *)tableView:(UITableView*)tableView cellForTrack:(SPTrack *)track atIndexPath:(NSIndexPath *)indexPath
 {
     TrackCell *cell = [tableView dequeueReusableCellWithIdentifier:@"trackCell" forIndexPath:indexPath];
     
@@ -37,7 +37,7 @@
     return cell;
 }
 
-+ (ArtistCell *)tableView:(UITableView*)tableView cellForArtist:(SPArtist *)artist atIndexPath:(NSIndexPath *)indexPath  artistBrowseCache:(ArtistBrowseCache *) artistBrowseCache;
++ (ArtistCell *)tableView:(UITableView*)tableView cellForArtist:(SPArtist *)artist atIndexPath:(NSIndexPath *)indexPath  artistBrowseCache:(ArtistBrowseCache *) artistBrowseCache
 {
     ArtistCell *cell = [tableView dequeueReusableCellWithIdentifier:@"artistCell" forIndexPath:indexPath];
     [cell.lbArtist setText:[artist name]];    
@@ -54,12 +54,26 @@
     return cell;
 }
 
-+ (AlbumCell *)tableView:(UITableView*)tableView cellForAlbum:(SPAlbum *)album atIndexPath:(NSIndexPath *)indexPath;
++ (AlbumCell *)tableView:(UITableView*)tableView cellForAlbum:(SPAlbum *)album atIndexPath:(NSIndexPath *)indexPath
+{
+    return [self tableView:tableView cellForAlbum:album atIndexPath:indexPath artistNameOnTop:NO];
+}
+
++ (AlbumCell *)tableView:(UITableView*)tableView cellForAlbum:(SPAlbum *)album atIndexPath:(NSIndexPath *)indexPath artistNameOnTop:(bool)artistNameOnTop
 {
     AlbumCell *cell = [tableView dequeueReusableCellWithIdentifier:@"albumCell" forIndexPath:indexPath];
-    [cell.lbArtist setText:[album.artist name]];
-    [cell.lbAlbum setText:[album name]];
     
+    if(artistNameOnTop)
+    {
+        [cell.lbName setText:[album.artist name]];
+        [cell.lbSubTitle setText:[album name]];
+    }
+    else
+    {
+        [cell.lbName setText:[album name]];
+        [cell.lbSubTitle setText:[album.artist name]];
+    }
+        
     if([album.cover isLoaded])
         [cell.albumImage setImage:[album.cover image]];
     else
