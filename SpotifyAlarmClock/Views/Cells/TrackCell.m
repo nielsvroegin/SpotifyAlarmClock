@@ -19,11 +19,13 @@
 @end
 
 @implementation TrackCell
-@synthesize lbArtist, lbTrack, vwPlay;
+@synthesize lbArtist, lbTrack, vwPlay, btAddTrack;
 @synthesize musicProgressView;
 
 - (void)awakeFromNib {
     [MaskHelper addCircleMaskToView:vwPlay];
+    [self.btAddTrack setImage:[UIImage imageNamed:@"AddMusicButton"] forState:UIControlStateNormal];
+    [self.btAddTrack setImage:[UIImage imageNamed:@"AddMusicButtonHighlighted"] forState:UIControlStateHighlighted];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

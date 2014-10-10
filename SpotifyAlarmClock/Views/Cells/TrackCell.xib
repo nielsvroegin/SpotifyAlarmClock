@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6245" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <deployment defaultVersion="1808" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
@@ -60,6 +59,7 @@
                 </constraints>
             </tableViewCellContentView>
             <connections>
+                <outlet property="btAddTrack" destination="2FK-CX-1ht" id="pPs-9B-ooC"/>
                 <outlet property="lbArtist" destination="cHu-oG-A9w" id="yhy-dw-ZTj"/>
                 <outlet property="lbTrack" destination="2fS-Sz-1dW" id="4w6-gF-ydL"/>
                 <outlet property="vwPlay" destination="SO0-Dg-8CN" id="8nQ-D1-oab"/>
@@ -67,6 +67,6 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="AddMusicButton" width="178" height="178"/>
+        <image name="AddMusicButton" width="30" height="30"/>
     </resources>
 </document>
