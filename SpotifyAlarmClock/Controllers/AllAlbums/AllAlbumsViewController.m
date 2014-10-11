@@ -24,6 +24,7 @@
 
 @implementation AllAlbumsViewController
 @synthesize searchText;
+@synthesize songSearchDelegate;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -157,6 +158,7 @@
         
         SPAlbum *album = [self.searchResult.albums objectAtIndex:[indexPath row]];
         [vw setAlbum:album];
+        [vw setSongSearchDelegate:self.songSearchDelegate];
     }
 }
 

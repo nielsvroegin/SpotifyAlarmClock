@@ -27,6 +27,7 @@
 @synthesize searchText;
 @synthesize searchResult;
 @synthesize artistBrowseCache;
+@synthesize songSearchDelegate;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -162,6 +163,7 @@
         NSIndexPath *indexPath = [self.tableView indexPathForCell:(UITableViewCell*)sender];
         SPArtist *artist = [self.searchResult.artists objectAtIndex:[indexPath row]];
         [vw setArtistBrowse:[artistBrowseCache artistBrowseForArtist:artist]];
+        [vw setSongSearchDelegate:self.songSearchDelegate];
     }
 }
 

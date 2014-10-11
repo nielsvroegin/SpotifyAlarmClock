@@ -13,17 +13,20 @@
 #import "MBProgressHUD.h"
 #import "LoadMoreCell.h"
 #import "CellConstructHelper.h"
+#import "Tools.h"
 
 @interface AllTracksViewController ()
 
 @property (nonatomic, strong) SPSearch *searchResult;
 
 - (void)loadMoreTracks;
+- (void) addSongButtonClicked:(id)sender;
 
 @end
 
 @implementation AllTracksViewController
 @synthesize searchText;
+@synthesize songSearchDelegate;
 
 - (void)viewDidLoad
 {
@@ -100,6 +103,27 @@
      }];
 }
 
+- (void) addSongButtonClicked:(id)sender
+{
+    TrackCell *trackCell = (TrackCell*)[Tools findSuperView:[TrackCell class] forView:(UIView *)sender];
+    SPTrack *track = [self.searchResult.tracks objectAtIndex:[[self.tableView indexPathForCell:trackCell] row]];
+    bool trackKnown = [songSearchDelegate isTrackAdded:track];
+    
+    // Notify delegate about track
+    if(!trackKnown)
+    {
+        [self.songSearchDelegate trackAdded:track];
+        [trackCell setAddMusicButton:RemoveMusic animated:YES];
+        [Tools showCheckMarkHud:self.view text:@"Song added to alarm!"];
+    }
+    else
+    {
+        [self.songSearchDelegate trackRemoved:track];
+        [trackCell setAddMusicButton:AddMusic animated:YES];
+        [Tools showCheckMarkHud:self.view text:@"Song removed from alarm!"];
+    }
+}
+
 #pragma mark - Table view data source
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -129,7 +153,17 @@
         return cell;
     }
     else //Show track
-        return [CellConstructHelper tableView:tableView cellForTrack:[self.searchResult.tracks objectAtIndex:[indexPath row]] atIndexPath:indexPath];
+    {
+        SPTrack *track = [self.searchResult.tracks objectAtIndex:[indexPath row]];
+        TrackCell *trackCell = [CellConstructHelper tableView:tableView cellForTrack:track atIndexPath:indexPath];
+        [trackCell.btAddTrack addTarget:self action:@selector(addSongButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
+        if([songSearchDelegate isTrackAdded:track])
+            [trackCell setAddMusicButton:RemoveMusic animated:NO];
+        else
+            [trackCell setAddMusicButton:AddMusic animated:NO];
+
+        return trackCell;
+    }
 }
 
 #pragma mark - UITableView delegate
@@ -174,17 +208,5 @@
     TrackCell *cell = (TrackCell*)[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:[self.searchResult.tracks indexOfObject:track] inSection:0]];
     [cell showPlayProgress:NO animated:YES];
 }
-
-
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

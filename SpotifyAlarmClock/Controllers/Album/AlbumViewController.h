@@ -8,10 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import "SpotifyPlayer.h"
+#import "SongSearchDelegate.h"
 
 @class SPAlbum;
 
 @interface AlbumViewController : UITableViewController<SpotifyPlayerDelegate>
     @property (nonatomic, strong) SPAlbum *album;
-
+    @property(nonatomic, weak) id<SongSearchDelegate> songSearchDelegate;
 @end

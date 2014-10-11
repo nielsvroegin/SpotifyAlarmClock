@@ -16,6 +16,7 @@
 #import "AlbumCell.h"
 #import "SpotifyPlayer.h"
 #import "CellConstructHelper.h"
+#import "Tools.h"
 
 @interface AlbumViewController ()
 
@@ -25,6 +26,7 @@
 
 - (void)loadAlbumBrowse;
 - (void)renderAlbumHeader:(UIImage *)cover;
+- (void) addSongButtonClicked:(id)sender;
 
 @end
 
@@ -33,6 +35,7 @@
 @synthesize albumBrowse;
 @synthesize blurredHeaderView;
 @synthesize headerRendered;
+@synthesize songSearchDelegate;
 
 
 - (void)viewDidLoad
@@ -148,6 +151,26 @@
     headerRendered = true;
 }
 
+- (void) addSongButtonClicked:(id)sender
+{
+    TrackCell *trackCell = (TrackCell*)[Tools findSuperView:[TrackCell class] forView:(UIView *)sender];
+    SPTrack *track = [self.albumBrowse.tracks objectAtIndex:[[self.tableView indexPathForCell:trackCell] row]];
+    bool trackKnown = [songSearchDelegate isTrackAdded:track];
+    
+    // Notify delegate about track
+    if(!trackKnown)
+    {
+        [self.songSearchDelegate trackAdded:track];
+        [trackCell setAddMusicButton:RemoveMusic animated:YES];
+        [Tools showCheckMarkHud:self.view text:@"Song added to alarm!"];
+    }
+    else
+    {
+        [self.songSearchDelegate trackRemoved:track];
+        [trackCell setAddMusicButton:AddMusic animated:YES];
+        [Tools showCheckMarkHud:self.view text:@"Song removed from alarm!"];
+    }
+}
 
 #pragma mark - Table view data source
 
@@ -164,8 +187,17 @@
     return[self.albumBrowse.tracks count];
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return [CellConstructHelper tableView:tableView cellForTrack:[self.albumBrowse.tracks objectAtIndex:[indexPath row]] atIndexPath:indexPath];
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    SPTrack *track = [self.albumBrowse.tracks objectAtIndex:[indexPath row]];
+    TrackCell *trackCell = [CellConstructHelper tableView:tableView cellForTrack:track atIndexPath:indexPath];
+    [trackCell.btAddTrack addTarget:self action:@selector(addSongButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
+    if([songSearchDelegate isTrackAdded:track])
+        [trackCell setAddMusicButton:RemoveMusic animated:NO];
+    else
+        [trackCell setAddMusicButton:AddMusic animated:NO];
+    
+    return trackCell;
 }
 
 #pragma mark - UITableView delegate

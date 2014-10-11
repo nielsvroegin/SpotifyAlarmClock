@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "SpotifyPlayer.h"
+#import "SongSearchDelegate.h"
 
 @interface AllTracksViewController : UITableViewController<SpotifyPlayerDelegate>
     @property (nonatomic, strong) NSString *searchText;
-
+    @property(nonatomic, weak) id<SongSearchDelegate> songSearchDelegate;
 @end

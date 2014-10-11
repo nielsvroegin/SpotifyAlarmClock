@@ -8,7 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "ArtistBrowseCache.h"
+#import "SongSearchDelegate.h"
 
 @interface AllArtistsViewController : UITableViewController<ArtistBrowseCacheDelegate>
     @property (nonatomic, strong) NSString *searchText;
+    @property(nonatomic, weak) id<SongSearchDelegate> songSearchDelegate;
 @end

@@ -7,7 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SongSearchDelegate.h"
 
 @interface AllAlbumsViewController : UITableViewController
     @property (nonatomic, strong) NSString *searchText;
+    @property(nonatomic, weak) id<SongSearchDelegate> songSearchDelegate;
 @end

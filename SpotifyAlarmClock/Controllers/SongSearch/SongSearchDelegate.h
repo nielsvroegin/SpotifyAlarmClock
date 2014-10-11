@@ -12,4 +12,6 @@
 
 @protocol SongSearchDelegate <NSObject>
     - (void)trackAdded:(SPTrack *)track;
+    - (void)trackRemoved:(SPTrack *)track;
+    - (bool)isTrackAdded:(SPTrack *)track;
 @end

@@ -33,7 +33,6 @@
 		B885CC7E19E013BD003450F8 /* AlbumCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B885CC7819E013BD003450F8 /* AlbumCell.m */; };
 		B885CC7F19E013BD003450F8 /* ArtistCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B885CC7A19E013BD003450F8 /* ArtistCell.m */; };
 		B885CC8019E013BD003450F8 /* TrackCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B885CC7C19E013BD003450F8 /* TrackCell.m */; };
-		B885CC8319E01B58003450F8 /* MaskHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = B885CC8219E01B58003450F8 /* MaskHelper.m */; };
 		B885FE7119C488F400EC1D32 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B885FE7019C488F400EC1D32 /* Foundation.framework */; };
 		B885FE7319C488F400EC1D32 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B885FE7219C488F400EC1D32 /* CoreGraphics.framework */; };
 		B885FE7B19C488F400EC1D32 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = B885FE7919C488F400EC1D32 /* InfoPlist.strings */; };
@@ -63,6 +62,7 @@
 		B8DEF86E19E0474900F2F453 /* ArtistBrowseCache.m in Sources */ = {isa = PBXBuildFile; fileRef = B8DEF86D19E0474900F2F453 /* ArtistBrowseCache.m */; };
 		B8DEF87519E06FA100F2F453 /* AllAlbumsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B8DEF87419E06FA100F2F453 /* AllAlbumsViewController.m */; };
 		B8DEF87919E07A8F00F2F453 /* ArtistViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B8DEF87819E07A8F00F2F453 /* ArtistViewController.m */; };
+		B8FC13B119E9B61A001E4C1D /* Tools.m in Sources */ = {isa = PBXBuildFile; fileRef = B8FC13B019E9B61A001E4C1D /* Tools.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -141,8 +141,6 @@
 		B885CC7A19E013BD003450F8 /* ArtistCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArtistCell.m; sourceTree = "<group>"; };
 		B885CC7B19E013BD003450F8 /* TrackCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrackCell.h; sourceTree = "<group>"; };
 		B885CC7C19E013BD003450F8 /* TrackCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TrackCell.m; sourceTree = "<group>"; };
-		B885CC8119E01B58003450F8 /* MaskHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MaskHelper.h; sourceTree = "<group>"; };
-		B885CC8219E01B58003450F8 /* MaskHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MaskHelper.m; sourceTree = "<group>"; };
 		B885FE6D19C488F400EC1D32 /* SpotifyAlarmClock.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpotifyAlarmClock.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B885FE7019C488F400EC1D32 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		B885FE7219C488F400EC1D32 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -190,6 +188,8 @@
 		B8DEF87819E07A8F00F2F453 /* ArtistViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArtistViewController.m; sourceTree = "<group>"; };
 		B8F5F34EBE107A7EEBA2420D /* Pods-SpotifyAlarmClock.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SpotifyAlarmClock.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SpotifyAlarmClock/Pods-SpotifyAlarmClock.debug.xcconfig"; sourceTree = "<group>"; };
 		B8FC13AD19E983C1001E4C1D /* SongsDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SongsDelegate.h; sourceTree = "<group>"; };
+		B8FC13AF19E9B61A001E4C1D /* Tools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tools.h; sourceTree = "<group>"; };
+		B8FC13B019E9B61A001E4C1D /* Tools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Tools.m; sourceTree = "<group>"; };
 		C92F5708CCED2BA4D9ECCF61 /* libPods-SpotifyAlarmClock.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SpotifyAlarmClock.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -485,12 +485,12 @@
 			isa = PBXGroup;
 			children = (
 				B885FEAC19C4AB3000EC1D32 /* SpotifyPlayer */,
-				B885CC8119E01B58003450F8 /* MaskHelper.h */,
-				B885CC8219E01B58003450F8 /* MaskHelper.m */,
 				B8DEF86C19E0474900F2F453 /* ArtistBrowseCache.h */,
 				B8DEF86D19E0474900F2F453 /* ArtistBrowseCache.m */,
 				B8D7691219E5C17600988A71 /* CellConstructHelper.h */,
 				B8D7691319E5C17600988A71 /* CellConstructHelper.m */,
+				B8FC13AF19E9B61A001E4C1D /* Tools.h */,
+				B8FC13B019E9B61A001E4C1D /* Tools.m */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -725,11 +725,11 @@
 				B885FEAF19C4AB3000EC1D32 /* SpotifyPlayer.m in Sources */,
 				B812392E19D201A4005EABDB /* SongsViewController.m in Sources */,
 				B86104DA19CDA28E001DB753 /* SpotifyAlarmClock.xcdatamodeld in Sources */,
+				B8FC13B119E9B61A001E4C1D /* Tools.m in Sources */,
 				B8DEF86E19E0474900F2F453 /* ArtistBrowseCache.m in Sources */,
 				B8DEF86B19E041F700F2F453 /* AllArtistsViewController.m in Sources */,
 				B812392819D1FC28005EABDB /* OptionsSelectViewController.m in Sources */,
 				B885FE7D19C488F400EC1D32 /* main.m in Sources */,
-				B885CC8319E01B58003450F8 /* MaskHelper.m in Sources */,
 				B8D7691419E5C17600988A71 /* CellConstructHelper.m in Sources */,
 				B8D16E0919E1CBF900B375D2 /* BlurredHeaderView.m in Sources */,
 				B86104D419CDA16D001DB753 /* AlarmSong.m in Sources */,

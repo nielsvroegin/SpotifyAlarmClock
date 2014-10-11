@@ -17,6 +17,7 @@
 #import "SpotifyPlayer.h"
 #import "CellConstructHelper.h"
 #import "AlbumViewController.h"
+#import "Tools.h"
 
 @interface ArtistViewController ()
 
@@ -31,6 +32,7 @@
 
 - (void)loadArtistBrowse;
 - (void)renderArtistHeader:(UIImage *)portrait;
+- (void) addSongButtonClicked:(id)sender;
 
 @end
 
@@ -42,6 +44,7 @@
 @synthesize headerRendered;
 @synthesize albums;
 @synthesize singles;
+@synthesize songSearchDelegate;
 
 
 - (void)viewDidLoad
@@ -176,6 +179,27 @@
     headerRendered = true;
 }
 
+- (void) addSongButtonClicked:(id)sender
+{
+    TrackCell *trackCell = (TrackCell*)[Tools findSuperView:[TrackCell class] forView:(UIView *)sender];
+    SPTrack *track = [self.artistBrowse.topTracks objectAtIndex:[[self.tableView indexPathForCell:trackCell] row]];
+    bool trackKnown = [songSearchDelegate isTrackAdded:track];
+    
+    // Notify delegate about track
+    if(!trackKnown)
+    {
+        [self.songSearchDelegate trackAdded:track];
+        [trackCell setAddMusicButton:RemoveMusic animated:YES];
+        [Tools showCheckMarkHud:self.view text:@"Song added to alarm!"];
+    }
+    else
+    {
+        [self.songSearchDelegate trackRemoved:track];
+        [trackCell setAddMusicButton:AddMusic animated:YES];
+        [Tools showCheckMarkHud:self.view text:@"Song removed from alarm!"];
+    }
+}
+
 
 #pragma mark - Table view data source
 
@@ -249,7 +273,17 @@
     NSInteger section = [indexPath section];
     
     if(section == trackSection)
-        cell = [CellConstructHelper tableView:tableView cellForTrack:[self.artistBrowse.topTracks objectAtIndex:[indexPath row]] atIndexPath:indexPath];
+    {
+        SPTrack *track = [self.artistBrowse.topTracks objectAtIndex:[indexPath row]];
+        TrackCell *trackCell = [CellConstructHelper tableView:tableView cellForTrack:track atIndexPath:indexPath];
+        [trackCell.btAddTrack addTarget:self action:@selector(addSongButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
+        if([songSearchDelegate isTrackAdded:track])
+            [trackCell setAddMusicButton:RemoveMusic animated:NO];
+        else
+            [trackCell setAddMusicButton:AddMusic animated:NO];
+        
+        cell = trackCell;
+    }
     else if(section == albumSection)
         cell = [CellConstructHelper tableView:tableView cellForAlbum:[self.albums objectAtIndex:[indexPath row]] atIndexPath:indexPath];
     else if(section == singleSection)
@@ -325,6 +359,7 @@
             album = [self.singles objectAtIndex:[indexPath row]];
         
         [vw setAlbum:album];
+        [vw setSongSearchDelegate:self.songSearchDelegate];
     }
 }
 

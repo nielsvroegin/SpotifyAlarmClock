@@ -134,6 +134,23 @@
     [self.tableView reloadData];
 }
 
+- (void)trackRemoved:(SPTrack *)track
+{
+    //Add track
+    [self.tracks removeObject:track];
+    
+    //Notify delegate
+    [delegate selectedSongsChanged:self.tracks];
+    
+    //Reload table
+    [self.tableView reloadData];
+}
+
+- (bool)isTrackAdded:(SPTrack *)track
+{
+    return [self.tracks containsObject:track];
+}
+
 
 #pragma mark - Navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {

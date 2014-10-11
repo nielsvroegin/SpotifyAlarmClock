@@ -19,6 +19,7 @@
 #import "ArtistViewController.h"
 #import "AlbumViewController.h"
 #import "CellConstructHelper.h"
+#import "Tools.h"
 
 
 @interface SongSearchViewController ()
@@ -62,6 +63,8 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    
+    [self.tableView reloadData];
     
     [[SpotifyPlayer sharedSpotifyPlayer] setDelegate:self];
 }
@@ -130,31 +133,23 @@
     if([self.searchBar isFirstResponder])
         [self.searchBar resignFirstResponder];
     
-    // Find track
-    UIButton *button = sender;
-    UIView *vw = button;
-    while(![vw isKindOfClass:[TrackCell class]] && vw != nil)
-        vw = [vw superview];
-    
-    if(![vw isKindOfClass:[TrackCell class]])
-        return;
-    
-    TrackCell *trackCell = (TrackCell*)vw;
+    TrackCell *trackCell = (TrackCell*)[Tools findSuperView:[TrackCell class] forView:(UIView *)sender];
     SPTrack *track = [self.searchResult.tracks objectAtIndex:[[self.tableView indexPathForCell:trackCell] row]];
+    bool trackKnown = [songSearchDelegate isTrackAdded:track];
     
-    // Notify delegate about track
-    [self.songSearchDelegate trackAdded:track];
-    
-    //Set trackcell button to remove state
-    [trackCell setAddMusicButton:RemoveMusic animated:YES];
-    
-    //Show hud item has been added
-    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    hud.mode = MBProgressHUDModeCustomView;
-    hud.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Checkmark"]];
-    hud.progress = 1.0f;
-    hud.labelText = @"Song added to alarm!";
-    [hud hide:YES afterDelay:1.0f];
+        // Notify delegate about track
+    if(!trackKnown)
+    {
+        [self.songSearchDelegate trackAdded:track];
+        [trackCell setAddMusicButton:RemoveMusic animated:YES];
+        [Tools showCheckMarkHud:self.view text:@"Song added to alarm!"];
+    }
+    else
+    {
+        [self.songSearchDelegate trackRemoved:track];
+        [trackCell setAddMusicButton:AddMusic animated:YES];
+        [Tools showCheckMarkHud:self.view text:@"Song removed from alarm!"];
+    }
 }
 
 #pragma mark - Searchbar delegate
@@ -262,8 +257,15 @@
         }
         else
         {
-            cell = [CellConstructHelper tableView:tableView cellForTrack:[self.searchResult.tracks objectAtIndex:[indexPath row]] atIndexPath:indexPath];
-            [((TrackCell*)cell).btAddTrack addTarget:self action:@selector(addSongButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
+            SPTrack *track = [self.searchResult.tracks objectAtIndex:[indexPath row]];
+            TrackCell *trackCell = [CellConstructHelper tableView:tableView cellForTrack:track atIndexPath:indexPath];
+            [trackCell.btAddTrack addTarget:self action:@selector(addSongButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
+            if([songSearchDelegate isTrackAdded:track])
+                [trackCell setAddMusicButton:RemoveMusic animated:NO];
+            else
+                [trackCell setAddMusicButton:AddMusic animated:NO];
+            
+            cell = trackCell;
         }
         
     }
@@ -370,18 +372,21 @@
         AllTracksViewController *vw = [segue destinationViewController];
         [vw.navigationItem setTitle:[NSString stringWithFormat:@"Tracks for \"%@\"", [self.searchBar text]]];
         [vw setSearchText:[self.searchBar text]];
+        [vw setSongSearchDelegate:self.songSearchDelegate];
     }
     else if([[segue identifier] isEqualToString:@"allArtistsSegue"])
     {
         AllArtistsViewController *vw = [segue destinationViewController];
         [vw.navigationItem setTitle:[NSString stringWithFormat:@"Artists for \"%@\"", [self.searchBar text]]];
         [vw setSearchText:[self.searchBar text]];
+        [vw setSongSearchDelegate:self.songSearchDelegate];
     }
     else if([[segue identifier] isEqualToString:@"allAlbumsSegue"])
     {
         AllAlbumsViewController *vw = [segue destinationViewController];
         [vw.navigationItem setTitle:[NSString stringWithFormat:@"Albums for \"%@\"", [self.searchBar text]]];
         [vw setSearchText:[self.searchBar text]];
+        [vw setSongSearchDelegate:self.songSearchDelegate];
     }
     else if([[segue identifier] isEqualToString:@"artistSegue"])
     {
@@ -389,6 +394,7 @@
         NSIndexPath *indexPath = [self.tableView indexPathForCell:(UITableViewCell*)sender];
         SPArtist *artist = [self.searchResult.artists objectAtIndex:[indexPath row]];
         [vw setArtistBrowse:[artistBrowseCache artistBrowseForArtist:artist]];
+        [vw setSongSearchDelegate:self.songSearchDelegate];
     }
     else if([[segue identifier] isEqualToString:@"albumSegue"])
     {
@@ -396,6 +402,7 @@
         NSIndexPath *indexPath = [self.tableView indexPathForCell:(UITableViewCell*)sender];
         SPAlbum *album = [self.searchResult.albums objectAtIndex:[indexPath row]];
         [vw setAlbum:album];
+        [vw setSongSearchDelegate:self.songSearchDelegate];
     }
 }
 

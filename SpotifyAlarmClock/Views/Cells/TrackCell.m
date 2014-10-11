@@ -8,7 +8,7 @@
 
 #import "TrackCell.h"
 #import "FFCircularProgressView.h"
-#import "MaskHelper.h"
+#import "Tools.h"
 
 @interface TrackCell ()
 
@@ -23,7 +23,7 @@
 @synthesize musicProgressView;
 
 - (void)awakeFromNib {
-    [MaskHelper addCircleMaskToView:vwPlay];
+    [Tools addCircleMaskToView:vwPlay];
     
     [self setAddMusicButton:AddMusic animated:false];
 }
