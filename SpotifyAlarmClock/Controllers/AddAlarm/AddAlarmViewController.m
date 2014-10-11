@@ -25,6 +25,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *lbSongs;
 @property (weak, nonatomic) IBOutlet UISwitch *snoozeSwitch;
 @property (weak, nonatomic) IBOutlet UIDatePicker *timePicker;
+@property (nonatomic, assign) bool songsChanged;
 
 - (BOOL) isOptionSelected:(NSUInteger)index;
 - (NSString *) repeatOptionsText;
@@ -40,6 +41,7 @@
 @synthesize lbSongs;
 @synthesize snoozeSwitch;
 @synthesize timePicker;
+@synthesize songsChanged;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -98,13 +100,16 @@
     [self.alarmData setAlarmTime:[self.timePicker date]];
     
     /***** Set Alarm Songs ******/
-    //Remove all
-    for(AlarmSong *alarmSong in self.alarmData.songs)
-        [context deleteObject:alarmSong];
-    
-    //Add all
-    for(AlarmSong *alarmSong in self.alarmSongs)
-        alarmSong.alarm = self.alarmData;
+    if(songsChanged)
+    {
+        //Remove all
+        for(AlarmSong *alarmSong in self.alarmData.songs)
+            [context deleteObject:alarmSong];
+        
+        //Add all
+        for(AlarmSong *alarmSong in self.alarmSongs)
+            alarmSong.alarm = self.alarmData;
+    }
    
     /****** Save alarmData object ******/
     if(![context save:&error])
@@ -196,6 +201,8 @@
     
     self.alarmSongs = songs;
     [self.lbSongs setText:[NSString stringWithFormat:@"%d Songs", [songs count]]];
+    
+    self.songsChanged = YES;
 }
 
 
