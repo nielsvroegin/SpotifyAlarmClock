@@ -13,10 +13,7 @@
 
 @interface AlarmSong : NSManagedObject
 
-@property (nonatomic, retain) NSString * album;
-@property (nonatomic, retain) NSString * artist;
 @property (nonatomic, retain) NSString * spotifyUrl;
-@property (nonatomic, retain) NSString * trackName;
 @property (nonatomic, retain) Alarm *alarm;
 
 @end

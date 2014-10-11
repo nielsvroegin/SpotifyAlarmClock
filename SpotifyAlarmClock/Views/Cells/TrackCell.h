@@ -8,6 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
+typedef enum AddMusicButtonState : NSUInteger {
+    hidden,
+    AddMusic,
+    RemoveMusic
+} AddMusicButtonState;
+
 @interface TrackCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UILabel *lbTrack;
 @property (weak, nonatomic) IBOutlet UILabel *lbArtist;
@@ -17,5 +23,6 @@
 -(void) showPlayProgress:(bool)showPlayProgress;
 -(void) showPlayProgress:(bool)showPlayProgress animated:(bool)animated;
 -(void) setProgress:(CGFloat)progress;
+-(void) setAddMusicButton:(AddMusicButtonState)addMusicButtonState animated:(bool)animated;
 
 @end

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="vXZ-lx-hvc">
     <dependencies>
+        <deployment defaultVersion="1808" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
         <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -404,7 +405,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="Anl-o5-ySN" kind="push" id="DUa-Sj-wiQ"/>
+                                            <segue destination="Anl-o5-ySN" kind="push" identifier="songsSegue" id="DUa-Sj-wiQ"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="pJ3-CV-XIl">
@@ -483,6 +484,7 @@
                     <connections>
                         <outlet property="lbLabel" destination="pbs-Q6-JxM" id="DBJ-et-guo"/>
                         <outlet property="lbRepeat" destination="w1w-OS-fnJ" id="ulI-cV-LQF"/>
+                        <outlet property="lbSongs" destination="ql5-ad-DQh" id="kBY-tG-IyQ"/>
                         <outlet property="snoozeSwitch" destination="LLN-KM-YWd" id="1Ey-Yy-Sx9"/>
                         <outlet property="timePicker" destination="8hp-KM-Crj" id="7T5-qO-yed"/>
                     </connections>
@@ -496,40 +498,15 @@
         <scene sceneID="1Fr-U2-4J1">
             <objects>
                 <tableViewController id="Anl-o5-ySN" customClass="SongsViewController" sceneMemberID="viewController">
-                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="05n-M6-fv9">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="05n-M6-fv9">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <sections>
-                            <tableViewSection id="esu-Bg-icH">
-                                <cells>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="iwd-Co-Wt2">
-                                        <rect key="frame" x="0.0" y="64" width="320" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="iwd-Co-Wt2" id="16h-3q-J6x">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="awG-pL-bHK">
-                                        <rect key="frame" x="0.0" y="108" width="320" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="awG-pL-bHK" id="sZB-PS-z2K">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="yls-Re-aNB">
-                                        <rect key="frame" x="0.0" y="152" width="320" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="yls-Re-aNB" id="eLA-bu-bda">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                </cells>
-                            </tableViewSection>
-                        </sections>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <view key="tableFooterView" contentMode="scaleToFill" id="RAq-wQ-P6I">
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </view>
+                        <sections/>
                         <connections>
                             <outlet property="dataSource" destination="Anl-o5-ySN" id="Dnv-sq-gbX"/>
                             <outlet property="delegate" destination="Anl-o5-ySN" id="ZoY-s5-X86"/>
@@ -538,7 +515,7 @@
                     <navigationItem key="navigationItem" title="Songs" id="qpm-pd-6Wt">
                         <barButtonItem key="rightBarButtonItem" title="Add" id="bpD-l4-CX4">
                             <connections>
-                                <segue destination="OY4-PY-rDx" kind="modal" id="eTe-xm-DIW"/>
+                                <segue destination="OY4-PY-rDx" kind="modal" identifier="songSearchSegue" id="eTe-xm-DIW"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -919,7 +896,7 @@
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="i1N-E3-qx4"/>
-        <segue reference="odI-h1-XeF"/>
-        <segue reference="SDo-MT-6ED"/>
+        <segue reference="jc4-iH-A1a"/>
+        <segue reference="dpd-fJ-gwS"/>
     </inferredMetricsTieBreakers>
 </document>

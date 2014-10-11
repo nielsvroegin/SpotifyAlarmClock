@@ -9,10 +9,11 @@
 #import <UIKit/UIKit.h>
 #import "OptionsSelectDelegate.h"
 #import "TextEditDelegate.h"
+#import "SongsDelegate.h"
 
 @class Alarm;
 
-@interface AddAlarmViewController : UITableViewController<OptionsSelectDelegate, TextEditDelegate>
+@interface AddAlarmViewController : UITableViewController<OptionsSelectDelegate, TextEditDelegate, SongsDelegate>
 
 @property (nonatomic, strong) Alarm *alarmData;
 

@@ -24,8 +24,8 @@
 
 - (void)awakeFromNib {
     [MaskHelper addCircleMaskToView:vwPlay];
-    [self.btAddTrack setImage:[UIImage imageNamed:@"AddMusicButton"] forState:UIControlStateNormal];
-    [self.btAddTrack setImage:[UIImage imageNamed:@"AddMusicButtonHighlighted"] forState:UIControlStateHighlighted];
+    
+    [self setAddMusicButton:AddMusic animated:false];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
@@ -76,6 +76,48 @@
         UIImageView* playImageView = [[UIImageView alloc] initWithFrame:[vwPlay bounds]];
         [playImageView setImage:[UIImage imageNamed:@"Play"]];
         [vwPlay addSubview:playImageView];
+    }
+}
+
+
+-(void) setAddMusicButton:(AddMusicButtonState)addMusicButtonState animated:(bool)animated
+{
+    UIImage *newImage;
+    UIImage *newImageHighlighted;
+    UIImage *currentImage = self.btAddTrack.imageView.image;
+    
+    //Determine new images
+    switch(addMusicButtonState)
+    {
+        case hidden:
+            newImage = nil;
+            newImageHighlighted = nil;
+            break;
+        case AddMusic:
+            newImage = [UIImage imageNamed:@"AddMusicButton"];
+            newImageHighlighted = [UIImage imageNamed:@"AddMusicButtonClicked"];
+            break;
+        case RemoveMusic:
+            newImage = [UIImage imageNamed:@"RemoveMusicButton"];
+            newImageHighlighted = [UIImage imageNamed:@"RemoveMusicButtonClicked"];
+            break;
+    }
+    
+    //Set new images
+    [self.btAddTrack setImage:newImage forState:UIControlStateNormal];
+    [self.btAddTrack setImage:newImage forState:UIControlStateHighlighted];
+    [self.btAddTrack setImage:newImageHighlighted forState:UIControlStateSelected];
+    
+    
+    //Animate transistion
+    if(animated)
+    {
+        NSArray *animationImages = [[NSArray alloc] initWithObjects:currentImage, [UIImage imageNamed:@"IntermediateMusicButton"], newImage, nil];
+        [self.btAddTrack.imageView setAnimationImages:animationImages];
+        [self.btAddTrack.imageView setAnimationDuration:0.1];
+        [self.btAddTrack.imageView setAnimationRepeatCount:1];
+        
+        [self.btAddTrack.imageView startAnimating];
     }
 }
 

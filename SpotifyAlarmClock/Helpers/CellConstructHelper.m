@@ -34,6 +34,8 @@
     bool trackPlaying = ([[SpotifyPlayer sharedSpotifyPlayer] currentTrack] == track);
     [cell showPlayProgress:trackPlaying];
     
+    [cell setAddMusicButton:AddMusic animated:NO];
+    
     return cell;
 }
 

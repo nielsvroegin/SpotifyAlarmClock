@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="6244" systemVersion="13E28" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="6244" systemVersion="13F34" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
     <entity name="Alarm" representedClassName="Alarm">
         <attribute name="AlarmTime" attributeType="Date">
             <userInfo/>
@@ -16,18 +16,15 @@
         <attribute name="Snooze" attributeType="Boolean" defaultValueString="NO">
             <userInfo/>
         </attribute>
-        <relationship name="songs" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="AlarmSong" inverseName="alarm" inverseEntity="AlarmSong" syncable="YES"/>
+        <relationship name="songs" optional="YES" toMany="YES" deletionRule="Cascade" ordered="YES" destinationEntity="AlarmSong" inverseName="alarm" inverseEntity="AlarmSong" syncable="YES"/>
         <userInfo/>
     </entity>
     <entity name="AlarmSong" representedClassName="AlarmSong" syncable="YES">
-        <attribute name="album" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="artist" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="spotifyUrl" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="trackName" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="alarm" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Alarm" inverseName="songs" inverseEntity="Alarm" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Alarm" positionX="160" positionY="192" width="128" height="135"/>
-        <element name="AlarmSong" positionX="133" positionY="387" width="128" height="118"/>
+        <element name="Alarm" positionX="160" positionY="192" width="128" height="133"/>
+        <element name="AlarmSong" positionX="133" positionY="387" width="128" height="73"/>
     </elements>
 </model>

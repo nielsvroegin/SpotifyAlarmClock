@@ -7,8 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SongSearchDelegate.h"
+#import "SongsDelegate.h"
 
-@interface SongsViewController : UITableViewController
+@class Alarm;
+
+@interface SongsViewController : UITableViewController<SongSearchDelegate>
+
+@property (nonatomic, weak) id<SongsDelegate> delegate;
+@property (nonatomic, strong) NSOrderedSet *alarmSongs;
 
 - (IBAction)unwindToSongs:(UIStoryboardSegue *)unwindSegue;
 

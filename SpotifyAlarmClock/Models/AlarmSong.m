@@ -11,10 +11,7 @@
 
 @implementation AlarmSong
 
-@dynamic album;
-@dynamic artist;
 @dynamic spotifyUrl;
-@dynamic trackName;
 @dynamic alarm;
 
 @end

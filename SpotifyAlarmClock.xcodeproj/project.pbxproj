@@ -177,6 +177,7 @@
 		B8D7691319E5C17600988A71 /* CellConstructHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CellConstructHelper.m; sourceTree = "<group>"; };
 		B8D7691619E7F1D500988A71 /* AlbumViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlbumViewController.h; sourceTree = "<group>"; };
 		B8D7691719E7F1D500988A71 /* AlbumViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlbumViewController.m; sourceTree = "<group>"; };
+		B8D7691919E8827D00988A71 /* SongSearchDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SongSearchDelegate.h; sourceTree = "<group>"; };
 		B8DEF86419E03BBB00F2F453 /* LoadMoreCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoadMoreCell.h; sourceTree = "<group>"; };
 		B8DEF86519E03BBB00F2F453 /* LoadMoreCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoadMoreCell.m; sourceTree = "<group>"; };
 		B8DEF86919E041F700F2F453 /* AllArtistsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AllArtistsViewController.h; sourceTree = "<group>"; };
@@ -188,6 +189,7 @@
 		B8DEF87719E07A8F00F2F453 /* ArtistViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArtistViewController.h; sourceTree = "<group>"; };
 		B8DEF87819E07A8F00F2F453 /* ArtistViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArtistViewController.m; sourceTree = "<group>"; };
 		B8F5F34EBE107A7EEBA2420D /* Pods-SpotifyAlarmClock.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SpotifyAlarmClock.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SpotifyAlarmClock/Pods-SpotifyAlarmClock.debug.xcconfig"; sourceTree = "<group>"; };
+		B8FC13AD19E983C1001E4C1D /* SongsDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SongsDelegate.h; sourceTree = "<group>"; };
 		C92F5708CCED2BA4D9ECCF61 /* libPods-SpotifyAlarmClock.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SpotifyAlarmClock.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -315,6 +317,7 @@
 			children = (
 				B812392C19D201A4005EABDB /* SongsViewController.h */,
 				B812392D19D201A4005EABDB /* SongsViewController.m */,
+				B8FC13AD19E983C1001E4C1D /* SongsDelegate.h */,
 			);
 			path = Songs;
 			sourceTree = "<group>";
@@ -324,6 +327,7 @@
 			children = (
 				B812392F19D201F2005EABDB /* SongSearchViewController.h */,
 				B812393019D201F2005EABDB /* SongSearchViewController.m */,
+				B8D7691919E8827D00988A71 /* SongSearchDelegate.h */,
 			);
 			path = SongSearch;
 			sourceTree = "<group>";

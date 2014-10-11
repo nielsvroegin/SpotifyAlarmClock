@@ -18,7 +18,7 @@
 @property (nonatomic, retain) NSString * Name;
 @property (nonatomic, retain) NSString * Repeat;
 @property (nonatomic, retain) NSNumber * Snooze;
-@property (nonatomic, retain) NSSet *songs;
+@property (nonatomic, retain) NSOrderedSet *songs;
 @end
 
 @interface Alarm (CoreDataGeneratedAccessors)

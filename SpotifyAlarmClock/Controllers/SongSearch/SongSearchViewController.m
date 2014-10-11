@@ -20,6 +20,7 @@
 #import "AlbumViewController.h"
 #import "CellConstructHelper.h"
 
+
 @interface SongSearchViewController ()
     @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
     @property (nonatomic, strong) SPSearch *searchResult;
@@ -31,6 +32,7 @@
     @property (nonatomic, assign) NSInteger trackSection;
 
     - (void) performSearch;
+    - (void) addSongButtonClicked:(id)sender;
 @end
 
 @implementation SongSearchViewController
@@ -38,6 +40,7 @@
 @synthesize searchResult;
 @synthesize artistSection, albumSection, trackSection;
 @synthesize artistBrowseCache;
+@synthesize songSearchDelegate;
 
 - (void)viewDidLoad {
     //Register cells
@@ -74,8 +77,6 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
-
 
 -(void) performSearch
 {
@@ -121,6 +122,39 @@
          self.loading = false;
      }];
     
+}
+
+- (void) addSongButtonClicked:(id)sender
+{
+    //First hide keyboard before performing segue
+    if([self.searchBar isFirstResponder])
+        [self.searchBar resignFirstResponder];
+    
+    // Find track
+    UIButton *button = sender;
+    UIView *vw = button;
+    while(![vw isKindOfClass:[TrackCell class]] && vw != nil)
+        vw = [vw superview];
+    
+    if(![vw isKindOfClass:[TrackCell class]])
+        return;
+    
+    TrackCell *trackCell = (TrackCell*)vw;
+    SPTrack *track = [self.searchResult.tracks objectAtIndex:[[self.tableView indexPathForCell:trackCell] row]];
+    
+    // Notify delegate about track
+    [self.songSearchDelegate trackAdded:track];
+    
+    //Set trackcell button to remove state
+    [trackCell setAddMusicButton:RemoveMusic animated:YES];
+    
+    //Show hud item has been added
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    hud.mode = MBProgressHUDModeCustomView;
+    hud.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Checkmark"]];
+    hud.progress = 1.0f;
+    hud.labelText = @"Song added to alarm!";
+    [hud hide:YES afterDelay:1.0f];
 }
 
 #pragma mark - Searchbar delegate
@@ -227,7 +261,11 @@
             [cell.textLabel setText:@"View all tracks"];
         }
         else
+        {
             cell = [CellConstructHelper tableView:tableView cellForTrack:[self.searchResult.tracks objectAtIndex:[indexPath row]] atIndexPath:indexPath];
+            [((TrackCell*)cell).btAddTrack addTarget:self action:@selector(addSongButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
+        }
+        
     }
     else if(self.artistSection == indexPath.section)
     {

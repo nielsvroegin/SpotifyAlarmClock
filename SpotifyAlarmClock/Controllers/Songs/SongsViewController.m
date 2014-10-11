@@ -7,21 +7,39 @@
 //
 
 #import "SongsViewController.h"
+#import "CocoaLibSpotify.h"
+#import "SongSearchViewController.h"
+#import "AlarmSong.h"
+#import "CellConstructHelper.h"
+#import "MBProgressHUD.h"
+#import "TrackCell.h"
 
 @interface SongsViewController ()
+
+@property (nonatomic, strong) NSMutableArray* tracks;
+@property (nonatomic, assign) NSInteger missingTracksCount;
+
+- (void) LoadTracks;
+-(void) updateLoadingProgress;
 
 @end
 
 @implementation SongsViewController
+@synthesize delegate;
+@synthesize tracks;
+@synthesize alarmSongs;
+@synthesize missingTracksCount;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
+    tracks = [[NSMutableArray alloc] init];
     
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    //Registers cell nibs
+    [self.tableView registerNib:[UINib nibWithNibName:@"TrackCell" bundle:nil] forCellReuseIdentifier:@"trackCell"];
+    
+    //Load tracks for alarm songs
+    [self LoadTracks];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -29,77 +47,101 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (IBAction)unwindToSongs:(UIStoryboardSegue *)unwindSegue
+- (void) LoadTracks
 {
+    //Check if any tracks should be loaded
+    if([self.alarmSongs count] == 0)
+        return;
     
+    //Show loading HUD
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.tableView animated:YES];
+    hud.mode = MBProgressHUDModeDeterminate;
+    hud.progress = 0;
+    hud.labelText = @"Loading";
+    
+    for(AlarmSong *alarmSong in alarmSongs)
+    {
+        [[SPSession sharedSession] trackForURL:[NSURL URLWithString:alarmSong.spotifyUrl] callback:^(SPTrack *track){
+            if (track == nil)
+            {
+                missingTracksCount++;
+                [self updateLoadingProgress];
+            }
+            
+            [SPAsyncLoading waitUntilLoaded:track timeout:kSPAsyncLoadingDefaultTimeout then:^(NSArray *loadedItems, NSArray *notLoadedItems)
+            {
+                if(loadedItems == nil || [loadedItems count] != 1 || ![[loadedItems firstObject] isKindOfClass:[SPTrack class]])
+                {
+                    [MBProgressHUD hideAllHUDsForView:self.tableView animated:YES];
+                    [[[UIAlertView alloc] initWithTitle:@"Error" message:@"Spotify Alarm Clock wasn't able to load track. Is your internet connection still active?" delegate:nil cancelButtonTitle:@"Oke!" otherButtonTitles:nil] show];
+                    return;
+                }
+                
+                [tracks addObject:track];
+                
+                [self updateLoadingProgress];
+            }];
+        }];
+    }
 }
+
+-(void) updateLoadingProgress
+{
+    //Update progress
+    [[MBProgressHUD HUDForView:self.tableView] setProgress:(1 * ((tracks.count + missingTracksCount) / alarmSongs.count))];
+    
+    //Check if all loaded
+    if((tracks.count + missingTracksCount) == alarmSongs.count)
+    {
+        [MBProgressHUD hideAllHUDsForView:self.tableView animated:YES];
+        [self.tableView reloadData];
+    }
+}
+
+- (IBAction)unwindToSongs:(UIStoryboardSegue *)unwindSegue { }
+
 
 #pragma mark - Table view data source
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
 
-    // Return the number of sections.
-    return 0;
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return [tracks count];
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-
-    // Return the number of rows in the section.
-    return 0;
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return [CellConstructHelper tableView:self.tableView cellForTrack:[tracks objectAtIndex:[indexPath row]] atIndexPath:indexPath];
 }
 
-/*
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
+#pragma mark - UITableView delegate
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 55;
+}
+
+
+#pragma mark - Song Search delegate
+- (void)trackAdded:(SPTrack *)track
+{
+    //Add track
+    [self.tracks addObject:track];
     
-    // Configure the cell...
+    //Notify delegate
+    [delegate selectedSongsChanged:self.tracks];
     
-    return cell;
+    //Reload table
+    [self.tableView reloadData];
 }
-*/
 
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
 
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
-/*
 #pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    if([[segue identifier] isEqualToString:@"songSearchSegue"])
+    {
+        SongSearchViewController *vw = (SongSearchViewController*)[[segue destinationViewController] topViewController];
+        [vw setSongSearchDelegate:self];
+    }
 }
-*/
 
 @end

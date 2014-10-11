@@ -9,7 +9,10 @@
 #import <UIKit/UIKit.h>
 #import "SpotifyPlayer.h"
 #import "ArtistBrowseCache.h"
+#import "SongSearchDelegate.h"
 
 @interface SongSearchViewController : UITableViewController<UISearchBarDelegate, SpotifyPlayerDelegate, ArtistBrowseCacheDelegate>
+
+@property(nonatomic, weak) id<SongSearchDelegate> songSearchDelegate;
 
 @end

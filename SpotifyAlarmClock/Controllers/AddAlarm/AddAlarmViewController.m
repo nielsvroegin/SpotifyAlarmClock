@@ -7,17 +7,22 @@
 //
 
 #import "AppDelegate.h"
+#import "CocoaLibSpotify.h"
 #import "Alarm.h"
+#import "AlarmSong.h"
 #import "AddAlarmViewController.h"
 #import "OptionsSelectViewController.h"
 #import "TextEditViewController.h"
+#import "SongsViewController.h"
 #import "Option.h"
 
 @interface AddAlarmViewController ()
 
 @property (nonatomic, strong) NSArray * repeatOptions;
+@property (nonatomic, strong) NSOrderedSet * alarmSongs;
 @property (weak, nonatomic) IBOutlet UILabel * lbRepeat;
 @property (weak, nonatomic) IBOutlet UILabel * lbLabel;
+@property (weak, nonatomic) IBOutlet UILabel *lbSongs;
 @property (weak, nonatomic) IBOutlet UISwitch *snoozeSwitch;
 @property (weak, nonatomic) IBOutlet UIDatePicker *timePicker;
 
@@ -32,6 +37,7 @@
 @synthesize repeatOptions;
 @synthesize lbLabel;
 @synthesize lbRepeat;
+@synthesize lbSongs;
 @synthesize snoozeSwitch;
 @synthesize timePicker;
 
@@ -56,6 +62,8 @@
     
     if(self.alarmData != nil)
     {
+        [self setAlarmSongs:[self.alarmData.songs copy]];
+        [self.lbSongs setText:[NSString stringWithFormat:@"%d Songs", [self.alarmData.songs count]]];
         [self repeatOptionsFromString:[self.alarmData Repeat]];
         [self.lbRepeat setText:[self repeatOptionsText]];
         [self.lbLabel setText:[self.alarmData Name]];
@@ -88,6 +96,15 @@
     [self.alarmData setRepeat:[self repeatOptionsToString]];
     [self.alarmData setSnooze:[NSNumber numberWithBool:[self.snoozeSwitch isOn]]];
     [self.alarmData setAlarmTime:[self.timePicker date]];
+    
+    /***** Set Alarm Songs ******/
+    //Remove all
+    for(AlarmSong *alarmSong in self.alarmData.songs)
+        [context deleteObject:alarmSong];
+    
+    //Add all
+    for(AlarmSong *alarmSong in self.alarmSongs)
+        alarmSong.alarm = self.alarmData;
    
     /****** Save alarmData object ******/
     if(![context save:&error])
@@ -162,6 +179,27 @@
     [self.lbLabel setText:newValue];
 }
 
+#pragma mark - Songs delegate
+- (void) selectedSongsChanged:(NSArray*)tracks
+{
+    AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
+    NSManagedObjectContext *context = [appDelegate managedObjectContext];
+    NSMutableOrderedSet *songs = [[NSMutableOrderedSet alloc] init];
+    
+    for(SPTrack *track in tracks)
+    {
+        AlarmSong *alarmSong = [NSEntityDescription insertNewObjectForEntityForName:@"AlarmSong" inManagedObjectContext:context];
+        alarmSong.spotifyUrl = [track.spotifyURL absoluteString];
+        
+        [songs addObject:alarmSong];
+    }
+    
+    self.alarmSongs = songs;
+    [self.lbSongs setText:[NSString stringWithFormat:@"%d Songs", [songs count]]];
+}
+
+
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -180,6 +218,12 @@
         [vw setTitle:@"Label"];
         [vw setDelegate:self];
         [vw setText:[self.lbLabel text]];
+    }
+    else if([[segue identifier] isEqualToString:@"songsSegue"])
+    {
+        SongsViewController* vw = [segue destinationViewController];
+        [vw setDelegate:self];
+        [vw setAlarmSongs:[self alarmSongs]];
     }
     else if([[segue identifier] isEqualToString:@"saveAlarm"])
     {

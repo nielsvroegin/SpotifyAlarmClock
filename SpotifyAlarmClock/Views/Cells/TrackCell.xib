@@ -14,13 +14,13 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Artist Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cHu-oG-A9w">
-                        <rect key="frame" x="63" y="31" width="187" height="15"/>
+                        <rect key="frame" x="63" y="31" width="181" height="15"/>
                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Track" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2fS-Sz-1dW">
-                        <rect key="frame" x="63" y="9" width="197" height="21"/>
+                        <rect key="frame" x="63" y="9" width="191" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
@@ -34,10 +34,10 @@
                         </constraints>
                     </view>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2FK-CX-1ht">
-                        <rect key="frame" x="268" y="13" width="30" height="30"/>
+                        <rect key="frame" x="262" y="3" width="50" height="50"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="30" id="UaI-6R-OYI"/>
-                            <constraint firstAttribute="height" constant="30" id="eB8-el-4H3"/>
+                            <constraint firstAttribute="width" constant="50" id="UaI-6R-OYI"/>
+                            <constraint firstAttribute="height" constant="50" id="eB8-el-4H3"/>
                         </constraints>
                         <state key="normal" title="Button" image="AddMusicButton">
                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -47,7 +47,7 @@
                 <constraints>
                     <constraint firstAttribute="centerY" secondItem="2fS-Sz-1dW" secondAttribute="centerY" constant="7.5" id="AKe-Ij-Myc"/>
                     <constraint firstItem="SO0-Dg-8CN" firstAttribute="leading" secondItem="QzJ-5H-bTu" secondAttribute="leadingMargin" constant="5" id="Aj3-Fr-Lyh"/>
-                    <constraint firstAttribute="trailingMargin" secondItem="2FK-CX-1ht" secondAttribute="trailing" constant="14" id="CJo-kR-ScI"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="2FK-CX-1ht" secondAttribute="trailing" id="CJo-kR-ScI"/>
                     <constraint firstItem="cHu-oG-A9w" firstAttribute="trailing" secondItem="2fS-Sz-1dW" secondAttribute="trailing" constant="-10" id="JQJ-RR-HDt"/>
                     <constraint firstItem="2FK-CX-1ht" firstAttribute="leading" secondItem="cHu-oG-A9w" secondAttribute="trailing" constant="18" id="M3D-om-dC9"/>
                     <constraint firstItem="2fS-Sz-1dW" firstAttribute="leading" secondItem="cHu-oG-A9w" secondAttribute="leading" id="NFw-0t-bcS"/>
