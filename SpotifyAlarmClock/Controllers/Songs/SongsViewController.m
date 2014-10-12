@@ -13,6 +13,7 @@
 #import "CellConstructHelper.h"
 #import "MBProgressHUD.h"
 #import "TrackCell.h"
+#import "NSMutableArray+Convenience.h"
 
 @interface SongsViewController ()
 
@@ -38,8 +39,26 @@
     //Registers cell nibs
     [self.tableView registerNib:[UINib nibWithNibName:@"TrackCell" bundle:nil] forCellReuseIdentifier:@"trackCell"];
     
+    //Set tableview in edit mode and allow row selecting
+    [self.tableView setEditing:YES];
+    [self.tableView setAllowsSelectionDuringEditing:YES];
+    
     //Load tracks for alarm songs
     [self LoadTracks];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    [[SpotifyPlayer sharedSpotifyPlayer] setDelegate:self];
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewDidDisappear:animated];
+    
+    [[SpotifyPlayer sharedSpotifyPlayer] stopTrack];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -111,7 +130,21 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return [CellConstructHelper tableView:self.tableView cellForTrack:[tracks objectAtIndex:[indexPath row]] atIndexPath:indexPath];
+    TrackCell *cell = [CellConstructHelper tableView:self.tableView cellForTrack:[tracks objectAtIndex:[indexPath row]] atIndexPath:indexPath];
+    [cell setAddMusicButton:hidden animated:NO];
+    cell.showsReorderControl = YES;
+
+    
+    return cell;
+}
+
+- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
+{
+    //Movie track
+    [self.tracks moveObjectAtIndex:[fromIndexPath row] toIndex:[toIndexPath row]];
+
+    //Notify delegate
+    [delegate selectedSongsChanged:self.tracks];
 }
 
 #pragma mark - UITableView delegate
@@ -120,6 +153,43 @@
     return 55;
 }
 
+- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return YES;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    SPTrack *track = [self.tracks objectAtIndex:[indexPath row]];
+    if([[SpotifyPlayer sharedSpotifyPlayer] currentTrack] == track)
+        [[SpotifyPlayer sharedSpotifyPlayer] stopTrack];
+    else
+        [[SpotifyPlayer sharedSpotifyPlayer] playTrack:track];
+}
+
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    //Check if editing style is delete
+    if(editingStyle != UITableViewCellEditingStyleDelete)
+        return;
+    
+    //If current playing track will be delete stop playing track
+    if([[SpotifyPlayer sharedSpotifyPlayer] currentTrack] == [self.tracks objectAtIndex:[indexPath row]])
+        [[SpotifyPlayer sharedSpotifyPlayer] stopTrack];
+    
+    //Remove track
+    [self.tracks removeObjectAtIndex:[indexPath row]];
+    
+    //Notify delegate
+    [delegate selectedSongsChanged:self.tracks];
+    
+    //Animate table with change
+    [self.tableView beginUpdates];
+    [self.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+    [self.tableView endUpdates];
+}
 
 #pragma mark - Song Search delegate
 - (void)trackAdded:(SPTrack *)track
@@ -149,6 +219,26 @@
 - (bool)isTrackAdded:(SPTrack *)track
 {
     return [self.tracks containsObject:track];
+}
+
+#pragma mark - Spotify Player delegate
+
+- (void)track:(SPTrack *)track progess:(double) progress
+{
+    TrackCell *cell = (TrackCell*)[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:[self.tracks indexOfObject:track] inSection:0]];
+    [cell setProgress:progress];
+}
+
+- (void)trackStartedPlaying:(SPTrack *)track
+{
+    TrackCell *cell = (TrackCell*)[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:[self.tracks indexOfObject:track] inSection:0]];
+    [cell showPlayProgress:YES animated:YES];
+}
+
+- (void)trackStoppedPlaying:(SPTrack *)track
+{
+    TrackCell *cell = (TrackCell*)[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:[self.tracks indexOfObject:track] inSection:0]];
+    [cell showPlayProgress:NO animated:YES];
 }
 
 

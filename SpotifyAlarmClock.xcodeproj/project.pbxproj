@@ -63,6 +63,7 @@
 		B8DEF87519E06FA100F2F453 /* AllAlbumsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B8DEF87419E06FA100F2F453 /* AllAlbumsViewController.m */; };
 		B8DEF87919E07A8F00F2F453 /* ArtistViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B8DEF87819E07A8F00F2F453 /* ArtistViewController.m */; };
 		B8FC13B119E9B61A001E4C1D /* Tools.m in Sources */ = {isa = PBXBuildFile; fileRef = B8FC13B019E9B61A001E4C1D /* Tools.m */; };
+		B8FC13B419EA812E001E4C1D /* NSMutableArray+Convenience.m in Sources */ = {isa = PBXBuildFile; fileRef = B8FC13B319EA812E001E4C1D /* NSMutableArray+Convenience.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -190,6 +191,8 @@
 		B8FC13AD19E983C1001E4C1D /* SongsDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SongsDelegate.h; sourceTree = "<group>"; };
 		B8FC13AF19E9B61A001E4C1D /* Tools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tools.h; sourceTree = "<group>"; };
 		B8FC13B019E9B61A001E4C1D /* Tools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Tools.m; sourceTree = "<group>"; };
+		B8FC13B219EA812E001E4C1D /* NSMutableArray+Convenience.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableArray+Convenience.h"; sourceTree = "<group>"; };
+		B8FC13B319EA812E001E4C1D /* NSMutableArray+Convenience.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableArray+Convenience.m"; sourceTree = "<group>"; };
 		C92F5708CCED2BA4D9ECCF61 /* libPods-SpotifyAlarmClock.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SpotifyAlarmClock.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -491,6 +494,8 @@
 				B8D7691319E5C17600988A71 /* CellConstructHelper.m */,
 				B8FC13AF19E9B61A001E4C1D /* Tools.h */,
 				B8FC13B019E9B61A001E4C1D /* Tools.m */,
+				B8FC13B219EA812E001E4C1D /* NSMutableArray+Convenience.h */,
+				B8FC13B319EA812E001E4C1D /* NSMutableArray+Convenience.m */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -734,6 +739,7 @@
 				B8D16E0919E1CBF900B375D2 /* BlurredHeaderView.m in Sources */,
 				B86104D419CDA16D001DB753 /* AlarmSong.m in Sources */,
 				B812392519D1FC28005EABDB /* AlarmsViewController.m in Sources */,
+				B8FC13B419EA812E001E4C1D /* NSMutableArray+Convenience.m in Sources */,
 				B8D7691819E7F1D500988A71 /* AlbumViewController.m in Sources */,
 				B8DEF86619E03BBB00F2F453 /* LoadMoreCell.m in Sources */,
 				B885CC7F19E013BD003450F8 /* ArtistCell.m in Sources */,

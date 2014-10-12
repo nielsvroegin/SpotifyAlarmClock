@@ -14,6 +14,7 @@
 
 @property (nonatomic, strong) FFCircularProgressView *musicProgressView;
 
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *buttonWidthConstraint;
 -(void)switchPlayView:(bool)showPlayProgress;
 
 @end
@@ -21,6 +22,7 @@
 @implementation TrackCell
 @synthesize lbArtist, lbTrack, vwPlay, btAddTrack;
 @synthesize musicProgressView;
+@synthesize buttonWidthConstraint;
 
 - (void)awakeFromNib {
     [Tools addCircleMaskToView:vwPlay];
@@ -92,14 +94,20 @@
         case hidden:
             newImage = nil;
             newImageHighlighted = nil;
+            [self.btAddTrack setHidden:YES];
+            [buttonWidthConstraint setConstant:0.0f];
             break;
         case AddMusic:
             newImage = [UIImage imageNamed:@"AddMusicButton"];
             newImageHighlighted = [UIImage imageNamed:@"AddMusicButtonClicked"];
+            [self.btAddTrack setHidden:NO];
+            [buttonWidthConstraint setConstant:50.0f];
             break;
         case RemoveMusic:
             newImage = [UIImage imageNamed:@"RemoveMusicButton"];
             newImageHighlighted = [UIImage imageNamed:@"RemoveMusicButtonClicked"];
+            [self.btAddTrack setHidden:NO];
+            [buttonWidthConstraint setConstant:50.0f];
             break;
     }
     

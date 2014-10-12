@@ -9,10 +9,11 @@
 #import <UIKit/UIKit.h>
 #import "SongSearchDelegate.h"
 #import "SongsDelegate.h"
+#import "SpotifyPlayer.h"
 
 @class Alarm;
 
-@interface SongsViewController : UITableViewController<SongSearchDelegate>
+@interface SongsViewController : UITableViewController<SongSearchDelegate, SpotifyPlayerDelegate>
 
 @property (nonatomic, weak) id<SongsDelegate> delegate;
 @property (nonatomic, strong) NSOrderedSet *alarmSongs;
