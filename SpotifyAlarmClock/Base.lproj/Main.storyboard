@@ -107,7 +107,7 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MO 13-10-2014" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="esr-r2-Iz8">
-                                <rect key="frame" x="16" y="539" width="288" height="21"/>
+                                <rect key="frame" x="16" y="539" width="219" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="kQh-2A-zfp"/>
                                 </constraints>
@@ -115,13 +115,21 @@
                                 <color key="textColor" red="0.094117647058823528" green="0.42745098039215684" blue="0.15294117647058825" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="SettingsIcon" translatesAutoresizingMaskIntoConstraints="NO" id="1dS-bJ-7pt">
+                                <rect key="frame" x="291" y="543" width="13" height="13"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="13" id="O3H-JZ-tfU"/>
+                                    <constraint firstAttribute="height" constant="13" id="caR-pA-T17"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="1dB-Id-suO" firstAttribute="leading" secondItem="pBE-h6-56e" secondAttribute="trailing" constant="1" id="1GK-dj-x8d"/>
                             <constraint firstItem="lKc-B9-s3P" firstAttribute="bottom" secondItem="1dB-Id-suO" secondAttribute="bottom" id="2WS-D6-vv7"/>
-                            <constraint firstItem="esr-r2-Iz8" firstAttribute="trailing" secondItem="kh9-bI-dsS" secondAttribute="trailingMargin" id="3FN-VI-ALC"/>
                             <constraint firstItem="lKc-B9-s3P" firstAttribute="trailing" secondItem="kh9-bI-dsS" secondAttribute="trailingMargin" id="3Ku-AQ-lRe"/>
+                            <constraint firstItem="1dS-bJ-7pt" firstAttribute="leading" secondItem="esr-r2-Iz8" secondAttribute="trailing" constant="56" id="3si-b5-Wak"/>
+                            <constraint firstItem="1dS-bJ-7pt" firstAttribute="trailing" secondItem="kh9-bI-dsS" secondAttribute="trailingMargin" id="CCd-yo-vEj"/>
                             <constraint firstItem="esr-r2-Iz8" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" id="DGQ-yk-JuA"/>
                             <constraint firstItem="2cN-Oz-7Hd" firstAttribute="leading" secondItem="L9C-Eb-VC4" secondAttribute="trailing" id="Djh-bi-2B0"/>
                             <constraint firstItem="1dB-Id-suO" firstAttribute="baseline" secondItem="pBE-h6-56e" secondAttribute="baseline" id="EDL-RD-Hsb"/>
@@ -130,6 +138,7 @@
                             <constraint firstAttribute="centerX" secondItem="2cN-Oz-7Hd" secondAttribute="centerX" id="Ri4-08-pka"/>
                             <constraint firstItem="yct-6o-EDv" firstAttribute="leading" secondItem="1dB-Id-suO" secondAttribute="trailing" constant="24" id="Xin-Zf-sl6"/>
                             <constraint firstItem="pBE-h6-56e" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="topMargin" constant="8" id="Z8R-0s-RkG"/>
+                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="1dS-bJ-7pt" secondAttribute="bottom" constant="12" id="csw-pq-AfJ"/>
                             <constraint firstItem="qtf-eg-0ZR" firstAttribute="leading" secondItem="2cN-Oz-7Hd" secondAttribute="trailing" id="e19-gu-PAH"/>
                             <constraint firstItem="yct-6o-EDv" firstAttribute="bottom" secondItem="1dB-Id-suO" secondAttribute="bottom" constant="-5" id="raY-o5-7CP"/>
                             <constraint firstAttribute="centerY" secondItem="2cN-Oz-7Hd" secondAttribute="centerY" constant="-0.5" id="uaG-Cq-brX"/>
@@ -964,6 +973,7 @@
     </scenes>
     <resources>
         <image name="MiniAlarm" width="13" height="13"/>
+        <image name="SettingsIcon" width="13" height="13"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
