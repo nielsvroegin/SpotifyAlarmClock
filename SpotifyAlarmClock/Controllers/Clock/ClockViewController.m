@@ -16,6 +16,8 @@
 @synthesize hour;
 @synthesize colon;
 @synthesize minutes;
+@synthesize backgroundGlow;
+
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -38,6 +40,30 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    //Keep app awake
+    [UIApplication sharedApplication].idleTimerDisabled = YES;
+    
+    //Time digits glow
+    hour.layer.shadowColor = [[UIColor yellowColor] CGColor];
+    hour.layer.shadowOffset = CGSizeMake(0.0, 0.0);
+    hour.layer.shadowRadius = 4.0;
+    hour.layer.shadowOpacity = 0.3;
+    hour.layer.masksToBounds = NO;
+    
+    colon.layer.shadowColor = [[UIColor yellowColor] CGColor];
+    colon.layer.shadowOffset = CGSizeMake(0.0, 0.0);
+    colon.layer.shadowRadius = 4.0;
+    colon.layer.shadowOpacity = 0.3;
+    colon.layer.masksToBounds = NO;
+    
+    minutes.layer.shadowColor = [[UIColor yellowColor] CGColor];
+    minutes.layer.shadowOffset = CGSizeMake(0.0, 0.0);
+    minutes.layer.shadowRadius = 4.0;
+    minutes.layer.shadowOpacity = 0.3;
+    minutes.layer.masksToBounds = NO;
+    
+    
     [self updateClock];
     
     NSError *error = nil;
@@ -54,21 +80,12 @@
                                    selector:@selector(onTimer:)
                                    userInfo:nil
                                     repeats:YES];
-
 }
 
-
-- (IBAction)playMusic
+// for ios 7
+- (BOOL)prefersStatusBarHidden
 {
-    
-    
-    [[SPSession sharedSession] trackForURL:[NSURL URLWithString:@"http://open.spotify.com/track/64eMQ7f31JSd8b9H6HUvvN"] callback:^(SPTrack *track){
-        if (track != nil) {
-            [SPAsyncLoading waitUntilLoaded:track timeout:kSPAsyncLoadingDefaultTimeout then:^(NSArray *tracks, NSArray *notLoadedTracks) {
-                [[SpotifyPlayer sharedSpotifyPlayer] playTrack:(SPTrack *)[tracks firstObject]];
-            }];
-        }
-    }];
+    return YES;
 }
 
 
@@ -125,8 +142,22 @@
     [timeFormatter setDateFormat:@"mm"];
     self.minutes.text = [timeFormatter stringFromDate:time];
     
+    //Animate background glow on/off
+    [UIView animateWithDuration:1.0 animations:^(void) {
+        if(showColon)
+        {
+            self.backgroundGlow.alpha = 1.0f;
+        }
+        else
+        {
+            self.backgroundGlow.alpha = 0.5f;
+        }
+        
+    }];
+
+    
     //Set colon and flip show colon
-    self.colon.hidden = showColon;
+    self.colon.hidden = !showColon;
     showColon ^= true;
 }
 

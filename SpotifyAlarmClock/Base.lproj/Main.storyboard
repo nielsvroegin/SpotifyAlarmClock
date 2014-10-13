@@ -1,10 +1,22 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="vXZ-lx-hvc">
     <dependencies>
+        <deployment defaultVersion="1808" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
         <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="LCD-BOLD.TTF">
+            <string>LCDBold</string>
+            <string>LCDBold</string>
+            <string>LCDBold</string>
+            <string>LCDBold</string>
+            <string>LCDBold</string>
+            <string>LCDBold</string>
+            <string>LCDBold</string>
+        </mutableArray>
+    </customFonts>
     <scenes>
         <!--Clock View Controller-->
         <scene sceneID="ufC-wZ-h7g">
@@ -18,83 +30,132 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iSV-ic-TLJ" customClass="BackgroundGlow">
+                                <rect key="frame" x="0.0" y="189" width="320" height="190"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="320" id="rAJ-x7-hIJ"/>
+                                    <constraint firstAttribute="height" constant="190" id="tcP-TZ-NMc"/>
+                                </constraints>
+                            </view>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Spotify state:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pBE-h6-56e">
-                                <rect key="frame" x="17" y="8" width="82" height="21"/>
+                                <rect key="frame" x="16" y="8" width="82" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="OYm-3T-Frf"/>
                                     <constraint firstAttribute="width" constant="82" id="n2k-1j-U69"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="12"/>
+                                <fontDescription key="fontDescription" name="LCDBold" family="LCD" pointSize="12"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Unknown" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1dB-Id-suO">
-                                <rect key="frame" x="100" y="8" width="200" height="21"/>
-                                <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="12"/>
+                                <rect key="frame" x="99" y="8" width="131" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="nsZ-If-OXf"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="LCDBold" family="LCD" pointSize="12"/>
                                 <color key="textColor" red="0.093663677010000002" green="0.42857142860000003" blue="0.15435124059999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cae-BY-R9Z">
-                                <rect key="frame" x="62" y="242" width="89" height="92"/>
-                                <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="80"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="07:15" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lKc-B9-s3P">
+                                <rect key="frame" x="276" y="8" width="28" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="28" id="3MN-fA-tJn"/>
+                                    <constraint firstAttribute="height" constant="21" id="Njg-aw-Sqi"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="LCDBold" family="LCD" pointSize="12"/>
                                 <color key="textColor" red="0.093663677010000002" green="0.42857142860000003" blue="0.15435124059999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cwS-8c-1h3">
-                                <rect key="frame" x="169" y="242" width="89" height="92"/>
-                                <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="80"/>
-                                <color key="textColor" red="0.093663677010000002" green="0.42857142860000003" blue="0.15435124059999999" alpha="1" colorSpace="calibratedRGB"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=":" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2cN-Oz-7Hd" userLabel="colon">
+                                <rect key="frame" x="150" y="218" width="20" height="133"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="20" id="CFi-Th-ElZ"/>
+                                    <constraint firstAttribute="height" constant="133" id="CYi-WM-Ojb"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="LCDBold" family="LCD" pointSize="100"/>
+                                <color key="textColor" red="0.094117647060000004" green="0.42745098040000001" blue="0.1529411765" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                                <size key="shadowOffset" width="0.0" height="0.0"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="23" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L9C-Eb-VC4" userLabel="hour">
+                                <rect key="frame" x="45" y="218" width="105" height="133"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="133" id="5a3-s0-mKL"/>
+                                    <constraint firstAttribute="width" constant="105" id="pD1-yZ-OXB"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="LCDBold" family="LCD" pointSize="100"/>
+                                <color key="textColor" red="0.094117647058823528" green="0.42745098039215684" blue="0.15294117647058825" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                                <size key="shadowOffset" width="0.0" height="0.0"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="45" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qtf-eg-0ZR" userLabel="minute">
+                                <rect key="frame" x="170" y="218" width="105" height="133"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="105" id="9gg-LZ-8WC"/>
+                                    <constraint firstAttribute="height" constant="133" id="Mqx-2z-Wnt"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="LCDBold" family="LCD" pointSize="100"/>
+                                <color key="textColor" red="0.094117647060000004" green="0.42745098040000001" blue="0.1529411765" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                                <size key="shadowOffset" width="0.0" height="0.0"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="MiniAlarm" translatesAutoresizingMaskIntoConstraints="NO" id="yct-6o-EDv">
+                                <rect key="frame" x="254" y="11" width="13" height="13"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="13" id="735-UO-vVK"/>
+                                    <constraint firstAttribute="height" constant="13" id="fci-Z7-vom"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MO 13-10-2014" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="esr-r2-Iz8">
+                                <rect key="frame" x="16" y="539" width="288" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="kQh-2A-zfp"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="LCDBold" family="LCD" pointSize="12"/>
+                                <color key="textColor" red="0.094117647058823528" green="0.42745098039215684" blue="0.15294117647058825" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=":" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8k1-IK-EX2">
-                                <rect key="frame" x="148" y="235" width="23" height="92"/>
-                                <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="80"/>
-                                <color key="textColor" red="0.093663677010000002" green="0.42857142860000003" blue="0.15435124059999999" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ALN-Dj-uwa">
-                                <rect key="frame" x="122" y="354" width="75" height="30"/>
-                                <state key="normal" title="Play Music">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="playMusic" destination="vXZ-lx-hvc" eventType="touchUpInside" id="LKS-JO-fQt"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="1dB-Id-suO" firstAttribute="leading" secondItem="pBE-h6-56e" secondAttribute="trailing" constant="1" id="1GK-dj-x8d"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="1dB-Id-suO" secondAttribute="trailing" constant="4" id="3eS-NG-tgy"/>
-                            <constraint firstItem="8k1-IK-EX2" firstAttribute="bottom" secondItem="cae-BY-R9Z" secondAttribute="bottom" constant="-7" id="D5m-QZ-FNP"/>
+                            <constraint firstItem="lKc-B9-s3P" firstAttribute="bottom" secondItem="1dB-Id-suO" secondAttribute="bottom" id="2WS-D6-vv7"/>
+                            <constraint firstItem="esr-r2-Iz8" firstAttribute="trailing" secondItem="kh9-bI-dsS" secondAttribute="trailingMargin" id="3FN-VI-ALC"/>
+                            <constraint firstItem="lKc-B9-s3P" firstAttribute="trailing" secondItem="kh9-bI-dsS" secondAttribute="trailingMargin" id="3Ku-AQ-lRe"/>
+                            <constraint firstItem="esr-r2-Iz8" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" id="DGQ-yk-JuA"/>
+                            <constraint firstItem="2cN-Oz-7Hd" firstAttribute="leading" secondItem="L9C-Eb-VC4" secondAttribute="trailing" id="Djh-bi-2B0"/>
                             <constraint firstItem="1dB-Id-suO" firstAttribute="baseline" secondItem="pBE-h6-56e" secondAttribute="baseline" id="EDL-RD-Hsb"/>
-                            <constraint firstAttribute="centerY" secondItem="cae-BY-R9Z" secondAttribute="centerY" constant="-3.5" id="FeL-uv-In6"/>
-                            <constraint firstItem="cwS-8c-1h3" firstAttribute="bottom" secondItem="8k1-IK-EX2" secondAttribute="bottom" constant="7" id="Xg1-ik-CZX"/>
+                            <constraint firstItem="lKc-B9-s3P" firstAttribute="leading" secondItem="yct-6o-EDv" secondAttribute="trailing" constant="9" id="Jh6-Ur-DFq"/>
+                            <constraint firstItem="qtf-eg-0ZR" firstAttribute="bottom" secondItem="2cN-Oz-7Hd" secondAttribute="bottom" id="Qz4-MV-7X7"/>
+                            <constraint firstAttribute="centerX" secondItem="2cN-Oz-7Hd" secondAttribute="centerX" id="Ri4-08-pka"/>
+                            <constraint firstItem="yct-6o-EDv" firstAttribute="leading" secondItem="1dB-Id-suO" secondAttribute="trailing" constant="24" id="Xin-Zf-sl6"/>
                             <constraint firstItem="pBE-h6-56e" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="topMargin" constant="8" id="Z8R-0s-RkG"/>
-                            <constraint firstItem="8k1-IK-EX2" firstAttribute="leading" secondItem="cae-BY-R9Z" secondAttribute="trailing" constant="-3" id="crE-7o-lze"/>
-                            <constraint firstItem="cwS-8c-1h3" firstAttribute="leading" secondItem="8k1-IK-EX2" secondAttribute="trailing" constant="-2" id="dOQ-79-lMN"/>
-                            <constraint firstAttribute="centerY" secondItem="cwS-8c-1h3" secondAttribute="centerY" constant="-3.5" id="hfi-XF-3jx"/>
-                            <constraint firstItem="ALN-Dj-uwa" firstAttribute="centerX" secondItem="8k1-IK-EX2" secondAttribute="centerX" id="jER-FE-2iv"/>
-                            <constraint firstAttribute="centerX" secondItem="8k1-IK-EX2" secondAttribute="centerX" constant="0.5" id="qdA-Qh-VNt"/>
+                            <constraint firstItem="qtf-eg-0ZR" firstAttribute="leading" secondItem="2cN-Oz-7Hd" secondAttribute="trailing" id="e19-gu-PAH"/>
+                            <constraint firstItem="yct-6o-EDv" firstAttribute="bottom" secondItem="1dB-Id-suO" secondAttribute="bottom" constant="-5" id="raY-o5-7CP"/>
+                            <constraint firstAttribute="centerY" secondItem="2cN-Oz-7Hd" secondAttribute="centerY" constant="-0.5" id="uaG-Cq-brX"/>
+                            <constraint firstItem="L9C-Eb-VC4" firstAttribute="bottom" secondItem="2cN-Oz-7Hd" secondAttribute="bottom" id="vO6-7J-la6"/>
+                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="esr-r2-Iz8" secondAttribute="bottom" constant="8" id="vb6-Vd-aYs"/>
+                            <constraint firstAttribute="centerX" secondItem="iSV-ic-TLJ" secondAttribute="centerX" id="vw0-QM-A0q"/>
+                            <constraint firstAttribute="centerY" secondItem="iSV-ic-TLJ" secondAttribute="centerY" id="xVd-bJ-5d4"/>
                             <constraint firstItem="1dB-Id-suO" firstAttribute="firstBaseline" secondItem="pBE-h6-56e" secondAttribute="firstBaseline" id="xXb-Xs-g4t"/>
-                            <constraint firstItem="ALN-Dj-uwa" firstAttribute="top" secondItem="8k1-IK-EX2" secondAttribute="bottom" constant="27" id="y1Y-kO-Ma7"/>
-                            <constraint firstItem="pBE-h6-56e" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="1" id="zZ3-cl-shH"/>
+                            <constraint firstItem="pBE-h6-56e" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" id="zZ3-cl-shH"/>
                         </constraints>
                         <connections>
                             <action selector="backgroundTap" destination="vXZ-lx-hvc" eventType="touchUpInside" id="xgM-qV-I8C"/>
                         </connections>
                     </view>
                     <connections>
-                        <outlet property="colon" destination="8k1-IK-EX2" id="QpL-kG-m7C"/>
-                        <outlet property="hour" destination="cae-BY-R9Z" id="OjS-dJ-qg9"/>
-                        <outlet property="minutes" destination="cwS-8c-1h3" id="d4O-xv-U91"/>
+                        <outlet property="backgroundGlow" destination="iSV-ic-TLJ" id="8p2-N9-hDW"/>
+                        <outlet property="colon" destination="2cN-Oz-7Hd" id="P8q-m1-c5f"/>
+                        <outlet property="hour" destination="L9C-Eb-VC4" id="zHT-nr-5ci"/>
+                        <outlet property="minutes" destination="qtf-eg-0ZR" id="vWP-xa-uxO"/>
                         <outlet property="spotifyConnectionState" destination="1dB-Id-suO" id="iw4-40-pZj"/>
                         <segue destination="4QZ-jy-vp4" kind="modal" identifier="settingsSegue" id="5jV-Jc-Lia"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="228" y="165"/>
+            <point key="canvasLocation" x="242" y="145"/>
         </scene>
         <!--Settings-->
         <scene sceneID="2bW-VC-PMu">
@@ -900,6 +961,9 @@
             <point key="canvasLocation" x="854" y="165"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="MiniAlarm" width="13" height="13"/>
+    </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
