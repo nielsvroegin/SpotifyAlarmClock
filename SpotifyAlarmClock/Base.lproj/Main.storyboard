@@ -148,6 +148,7 @@
                         <outlet property="backgroundGlow" destination="iSV-ic-TLJ" id="8p2-N9-hDW"/>
                         <outlet property="colon" destination="2cN-Oz-7Hd" id="P8q-m1-c5f"/>
                         <outlet property="hour" destination="L9C-Eb-VC4" id="zHT-nr-5ci"/>
+                        <outlet property="lbDate" destination="esr-r2-Iz8" id="EbU-Xo-AFr"/>
                         <outlet property="minutes" destination="qtf-eg-0ZR" id="vWP-xa-uxO"/>
                         <outlet property="spotifyConnectionState" destination="1dB-Id-suO" id="iw4-40-pZj"/>
                         <segue destination="4QZ-jy-vp4" kind="modal" identifier="settingsSegue" id="5jV-Jc-Lia"/>

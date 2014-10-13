@@ -7,9 +7,29 @@
 //
 
 #import "ClockViewController.h"
-//#import "HelperFunctions.h"
+#import "CocoaLibSpotify.h"
+#import "appkey.h"
+#import "BackgroundGlow.h"
 
 
+@interface ClockViewController ()
+
+@property (nonatomic, assign) bool showColon;
+@property (nonatomic, assign) bool loginChecked;
+@property (weak, nonatomic) IBOutlet UILabel *spotifyConnectionState;
+@property (weak, nonatomic) IBOutlet UILabel *hour;
+@property (weak, nonatomic) IBOutlet UILabel *colon;
+@property (weak, nonatomic) IBOutlet UILabel *minutes;
+@property (weak, nonatomic) IBOutlet BackgroundGlow *backgroundGlow;
+@property (weak, nonatomic) IBOutlet UILabel *lbDate;
+
+- (void) updateSpotifyConnectionState;
+- (void) updateClock;
+- (IBAction)backgroundTap;
+- (IBAction)unwindToClock:(UIStoryboardSegue *)unwindSegue;
+- (void) applyGlow:(UILabel*)label;
+
+@end
 
 @implementation ClockViewController
 @synthesize spotifyConnectionState;
@@ -17,13 +37,16 @@
 @synthesize colon;
 @synthesize minutes;
 @synthesize backgroundGlow;
+@synthesize showColon;
+@synthesize loginChecked;
+@synthesize lbDate;
 
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        loginChecked = NO;
+
     }
     return self;
 }
@@ -41,58 +64,45 @@
 {
     [super viewDidLoad];
     
+    //loginChecked = NO;
+    
     //Keep app awake
     [UIApplication sharedApplication].idleTimerDisabled = YES;
     
     //Time digits glow
-    hour.layer.shadowColor = [[UIColor yellowColor] CGColor];
-    hour.layer.shadowOffset = CGSizeMake(0.0, 0.0);
-    hour.layer.shadowRadius = 4.0;
-    hour.layer.shadowOpacity = 0.3;
-    hour.layer.masksToBounds = NO;
+    [self applyGlow:hour];
+    [self applyGlow:colon];
+    [self applyGlow:minutes];
     
-    colon.layer.shadowColor = [[UIColor yellowColor] CGColor];
-    colon.layer.shadowOffset = CGSizeMake(0.0, 0.0);
-    colon.layer.shadowRadius = 4.0;
-    colon.layer.shadowOpacity = 0.3;
-    colon.layer.masksToBounds = NO;
-    
-    minutes.layer.shadowColor = [[UIColor yellowColor] CGColor];
-    minutes.layer.shadowOffset = CGSizeMake(0.0, 0.0);
-    minutes.layer.shadowRadius = 4.0;
-    minutes.layer.shadowOpacity = 0.3;
-    minutes.layer.masksToBounds = NO;
-    
-    
+    //Update clock
     [self updateClock];
     
+    //Set timer to update clock
+    [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(onTimer:) userInfo:nil repeats:YES];
+    
+    //Perform login on spotify
     NSError *error = nil;
     [SPSession initializeSharedSessionWithApplicationKey:[NSData dataWithBytes:&g_appkey length:g_appkey_size]
                                                userAgent:@"nl.startsmart.SpotifyAlarmClock"
                                            loadingPolicy:SPAsyncLoadingManual
                                                    error:&error];
     
-    [SPSession sharedSession].delegate = self;
+    [[SPSession sharedSession] setDelegate:self];
     [[SPSession sharedSession] attemptLoginWithUserName:@"nielsvroegin" password:@"51casioc"];
-    
-    [NSTimer scheduledTimerWithTimeInterval:1.0
-                                     target:self
-                                   selector:@selector(onTimer:)
-                                   userInfo:nil
-                                    repeats:YES];
 }
 
-// for ios 7
+- (void) applyGlow:(UILabel*)label
+{
+    label.layer.shadowColor = [[UIColor yellowColor] CGColor];
+    label.layer.shadowOffset = CGSizeMake(0.0, 0.0);
+    label.layer.shadowRadius = 4.0;
+    label.layer.shadowOpacity = 0.3;
+    label.layer.masksToBounds = NO;
+}
+
 - (BOOL)prefersStatusBarHidden
 {
     return YES;
-}
-
-
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
-    // Return YES for supported orientations
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
 #pragma mark State Update Methods
@@ -134,6 +144,7 @@
     //Retrieve time
     NSDate *time = [NSDate date];
     
+    //--------- Set time ---------/
     //Set Hours
     [timeFormatter setDateFormat:@"HH"];
     self.hour.text = [timeFormatter stringFromDate:time];
@@ -142,22 +153,21 @@
     [timeFormatter setDateFormat:@"mm"];
     self.minutes.text = [timeFormatter stringFromDate:time];
     
+    //Set colon and flip show colon
+    self.colon.hidden = !showColon;
+    
     //Animate background glow on/off
     [UIView animateWithDuration:1.0 animations:^(void) {
         if(showColon)
-        {
             self.backgroundGlow.alpha = 1.0f;
-        }
         else
-        {
             self.backgroundGlow.alpha = 0.5f;
-        }
-        
     }];
-
     
-    //Set colon and flip show colon
-    self.colon.hidden = !showColon;
+    //--------- Set date ---------/
+    [timeFormatter setDateFormat:@"EE dd-MM-yyyy"];
+    self.lbDate.text = [timeFormatter stringFromDate:time];
+    
     showColon ^= true;
 }
 

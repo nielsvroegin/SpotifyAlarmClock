@@ -18,20 +18,20 @@
     UIGraphicsBeginImageContext(rect.size); //now it's here.
     
     //Oval shape
-
-    UIColor* color = [UIColor colorWithRed: 0.051 green: 0.13 blue: 0.076 alpha: 1];
+    UIColor* darkGreenColor = [UIColor colorWithRed: 0.051 green: 0.13 blue: 0.076 alpha: 1];
     UIBezierPath* ovalPath = [UIBezierPath bezierPathWithOvalInRect:rect];
-    [color setFill];
+    [darkGreenColor setFill];
     [ovalPath fill];
     
+    //Create image from path
     CGContextAddPath(cgContext, ovalPath.CGPath);
-    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+    UIImage *ovalImage = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsPopContext();
     UIGraphicsEndImageContext();
     
     //--------- Apply blur filter on image ---------/
     CIContext *ciContext = [CIContext contextWithOptions:nil];
-    CIImage *inputImage = [CIImage imageWithCGImage:image.CGImage];
+    CIImage *inputImage = [CIImage imageWithCGImage:ovalImage.CGImage];
     
     // setting up Gaussian Blur (we could use one of many filters offered by Core Image)
     CIFilter *filter = [CIFilter filterWithName:@"CIGaussianBlur"];
@@ -39,8 +39,7 @@
     [filter setValue:[NSNumber numberWithFloat:15.0f] forKey:@"inputRadius"];
     CIImage *result = [filter valueForKey:kCIOutputImageKey];
     
-    // CIGaussianBlur has a tendency to shrink the image a little,
-    // this ensures it matches up exactly to the bounds of our original image
+    //Change image size for good fit
     CGRect resizeRect = [inputImage extent];
     resizeRect.size.width += 10;
     resizeRect.size.height += 40;
@@ -48,12 +47,11 @@
     resizeRect.origin.y -= 20;
     
     CGImageRef cgImage = [ciContext createCGImage:result fromRect:resizeRect];
-    
-    UIImage *returnImage = [UIImage imageWithCGImage:cgImage];//create a UIImage for this function to "return" so that ARC can manage the memory of the blur... ARC can't manage CGImageRefs so we need to release it before this function "returns" and ends.
+    UIImage *blurredOvalImage = [UIImage imageWithCGImage:cgImage];//create a UIImage for this function to "return" so that ARC can manage the memory of the blur... ARC can't manage CGImageRefs so we need to release it before this function "returns" and ends.
     CGImageRelease(cgImage);//release CGIma
     
     UIImageView *imageView = [[UIImageView alloc] initWithFrame:rect];
-    [imageView setImage:returnImage];
+    [imageView setImage:blurredOvalImage];
     [imageView setContentMode:UIViewContentModeScaleAspectFill];
     
     [self addSubview:imageView];

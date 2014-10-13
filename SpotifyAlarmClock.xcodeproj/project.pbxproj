@@ -380,9 +380,9 @@
 				B8D16E0419E1C94500B375D2 /* BlurredHeader.xib */,
 				B8D16E0719E1CBF900B375D2 /* BlurredHeaderView.h */,
 				B8D16E0819E1CBF900B375D2 /* BlurredHeaderView.m */,
-				B885CC7419E013BD003450F8 /* Cells */,
 				B826479F19EBDF0300FBB21A /* BackgroundGlow.h */,
 				B82647A019EBDF0300FBB21A /* BackgroundGlow.m */,
+				B885CC7419E013BD003450F8 /* Cells */,
 			);
 			path = Views;
 			sourceTree = "<group>";
