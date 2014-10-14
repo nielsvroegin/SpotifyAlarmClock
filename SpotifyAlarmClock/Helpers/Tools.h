@@ -13,5 +13,7 @@
 + (UIView*) findSuperView:(Class)typeOfView forView:(UIView*)view;
 + (void) showCheckMarkHud:(UIView*)targetView text:(NSString*)text;
 + (void)addCircleMaskToView:(UIView *)view;
++ (NSDate*)dateForHour:(NSInteger)hour andMinute:(NSInteger)minute;
++ (NSDateComponents*)hourAndMinuteForDate:(NSDate*)date;
 
 @end

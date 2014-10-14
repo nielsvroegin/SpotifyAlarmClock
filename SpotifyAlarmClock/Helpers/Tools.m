@@ -37,4 +37,20 @@
     view.layer.mask = maskLayer;
 }
 
++ (NSDate*)dateForHour:(NSInteger)hour andMinute:(NSInteger)minute
+{
+    NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+    NSDateComponents * comps = [[NSDateComponents alloc] init];
+    [comps setHour:hour];
+    [comps setMinute:minute];
+    return [gregorian dateFromComponents:comps];
+}
+
++ (NSDateComponents*)hourAndMinuteForDate:(NSDate*)date
+{
+    NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+    return [gregorian components:(NSHourCalendarUnit | NSMinuteCalendarUnit) fromDate:date];
+}
+
+
 @end

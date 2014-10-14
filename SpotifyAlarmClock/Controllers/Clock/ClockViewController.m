@@ -10,7 +10,7 @@
 #import "CocoaLibSpotify.h"
 #import "appkey.h"
 #import "BackgroundGlow.h"
-
+#import "NextAlarm.h"
 
 @interface ClockViewController ()
 
@@ -76,6 +76,9 @@
     
     //Update clock
     [self updateClock];
+    
+    //Determine next alarm
+    [NextAlarm provide];
     
     //Set timer to update clock
     [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(onTimer:) userInfo:nil repeats:YES];

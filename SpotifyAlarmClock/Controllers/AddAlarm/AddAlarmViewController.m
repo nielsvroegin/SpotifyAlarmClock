@@ -15,6 +15,7 @@
 #import "TextEditViewController.h"
 #import "SongsViewController.h"
 #import "Option.h"
+#import "Tools.h"
 
 @interface AddAlarmViewController ()
 
@@ -66,11 +67,11 @@
     {
         [self setAlarmSongs:[self.alarmData.songs copy]];
         [self.lbSongs setText:[NSString stringWithFormat:@"%d Songs", [self.alarmData.songs count]]];
-        [self repeatOptionsFromString:[self.alarmData Repeat]];
+        [self repeatOptionsFromString:[self.alarmData repeat]];
         [self.lbRepeat setText:[self repeatOptionsText]];
-        [self.lbLabel setText:[self.alarmData Name]];
-        [self.snoozeSwitch setOn:[[self.alarmData Snooze] boolValue]];
-        [self.timePicker setDate:[self.alarmData AlarmTime]];
+        [self.lbLabel setText:[self.alarmData name]];
+        [self.snoozeSwitch setOn:[[self.alarmData snooze] boolValue]];
+        [self.timePicker setDate:[Tools dateForHour:[[self.alarmData hour] intValue] andMinute:[[self.alarmData minute] intValue]]];
     }
     
     [super viewDidLoad];
@@ -94,10 +95,12 @@
         self.alarmData = [NSEntityDescription insertNewObjectForEntityForName:@"Alarm" inManagedObjectContext:context];
     
     /****** Set new values ******/
+    NSDateComponents *dateComponents = [Tools hourAndMinuteForDate:[self.timePicker date]];
     [self.alarmData setName:[self.lbLabel text]];
     [self.alarmData setRepeat:[self repeatOptionsToString]];
     [self.alarmData setSnooze:[NSNumber numberWithBool:[self.snoozeSwitch isOn]]];
-    [self.alarmData setAlarmTime:[self.timePicker date]];
+    [self.alarmData setHour:[NSNumber numberWithInt:[dateComponents hour]]];
+    [self.alarmData setMinute:[NSNumber numberWithInt:[dateComponents minute]]];
     
     /***** Set Alarm Songs ******/
     if(songsChanged)
@@ -138,7 +141,7 @@
 {
     for(int i = 0; i < [self.repeatOptions count]; i++)
     {
-        if(self.alarmData != nil && [[self.alarmData Repeat] rangeOfString:[NSString stringWithFormat:@"%d", i]].location != NSNotFound )
+        if(self.alarmData != nil && [[self.alarmData repeat] rangeOfString:[NSString stringWithFormat:@"%d", i]].location != NSNotFound )
             [[self.repeatOptions objectAtIndex:i] setSelected:YES];
         else
             [[self.repeatOptions objectAtIndex:i] setSelected:NO];

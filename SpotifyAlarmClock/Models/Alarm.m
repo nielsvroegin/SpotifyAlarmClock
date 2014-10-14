@@ -12,11 +12,12 @@
 
 @implementation Alarm
 
-@dynamic AlarmTime;
-@dynamic Enabled;
-@dynamic Name;
-@dynamic Repeat;
-@dynamic Snooze;
+@dynamic hour;
+@dynamic minute;
+@dynamic enabled;
+@dynamic name;
+@dynamic repeat;
+@dynamic snooze;
 @dynamic songs;
 
 @end

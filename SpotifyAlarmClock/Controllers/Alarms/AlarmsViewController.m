@@ -259,9 +259,9 @@
     NSDateFormatter *format = [[NSDateFormatter alloc] init];
     [format setDateFormat:@"HH:mm"];
     
-    [cell.lbLabel setText:alarm.Name];
-    [cell.lbTime setText:[format stringFromDate:alarm.AlarmTime]];
-    [cell.swAlarmEnabled setOn:[alarm.Enabled boolValue]];
+    [cell.lbLabel setText:alarm.name];
+    [cell.lbTime setText:[NSString stringWithFormat:@"%02d:%02d", [[alarm hour] intValue], [[alarm minute] intValue]]];
+    [cell.swAlarmEnabled setOn:[alarm.enabled boolValue]];
     [cell.swAlarmEnabled setAlpha:1.0f];
     
     return cell;

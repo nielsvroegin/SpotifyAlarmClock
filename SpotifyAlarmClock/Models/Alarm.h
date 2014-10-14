@@ -13,11 +13,12 @@
 
 @interface Alarm : NSManagedObject
 
-@property (nonatomic, retain) NSDate * AlarmTime;
-@property (nonatomic, retain) NSNumber * Enabled;
-@property (nonatomic, retain) NSString * Name;
-@property (nonatomic, retain) NSString * Repeat;
-@property (nonatomic, retain) NSNumber * Snooze;
+@property (nonatomic, retain) NSNumber * hour;
+@property (nonatomic, retain) NSNumber * minute;
+@property (nonatomic, retain) NSNumber * enabled;
+@property (nonatomic, retain) NSString * name;
+@property (nonatomic, retain) NSString * repeat;
+@property (nonatomic, retain) NSNumber * snooze;
 @property (nonatomic, retain) NSOrderedSet *songs;
 @end
 
