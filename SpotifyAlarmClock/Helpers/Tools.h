@@ -15,5 +15,6 @@
 + (void)addCircleMaskToView:(UIView *)view;
 + (NSDate*)dateForHour:(NSInteger)hour andMinute:(NSInteger)minute;
 + (NSDateComponents*)hourAndMinuteForDate:(NSDate*)date;
++ (NSString *) shortWeekDaySymbolForUnit:(NSInteger) unit;
 
 @end

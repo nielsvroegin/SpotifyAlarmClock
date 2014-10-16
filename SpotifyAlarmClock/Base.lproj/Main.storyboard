@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="vXZ-lx-hvc">
     <dependencies>
-        <deployment defaultVersion="1808" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
         <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -26,7 +25,7 @@
                         <viewControllerLayoutGuide type="top" id="jyV-Pf-zRb"/>
                         <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS" customClass="UIControl">
+                    <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
@@ -48,7 +47,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Unknown" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1dB-Id-suO">
-                                <rect key="frame" x="99" y="8" width="108" height="21"/>
+                                <rect key="frame" x="99" y="8" width="112" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="nsZ-If-OXf"/>
                                 </constraints>
@@ -100,7 +99,7 @@
                                 <size key="shadowOffset" width="0.0" height="0.0"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="MiniAlarm" translatesAutoresizingMaskIntoConstraints="NO" id="yct-6o-EDv">
-                                <rect key="frame" x="231" y="11" width="13" height="13"/>
+                                <rect key="frame" x="235" y="10" width="13" height="13"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="13" id="735-UO-vVK"/>
                                     <constraint firstAttribute="height" constant="13" id="fci-Z7-vom"/>
@@ -133,14 +132,14 @@
                             <constraint firstItem="esr-r2-Iz8" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" id="DGQ-yk-JuA"/>
                             <constraint firstItem="2cN-Oz-7Hd" firstAttribute="leading" secondItem="L9C-Eb-VC4" secondAttribute="trailing" id="Djh-bi-2B0"/>
                             <constraint firstItem="1dB-Id-suO" firstAttribute="baseline" secondItem="pBE-h6-56e" secondAttribute="baseline" id="EDL-RD-Hsb"/>
-                            <constraint firstItem="lKc-B9-s3P" firstAttribute="leading" secondItem="yct-6o-EDv" secondAttribute="trailing" constant="9" id="Jh6-Ur-DFq"/>
+                            <constraint firstItem="lKc-B9-s3P" firstAttribute="leading" secondItem="yct-6o-EDv" secondAttribute="trailing" constant="5" id="Jh6-Ur-DFq"/>
                             <constraint firstItem="qtf-eg-0ZR" firstAttribute="bottom" secondItem="2cN-Oz-7Hd" secondAttribute="bottom" id="Qz4-MV-7X7"/>
                             <constraint firstAttribute="centerX" secondItem="2cN-Oz-7Hd" secondAttribute="centerX" id="Ri4-08-pka"/>
                             <constraint firstItem="yct-6o-EDv" firstAttribute="leading" secondItem="1dB-Id-suO" secondAttribute="trailing" constant="24" id="Xin-Zf-sl6"/>
                             <constraint firstItem="pBE-h6-56e" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="topMargin" constant="8" id="Z8R-0s-RkG"/>
                             <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="1dS-bJ-7pt" secondAttribute="bottom" constant="12" id="csw-pq-AfJ"/>
                             <constraint firstItem="qtf-eg-0ZR" firstAttribute="leading" secondItem="2cN-Oz-7Hd" secondAttribute="trailing" id="e19-gu-PAH"/>
-                            <constraint firstItem="yct-6o-EDv" firstAttribute="bottom" secondItem="1dB-Id-suO" secondAttribute="bottom" constant="-5" id="raY-o5-7CP"/>
+                            <constraint firstItem="yct-6o-EDv" firstAttribute="bottom" secondItem="1dB-Id-suO" secondAttribute="bottom" constant="-6" id="raY-o5-7CP"/>
                             <constraint firstAttribute="centerY" secondItem="2cN-Oz-7Hd" secondAttribute="centerY" constant="-0.5" id="uaG-Cq-brX"/>
                             <constraint firstItem="L9C-Eb-VC4" firstAttribute="bottom" secondItem="2cN-Oz-7Hd" secondAttribute="bottom" id="vO6-7J-la6"/>
                             <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="esr-r2-Iz8" secondAttribute="bottom" constant="8" id="vb6-Vd-aYs"/>
@@ -149,9 +148,6 @@
                             <constraint firstItem="1dB-Id-suO" firstAttribute="firstBaseline" secondItem="pBE-h6-56e" secondAttribute="firstBaseline" id="xXb-Xs-g4t"/>
                             <constraint firstItem="pBE-h6-56e" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" id="zZ3-cl-shH"/>
                         </constraints>
-                        <connections>
-                            <action selector="backgroundTap" destination="vXZ-lx-hvc" eventType="touchUpInside" id="xgM-qV-I8C"/>
-                        </connections>
                     </view>
                     <connections>
                         <outlet property="backgroundGlow" destination="iSV-ic-TLJ" id="8p2-N9-hDW"/>
@@ -159,6 +155,7 @@
                         <outlet property="hour" destination="L9C-Eb-VC4" id="zHT-nr-5ci"/>
                         <outlet property="lbDate" destination="esr-r2-Iz8" id="EbU-Xo-AFr"/>
                         <outlet property="lbNextAlarm" destination="lKc-B9-s3P" id="rcB-eX-BQD"/>
+                        <outlet property="miniAlarmImage" destination="yct-6o-EDv" id="Hdo-Vp-Jpg"/>
                         <outlet property="minutes" destination="qtf-eg-0ZR" id="vWP-xa-uxO"/>
                         <outlet property="spotifyConnectionState" destination="1dB-Id-suO" id="iw4-40-pZj"/>
                         <segue destination="4QZ-jy-vp4" kind="modal" identifier="settingsSegue" id="5jV-Jc-Lia"/>

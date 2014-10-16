@@ -52,5 +52,27 @@
     return [gregorian components:(NSHourCalendarUnit | NSMinuteCalendarUnit) fromDate:date];
 }
 
++ (NSString *) shortWeekDaySymbolForUnit:(NSInteger) unit
+{
+    switch(unit)
+    {
+        case 1:
+            return @"SU";
+        case 2:
+            return @"MO";
+        case 3:
+            return @"TU";
+        case 4:
+            return @"WE";
+        case 5:
+            return @"TH";
+        case 6:
+            return @"FR";
+        case 7:
+            return @"SA";
+        default:
+            return @"";
+    }
+}
 
 @end

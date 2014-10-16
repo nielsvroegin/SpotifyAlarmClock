@@ -14,19 +14,22 @@
 
 + (NSDate*)nextAlarmForAlarm:(Alarm*)alarm;
 + (NSArray*)getEnabledAlarms;
++ (NSDate*) fixDateDuringWinterTimeTransistion:(NSDate*)potentialWinterTime;
 
 @end
 
 @implementation NextAlarm
 
-+ (NSDate*) provide
++ (NSDateComponents*) provide
 {
+    NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
     NSArray* alarms = [self getEnabledAlarms];
     
     //Return when no enabled alarms could be found
     if(alarms == nil || [alarms count] == 0)
         return nil;
     
+    //Find next alarm for listed alarms
     NSDate* nextAlarm = nil;
     for(Alarm* alarm in alarms)
     {
@@ -38,24 +41,8 @@
             nextAlarm = [nextAlarm earlierDate:nextAlarmForAlarm];
     }
     
-    
-    //TEST
-    /*NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
-    NSDateComponents *dayComponent = [[NSDateComponents alloc] init];
-    dayComponent.day = 1;
-    
-    NSDateComponents *adayComponent = [[NSDateComponents alloc] init];
-    adayComponent.year = 2014;
-    adayComponent.month = 3;
-    adayComponent.day = 29;
-    adayComponent.hour = 3;
-    adayComponent.minute = 0;
-    NSDate * aDay = [gregorian dateFromComponents:adayComponent];
-    
-    NSDate * nextDay1 = [aDay dateByAddingTimeInterval:60*60*24*1];
-    NSDate * nextDay2 = [gregorian dateByAddingComponents:dayComponent toDate:aDay options:0];*/
-    
-    return nextAlarm;
+    //Convert to DayOfWeek / Hour / Minute components because rest of NSDate information is not relevant
+    return [gregorian components:(NSWeekdayCalendarUnit | NSHourCalendarUnit | NSMinuteCalendarUnit) fromDate:nextAlarm];
 }
 
 + (NSArray*)getEnabledAlarms
@@ -113,15 +100,38 @@
             alarmComponents.hour = [alarm.hour intValue];
             alarmComponents.minute = [alarm.minute intValue];
             NSDate * alarmDateCandidate = [gregorian dateFromComponents:alarmComponents];
+            alarmDateCandidate = [self fixDateDuringWinterTimeTransistion:alarmDateCandidate];
 
             //Test candidate
             NSDateComponents * alarmDateCandidateComponents = [gregorian components:(NSHourCalendarUnit) fromDate:alarmDateCandidate];
-            if(alarmDateCandidate != nil && [now compare:alarmDateCandidate] == NSOrderedAscending && alarmDateCandidateComponents.hour == [alarm.hour intValue])
+            if(alarmDateCandidate != nil && [now compare:alarmDateCandidate] == NSOrderedAscending
+               && alarmDateCandidateComponents.hour == [alarm.hour intValue]) //Skip when changing to summer time(in that case alarmDateCandidateComponents.hour will be one hour later)
                 return alarmDateCandidate;
         }
     }
     
     return nil;
+}
+
+//This method will always return winter time, when date is during winter time transistion
+//For example 26/10/2014 2:30 CEST will be converted to 26/10/2014 2:30 CET
+//This will cause now < alarm to return true, when now = 26/10/2014 2:45 CEST and alarm = 26/10/2014 2:30
++(NSDate*) fixDateDuringWinterTimeTransistion:(NSDate*)potentialWinterTime
+{
+    NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+   
+    //Add 1 hour to potential winter time
+    NSDate * checkDate = [potentialWinterTime dateByAddingTimeInterval:(60 * 60)];
+    
+    //Retrieve hour component from both dates
+    NSInteger potentialWinterTimeHour = [[gregorian components:(NSHourCalendarUnit) fromDate:potentialWinterTime] hour];
+    NSInteger checkDateHour = [[gregorian components:(NSHourCalendarUnit) fromDate:checkDate] hour];
+    
+    //If hour component is still same, eventhough 1 hour has been added the date has been transform to winter and we will return that one
+    if(potentialWinterTimeHour == checkDateHour)
+        return checkDate;
+    else
+        return  potentialWinterTime;
 }
 
 

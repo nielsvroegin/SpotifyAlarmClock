@@ -11,11 +11,13 @@
 #import "appkey.h"
 #import "BackgroundGlow.h"
 #import "NextAlarm.h"
+#import "Tools.h"
 
 @interface ClockViewController ()
 
 @property (nonatomic, assign) bool showColon;
 @property (nonatomic, assign) bool loginChecked;
+@property (nonatomic, strong) NSDateComponents * nextAlarm;
 @property (weak, nonatomic) IBOutlet UILabel *spotifyConnectionState;
 @property (weak, nonatomic) IBOutlet UILabel *hour;
 @property (weak, nonatomic) IBOutlet UILabel *colon;
@@ -23,12 +25,14 @@
 @property (weak, nonatomic) IBOutlet BackgroundGlow *backgroundGlow;
 @property (weak, nonatomic) IBOutlet UILabel *lbDate;
 @property (weak, nonatomic) IBOutlet UILabel *lbNextAlarm;
+@property (weak, nonatomic) IBOutlet UIImageView *miniAlarmImage;
 
 - (void) updateSpotifyConnectionState;
 - (void) updateClock;
 - (IBAction)backgroundTap;
 - (IBAction)unwindToClock:(UIStoryboardSegue *)unwindSegue;
 - (void) applyGlow:(UILabel*)label;
+- (void)applyBackgroundTapRecursive:(UIView *)vw;
 
 @end
 
@@ -41,6 +45,8 @@
 @synthesize showColon;
 @synthesize loginChecked;
 @synthesize lbDate;
+@synthesize nextAlarm;
+@synthesize miniAlarmImage;
 
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -70,15 +76,17 @@
     //Keep app awake
     [UIApplication sharedApplication].idleTimerDisabled = YES;
     
+    //Receive notification for significant time change/Locale change
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(timeChangedSignificant) name:UIApplicationSignificantTimeChangeNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(timeChangedSignificant) name:NSCurrentLocaleDidChangeNotification object:nil];
+    
+    //Register all views for background tap
+    [self applyBackgroundTapRecursive:self.view];
+    
     //Time digits glow
     [self applyGlow:hour];
     [self applyGlow:colon];
     [self applyGlow:minutes];
-    
-    //Update clock
-    [self updateClock];
-    
-    
     
     //Set timer to update clock
     [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(onTimer:) userInfo:nil repeats:YES];
@@ -94,6 +102,16 @@
     [[SPSession sharedSession] attemptLoginWithUserName:@"nielsvroegin" password:@"51casioc"];
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    //Determine next alarm
+    nextAlarm = [NextAlarm provide];
+    
+    //Update clock
+    [self updateClock];
+}
+
+
 - (void) applyGlow:(UILabel*)label
 {
     label.layer.shadowColor = [[UIColor yellowColor] CGColor];
@@ -106,6 +124,24 @@
 - (BOOL)prefersStatusBarHidden
 {
     return YES;
+}
+
+- (void)applyBackgroundTapRecursive:(UIView *)vw
+{
+     UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(backgroundTap)];
+    
+     vw.userInteractionEnabled = YES;
+     [vw addGestureRecognizer:tapGesture];
+     for(UIView* subView in [vw subviews])
+     {
+         [self applyBackgroundTapRecursive:subView];
+     }
+}
+
+- (void) timeChangedSignificant
+{
+    self.nextAlarm = [NextAlarm provide];
+    [self updateClock];
 }
 
 #pragma mark State Update Methods
@@ -142,15 +178,8 @@
 
 -(void) updateClock
 {
+    NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
     NSDateFormatter* timeFormatter = [[NSDateFormatter alloc] init];
-    
-    //TEMP
-    //Determine next alarm
-    NSDate * nextAlarm = [NextAlarm provide];
-    [timeFormatter setDateFormat:@"EE HH:mm"];
-    self.lbNextAlarm.text = [timeFormatter stringFromDate:nextAlarm];
-    
-    
     
     //Retrieve time
     NSDate *time = [NSDate date];
@@ -176,8 +205,18 @@
     }];
     
     //--------- Set date ---------/
-    [timeFormatter setDateFormat:@"EE dd-MM-yyyy"];
-    self.lbDate.text = [timeFormatter stringFromDate:time];
+    [timeFormatter setDateFormat:@"dd-MM-yyyy"];
+    NSInteger weekday = [[gregorian components:NSWeekdayCalendarUnit fromDate:time] weekday];
+    self.lbDate.text = [NSString stringWithFormat:@"%@ %@", [Tools shortWeekDaySymbolForUnit:weekday], [timeFormatter stringFromDate:time]];
+    
+    //--------- Set next alarm ---------/
+    //Determine next alarm every minute
+    if([[gregorian components:NSSecondCalendarUnit fromDate:time] second] == 0)
+        nextAlarm = [NextAlarm provide];
+    
+    self.miniAlarmImage.hidden = (nextAlarm == nil);
+    self.lbNextAlarm.hidden = (nextAlarm == nil);
+    self.lbNextAlarm.text = [NSString stringWithFormat:@"%@ %02d:%02d", [Tools shortWeekDaySymbolForUnit:nextAlarm.weekday], nextAlarm.hour, nextAlarm.minute];
     
     showColon ^= true;
 }

@@ -10,6 +10,6 @@
 
 @interface NextAlarm : NSObject
 
-+ (NSDate*) provide;
++ (NSDateComponents*) provide;
 
 @end
