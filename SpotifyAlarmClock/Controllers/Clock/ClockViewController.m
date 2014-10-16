@@ -22,6 +22,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *minutes;
 @property (weak, nonatomic) IBOutlet BackgroundGlow *backgroundGlow;
 @property (weak, nonatomic) IBOutlet UILabel *lbDate;
+@property (weak, nonatomic) IBOutlet UILabel *lbNextAlarm;
 
 - (void) updateSpotifyConnectionState;
 - (void) updateClock;
@@ -77,8 +78,7 @@
     //Update clock
     [self updateClock];
     
-    //Determine next alarm
-    [NextAlarm provide];
+    
     
     //Set timer to update clock
     [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(onTimer:) userInfo:nil repeats:YES];
@@ -143,6 +143,14 @@
 -(void) updateClock
 {
     NSDateFormatter* timeFormatter = [[NSDateFormatter alloc] init];
+    
+    //TEMP
+    //Determine next alarm
+    NSDate * nextAlarm = [NextAlarm provide];
+    [timeFormatter setDateFormat:@"EE HH:mm"];
+    self.lbNextAlarm.text = [timeFormatter stringFromDate:nextAlarm];
+    
+    
     
     //Retrieve time
     NSDate *time = [NSDate date];

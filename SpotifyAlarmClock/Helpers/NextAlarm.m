@@ -12,7 +12,7 @@
 
 @interface NextAlarm ()
 
-+ (NSDateComponents*)nextAlarmForAlarm:(Alarm*)alarm;
++ (NSDate*)nextAlarmForAlarm:(Alarm*)alarm;
 + (NSArray*)getEnabledAlarms;
 
 @end
@@ -30,14 +30,30 @@
     NSDate* nextAlarm = nil;
     for(Alarm* alarm in alarms)
     {
-        [self nextAlarmForAlarm:alarm];
-        /*NSDate *nextAlarmForAlarm = [self nextAlarmForAlarm:alarm];
+        NSDate *nextAlarmForAlarm = [self nextAlarmForAlarm:alarm];
         
         if(nextAlarm == nil)
             nextAlarm = nextAlarmForAlarm;
         else
-            nextAlarm = [nextAlarm earlierDate:nextAlarmForAlarm];*/
+            nextAlarm = [nextAlarm earlierDate:nextAlarmForAlarm];
     }
+    
+    
+    //TEST
+    /*NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+    NSDateComponents *dayComponent = [[NSDateComponents alloc] init];
+    dayComponent.day = 1;
+    
+    NSDateComponents *adayComponent = [[NSDateComponents alloc] init];
+    adayComponent.year = 2014;
+    adayComponent.month = 3;
+    adayComponent.day = 29;
+    adayComponent.hour = 3;
+    adayComponent.minute = 0;
+    NSDate * aDay = [gregorian dateFromComponents:adayComponent];
+    
+    NSDate * nextDay1 = [aDay dateByAddingTimeInterval:60*60*24*1];
+    NSDate * nextDay2 = [gregorian dateByAddingComponents:dayComponent toDate:aDay options:0];*/
     
     return nextAlarm;
 }
@@ -69,53 +85,45 @@
     return alarms;
 }
 
-+ (NSDateComponents*)nextAlarmForAlarm:(Alarm*)alarm
++ (NSDate*)nextAlarmForAlarm:(Alarm*)alarm
 {
     NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
     NSDate *now = [NSDate date];
+    NSInteger currentWeekDay = [[gregorian components:NSWeekdayCalendarUnit fromDate:now] weekday];
     
-    //------ Check next day of week to get on alarm time (today or tomorrow) ------/
-    //1= sunday, 7 = saturday
-    NSInteger weekDayPossibleAlarm = [[gregorian components:NSWeekdayCalendarUnit fromDate:now] weekday];
-    
-    NSDateComponents *currentHourMinute = [gregorian components:(NSHourCalendarUnit | NSMinuteCalendarUnit) fromDate:now];
-    NSDateComponents *alarmTimeHourMinute = [[NSDateComponents alloc] init];
-    [alarmTimeHourMinute setHour:[[alarm hour] intValue]];
-    [alarmTimeHourMinute setMinute:[[alarm minute] intValue]];
-    
-    NSDate * currentDate = [gregorian dateFromComponents:currentHourMinute];
-    NSDate * alarmDate = [gregorian dateFromComponents:alarmTimeHourMinute];
-    
-    bool startToday = ([currentDate compare:alarmDate] == NSOrderedAscending);
-    if(!startToday)
-        weekDayPossibleAlarm = (weekDayPossibleAlarm +1) % 7;
     
     //------ Test days of week on alarm repeat settings ------//
-    for(int i = 0; i < 7; i++)
+    for(int i = 0; i < 14; i++)
     {
-        NSInteger testDay = (weekDayPossibleAlarm + i) % 7;
-        //For alarm.repeat Monday = 0 and Sunday=6, so convert test day
+        NSInteger testDay = currentWeekDay + i;
         NSInteger testDayOnRepeat = ((testDay + 7 - 2) % 7);
         
-        if([[alarm repeat] rangeOfString:[NSString stringWithFormat:@"%d", testDayOnRepeat]].location != NSNotFound)
+        if([[alarm repeat] rangeOfString:[NSString stringWithFormat:@"%d", testDayOnRepeat]].location != NSNotFound || [[alarm repeat] length] == 0)
         {
-            NSDateComponents *alarmTimeComponents = [[NSDateComponents alloc] init];
-            alarmTimeComponents.hour = [[alarm hour] intValue];
-            alarmTimeComponents.minute = [[alarm minute] intValue];
-            alarmTimeComponents.weekday = testDay;
+            //------- Next alarm candidate -------//
+            //Prepare required data for calculation
+            NSDateComponents *dayComponent = [[NSDateComponents alloc] init];
+            dayComponent.day = i;
+            NSDateComponents * todayMidnightComponents = [gregorian components:(NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit) fromDate:now];
+            NSDate * todayMidnight = [gregorian dateFromComponents:todayMidnightComponents];
+            NSDate * alarmMidnight = [gregorian dateByAddingComponents:dayComponent toDate:todayMidnight options:0];
+            
+            //Create candidate
+            NSDateComponents * alarmComponents = [gregorian components:(NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit | NSHourCalendarUnit | NSMinuteCalendarUnit) fromDate:alarmMidnight];
+            alarmComponents.hour = [alarm.hour intValue];
+            alarmComponents.minute = [alarm.minute intValue];
+            NSDate * alarmDateCandidate = [gregorian dateFromComponents:alarmComponents];
 
-            return alarmTimeComponents;
+            //Test candidate
+            NSDateComponents * alarmDateCandidateComponents = [gregorian components:(NSHourCalendarUnit) fromDate:alarmDateCandidate];
+            if(alarmDateCandidate != nil && [now compare:alarmDateCandidate] == NSOrderedAscending && alarmDateCandidateComponents.hour == [alarm.hour intValue])
+                return alarmDateCandidate;
         }
     }
     
-    //If no tested successfully, this is a one time alarm. Set to first possible occurence
-    NSDateComponents *alarmTimeComponents = [[NSDateComponents alloc] init];
-    alarmTimeComponents.hour = [[alarm hour] intValue];
-    alarmTimeComponents.minute = [[alarm minute] intValue];
-    alarmTimeComponents.weekday = weekDayPossibleAlarm;
-    
-    return alarmTimeComponents;
+    return nil;
 }
+
 
 
 

@@ -48,7 +48,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Unknown" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1dB-Id-suO">
-                                <rect key="frame" x="99" y="8" width="131" height="21"/>
+                                <rect key="frame" x="99" y="8" width="108" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="nsZ-If-OXf"/>
                                 </constraints>
@@ -56,10 +56,10 @@
                                 <color key="textColor" red="0.093663677010000002" green="0.42857142860000003" blue="0.15435124059999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="07:15" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lKc-B9-s3P">
-                                <rect key="frame" x="276" y="8" width="28" height="21"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MO 07:15" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lKc-B9-s3P">
+                                <rect key="frame" x="253" y="8" width="51" height="21"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="28" id="3MN-fA-tJn"/>
+                                    <constraint firstAttribute="width" constant="51" id="3MN-fA-tJn"/>
                                     <constraint firstAttribute="height" constant="21" id="Njg-aw-Sqi"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="LCDBold" family="LCD" pointSize="12"/>
@@ -100,7 +100,7 @@
                                 <size key="shadowOffset" width="0.0" height="0.0"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="MiniAlarm" translatesAutoresizingMaskIntoConstraints="NO" id="yct-6o-EDv">
-                                <rect key="frame" x="254" y="11" width="13" height="13"/>
+                                <rect key="frame" x="231" y="11" width="13" height="13"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="13" id="735-UO-vVK"/>
                                     <constraint firstAttribute="height" constant="13" id="fci-Z7-vom"/>
@@ -158,6 +158,7 @@
                         <outlet property="colon" destination="2cN-Oz-7Hd" id="P8q-m1-c5f"/>
                         <outlet property="hour" destination="L9C-Eb-VC4" id="zHT-nr-5ci"/>
                         <outlet property="lbDate" destination="esr-r2-Iz8" id="EbU-Xo-AFr"/>
+                        <outlet property="lbNextAlarm" destination="lKc-B9-s3P" id="rcB-eX-BQD"/>
                         <outlet property="minutes" destination="qtf-eg-0ZR" id="vWP-xa-uxO"/>
                         <outlet property="spotifyConnectionState" destination="1dB-Id-suO" id="iw4-40-pZj"/>
                         <segue destination="4QZ-jy-vp4" kind="modal" identifier="settingsSegue" id="5jV-Jc-Lia"/>
