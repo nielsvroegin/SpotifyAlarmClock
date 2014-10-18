@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="vXZ-lx-hvc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="vXZ-lx-hvc">
     <dependencies>
+        <deployment defaultVersion="1808" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
         <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -121,24 +123,103 @@
                                     <constraint firstAttribute="height" constant="13" id="caR-pA-T17"/>
                                 </constraints>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="whE-9B-b8z">
+                                <rect key="frame" x="103" y="106" width="104" height="30"/>
+                                <state key="normal" title="Start Alarm">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="performAlarm" destination="vXZ-lx-hvc" eventType="touchUpInside" id="syh-qo-7cE"/>
+                                </connections>
+                            </button>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="waJ-n9-LAg">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AlarmClock" translatesAutoresizingMaskIntoConstraints="NO" id="Dge-3Q-dJ9">
+                                        <rect key="frame" x="10" y="134" width="300" height="300"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="Dge-3Q-dJ9" secondAttribute="height" multiplier="1:1" id="gTm-X4-obj"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" red="0.094117647060000004" green="0.42745098040000001" blue="0.1529411765" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="centerX" secondItem="Dge-3Q-dJ9" secondAttribute="centerX" id="O9Q-5p-Nyi"/>
+                                    <constraint firstAttribute="centerY" secondItem="Dge-3Q-dJ9" secondAttribute="centerY" id="glc-17-hJj"/>
+                                </constraints>
+                            </view>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1BW-wG-NGv">
+                                <rect key="frame" x="0.0" y="498" width="320" height="70"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bpS-uo-94F">
+                                        <rect key="frame" x="11" y="14" width="299" height="42"/>
+                                        <color key="backgroundColor" red="0.12924054239999999" green="0.59135841840000003" blue="0.21297944620000001" alpha="1" colorSpace="calibratedRGB"/>
+                                        <state key="normal" title="Snooze">
+                                            <color key="titleColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="bpS-uo-94F" firstAttribute="leading" secondItem="1BW-wG-NGv" secondAttribute="leading" constant="11" id="0cn-d4-6pj"/>
+                                    <constraint firstAttribute="trailing" secondItem="bpS-uo-94F" secondAttribute="trailing" constant="10" id="90V-4m-43u"/>
+                                    <constraint firstAttribute="bottom" secondItem="bpS-uo-94F" secondAttribute="bottom" constant="14" id="AiS-Cu-WhX"/>
+                                    <constraint firstItem="bpS-uo-94F" firstAttribute="top" secondItem="1BW-wG-NGv" secondAttribute="top" constant="14" id="tFF-Rt-9bM"/>
+                                    <constraint firstAttribute="height" constant="70" id="uBO-7h-0TD"/>
+                                </constraints>
+                            </view>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bAh-Wf-9CL">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="70"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SYk-CD-841">
+                                        <rect key="frame" x="11" y="14" width="299" height="42"/>
+                                        <color key="backgroundColor" red="0.59135841840000003" green="0.19042812810000001" blue="0.032311017439999999" alpha="1" colorSpace="calibratedRGB"/>
+                                        <state key="normal" title="Shutdown Alarm">
+                                            <color key="titleColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="stopAlarm" destination="vXZ-lx-hvc" eventType="touchUpInside" id="Xld-XG-S8M"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="SYk-CD-841" firstAttribute="top" secondItem="bAh-Wf-9CL" secondAttribute="top" constant="14" id="5Bp-lr-jrN"/>
+                                    <constraint firstAttribute="height" constant="70" id="dyW-Z8-GAq"/>
+                                    <constraint firstItem="SYk-CD-841" firstAttribute="leading" secondItem="bAh-Wf-9CL" secondAttribute="leading" constant="11" id="fRn-CO-IS9"/>
+                                    <constraint firstAttribute="bottom" secondItem="SYk-CD-841" secondAttribute="bottom" constant="14" id="htK-Pe-frf"/>
+                                    <constraint firstAttribute="trailing" secondItem="SYk-CD-841" secondAttribute="trailing" constant="10" id="k4c-9Y-5pE"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="1dB-Id-suO" firstAttribute="leading" secondItem="pBE-h6-56e" secondAttribute="trailing" constant="1" id="1GK-dj-x8d"/>
+                            <constraint firstItem="Dge-3Q-dJ9" firstAttribute="top" relation="greaterThanOrEqual" secondItem="bAh-Wf-9CL" secondAttribute="bottom" constant="10" id="2DM-6F-k0J"/>
                             <constraint firstItem="lKc-B9-s3P" firstAttribute="bottom" secondItem="1dB-Id-suO" secondAttribute="bottom" id="2WS-D6-vv7"/>
+                            <constraint firstItem="waJ-n9-LAg" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="-16" id="3Kc-0s-7fu"/>
                             <constraint firstItem="lKc-B9-s3P" firstAttribute="trailing" secondItem="kh9-bI-dsS" secondAttribute="trailingMargin" id="3Ku-AQ-lRe"/>
                             <constraint firstItem="1dS-bJ-7pt" firstAttribute="leading" secondItem="esr-r2-Iz8" secondAttribute="trailing" constant="56" id="3si-b5-Wak"/>
+                            <constraint firstItem="1BW-wG-NGv" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="-16" id="9l7-nL-waP"/>
                             <constraint firstItem="1dS-bJ-7pt" firstAttribute="trailing" secondItem="kh9-bI-dsS" secondAttribute="trailingMargin" id="CCd-yo-vEj"/>
                             <constraint firstItem="esr-r2-Iz8" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" id="DGQ-yk-JuA"/>
                             <constraint firstItem="2cN-Oz-7Hd" firstAttribute="leading" secondItem="L9C-Eb-VC4" secondAttribute="trailing" id="Djh-bi-2B0"/>
                             <constraint firstItem="1dB-Id-suO" firstAttribute="baseline" secondItem="pBE-h6-56e" secondAttribute="baseline" id="EDL-RD-Hsb"/>
+                            <constraint firstItem="bAh-Wf-9CL" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="-16" id="F0B-xm-ndG"/>
                             <constraint firstItem="lKc-B9-s3P" firstAttribute="leading" secondItem="yct-6o-EDv" secondAttribute="trailing" constant="5" id="Jh6-Ur-DFq"/>
+                            <constraint firstItem="bAh-Wf-9CL" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="topMargin" id="KYY-d8-gXa"/>
+                            <constraint firstItem="waJ-n9-LAg" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="topMargin" id="Qid-ZX-g85"/>
                             <constraint firstItem="qtf-eg-0ZR" firstAttribute="bottom" secondItem="2cN-Oz-7Hd" secondAttribute="bottom" id="Qz4-MV-7X7"/>
                             <constraint firstAttribute="centerX" secondItem="2cN-Oz-7Hd" secondAttribute="centerX" id="Ri4-08-pka"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="waJ-n9-LAg" secondAttribute="trailing" constant="-16" id="WVg-rg-rFy"/>
+                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="waJ-n9-LAg" secondAttribute="bottom" id="XfE-BQ-MGC"/>
                             <constraint firstItem="yct-6o-EDv" firstAttribute="leading" secondItem="1dB-Id-suO" secondAttribute="trailing" constant="24" id="Xin-Zf-sl6"/>
                             <constraint firstItem="pBE-h6-56e" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="topMargin" constant="8" id="Z8R-0s-RkG"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="1BW-wG-NGv" secondAttribute="trailing" constant="-16" id="abs-5N-t0h"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="bAh-Wf-9CL" secondAttribute="trailing" constant="-16" id="adl-bK-rex"/>
                             <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="1dS-bJ-7pt" secondAttribute="bottom" constant="12" id="csw-pq-AfJ"/>
                             <constraint firstItem="qtf-eg-0ZR" firstAttribute="leading" secondItem="2cN-Oz-7Hd" secondAttribute="trailing" id="e19-gu-PAH"/>
+                            <constraint firstItem="1BW-wG-NGv" firstAttribute="top" relation="greaterThanOrEqual" secondItem="Dge-3Q-dJ9" secondAttribute="bottom" constant="10" id="i3Y-UR-Cnc"/>
                             <constraint firstItem="yct-6o-EDv" firstAttribute="bottom" secondItem="1dB-Id-suO" secondAttribute="bottom" constant="-6" id="raY-o5-7CP"/>
                             <constraint firstAttribute="centerY" secondItem="2cN-Oz-7Hd" secondAttribute="centerY" constant="-0.5" id="uaG-Cq-brX"/>
                             <constraint firstItem="L9C-Eb-VC4" firstAttribute="bottom" secondItem="2cN-Oz-7Hd" secondAttribute="bottom" id="vO6-7J-la6"/>
@@ -146,11 +227,14 @@
                             <constraint firstAttribute="centerX" secondItem="iSV-ic-TLJ" secondAttribute="centerX" id="vw0-QM-A0q"/>
                             <constraint firstAttribute="centerY" secondItem="iSV-ic-TLJ" secondAttribute="centerY" id="xVd-bJ-5d4"/>
                             <constraint firstItem="1dB-Id-suO" firstAttribute="firstBaseline" secondItem="pBE-h6-56e" secondAttribute="firstBaseline" id="xXb-Xs-g4t"/>
+                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="1BW-wG-NGv" secondAttribute="bottom" id="yZN-0b-WNV"/>
                             <constraint firstItem="pBE-h6-56e" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" id="zZ3-cl-shH"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="alarmBackground" destination="waJ-n9-LAg" id="KXa-ol-t7S"/>
                         <outlet property="backgroundGlow" destination="iSV-ic-TLJ" id="8p2-N9-hDW"/>
+                        <outlet property="bottomBarAlarm" destination="1BW-wG-NGv" id="A1O-UZ-7MK"/>
                         <outlet property="colon" destination="2cN-Oz-7Hd" id="P8q-m1-c5f"/>
                         <outlet property="hour" destination="L9C-Eb-VC4" id="zHT-nr-5ci"/>
                         <outlet property="lbDate" destination="esr-r2-Iz8" id="EbU-Xo-AFr"/>
@@ -158,6 +242,7 @@
                         <outlet property="miniAlarmImage" destination="yct-6o-EDv" id="Hdo-Vp-Jpg"/>
                         <outlet property="minutes" destination="qtf-eg-0ZR" id="vWP-xa-uxO"/>
                         <outlet property="spotifyConnectionState" destination="1dB-Id-suO" id="iw4-40-pZj"/>
+                        <outlet property="topBarAlarm" destination="bAh-Wf-9CL" id="rNu-DD-yKw"/>
                         <segue destination="4QZ-jy-vp4" kind="modal" identifier="settingsSegue" id="5jV-Jc-Lia"/>
                     </connections>
                 </viewController>
@@ -970,6 +1055,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="AlarmClock" width="300" height="300"/>
         <image name="MiniAlarm" width="13" height="13"/>
         <image name="SettingsIcon" width="13" height="13"/>
     </resources>

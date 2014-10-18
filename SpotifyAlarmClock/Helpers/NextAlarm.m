@@ -16,11 +16,16 @@
 + (NSArray*)getEnabledAlarms;
 + (NSDate*) fixDateDuringWinterTimeTransistion:(NSDate*)potentialWinterTime;
 
+@property (nonatomic, strong) NSDate * alarmDate;
+
 @end
 
 @implementation NextAlarm
+@synthesize alarm;
+@synthesize alarmDateComponents;
+@synthesize alarmDate;
 
-+ (NSDateComponents*) provide
++ (NextAlarm*) provide
 {
     NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
     NSArray* alarms = [self getEnabledAlarms];
@@ -30,19 +35,23 @@
         return nil;
     
     //Find next alarm for listed alarms
-    NSDate* nextAlarm = nil;
+    NextAlarm* nextAlarm = [[NextAlarm alloc] init];
     for(Alarm* alarm in alarms)
     {
         NSDate *nextAlarmForAlarm = [self nextAlarmForAlarm:alarm];
         
-        if(nextAlarm == nil)
-            nextAlarm = nextAlarmForAlarm;
-        else
-            nextAlarm = [nextAlarm earlierDate:nextAlarmForAlarm];
+        if(nextAlarm.alarm == nil || [nextAlarm.alarmDate compare:nextAlarmForAlarm] == NSOrderedDescending)
+        {
+            nextAlarm.alarm = alarm;
+            nextAlarm.alarmDate = nextAlarmForAlarm;
+        }
     }
     
     //Convert to DayOfWeek / Hour / Minute components because rest of NSDate information is not relevant
-    return [gregorian components:(NSWeekdayCalendarUnit | NSHourCalendarUnit | NSMinuteCalendarUnit) fromDate:nextAlarm];
+    if(nextAlarm.alarm != nil)
+        nextAlarm.alarmDateComponents = [gregorian components:(NSWeekdayCalendarUnit | NSHourCalendarUnit | NSMinuteCalendarUnit) fromDate:nextAlarm.alarmDate];
+
+    return nextAlarm;
 }
 
 + (NSArray*)getEnabledAlarms

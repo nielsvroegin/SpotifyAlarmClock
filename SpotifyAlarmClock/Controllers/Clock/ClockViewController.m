@@ -7,17 +7,22 @@
 //
 
 #import "ClockViewController.h"
+#import "Alarm.h"
+#import "AlarmSong.h"
 #import "CocoaLibSpotify.h"
 #import "appkey.h"
 #import "BackgroundGlow.h"
 #import "NextAlarm.h"
 #import "Tools.h"
+#import "SpotifyPlayer.h"
 
 @interface ClockViewController ()
 
 @property (nonatomic, assign) bool showColon;
 @property (nonatomic, assign) bool loginChecked;
-@property (nonatomic, strong) NSDateComponents * nextAlarm;
+@property (nonatomic, assign) bool isPerformingAlarm;
+@property (nonatomic, assign) Alarm * performingAlarm;
+@property (nonatomic, strong) NextAlarm * nextAlarm;
 @property (weak, nonatomic) IBOutlet UILabel *spotifyConnectionState;
 @property (weak, nonatomic) IBOutlet UILabel *hour;
 @property (weak, nonatomic) IBOutlet UILabel *colon;
@@ -27,17 +32,30 @@
 @property (weak, nonatomic) IBOutlet UILabel *lbNextAlarm;
 @property (weak, nonatomic) IBOutlet UIImageView *miniAlarmImage;
 
+@property (weak, nonatomic) IBOutlet UIView *topBarAlarm;
+@property (weak, nonatomic) IBOutlet UIView *bottomBarAlarm;
+@property (weak, nonatomic) IBOutlet UIView *alarmBackground;
+
+
 - (void) updateSpotifyConnectionState;
 - (void) updateClock;
-- (IBAction)backgroundTap;
+- (void) updateClockAlarm;
+- (void)backgroundTap;
 - (IBAction)unwindToClock:(UIStoryboardSegue *)unwindSegue;
 - (void) applyGlow:(UILabel*)label;
 - (void)applyBackgroundTapRecursive:(UIView *)vw;
+- (IBAction) performAlarm;
+- (void) performAlarm:(Alarm *)alarm;
+- (IBAction) stopAlarm;
+- (void) snoozeAlarm;
+
 
 @end
 
 @implementation ClockViewController
 @synthesize spotifyConnectionState;
+@synthesize isPerformingAlarm;
+@synthesize performingAlarm;
 @synthesize hour;
 @synthesize colon;
 @synthesize minutes;
@@ -47,6 +65,9 @@
 @synthesize lbDate;
 @synthesize nextAlarm;
 @synthesize miniAlarmImage;
+@synthesize alarmBackground;
+@synthesize topBarAlarm;
+@synthesize bottomBarAlarm;
 
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -58,7 +79,7 @@
     return self;
 }
 
-- (IBAction)backgroundTap
+- (void)backgroundTap
 {
     [self performSegueWithIdentifier:@"settingsSegue" sender:nil];
 }
@@ -79,7 +100,7 @@
     //Receive notification for significant time change/Locale change
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(timeChangedSignificant) name:UIApplicationSignificantTimeChangeNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(timeChangedSignificant) name:NSCurrentLocaleDidChangeNotification object:nil];
-    
+        
     //Register all views for background tap
     [self applyBackgroundTapRecursive:self.view];
     
@@ -134,7 +155,8 @@
      [vw addGestureRecognizer:tapGesture];
      for(UIView* subView in [vw subviews])
      {
-         [self applyBackgroundTapRecursive:subView];
+         if([subView class] != [UIButton class])
+             [self applyBackgroundTapRecursive:subView];
      }
 }
 
@@ -144,11 +166,44 @@
     [self updateClock];
 }
 
+
+- (IBAction) performAlarm
+{
+    [self performAlarm:nextAlarm.alarm];
+}
+
+- (void) performAlarm:(Alarm *)alarm
+{
+    isPerformingAlarm = true;
+    performingAlarm = alarm;
+    
+    //Show ClockAlarm
+    self.topBarAlarm.hidden = NO;
+    self.bottomBarAlarm.hidden = NO;
+    self.topBarAlarm.backgroundColor = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:1];
+    self.bottomBarAlarm.backgroundColor = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:1];
+    self.bottomBarAlarm.alpha = 0;
+    self.topBarAlarm.alpha = 0;
+    
+    [UIView animateWithDuration:0.3 animations:^() {
+        self.bottomBarAlarm.alpha = 1;
+        self.topBarAlarm.alpha = 1;
+    }];
+    
+    //Play music
+    AlarmSong * alarmSong = [performingAlarm.songs firstObject];
+    [[SPSession sharedSession] trackForURL:[NSURL URLWithString:[alarmSong spotifyUrl]] callback:^(SPTrack *track){
+        [[SpotifyPlayer sharedSpotifyPlayer] playTrack:track];
+    }];
+}
+
+
 #pragma mark State Update Methods
 - (void) onTimer:(NSTimer *) timer
 {
     [self updateClock];
     [self updateSpotifyConnectionState];
+    [self updateClockAlarm];
 }
 
 - (void) updateSpotifyConnectionState
@@ -204,6 +259,11 @@
             self.backgroundGlow.alpha = 0.5f;
     }];
     
+    //--------- Check alarm ---------/
+    NSDateComponents * timeComponents = [gregorian components:NSHourCalendarUnit | NSMinuteCalendarUnit | NSWeekdayCalendarUnit fromDate:time];
+    if(!isPerformingAlarm && timeComponents.weekday == nextAlarm.alarmDateComponents.weekday && timeComponents.hour == nextAlarm.alarmDateComponents.hour && timeComponents.minute == nextAlarm.alarmDateComponents.minute)
+        [self performAlarm:[nextAlarm alarm]];
+    
     //--------- Set date ---------/
     [timeFormatter setDateFormat:@"dd-MM-yyyy"];
     NSInteger weekday = [[gregorian components:NSWeekdayCalendarUnit fromDate:time] weekday];
@@ -216,10 +276,48 @@
     
     self.miniAlarmImage.hidden = (nextAlarm == nil);
     self.lbNextAlarm.hidden = (nextAlarm == nil);
-    self.lbNextAlarm.text = [NSString stringWithFormat:@"%@ %02d:%02d", [Tools shortWeekDaySymbolForUnit:nextAlarm.weekday], nextAlarm.hour, nextAlarm.minute];
+    self.lbNextAlarm.text = [NSString stringWithFormat:@"%@ %02d:%02d", [Tools shortWeekDaySymbolForUnit:nextAlarm.alarmDateComponents.weekday], nextAlarm.alarmDateComponents.hour, nextAlarm.alarmDateComponents.minute];
     
     showColon ^= true;
 }
+
+- (void) updateClockAlarm
+{
+    //Only update when alarm is running
+    if(!isPerformingAlarm)
+        return;
+        
+    self.alarmBackground.hidden ^= YES;
+    
+    if(self.alarmBackground.hidden)
+    {
+        self.topBarAlarm.backgroundColor = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:1];
+        self.bottomBarAlarm.backgroundColor = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:1];
+    }
+    else
+    {
+        self.topBarAlarm.backgroundColor = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.5];
+        self.bottomBarAlarm.backgroundColor = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.5];
+    }
+}
+    
+#pragma Alarm Handling Methods
+ - (void) stopAlarm
+ {
+     isPerformingAlarm = NO;
+     performingAlarm = nil;
+     
+     //Show ClockAlarm view
+     self.topBarAlarm.hidden = YES;
+     self.bottomBarAlarm.hidden = YES;
+     self.alarmBackground.hidden = YES;
+     
+     [[SpotifyPlayer sharedSpotifyPlayer] stopTrack];
+ }
+ - (void) snoozeAlarm
+ {
+     
+ }
 
 #pragma SPSessionDelegate methods
 

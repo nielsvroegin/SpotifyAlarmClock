@@ -8,8 +8,13 @@
 
 #import <Foundation/Foundation.h>
 
+@class Alarm;
+
 @interface NextAlarm : NSObject
 
-+ (NSDateComponents*) provide;
++ (NextAlarm*) provide;
+
+@property (nonatomic, strong) Alarm * alarm;
+@property (nonatomic, strong) NSDateComponents * alarmDateComponents;
 
 @end
