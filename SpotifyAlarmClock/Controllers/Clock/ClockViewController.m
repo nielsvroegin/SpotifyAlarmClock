@@ -223,7 +223,7 @@
 
     //Find next song
     NSUInteger newSongIndex;
-    if(performingAlarm.shuffle)
+    if([performingAlarm.shuffle boolValue])
         newSongIndex = arc4random() % [songList count];
     else
         newSongIndex = 0;
@@ -275,9 +275,12 @@
 {
     NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
     NSDateFormatter* timeFormatter = [[NSDateFormatter alloc] init];
+    NSDateComponents * snoozeDateComponents = [gregorian components:(NSWeekdayCalendarUnit | NSHourCalendarUnit | NSMinuteCalendarUnit) fromDate:snoozeDate];
+    
     
     //Retrieve time
     NSDate *time = [NSDate date];
+    NSDateComponents * timeComponents = [gregorian components:NSHourCalendarUnit | NSMinuteCalendarUnit | NSWeekdayCalendarUnit fromDate:time];
     
     //--------- Set time ---------/
     //Set Hours
@@ -300,10 +303,9 @@
     }];
     
     //--------- Check alarm ---------/
-    NSDateComponents * timeComponents = [gregorian components:NSHourCalendarUnit | NSMinuteCalendarUnit | NSWeekdayCalendarUnit fromDate:time];
     if(!isPerformingAlarm && timeComponents.weekday == nextAlarm.alarmDateComponents.weekday && timeComponents.hour == nextAlarm.alarmDateComponents.hour && timeComponents.minute == nextAlarm.alarmDateComponents.minute)
         [self performAlarm:[nextAlarm alarm]];
-    else if(snoozeDate != nil && [[NSDate date] compare:snoozeDate] == NSOrderedSame)
+    else if(!isPerformingAlarm && snoozeDate != nil && timeComponents.weekday == snoozeDateComponents.weekday && timeComponents.hour == snoozeDateComponents.hour && timeComponents.minute == snoozeDateComponents.minute)
         [self performAlarm:performingAlarm];
     
     //--------- Set date ---------/
@@ -325,7 +327,6 @@
     
     if(snoozeDate != nil)
     {
-        NSDateComponents * snoozeDateComponents = [gregorian components:(NSWeekdayCalendarUnit | NSHourCalendarUnit | NSMinuteCalendarUnit) fromDate:snoozeDate];
         if(weekday == snoozeDateComponents.weekday)
             self.lbNextAlarm.text = [NSString stringWithFormat:@"%02d:%02d", snoozeDateComponents.hour, snoozeDateComponents.minute];
         else
