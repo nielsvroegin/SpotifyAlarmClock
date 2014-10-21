@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "SpotifyPlayer.h"
 
-@interface ClockViewController : UIViewController <SPSessionDelegate>
+@interface ClockViewController : UIViewController <SPSessionDelegate, SpotifyPlayerDelegate>
 {
 
 }

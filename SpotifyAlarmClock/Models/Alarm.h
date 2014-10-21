@@ -19,6 +19,7 @@
 @property (nonatomic, retain) NSString * name;
 @property (nonatomic, retain) NSString * repeat;
 @property (nonatomic, retain) NSNumber * snooze;
+@property (nonatomic, retain) NSNumber * shuffle;
 @property (nonatomic, retain) NSOrderedSet *songs;
 @end
 

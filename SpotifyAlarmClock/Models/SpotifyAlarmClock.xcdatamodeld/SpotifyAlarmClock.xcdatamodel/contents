@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="6244" systemVersion="13F34" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="6244" systemVersion="14A389" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
     <entity name="Alarm" representedClassName="Alarm">
         <attribute name="enabled" optional="YES" attributeType="Boolean" defaultValueString="NO">
             <userInfo/>
@@ -14,6 +14,7 @@
         <attribute name="repeat" attributeType="String">
             <userInfo/>
         </attribute>
+        <attribute name="shuffle" optional="YES" attributeType="Boolean" defaultValueString="0" syncable="YES"/>
         <attribute name="snooze" attributeType="Boolean" defaultValueString="NO">
             <userInfo/>
         </attribute>
@@ -25,7 +26,7 @@
         <relationship name="alarm" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Alarm" inverseName="songs" inverseEntity="Alarm" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Alarm" positionX="160" positionY="192" width="128" height="148"/>
+        <element name="Alarm" positionX="160" positionY="192" width="128" height="165"/>
         <element name="AlarmSong" positionX="133" positionY="387" width="128" height="73"/>
     </elements>
 </model>

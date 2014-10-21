@@ -18,6 +18,7 @@
 @dynamic name;
 @dynamic repeat;
 @dynamic snooze;
+@dynamic shuffle;
 @dynamic songs;
 
 @end

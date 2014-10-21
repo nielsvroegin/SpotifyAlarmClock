@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="vXZ-lx-hvc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="vXZ-lx-hvc">
     <dependencies>
-        <deployment defaultVersion="1808" identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
         <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -51,16 +51,16 @@
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Unknown" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1dB-Id-suO">
                                 <rect key="frame" x="99" y="8" width="112" height="21"/>
                                 <constraints>
+                                    <constraint firstAttribute="width" constant="112" id="Q6Q-aK-a75"/>
                                     <constraint firstAttribute="height" constant="21" id="nsZ-If-OXf"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="LCDBold" family="LCD" pointSize="12"/>
                                 <color key="textColor" red="0.093663677010000002" green="0.42857142860000003" blue="0.15435124059999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MO 07:15" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lKc-B9-s3P">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="MO 07:15" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lKc-B9-s3P">
                                 <rect key="frame" x="253" y="8" width="51" height="21"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="51" id="3MN-fA-tJn"/>
                                     <constraint firstAttribute="height" constant="21" id="Njg-aw-Sqi"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="LCDBold" family="LCD" pointSize="12"/>
@@ -100,7 +100,7 @@
                                 <nil key="highlightedColor"/>
                                 <size key="shadowOffset" width="0.0" height="0.0"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="MiniAlarm" translatesAutoresizingMaskIntoConstraints="NO" id="yct-6o-EDv">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="MiniAlarm" translatesAutoresizingMaskIntoConstraints="NO" id="yct-6o-EDv">
                                 <rect key="frame" x="235" y="10" width="13" height="13"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="13" id="735-UO-vVK"/>
@@ -157,6 +157,9 @@
                                         <state key="normal" title="Snooze">
                                             <color key="titleColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
+                                        <connections>
+                                            <action selector="snoozeAlarm" destination="vXZ-lx-hvc" eventType="touchUpInside" id="iez-tF-YvH"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
@@ -174,7 +177,7 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SYk-CD-841">
                                         <rect key="frame" x="11" y="14" width="299" height="42"/>
                                         <color key="backgroundColor" red="0.59135841840000003" green="0.19042812810000001" blue="0.032311017439999999" alpha="1" colorSpace="calibratedRGB"/>
-                                        <state key="normal" title="Shutdown Alarm">
+                                        <state key="normal" title="Stop Alarm">
                                             <color key="titleColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
                                         <connections>
@@ -213,7 +216,6 @@
                             <constraint firstAttribute="centerX" secondItem="2cN-Oz-7Hd" secondAttribute="centerX" id="Ri4-08-pka"/>
                             <constraint firstAttribute="trailingMargin" secondItem="waJ-n9-LAg" secondAttribute="trailing" constant="-16" id="WVg-rg-rFy"/>
                             <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="waJ-n9-LAg" secondAttribute="bottom" id="XfE-BQ-MGC"/>
-                            <constraint firstItem="yct-6o-EDv" firstAttribute="leading" secondItem="1dB-Id-suO" secondAttribute="trailing" constant="24" id="Xin-Zf-sl6"/>
                             <constraint firstItem="pBE-h6-56e" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="topMargin" constant="8" id="Z8R-0s-RkG"/>
                             <constraint firstAttribute="trailingMargin" secondItem="1BW-wG-NGv" secondAttribute="trailing" constant="-16" id="abs-5N-t0h"/>
                             <constraint firstAttribute="trailingMargin" secondItem="bAh-Wf-9CL" secondAttribute="trailing" constant="-16" id="adl-bK-rex"/>
@@ -571,8 +573,8 @@
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LLN-KM-YWd">
                                                     <rect key="frame" x="256" y="6" width="51" height="31"/>
                                                 </switch>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Snooze" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8vH-ib-nLs">
-                                                    <rect key="frame" x="15" y="11" width="58" height="21"/>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Shuffle songs" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8vH-ib-nLs">
+                                                    <rect key="frame" x="15" y="11" width="105" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -582,6 +584,30 @@
                                                 <constraint firstAttribute="centerY" secondItem="8vH-ib-nLs" secondAttribute="centerY" id="JB0-lM-TWO"/>
                                                 <constraint firstAttribute="centerY" secondItem="LLN-KM-YWd" secondAttribute="centerY" id="Y4v-d8-CeV"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="LLN-KM-YWd" secondAttribute="trailing" constant="7" id="nbf-DH-SNQ"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="NGV-Yy-7kn">
+                                        <rect key="frame" x="0.0" y="187" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="NGV-Yy-7kn" id="Vu9-66-y5n">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iGH-Qh-FdL">
+                                                    <rect key="frame" x="256" y="6" width="51" height="31"/>
+                                                </switch>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Snooze" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mra-As-8Fw">
+                                                    <rect key="frame" x="15" y="11" width="58" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="centerY" secondItem="mra-As-8Fw" secondAttribute="centerY" id="bWJ-Fb-nxA"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="iGH-Qh-FdL" secondAttribute="trailing" constant="7" id="gi6-F2-y0o"/>
+                                                <constraint firstAttribute="centerY" secondItem="iGH-Qh-FdL" secondAttribute="centerY" id="xZr-Jm-1h6"/>
+                                                <constraint firstItem="mra-As-8Fw" firstAttribute="leading" secondItem="Vu9-66-y5n" secondAttribute="leadingMargin" constant="7" id="zhQ-X0-LpU"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -638,7 +664,8 @@
                         <outlet property="lbLabel" destination="pbs-Q6-JxM" id="DBJ-et-guo"/>
                         <outlet property="lbRepeat" destination="w1w-OS-fnJ" id="ulI-cV-LQF"/>
                         <outlet property="lbSongs" destination="ql5-ad-DQh" id="kBY-tG-IyQ"/>
-                        <outlet property="snoozeSwitch" destination="LLN-KM-YWd" id="1Ey-Yy-Sx9"/>
+                        <outlet property="shuffleSwitch" destination="LLN-KM-YWd" id="83D-VK-QVc"/>
+                        <outlet property="snoozeSwitch" destination="iGH-Qh-FdL" id="h5G-UB-40r"/>
                         <outlet property="timePicker" destination="8hp-KM-Crj" id="7T5-qO-yed"/>
                     </connections>
                 </tableViewController>

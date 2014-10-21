@@ -25,8 +25,10 @@
 @property (weak, nonatomic) IBOutlet UILabel * lbLabel;
 @property (weak, nonatomic) IBOutlet UILabel *lbSongs;
 @property (weak, nonatomic) IBOutlet UISwitch *snoozeSwitch;
+@property (weak, nonatomic) IBOutlet UISwitch *shuffleSwitch;
 @property (weak, nonatomic) IBOutlet UIDatePicker *timePicker;
 @property (nonatomic, assign) bool songsChanged;
+
 
 - (BOOL) isOptionSelected:(NSUInteger)index;
 - (NSString *) repeatOptionsText;
@@ -41,6 +43,7 @@
 @synthesize lbRepeat;
 @synthesize lbSongs;
 @synthesize snoozeSwitch;
+@synthesize shuffleSwitch;
 @synthesize timePicker;
 @synthesize songsChanged;
 
@@ -71,6 +74,7 @@
         [self.lbRepeat setText:[self repeatOptionsText]];
         [self.lbLabel setText:[self.alarmData name]];
         [self.snoozeSwitch setOn:[[self.alarmData snooze] boolValue]];
+        [self.shuffleSwitch setOn:[[self.alarmData shuffle] boolValue]];
         [self.timePicker setDate:[Tools dateForHour:[[self.alarmData hour] intValue] andMinute:[[self.alarmData minute] intValue]]];
     }
     
@@ -99,6 +103,7 @@
     [self.alarmData setName:[self.lbLabel text]];
     [self.alarmData setRepeat:[self repeatOptionsToString]];
     [self.alarmData setSnooze:[NSNumber numberWithBool:[self.snoozeSwitch isOn]]];
+    [self.alarmData setShuffle:[NSNumber numberWithBool:[self.shuffleSwitch isOn]]];
     [self.alarmData setHour:[NSNumber numberWithInt:[dateComponents hour]]];
     [self.alarmData setMinute:[NSNumber numberWithInt:[dateComponents minute]]];
     

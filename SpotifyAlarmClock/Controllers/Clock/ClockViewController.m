@@ -23,6 +23,9 @@
 @property (nonatomic, assign) bool isPerformingAlarm;
 @property (nonatomic, assign) Alarm * performingAlarm;
 @property (nonatomic, strong) NextAlarm * nextAlarm;
+@property (nonatomic, strong) NSMutableArray * songList;
+@property (nonatomic, strong) NSDate * snoozeDate;
+
 @property (weak, nonatomic) IBOutlet UILabel *spotifyConnectionState;
 @property (weak, nonatomic) IBOutlet UILabel *hour;
 @property (weak, nonatomic) IBOutlet UILabel *colon;
@@ -47,7 +50,8 @@
 - (IBAction) performAlarm;
 - (void) performAlarm:(Alarm *)alarm;
 - (IBAction) stopAlarm;
-- (void) snoozeAlarm;
+- (IBAction) snoozeAlarm;
+- (void) playSong;
 
 
 @end
@@ -68,6 +72,8 @@
 @synthesize alarmBackground;
 @synthesize topBarAlarm;
 @synthesize bottomBarAlarm;
+@synthesize songList;
+@synthesize snoozeDate;
 
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -94,9 +100,6 @@
     
     //loginChecked = NO;
     
-    //Keep app awake
-    [UIApplication sharedApplication].idleTimerDisabled = YES;
-    
     //Receive notification for significant time change/Locale change
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(timeChangedSignificant) name:UIApplicationSignificantTimeChangeNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(timeChangedSignificant) name:NSCurrentLocaleDidChangeNotification object:nil];
@@ -119,17 +122,27 @@
                                            loadingPolicy:SPAsyncLoadingManual
                                                    error:&error];
     
-    [[SPSession sharedSession] setDelegate:self];
     [[SPSession sharedSession] attemptLoginWithUserName:@"nielsvroegin" password:@"51casioc"];
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
+    //Set delegates
+    [[SPSession sharedSession] setDelegate:self];
+    [[SpotifyPlayer sharedSpotifyPlayer] setDelegate:self];
+    
     //Determine next alarm
     nextAlarm = [NextAlarm provide];
     
     //Update clock
     [self updateClock];
+}
+
+- (void) viewDidAppear:(BOOL)animated
+{
+    //Keep app awake
+    [UIApplication sharedApplication].idleTimerDisabled = NO;
+    [UIApplication sharedApplication].idleTimerDisabled = YES;
 }
 
 
@@ -176,27 +189,54 @@
 {
     isPerformingAlarm = true;
     performingAlarm = alarm;
+    snoozeDate = nil;
     
     //Show ClockAlarm
     self.topBarAlarm.hidden = NO;
-    self.bottomBarAlarm.hidden = NO;
     self.topBarAlarm.backgroundColor = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:1];
-    self.bottomBarAlarm.backgroundColor = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:1];
-    self.bottomBarAlarm.alpha = 0;
     self.topBarAlarm.alpha = 0;
     
+    if([[alarm snooze] boolValue])
+    {
+        self.bottomBarAlarm.hidden = NO;
+        self.bottomBarAlarm.backgroundColor = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:1];
+        self.bottomBarAlarm.alpha = 0;
+    }
+
+    
     [UIView animateWithDuration:0.3 animations:^() {
-        self.bottomBarAlarm.alpha = 1;
+        if([[alarm snooze] boolValue])
+            self.bottomBarAlarm.alpha = 1;
+        
         self.topBarAlarm.alpha = 1;
     }];
     
-    //Play music
-    AlarmSong * alarmSong = [performingAlarm.songs firstObject];
+    //Play song
+    [self playSong];
+}
+
+- (void) playSong
+{
+    //Reload songs when list empty
+    if(songList == nil || [songList count] == 0)
+        songList = [NSMutableArray arrayWithArray:[performingAlarm.songs array]];
+
+    //Find next song
+    NSUInteger newSongIndex;
+    if(performingAlarm.shuffle)
+        newSongIndex = arc4random() % [songList count];
+    else
+        newSongIndex = 0;
+    
+    AlarmSong * alarmSong = [songList objectAtIndex:newSongIndex];
+    
+    //Delete next song from list, so it will only be played once
+    [songList removeObjectAtIndex:newSongIndex];
+    
     [[SPSession sharedSession] trackForURL:[NSURL URLWithString:[alarmSong spotifyUrl]] callback:^(SPTrack *track){
         [[SpotifyPlayer sharedSpotifyPlayer] playTrack:track];
     }];
 }
-
 
 #pragma mark State Update Methods
 - (void) onTimer:(NSTimer *) timer
@@ -263,6 +303,8 @@
     NSDateComponents * timeComponents = [gregorian components:NSHourCalendarUnit | NSMinuteCalendarUnit | NSWeekdayCalendarUnit fromDate:time];
     if(!isPerformingAlarm && timeComponents.weekday == nextAlarm.alarmDateComponents.weekday && timeComponents.hour == nextAlarm.alarmDateComponents.hour && timeComponents.minute == nextAlarm.alarmDateComponents.minute)
         [self performAlarm:[nextAlarm alarm]];
+    else if(snoozeDate != nil && [[NSDate date] compare:snoozeDate] == NSOrderedSame)
+        [self performAlarm:performingAlarm];
     
     //--------- Set date ---------/
     [timeFormatter setDateFormat:@"dd-MM-yyyy"];
@@ -274,9 +316,28 @@
     if([[gregorian components:NSSecondCalendarUnit fromDate:time] second] == 0)
         nextAlarm = [NextAlarm provide];
     
-    self.miniAlarmImage.hidden = (nextAlarm == nil);
-    self.lbNextAlarm.hidden = (nextAlarm == nil);
-    self.lbNextAlarm.text = [NSString stringWithFormat:@"%@ %02d:%02d", [Tools shortWeekDaySymbolForUnit:nextAlarm.alarmDateComponents.weekday], nextAlarm.alarmDateComponents.hour, nextAlarm.alarmDateComponents.minute];
+    //Check if snooze date is in future
+    if(snoozeDate != nil && [[NSDate date] compare:snoozeDate] == NSOrderedDescending)
+        snoozeDate = nil;
+    
+    self.miniAlarmImage.hidden = (nextAlarm == nil && snoozeDate == nil);
+    self.lbNextAlarm.hidden = (nextAlarm == nil && snoozeDate == nil);
+    
+    if(snoozeDate != nil)
+    {
+        NSDateComponents * snoozeDateComponents = [gregorian components:(NSWeekdayCalendarUnit | NSHourCalendarUnit | NSMinuteCalendarUnit) fromDate:snoozeDate];
+        if(weekday == snoozeDateComponents.weekday)
+            self.lbNextAlarm.text = [NSString stringWithFormat:@"%02d:%02d", snoozeDateComponents.hour, snoozeDateComponents.minute];
+        else
+            self.lbNextAlarm.text = [NSString stringWithFormat:@"%@ %02d:%02d", [Tools shortWeekDaySymbolForUnit:snoozeDateComponents.weekday], snoozeDateComponents.hour, snoozeDateComponents.minute];
+    }
+    else
+    {
+        if(weekday == nextAlarm.alarmDateComponents.weekday)
+            self.lbNextAlarm.text = [NSString stringWithFormat:@"%02d:%02d", nextAlarm.alarmDateComponents.hour, nextAlarm.alarmDateComponents.minute];
+        else
+            self.lbNextAlarm.text = [NSString stringWithFormat:@"%@ %02d:%02d", [Tools shortWeekDaySymbolForUnit:nextAlarm.alarmDateComponents.weekday], nextAlarm.alarmDateComponents.hour, nextAlarm.alarmDateComponents.minute];
+    }
     
     showColon ^= true;
 }
@@ -302,21 +363,33 @@
 }
     
 #pragma Alarm Handling Methods
- - (void) stopAlarm
+ - (IBAction) stopAlarm
  {
      isPerformingAlarm = NO;
      performingAlarm = nil;
+     songList = nil;
+     snoozeDate = nil;
      
-     //Show ClockAlarm view
+     //Hide ClockAlarm view
      self.topBarAlarm.hidden = YES;
      self.bottomBarAlarm.hidden = YES;
      self.alarmBackground.hidden = YES;
      
      [[SpotifyPlayer sharedSpotifyPlayer] stopTrack];
  }
- - (void) snoozeAlarm
+
+ - (IBAction) snoozeAlarm
  {
+     isPerformingAlarm = NO;
      
+     snoozeDate = [[NSDate date] dateByAddingTimeInterval:60*9];
+     
+     //Hide ClockAlarm view
+     self.topBarAlarm.hidden = YES;
+     self.bottomBarAlarm.hidden = YES;
+     self.alarmBackground.hidden = YES;
+     
+     [[SpotifyPlayer sharedSpotifyPlayer] stopTrack];
  }
 
 #pragma SPSessionDelegate methods
@@ -335,6 +408,25 @@
 {
     //Show error
     //[HelperFunctions notifySpotifyError:error withTitle:@"Network error"];
+}
+
+#pragma mark - Spotify Player delegate
+
+- (void)track:(SPTrack *)track progess:(double) progress
+{
+    //No need to show progress
+}
+
+- (void)trackStartedPlaying:(SPTrack *)track
+{
+    //No need to respond on track playing
+}
+
+- (void)trackStoppedPlaying:(SPTrack *)track
+{
+    //If alarm still active play new song
+    if(isPerformingAlarm)
+        [self playSong];
 }
 
 
