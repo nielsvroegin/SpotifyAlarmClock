@@ -556,7 +556,7 @@
         <!--Backup Alarm Sound-->
         <scene sceneID="Bye-oY-iba">
             <objects>
-                <tableViewController id="lME-u5-qJS" sceneMemberID="viewController">
+                <tableViewController id="lME-u5-qJS" customClass="BackupAlarmSoundViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="u6C-zP-pu8">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -564,7 +564,7 @@
                         <sections>
                             <tableViewSection id="prI-Kd-aC6">
                                 <cells>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="checkmark" indentationWidth="10" textLabel="w27-7K-q5k" style="IBUITableViewCellStyleDefault" id="00F-ue-hps">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" textLabel="w27-7K-q5k" style="IBUITableViewCellStyleDefault" id="00F-ue-hps">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="00F-ue-hps" id="XAa-gf-Vw4">
                                             <autoresizingMask key="autoresizingMask"/>
@@ -577,7 +577,7 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
-                                        <color key="tintColor" red="0.094117647058823528" green="0.42745098039215684" blue="0.15294117647058825" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="tintColor" red="0.094117647058823528" green="0.42745098039215684" blue="0.15294117647058825" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" textLabel="Nbv-xa-s55" style="IBUITableViewCellStyleDefault" id="RwQ-w3-gIG">
                                         <autoresizingMask key="autoresizingMask"/>
@@ -592,6 +592,7 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <color key="tintColor" red="0.094117647058823528" green="0.42745098039215684" blue="0.15294117647058825" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" textLabel="Vs2-Bg-MuZ" style="IBUITableViewCellStyleDefault" id="2Fj-qU-uIk">
                                         <autoresizingMask key="autoresizingMask"/>
@@ -606,6 +607,7 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <color key="tintColor" red="0.094117647060000004" green="0.42745098040000001" blue="0.1529411765" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
