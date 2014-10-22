@@ -75,4 +75,25 @@
     }
 }
 
++ (NSData *)dateForAlarmBackupSound:(NSUInteger)sound
+{
+    NSBundle *mainBundle = [NSBundle mainBundle];
+    
+    NSString *filePath = nil;
+    switch(sound)
+    {
+        case 0:
+            filePath = [mainBundle pathForResource:@"day-by-day" ofType:@"mp3"];
+            break;
+        case 1:
+            filePath = [mainBundle pathForResource:@"forever" ofType:@"mp3"];
+            break;
+        case 2:
+            filePath = [mainBundle pathForResource:@"alpha-beta" ofType:@"mp3"];
+            break;
+    }
+    
+    return [NSData dataWithContentsOfFile:filePath];
+}
+
 @end

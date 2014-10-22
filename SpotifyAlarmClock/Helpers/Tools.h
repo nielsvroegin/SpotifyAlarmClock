@@ -16,5 +16,6 @@
 + (NSDate*)dateForHour:(NSInteger)hour andMinute:(NSInteger)minute;
 + (NSDateComponents*)hourAndMinuteForDate:(NSDate*)date;
 + (NSString *) shortWeekDaySymbolForUnit:(NSInteger) unit;
++ (NSData *)dateForAlarmBackupSound:(NSUInteger)sound;
 
 @end

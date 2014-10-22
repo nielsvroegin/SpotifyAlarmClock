@@ -16,7 +16,6 @@
 		B812392919D1FC28005EABDB /* TextEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B812392219D1FC28005EABDB /* TextEditViewController.m */; };
 		B812392E19D201A4005EABDB /* SongsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B812392D19D201A4005EABDB /* SongsViewController.m */; };
 		B812393119D201F2005EABDB /* SongSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B812393019D201F2005EABDB /* SongSearchViewController.m */; };
-		B826479C19EBD35C00FBB21A /* LCD-BOLD.TTF in Resources */ = {isa = PBXBuildFile; fileRef = B826479B19EBD25800FBB21A /* LCD-BOLD.TTF */; };
 		B826479E19EBD7F100FBB21A /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B826479D19EBD7F100FBB21A /* QuartzCore.framework */; };
 		B82647A119EBDF0300FBB21A /* BackgroundGlow.m in Sources */ = {isa = PBXBuildFile; fileRef = B82647A019EBDF0300FBB21A /* BackgroundGlow.m */; };
 		B82647A419ED972F00FBB21A /* NextAlarm.m in Sources */ = {isa = PBXBuildFile; fileRef = B82647A319ED972F00FBB21A /* NextAlarm.m */; };
@@ -54,6 +53,10 @@
 		B885FEB519C4ABBC00EC1D32 /* osx-audio.m in Sources */ = {isa = PBXBuildFile; fileRef = B885FEB219C4ABBC00EC1D32 /* osx-audio.m */; };
 		B885FEF719C4C7CE00EC1D32 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B885FE7419C488F400EC1D32 /* UIKit.framework */; };
 		B8A99D2E19F82D2D000359BF /* BackupAlarmSoundViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B8A99D2D19F82D2D000359BF /* BackupAlarmSoundViewController.m */; };
+		B8A99D3F19F82EAC000359BF /* alpha-beta.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B8A99D3B19F82EAC000359BF /* alpha-beta.mp3 */; };
+		B8A99D4019F82EAC000359BF /* day-by-day.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B8A99D3C19F82EAC000359BF /* day-by-day.mp3 */; };
+		B8A99D4119F82EAC000359BF /* forever.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B8A99D3D19F82EAC000359BF /* forever.mp3 */; };
+		B8A99D4219F82EAC000359BF /* LCD-BOLD.TTF in Resources */ = {isa = PBXBuildFile; fileRef = B8A99D3E19F82EAC000359BF /* LCD-BOLD.TTF */; };
 		B8D16E0519E1C94500B375D2 /* BlurredHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8D16E0419E1C94500B375D2 /* BlurredHeader.xib */; };
 		B8D16E0919E1CBF900B375D2 /* BlurredHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = B8D16E0819E1CBF900B375D2 /* BlurredHeaderView.m */; };
 		B8D7690A19E5B1F300988A71 /* AlbumCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8D7690919E5B1F300988A71 /* AlbumCell.xib */; };
@@ -122,7 +125,6 @@
 		B812392D19D201A4005EABDB /* SongsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SongsViewController.m; sourceTree = "<group>"; };
 		B812392F19D201F2005EABDB /* SongSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SongSearchViewController.h; sourceTree = "<group>"; };
 		B812393019D201F2005EABDB /* SongSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SongSearchViewController.m; sourceTree = "<group>"; };
-		B826479B19EBD25800FBB21A /* LCD-BOLD.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = "LCD-BOLD.TTF"; sourceTree = "<group>"; };
 		B826479D19EBD7F100FBB21A /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		B826479F19EBDF0300FBB21A /* BackgroundGlow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BackgroundGlow.h; sourceTree = "<group>"; };
 		B82647A019EBDF0300FBB21A /* BackgroundGlow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BackgroundGlow.m; sourceTree = "<group>"; };
@@ -178,6 +180,10 @@
 		B885FEB319C4ABBC00EC1D32 /* queue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = queue.h; sourceTree = "<group>"; };
 		B8A99D2C19F82D2D000359BF /* BackupAlarmSoundViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BackupAlarmSoundViewController.h; sourceTree = "<group>"; };
 		B8A99D2D19F82D2D000359BF /* BackupAlarmSoundViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BackupAlarmSoundViewController.m; sourceTree = "<group>"; };
+		B8A99D3B19F82EAC000359BF /* alpha-beta.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "alpha-beta.mp3"; sourceTree = "<group>"; };
+		B8A99D3C19F82EAC000359BF /* day-by-day.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "day-by-day.mp3"; sourceTree = "<group>"; };
+		B8A99D3D19F82EAC000359BF /* forever.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = forever.mp3; sourceTree = "<group>"; };
+		B8A99D3E19F82EAC000359BF /* LCD-BOLD.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = "LCD-BOLD.TTF"; sourceTree = "<group>"; };
 		B8D16E0419E1C94500B375D2 /* BlurredHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BlurredHeader.xib; sourceTree = "<group>"; };
 		B8D16E0719E1CBF900B375D2 /* BlurredHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlurredHeaderView.h; sourceTree = "<group>"; };
 		B8D16E0819E1CBF900B375D2 /* BlurredHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlurredHeaderView.m; sourceTree = "<group>"; };
@@ -256,19 +262,19 @@
 		B812390C19D1FC28005EABDB /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				B8A99D2B19F82D2D000359BF /* BackupAlarmSound */,
+				B812390D19D1FC28005EABDB /* AddAlarm */,
+				B812391019D1FC28005EABDB /* Alarms */,
 				B8D7691519E7F1D500988A71 /* Album */,
-				B8DEF87619E07A7C00F2F453 /* Artist */,
 				B8DEF87219E06F8A00F2F453 /* AllAlbums */,
 				B8DEF86819E041C600F2F453 /* AllArtists */,
 				B885CC6D19E010C2003450F8 /* AllTracks */,
-				B812392B19D20177005EABDB /* SongSearch */,
-				B812392A19D20126005EABDB /* Songs */,
-				B812390D19D1FC28005EABDB /* AddAlarm */,
-				B812391019D1FC28005EABDB /* Alarms */,
+				B8DEF87619E07A7C00F2F453 /* Artist */,
+				B8A99D2B19F82D2D000359BF /* BackupAlarmSound */,
 				B812391519D1FC28005EABDB /* Clock */,
 				B812391819D1FC28005EABDB /* OptionsSelect */,
 				B812391E19D1FC28005EABDB /* Settings */,
+				B812392A19D20126005EABDB /* Songs */,
+				B812392B19D20177005EABDB /* SongSearch */,
 				B812391F19D1FC28005EABDB /* TextEdit */,
 			);
 			path = Controllers;
@@ -466,8 +472,9 @@
 				B86104D119CDA139001DB753 /* Models */,
 				B885FEAB19C4AB3000EC1D32 /* Helpers */,
 				B885FE7719C488F400EC1D32 /* Supporting Files */,
-				B885FE8019C488F400EC1D32 /* AppDelegate.m */,
+				B8A99D3A19F82EAC000359BF /* Resources */,
 				B885FE7F19C488F400EC1D32 /* AppDelegate.h */,
+				B885FE8019C488F400EC1D32 /* AppDelegate.m */,
 				B885FE8819C488F500EC1D32 /* Images.xcassets */,
 			);
 			path = SpotifyAlarmClock;
@@ -476,7 +483,6 @@
 		B885FE7719C488F400EC1D32 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				B826479B19EBD25800FBB21A /* LCD-BOLD.TTF */,
 				B885FE7819C488F400EC1D32 /* SpotifyAlarmClock-Info.plist */,
 				B885FE7919C488F400EC1D32 /* InfoPlist.strings */,
 				B885FE7C19C488F400EC1D32 /* main.m */,
@@ -541,6 +547,17 @@
 				B8A99D2D19F82D2D000359BF /* BackupAlarmSoundViewController.m */,
 			);
 			path = BackupAlarmSound;
+			sourceTree = "<group>";
+		};
+		B8A99D3A19F82EAC000359BF /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				B8A99D3B19F82EAC000359BF /* alpha-beta.mp3 */,
+				B8A99D3C19F82EAC000359BF /* day-by-day.mp3 */,
+				B8A99D3D19F82EAC000359BF /* forever.mp3 */,
+				B8A99D3E19F82EAC000359BF /* LCD-BOLD.TTF */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 		B8D7691519E7F1D500988A71 /* Album */ = {
@@ -684,14 +701,17 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B826479C19EBD35C00FBB21A /* LCD-BOLD.TTF in Resources */,
 				B8D7690D19E5B20F00988A71 /* ArtistCell.xib in Resources */,
 				B885FE8919C488F500EC1D32 /* Images.xcassets in Resources */,
+				B8A99D4219F82EAC000359BF /* LCD-BOLD.TTF in Resources */,
 				B885FE7B19C488F400EC1D32 /* InfoPlist.strings in Resources */,
 				B8D7690F19E5B22C00988A71 /* TrackCell.xib in Resources */,
 				B8D7691119E5B23A00988A71 /* LoadMoreCell.xib in Resources */,
 				B8D7690A19E5B1F300988A71 /* AlbumCell.xib in Resources */,
+				B8A99D3F19F82EAC000359BF /* alpha-beta.mp3 in Resources */,
+				B8A99D4019F82EAC000359BF /* day-by-day.mp3 in Resources */,
 				B885FE8419C488F400EC1D32 /* Main.storyboard in Resources */,
+				B8A99D4119F82EAC000359BF /* forever.mp3 in Resources */,
 				B8D16E0519E1C94500B375D2 /* BlurredHeader.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
