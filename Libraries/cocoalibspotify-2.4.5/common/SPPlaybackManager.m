@@ -44,7 +44,10 @@
 
 @property (readwrite) NSTimeInterval trackPosition;
 
--(void)informDelegateOfAudioPlaybackStarting;
+
+-(void)sessionDidEndPlaybackOnMainThread:(SPSession *)aSession;
+-(void)sessionDidLosePlayTokenOnMainThread:(SPSession *)aSession;
+-(void)sessionDidEncounterStreamingErrorOnMainThread:(NSError *)error;
 
 @end
 
@@ -181,6 +184,7 @@ static void * const kSPPlaybackManagerKVOContext = @"kSPPlaybackManagerKVOContex
 		dispatch_async(dispatch_get_main_queue(), ^{ [self.delegate playbackManagerWillStartPlayingAudio:self]; });
 	
 	self.trackPosition += audioDuration;
+    dispatch_async(dispatch_get_main_queue(), ^{ [self.delegate playbackManagerAudioProgress:self progress:self.trackPosition]; });
 }
 
 #pragma mark -
@@ -188,10 +192,15 @@ static void * const kSPPlaybackManagerKVOContext = @"kSPPlaybackManagerKVOContex
 
 -(void)sessionDidLosePlayToken:(SPSession *)aSession {
 
-	// This delegate is called when playback stops because the Spotify account is being used for playback elsewhere.
-	// In practice, playback is only paused and you can call [SPSession -setIsPlaying:YES] to start playback again and 
-	// pause the other client.
+    [self performSelectorOnMainThread:@selector(sessionDidLosePlayTokenOnMainThread:)
+                           withObject:aSession
+                        waitUntilDone:NO];
 
+}
+
+-(void)sessionDidLosePlayTokenOnMainThread:(SPSession *)aSession
+{
+    [self.delegate playbackManagerDidLosePlayToken:self];
 }
 
 -(void)sessionDidEndPlayback:(SPSession *)aSession {
@@ -205,16 +214,20 @@ static void * const kSPPlaybackManagerKVOContext = @"kSPPlaybackManagerKVOContex
 }
 
 -(void)sessionDidEndPlaybackOnMainThread:(SPSession *)aSession {
-	self.currentTrack = nil;	
+	self.currentTrack = nil;
+    [delegate playbackManagerStoppedPlayingAudio:self];
 }
 
+-(void)session:(id <SPSessionPlaybackProvider>)aSession didEncounterStreamingError:(NSError *)error
+{
+    [self performSelectorOnMainThread:@selector(sessionDidEncounterStreamingErrorOnMainThread:)
+                           withObject:error
+                        waitUntilDone:NO];
+}
 
--(void)informDelegateOfAudioPlaybackStarting {
-	if (![NSThread isMainThread]) {
-		[self performSelectorOnMainThread:_cmd withObject:nil waitUntilDone:NO];
-		return;
-	}
-	[self.delegate playbackManagerWillStartPlayingAudio:self];
+-(void)sessionDidEncounterStreamingErrorOnMainThread:(NSError *)error
+{
+    [self.delegate playbackManagerDidEncounterStreamingError:self error:error];
 }
 
 @end

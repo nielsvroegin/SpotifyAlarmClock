@@ -150,16 +150,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "No"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SpotifyAlarmClock/Controllers/Clock/ClockViewController.m"
-            timestampString = "435609676.833773"
+            timestampString = "435785176.620457"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "418"
-            endingLineNumber = "418"
-            landmarkName = "-track:progess:"
+            startingLineNumber = "435"
+            endingLineNumber = "435"
+            landmarkName = "-playbackManagerDidLosePlayToken:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -170,12 +170,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SpotifyAlarmClock/Controllers/Clock/ClockViewController.m"
-            timestampString = "435612008.765363"
+            timestampString = "435785186.063191"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "226"
-            endingLineNumber = "226"
-            landmarkName = "-playSong"
+            startingLineNumber = "443"
+            endingLineNumber = "443"
+            landmarkName = "-playbackManagerDidEncounterStreamingError:error:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

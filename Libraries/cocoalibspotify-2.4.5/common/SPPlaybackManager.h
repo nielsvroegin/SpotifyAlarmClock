@@ -48,6 +48,10 @@
  @param aPlaybackManager The playback manager that started playing.
  */
 -(void)playbackManagerWillStartPlayingAudio:(SPPlaybackManager *)aPlaybackManager;
+-(void)playbackManagerStoppedPlayingAudio:(SPPlaybackManager *)aPlaybackManager;
+-(void)playbackManagerDidLosePlayToken:(SPPlaybackManager *)aPlaybackManager;
+-(void)playbackManagerAudioProgress:(SPPlaybackManager *)aPlaybackManager progress:(NSTimeInterval) progress;
+-(void)playbackManagerDidEncounterStreamingError:(SPPlaybackManager *)aPlaybackManager error:(NSError *) error;
 
 @end
 

@@ -14,7 +14,6 @@
 #import "BackgroundGlow.h"
 #import "NextAlarm.h"
 #import "Tools.h"
-#import "SpotifyPlayer.h"
 
 @interface ClockViewController ()
 
@@ -25,6 +24,7 @@
 @property (nonatomic, strong) NextAlarm * nextAlarm;
 @property (nonatomic, strong) NSMutableArray * songList;
 @property (nonatomic, strong) NSDate * snoozeDate;
+@property (nonatomic, strong) SPPlaybackManager * playBackManager;
 
 @property (weak, nonatomic) IBOutlet UILabel *spotifyConnectionState;
 @property (weak, nonatomic) IBOutlet UILabel *hour;
@@ -74,7 +74,7 @@
 @synthesize bottomBarAlarm;
 @synthesize songList;
 @synthesize snoozeDate;
-
+@synthesize playBackManager;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -123,13 +123,16 @@
                                                    error:&error];
     
     [[SPSession sharedSession] attemptLoginWithUserName:@"nielsvroegin" password:@"51casioc"];
+    
+    //Init playbackmanager
+    playBackManager = [[SPPlaybackManager alloc] initWithPlaybackSession:[SPSession sharedSession]];
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
     //Set delegates
     [[SPSession sharedSession] setDelegate:self];
-    [[SpotifyPlayer sharedSpotifyPlayer] setDelegate:self];
+    [playBackManager setDelegate:self];
     
     //Determine next alarm
     nextAlarm = [NextAlarm provide];
@@ -234,7 +237,11 @@
     [songList removeObjectAtIndex:newSongIndex];
     
     [[SPSession sharedSession] trackForURL:[NSURL URLWithString:[alarmSong spotifyUrl]] callback:^(SPTrack *track){
-        [[SpotifyPlayer sharedSpotifyPlayer] playTrack:track];
+        //[[SpotifyPlayer sharedSpotifyPlayer] playTrack:track];
+        [playBackManager playTrack:track callback:^(NSError *error)
+        {
+            NSLog(@"PlaybackManager play error: %@", error);
+        }];
     }];
 }
 
@@ -411,23 +418,28 @@
     //[HelperFunctions notifySpotifyError:error withTitle:@"Network error"];
 }
 
-#pragma mark - Spotify Player delegate
+#pragma mark - SPPlackbackManager delegate
 
-- (void)track:(SPTrack *)track progess:(double) progress
+-(void)playbackManagerWillStartPlayingAudio:(SPPlaybackManager *)aPlaybackManager
 {
-    //No need to show progress
+    
 }
-
-- (void)trackStartedPlaying:(SPTrack *)track
-{
-    //No need to respond on track playing
-}
-
-- (void)trackStoppedPlaying:(SPTrack *)track
+-(void)playbackManagerStoppedPlayingAudio:(SPPlaybackManager *)aPlaybackManager
 {
     //If alarm still active play new song
     if(isPerformingAlarm)
         [self playSong];
+}
+-(void)playbackManagerDidLosePlayToken:(SPPlaybackManager *)aPlaybackManager
+{
+}
+-(void)playbackManagerAudioProgress:(SPPlaybackManager *)aPlaybackManager progress:(NSTimeInterval) progress
+{
+    
+}
+-(void)playbackManagerDidEncounterStreamingError:(SPPlaybackManager *)aPlaybackManager error:(NSError *) error
+{
+    
 }
 
 
