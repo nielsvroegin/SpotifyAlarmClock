@@ -103,6 +103,10 @@
  */
 -(void)playTrack:(SPTrack *)aTrack callback:(SPErrorableOperationCallback)block;
 
+
+/** Stop current track. */
+-(void)stopTrack;
+
 /** Seek the current playback position to the given time. 
  
  @param newPosition The time at which to seek to. Must be between 0.0 and the duration of the playing track.

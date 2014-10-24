@@ -9,11 +9,11 @@
 #import "ClockViewController.h"
 #import "Alarm.h"
 #import "AlarmSong.h"
-#import "CocoaLibSpotify.h"
 #import "appkey.h"
 #import "BackgroundGlow.h"
 #import "NextAlarm.h"
 #import "Tools.h"
+@import AVFoundation;
 
 @interface ClockViewController ()
 
@@ -25,6 +25,8 @@
 @property (nonatomic, strong) NSMutableArray * songList;
 @property (nonatomic, strong) NSDate * snoozeDate;
 @property (nonatomic, strong) SPPlaybackManager * playBackManager;
+@property (nonatomic, strong) AVAudioPlayer * audioPlayer;
+@property (nonatomic, strong) NSUserDefaults * userDefaults;
 
 @property (weak, nonatomic) IBOutlet UILabel *spotifyConnectionState;
 @property (weak, nonatomic) IBOutlet UILabel *hour;
@@ -52,6 +54,7 @@
 - (IBAction) stopAlarm;
 - (IBAction) snoozeAlarm;
 - (void) playSong;
+- (void) playBackupAlarmSound;
 
 
 @end
@@ -75,6 +78,8 @@
 @synthesize songList;
 @synthesize snoozeDate;
 @synthesize playBackManager;
+@synthesize audioPlayer;
+@synthesize userDefaults;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -99,6 +104,8 @@
     [super viewDidLoad];
     
     //loginChecked = NO;
+    
+    self.userDefaults = [NSUserDefaults standardUserDefaults];
     
     //Receive notification for significant time change/Locale change
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(timeChangedSignificant) name:UIApplicationSignificantTimeChangeNotification object:nil];
@@ -240,9 +247,35 @@
         //[[SpotifyPlayer sharedSpotifyPlayer] playTrack:track];
         [playBackManager playTrack:track callback:^(NSError *error)
         {
-            NSLog(@"PlaybackManager play error: %@", error);
+            if(error != nil)
+            {
+                NSLog(@"PlaybackManager play error: %@", error);
+                [self playBackupAlarmSound];
+            }
         }];
     }];
+}
+
+- (void) playBackupAlarmSound
+{
+    //Stop current spotify track
+    [playBackManager stopTrack];
+    
+    //Play new sound
+    NSError *error;
+    self.audioPlayer = [[AVAudioPlayer alloc] initWithData:[Tools dateForAlarmBackupSound:[userDefaults integerForKey:@"BackupAlarmSound"]] fileTypeHint:AVFileTypeMPEGLayer3 error:&error];
+    
+    //Check if init successful
+    if(error != nil)
+    {
+        [[[UIAlertView alloc] initWithTitle:@"Error" message:@"Could not start backup sound!" delegate:nil cancelButtonTitle:@"Oke!" otherButtonTitles:nil] show];
+        NSLog(@"Could not start backup sound, error: %@", error);
+        
+        return;
+    }
+    
+    [self.audioPlayer setNumberOfLoops:-1];
+    [self.audioPlayer play];
 }
 
 #pragma mark State Update Methods
@@ -383,7 +416,13 @@
      self.bottomBarAlarm.hidden = YES;
      self.alarmBackground.hidden = YES;
      
-     [[SpotifyPlayer sharedSpotifyPlayer] stopTrack];
+     [playBackManager stopTrack];
+     if(audioPlayer != nil)
+     {
+         [self.audioPlayer stop];
+         self.audioPlayer = nil;
+     }
+         
  }
 
  - (IBAction) snoozeAlarm
@@ -397,7 +436,12 @@
      self.bottomBarAlarm.hidden = YES;
      self.alarmBackground.hidden = YES;
      
-     [[SpotifyPlayer sharedSpotifyPlayer] stopTrack];
+     [playBackManager stopTrack];
+     if(audioPlayer != nil)
+     {
+         [self.audioPlayer stop];
+         self.audioPlayer = nil;
+     }
  }
 
 #pragma SPSessionDelegate methods
@@ -414,8 +458,8 @@
 
 - (void)session:(SPSession *)aSession didEncounterNetworkError:(NSError *)error
 {
-    //Show error
-    //[HelperFunctions notifySpotifyError:error withTitle:@"Network error"];
+    if(performingAlarm)
+        [self playBackupAlarmSound];
 }
 
 #pragma mark - SPPlackbackManager delegate
@@ -432,6 +476,8 @@
 }
 -(void)playbackManagerDidLosePlayToken:(SPPlaybackManager *)aPlaybackManager
 {
+    if(performingAlarm)
+        [self playBackupAlarmSound];
 }
 -(void)playbackManagerAudioProgress:(SPPlaybackManager *)aPlaybackManager progress:(NSTimeInterval) progress
 {
@@ -439,7 +485,8 @@
 }
 -(void)playbackManagerDidEncounterStreamingError:(SPPlaybackManager *)aPlaybackManager error:(NSError *) error
 {
-    
+    if(performingAlarm)
+        [self playBackupAlarmSound];
 }
 
 

@@ -13,7 +13,7 @@
 @interface BackupAlarmSoundViewController ()
 
 @property (nonatomic, strong) NSUserDefaults * userDefaults;
-@property (nonatomic, strong) AVAudioPlayer * audioPlayer ;
+@property (nonatomic, strong) AVAudioPlayer * audioPlayer;
 @property (nonatomic, assign) bool isPlaying;
 
 - (void) playAudioForSound:(NSUInteger)selectedSound;

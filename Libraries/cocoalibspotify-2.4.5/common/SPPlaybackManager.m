@@ -147,6 +147,15 @@ static void * const kSPPlaybackManagerKVOContext = @"kSPPlaybackManagerKVOContex
 	}];
 }
 
+-(void)stopTrack
+{
+    [self.playbackSession unloadPlayback];
+    [self setIsPlaying:NO];
+    self.currentTrack = nil;
+    self.trackPosition = 0.0;
+    [self.audioController clearAudioBuffers];
+}
+
 -(void)seekToTrackPosition:(NSTimeInterval)newPosition {
 	if (newPosition <= self.currentTrack.duration) {
 		[self.playbackSession seekPlaybackToOffset:newPosition];
@@ -214,7 +223,8 @@ static void * const kSPPlaybackManagerKVOContext = @"kSPPlaybackManagerKVOContex
 }
 
 -(void)sessionDidEndPlaybackOnMainThread:(SPSession *)aSession {
-	self.currentTrack = nil;
+	//self.currentTrack = nil;
+    [self stopTrack];
     [delegate playbackManagerStoppedPlayingAudio:self];
 }
 
