@@ -381,6 +381,10 @@
                                                 <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="x4X-U4-div">
                                                     <rect key="frame" x="144" y="8" width="164" height="31"/>
                                                     <color key="tintColor" red="0.094117647058823528" green="0.42745098039215684" blue="0.15294117647058825" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <connections>
+                                                        <action selector="maxVolumeSettingChanged:" destination="AeY-Tb-n7l" eventType="valueChanged" id="Lzf-Vw-xqj"/>
+                                                        <action selector="maxVolumeSliderEndDragging:" destination="AeY-Tb-n7l" eventType="touchUpInside" id="Spo-Hc-dyy"/>
+                                                    </connections>
                                                 </slider>
                                             </subviews>
                                             <constraints>
@@ -410,6 +414,9 @@
                                                 <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="CJK-oh-5Kx">
                                                     <rect key="frame" x="144" y="8" width="164" height="31"/>
                                                     <color key="tintColor" red="0.094117647058823528" green="0.42745098039215684" blue="0.15294117647058825" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <connections>
+                                                        <action selector="brightnessSettingChanged:" destination="AeY-Tb-n7l" eventType="valueChanged" id="FHc-Nb-ch2"/>
+                                                    </connections>
                                                 </slider>
                                             </subviews>
                                             <constraints>
@@ -529,6 +536,8 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="slBrightness" destination="CJK-oh-5Kx" id="j45-Gg-65L"/>
+                        <outlet property="slMaxVolume" destination="x4X-U4-div" id="TdP-rE-8Eu"/>
                         <outlet property="swBlinkSecondsMarker" destination="Jti-c5-2Wo" id="oOm-8Q-iC0"/>
                         <outlet property="swShowBackgroundGlow" destination="kCR-PN-1il" id="vRg-Cd-hlO"/>
                     </connections>

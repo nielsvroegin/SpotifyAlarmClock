@@ -11,8 +11,6 @@
 
 @interface AppDelegate ()
 
-- (void)routeChange:(NSNotification*)notification;
-- (void)changeAudioOutputRoute;
 
 @end
 
@@ -37,6 +35,12 @@
     
     if([userDefaults objectForKey:@"ShowBackgroundGlow"] == nil)
         [userDefaults setBool:YES forKey:@"ShowBackgroundGlow"];
+    
+    if([userDefaults objectForKey:@"MaxVolume"] == nil)
+        [userDefaults setFloat:0.5 forKey:@"MaxVolume"];
+    
+    if([userDefaults objectForKey:@"Brightness"] == nil)
+        [userDefaults setFloat:0.5 forKey:@"Brightness"];
     
     [userDefaults synchronize];
     
