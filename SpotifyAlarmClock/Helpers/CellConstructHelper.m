@@ -12,7 +12,7 @@
 #import "AlbumCell.h"
 #import "ArtistCell.h"
 #import "ArtistBrowseCache.h"
-#import "SpotifyPlayer.h"
+#import "SPPlaybackManager.h"
 
 @implementation CellConstructHelper
 
@@ -31,7 +31,7 @@
     [cell.lbTrack setText:[track name]];
     
     
-    bool trackPlaying = ([[SpotifyPlayer sharedSpotifyPlayer] currentTrack] == track);
+    bool trackPlaying = ([[SPPlaybackManager sharedPlaybackManager] currentTrack] == track);
     [cell showPlayProgress:trackPlaying];
     
     [cell setAddMusicButton:AddMusic animated:NO];

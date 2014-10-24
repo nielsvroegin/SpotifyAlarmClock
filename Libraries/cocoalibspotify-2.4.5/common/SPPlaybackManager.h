@@ -50,7 +50,7 @@
 -(void)playbackManagerWillStartPlayingAudio:(SPPlaybackManager *)aPlaybackManager;
 -(void)playbackManagerStoppedPlayingAudio:(SPPlaybackManager *)aPlaybackManager;
 -(void)playbackManagerDidLosePlayToken:(SPPlaybackManager *)aPlaybackManager;
--(void)playbackManagerAudioProgress:(SPPlaybackManager *)aPlaybackManager progress:(NSTimeInterval) progress;
+-(void)playbackManagerAudioProgress:(SPPlaybackManager *)aPlaybackManager progress:(double) progress;
 -(void)playbackManagerDidEncounterStreamingError:(SPPlaybackManager *)aPlaybackManager error:(NSError *) error;
 
 @end
@@ -62,7 +62,11 @@
 
 @interface SPPlaybackManager : NSObject <SPSessionPlaybackDelegate, SPCoreAudioControllerDelegate>
 
-/** Initialize a new SPPlaybackManager object. 
+
+/** Request shared plackbackManager object */
++ (id)sharedPlaybackManager;
+
+/** Initialize a new SPPlaybackManager object.
  
  @param aSession The session that should stream and decode audio data.
  @return Returns the created playback manager.

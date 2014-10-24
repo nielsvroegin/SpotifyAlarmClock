@@ -7,12 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "SpotifyPlayer.h"
+#import "SPPlaybackManager.h"
 #import "SongSearchDelegate.h"
 
 @class SPArtistBrowse;
 
-@interface ArtistViewController : UITableViewController<SpotifyPlayerDelegate>
+@interface ArtistViewController : UITableViewController<SPPlaybackManagerDelegate>
     @property (nonatomic, strong) SPArtistBrowse *artistBrowse;
     @property(nonatomic, weak) id<SongSearchDelegate> songSearchDelegate;
 @end

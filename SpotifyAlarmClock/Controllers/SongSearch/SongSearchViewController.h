@@ -7,11 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "SpotifyPlayer.h"
+#import "SPPlaybackManager.h"
 #import "ArtistBrowseCache.h"
 #import "SongSearchDelegate.h"
 
-@interface SongSearchViewController : UITableViewController<UISearchBarDelegate, SpotifyPlayerDelegate, ArtistBrowseCacheDelegate>
+@interface SongSearchViewController : UITableViewController<UISearchBarDelegate, SPPlaybackManagerDelegate, ArtistBrowseCacheDelegate>
 
 @property(nonatomic, weak) id<SongSearchDelegate> songSearchDelegate;
 

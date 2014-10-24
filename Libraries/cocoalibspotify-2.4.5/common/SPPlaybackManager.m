@@ -58,6 +58,16 @@ static void * const kSPPlaybackManagerKVOContext = @"kSPPlaybackManagerKVOContex
 	NSInvocation *incrementTrackPositionInvocation;
 }
 
++ (id)sharedPlaybackManager {
+    static SPPlaybackManager *sharedPlaybackManager = nil;
+    @synchronized(self) {
+        if (sharedPlaybackManager == nil)
+            sharedPlaybackManager = [[self alloc] initWithPlaybackSession:[SPSession sharedSession]];
+    }
+    return sharedPlaybackManager;
+}
+
+
 -(id)initWithPlaybackSession:(SPSession *)aSession {
     
     if ((self = [super init])) {
@@ -122,6 +132,10 @@ static void * const kSPPlaybackManagerKVOContext = @"kSPPlaybackManagerKVOContex
 
 -(void)playTrack:(SPTrack *)aTrack callback:(SPErrorableOperationCallback)block {
 	
+    //First stop playing track
+    if(self.currentTrack != nil)
+        [self stopTrack];
+    
 	self.playbackSession.playing = NO;
 	[self.playbackSession unloadPlayback];
 	[self.audioController clearAudioBuffers];
@@ -149,6 +163,8 @@ static void * const kSPPlaybackManagerKVOContext = @"kSPPlaybackManagerKVOContex
 
 -(void)stopTrack
 {
+    [delegate playbackManagerStoppedPlayingAudio:self];
+    
     [self.playbackSession unloadPlayback];
     [self setIsPlaying:NO];
     self.currentTrack = nil;
@@ -193,7 +209,7 @@ static void * const kSPPlaybackManagerKVOContext = @"kSPPlaybackManagerKVOContex
 		dispatch_async(dispatch_get_main_queue(), ^{ [self.delegate playbackManagerWillStartPlayingAudio:self]; });
 	
 	self.trackPosition += audioDuration;
-    dispatch_async(dispatch_get_main_queue(), ^{ [self.delegate playbackManagerAudioProgress:self progress:self.trackPosition]; });
+    dispatch_async(dispatch_get_main_queue(), ^{ [self.delegate playbackManagerAudioProgress:self progress:(self.trackPosition / self.currentTrack.duration)]; });
 }
 
 #pragma mark -
@@ -212,20 +228,15 @@ static void * const kSPPlaybackManagerKVOContext = @"kSPPlaybackManagerKVOContex
     [self.delegate playbackManagerDidLosePlayToken:self];
 }
 
--(void)sessionDidEndPlayback:(SPSession *)aSession {
-	
-	// This delegate is called when playback stops naturally, at the end of a track.
-	
-	// Not routing this through to the main thread causes odd locks and crashes.
+-(void)sessionDidEndPlayback:(SPSession *)aSession
+{
 	[self performSelectorOnMainThread:@selector(sessionDidEndPlaybackOnMainThread:)
 						   withObject:aSession
 						waitUntilDone:NO];
 }
 
 -(void)sessionDidEndPlaybackOnMainThread:(SPSession *)aSession {
-	//self.currentTrack = nil;
     [self stopTrack];
-    [delegate playbackManagerStoppedPlayingAudio:self];
 }
 
 -(void)session:(id <SPSessionPlaybackProvider>)aSession didEncounterStreamingError:(NSError *)error

@@ -12,7 +12,6 @@
 #import "ArtistCell.h"
 #import "AlbumCell.h"
 #import "TrackCell.h"
-#import "SpotifyPlayer.h"
 #import "AllTracksViewController.h"
 #import "AllArtistsViewController.h"
 #import "AllAlbumsViewController.h"
@@ -66,14 +65,15 @@
     
     [self.tableView reloadData];
     
-    [[SpotifyPlayer sharedSpotifyPlayer] setDelegate:self];
+    SPPlaybackManager * playBackManager = [SPPlaybackManager sharedPlaybackManager];
+    [playBackManager setDelegate:self];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
     
-    [[SpotifyPlayer sharedSpotifyPlayer] stopTrack];
+    [[SPPlaybackManager sharedPlaybackManager] stopTrack];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -335,10 +335,16 @@
         else
         {
             SPTrack *track = [self.searchResult.tracks objectAtIndex:[indexPath row]];
-            if([[SpotifyPlayer sharedSpotifyPlayer] currentTrack] == track)
-                [[SpotifyPlayer sharedSpotifyPlayer] stopTrack];
+            if([[SPPlaybackManager sharedPlaybackManager] currentTrack] == track)
+                [[SPPlaybackManager sharedPlaybackManager] stopTrack];
             else
-                [[SpotifyPlayer sharedSpotifyPlayer] playTrack:track];
+                [[SPPlaybackManager sharedPlaybackManager] playTrack:track callback:^(NSError *error) {
+                    if(error != nil)
+                    {
+                        [[[UIAlertView alloc] initWithTitle:@"Error" message:[NSString stringWithFormat:@"Could not play track, error: %@", [error localizedDescription]] delegate:nil cancelButtonTitle:@"Oke!" otherButtonTitles:nil] show];
+                         NSLog(@"SongSearch could not play track, error: %@", [error localizedFailureReason]);
+                    }
+                }];
         }
     }
     else if(indexPath.section == artistSection)
@@ -406,25 +412,43 @@
     }
 }
 
-#pragma mark - Spotify Player delegate
 
-- (void)track:(SPTrack *)track progess:(double) progress
+
+
+#pragma mark - SPPlackBackManager delegate
+-(void)playbackManagerWillStartPlayingAudio:(SPPlaybackManager *)aPlaybackManager
 {
-    TrackCell *cell = (TrackCell*)[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:[self.searchResult.tracks indexOfObject:track] inSection:trackSection]];
+    TrackCell *cell = (TrackCell*)[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:[self.searchResult.tracks indexOfObject:aPlaybackManager.currentTrack] inSection:trackSection]];
+    [cell showPlayProgress:YES animated:YES];
+}
+-(void)playbackManagerStoppedPlayingAudio:(SPPlaybackManager *)aPlaybackManager
+{
+    TrackCell *cell = (TrackCell*)[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:[self.searchResult.tracks indexOfObject:aPlaybackManager.currentTrack] inSection:trackSection]];
+    [cell showPlayProgress:NO animated:YES];
+}
+
+-(void)playbackManagerAudioProgress:(SPPlaybackManager *)aPlaybackManager progress:(double) progress
+{
+    TrackCell *cell = (TrackCell*)[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:[self.searchResult.tracks indexOfObject:aPlaybackManager.currentTrack] inSection:trackSection]];
     [cell setProgress:progress];
 }
 
-- (void)trackStartedPlaying:(SPTrack *)track
+-(void)playbackManagerDidEncounterStreamingError:(SPPlaybackManager *)aPlaybackManager error:(NSError *) error
 {
-    TrackCell *cell = (TrackCell*)[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:[self.searchResult.tracks indexOfObject:track] inSection:trackSection]];
-    [cell showPlayProgress:YES animated:YES];
+    [[SPPlaybackManager sharedPlaybackManager] stopTrack];
+    
+    [[[UIAlertView alloc] initWithTitle:@"Error" message:@"Spotify Alarm Clock encountered a network error. Is your internet connection still active?" delegate:nil cancelButtonTitle:@"Oke!" otherButtonTitles:nil] show];
+    NSLog(@"SongSearch network error");
 }
 
-- (void)trackStoppedPlaying:(SPTrack *)track
+-(void)playbackManagerDidLosePlayToken:(SPPlaybackManager *)aPlaybackManager
 {
-    TrackCell *cell = (TrackCell*)[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:[self.searchResult.tracks indexOfObject:track] inSection:trackSection]];
-    [cell showPlayProgress:NO animated:YES];
+    [[SPPlaybackManager sharedPlaybackManager] stopTrack];
+    
+    [[[UIAlertView alloc] initWithTitle:@"Error" message:@"Spotify track is playing on another device. Your account can only play tracks on one device at the same time." delegate:nil cancelButtonTitle:@"Oke!" otherButtonTitles:nil] show];
+    NSLog(@"SongSearch did lose play token");
 }
+
 
 #pragma mark - ArtistBrowseCache delegate
 

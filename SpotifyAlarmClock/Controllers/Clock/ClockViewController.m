@@ -132,7 +132,7 @@
     [[SPSession sharedSession] attemptLoginWithUserName:@"nielsvroegin" password:@"51casioc"];
     
     //Init playbackmanager
-    playBackManager = [[SPPlaybackManager alloc] initWithPlaybackSession:[SPSession sharedSession]];
+    playBackManager = [SPPlaybackManager sharedPlaybackManager];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -230,6 +230,13 @@
     //Reload songs when list empty
     if(songList == nil || [songList count] == 0)
         songList = [NSMutableArray arrayWithArray:[performingAlarm.songs array]];
+    
+    //When no songs selected for alarm play backup alarm sound
+    if(songList == nil || [songList count] == 0)
+    {
+        [self playBackupAlarmSound];
+        return;
+    }
 
     //Find next song
     NSUInteger newSongIndex;
@@ -258,12 +265,12 @@
 
 - (void) playBackupAlarmSound
 {
-    //Stop current spotify track
-    [playBackManager stopTrack];
-    
     //Play new sound
     NSError *error;
     self.audioPlayer = [[AVAudioPlayer alloc] initWithData:[Tools dateForAlarmBackupSound:[userDefaults integerForKey:@"BackupAlarmSound"]] fileTypeHint:AVFileTypeMPEGLayer3 error:&error];
+    
+    //Stop current spotify track
+    [playBackManager stopTrack];
     
     //Check if init successful
     if(error != nil)
@@ -471,7 +478,7 @@
 -(void)playbackManagerStoppedPlayingAudio:(SPPlaybackManager *)aPlaybackManager
 {
     //If alarm still active play new song
-    if(isPerformingAlarm)
+    if(isPerformingAlarm && audioPlayer == nil)
         [self playSong];
 }
 -(void)playbackManagerDidLosePlayToken:(SPPlaybackManager *)aPlaybackManager
@@ -479,7 +486,7 @@
     if(performingAlarm)
         [self playBackupAlarmSound];
 }
--(void)playbackManagerAudioProgress:(SPPlaybackManager *)aPlaybackManager progress:(NSTimeInterval) progress
+-(void)playbackManagerAudioProgress:(SPPlaybackManager *)aPlaybackManager progress:(double) progress
 {
     
 }

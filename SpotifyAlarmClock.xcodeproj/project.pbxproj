@@ -48,9 +48,6 @@
 		B885FE9219C488F500EC1D32 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B885FE7419C488F400EC1D32 /* UIKit.framework */; };
 		B885FE9A19C488F500EC1D32 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = B885FE9819C488F500EC1D32 /* InfoPlist.strings */; };
 		B885FE9C19C488F500EC1D32 /* SpotifyAlarmClockTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B885FE9B19C488F500EC1D32 /* SpotifyAlarmClockTests.m */; };
-		B885FEAF19C4AB3000EC1D32 /* SpotifyPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = B885FEAE19C4AB3000EC1D32 /* SpotifyPlayer.m */; };
-		B885FEB419C4ABBC00EC1D32 /* audio.c in Sources */ = {isa = PBXBuildFile; fileRef = B885FEB019C4ABBC00EC1D32 /* audio.c */; };
-		B885FEB519C4ABBC00EC1D32 /* osx-audio.m in Sources */ = {isa = PBXBuildFile; fileRef = B885FEB219C4ABBC00EC1D32 /* osx-audio.m */; };
 		B885FEF719C4C7CE00EC1D32 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B885FE7419C488F400EC1D32 /* UIKit.framework */; };
 		B8A99D2E19F82D2D000359BF /* BackupAlarmSoundViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B8A99D2D19F82D2D000359BF /* BackupAlarmSoundViewController.m */; };
 		B8A99D3F19F82EAC000359BF /* alpha-beta.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B8A99D3B19F82EAC000359BF /* alpha-beta.mp3 */; };
@@ -172,12 +169,6 @@
 		B885FE9719C488F500EC1D32 /* SpotifyAlarmClockTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SpotifyAlarmClockTests-Info.plist"; sourceTree = "<group>"; };
 		B885FE9919C488F500EC1D32 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		B885FE9B19C488F500EC1D32 /* SpotifyAlarmClockTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SpotifyAlarmClockTests.m; sourceTree = "<group>"; };
-		B885FEAD19C4AB3000EC1D32 /* SpotifyPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpotifyPlayer.h; sourceTree = "<group>"; };
-		B885FEAE19C4AB3000EC1D32 /* SpotifyPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpotifyPlayer.m; sourceTree = "<group>"; };
-		B885FEB019C4ABBC00EC1D32 /* audio.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = audio.c; sourceTree = "<group>"; };
-		B885FEB119C4ABBC00EC1D32 /* audio.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = audio.h; sourceTree = "<group>"; };
-		B885FEB219C4ABBC00EC1D32 /* osx-audio.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "osx-audio.m"; sourceTree = "<group>"; };
-		B885FEB319C4ABBC00EC1D32 /* queue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = queue.h; sourceTree = "<group>"; };
 		B8A99D2C19F82D2D000359BF /* BackupAlarmSoundViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BackupAlarmSoundViewController.h; sourceTree = "<group>"; };
 		B8A99D2D19F82D2D000359BF /* BackupAlarmSoundViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BackupAlarmSoundViewController.m; sourceTree = "<group>"; };
 		B8A99D3B19F82EAC000359BF /* alpha-beta.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "alpha-beta.mp3"; sourceTree = "<group>"; };
@@ -512,7 +503,6 @@
 		B885FEAB19C4AB3000EC1D32 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
-				B885FEAC19C4AB3000EC1D32 /* SpotifyPlayer */,
 				B8DEF86C19E0474900F2F453 /* ArtistBrowseCache.h */,
 				B8DEF86D19E0474900F2F453 /* ArtistBrowseCache.m */,
 				B8D7691219E5C17600988A71 /* CellConstructHelper.h */,
@@ -525,19 +515,6 @@
 				B82647A319ED972F00FBB21A /* NextAlarm.m */,
 			);
 			path = Helpers;
-			sourceTree = "<group>";
-		};
-		B885FEAC19C4AB3000EC1D32 /* SpotifyPlayer */ = {
-			isa = PBXGroup;
-			children = (
-				B885FEB019C4ABBC00EC1D32 /* audio.c */,
-				B885FEB119C4ABBC00EC1D32 /* audio.h */,
-				B885FEB219C4ABBC00EC1D32 /* osx-audio.m */,
-				B885FEB319C4ABBC00EC1D32 /* queue.h */,
-				B885FEAD19C4AB3000EC1D32 /* SpotifyPlayer.h */,
-				B885FEAE19C4AB3000EC1D32 /* SpotifyPlayer.m */,
-			);
-			path = SpotifyPlayer;
 			sourceTree = "<group>";
 		};
 		B8A99D2B19F82D2D000359BF /* BackupAlarmSound */ = {
@@ -771,16 +748,13 @@
 				B82647A119EBDF0300FBB21A /* BackgroundGlow.m in Sources */,
 				B8DEF87919E07A8F00F2F453 /* ArtistViewController.m in Sources */,
 				B812392919D1FC28005EABDB /* TextEditViewController.m in Sources */,
-				B885FEB519C4ABBC00EC1D32 /* osx-audio.m in Sources */,
 				B885CC7119E010E5003450F8 /* AllTracksViewController.m in Sources */,
 				B86104D719CDA187001DB753 /* Alarm.m in Sources */,
 				B812392619D1FC28005EABDB /* ClockViewController.m in Sources */,
 				B885CC7E19E013BD003450F8 /* AlbumCell.m in Sources */,
 				B8DEF87519E06FA100F2F453 /* AllAlbumsViewController.m in Sources */,
 				B82647A419ED972F00FBB21A /* NextAlarm.m in Sources */,
-				B885FEB419C4ABBC00EC1D32 /* audio.c in Sources */,
 				B885FE8119C488F400EC1D32 /* AppDelegate.m in Sources */,
-				B885FEAF19C4AB3000EC1D32 /* SpotifyPlayer.m in Sources */,
 				B812392E19D201A4005EABDB /* SongsViewController.m in Sources */,
 				B86104DA19CDA28E001DB753 /* SpotifyAlarmClock.xcdatamodeld in Sources */,
 				B8FC13B119E9B61A001E4C1D /* Tools.m in Sources */,
