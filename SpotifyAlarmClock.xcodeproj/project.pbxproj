@@ -54,6 +54,7 @@
 		B8A99D4019F82EAC000359BF /* day-by-day.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B8A99D3C19F82EAC000359BF /* day-by-day.mp3 */; };
 		B8A99D4119F82EAC000359BF /* forever.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B8A99D3D19F82EAC000359BF /* forever.mp3 */; };
 		B8A99D4219F82EAC000359BF /* LCD-BOLD.TTF in Resources */ = {isa = PBXBuildFile; fileRef = B8A99D3E19F82EAC000359BF /* LCD-BOLD.TTF */; };
+		B8A99D6019FA79FB000359BF /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B8A99D5F19FA79FB000359BF /* SettingsViewController.m */; };
 		B8D16E0519E1C94500B375D2 /* BlurredHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8D16E0419E1C94500B375D2 /* BlurredHeader.xib */; };
 		B8D16E0919E1CBF900B375D2 /* BlurredHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = B8D16E0819E1CBF900B375D2 /* BlurredHeaderView.m */; };
 		B8D7690A19E5B1F300988A71 /* AlbumCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8D7690919E5B1F300988A71 /* AlbumCell.xib */; };
@@ -175,6 +176,8 @@
 		B8A99D3C19F82EAC000359BF /* day-by-day.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "day-by-day.mp3"; sourceTree = "<group>"; };
 		B8A99D3D19F82EAC000359BF /* forever.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = forever.mp3; sourceTree = "<group>"; };
 		B8A99D3E19F82EAC000359BF /* LCD-BOLD.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = "LCD-BOLD.TTF"; sourceTree = "<group>"; };
+		B8A99D5E19FA79FB000359BF /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
+		B8A99D5F19FA79FB000359BF /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
 		B8D16E0419E1C94500B375D2 /* BlurredHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BlurredHeader.xib; sourceTree = "<group>"; };
 		B8D16E0719E1CBF900B375D2 /* BlurredHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlurredHeaderView.h; sourceTree = "<group>"; };
 		B8D16E0819E1CBF900B375D2 /* BlurredHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlurredHeaderView.m; sourceTree = "<group>"; };
@@ -263,7 +266,7 @@
 				B8A99D2B19F82D2D000359BF /* BackupAlarmSound */,
 				B812391519D1FC28005EABDB /* Clock */,
 				B812391819D1FC28005EABDB /* OptionsSelect */,
-				B812391E19D1FC28005EABDB /* Settings */,
+				B8A99D5D19FA79FB000359BF /* Settings */,
 				B812392A19D20126005EABDB /* Songs */,
 				B812392B19D20177005EABDB /* SongSearch */,
 				B812391F19D1FC28005EABDB /* TextEdit */,
@@ -308,13 +311,6 @@
 				B812391D19D1FC28005EABDB /* OptionsSelectViewController.m */,
 			);
 			path = OptionsSelect;
-			sourceTree = "<group>";
-		};
-		B812391E19D1FC28005EABDB /* Settings */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Settings;
 			sourceTree = "<group>";
 		};
 		B812391F19D1FC28005EABDB /* TextEdit */ = {
@@ -537,6 +533,15 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
+		B8A99D5D19FA79FB000359BF /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				B8A99D5E19FA79FB000359BF /* SettingsViewController.h */,
+				B8A99D5F19FA79FB000359BF /* SettingsViewController.m */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
 		B8D7691519E7F1D500988A71 /* Album */ = {
 			isa = PBXGroup;
 			children = (
@@ -744,6 +749,7 @@
 				B812392719D1FC28005EABDB /* Option.m in Sources */,
 				B812392319D1FC28005EABDB /* AddAlarmViewController.m in Sources */,
 				B885CC8019E013BD003450F8 /* TrackCell.m in Sources */,
+				B8A99D6019FA79FB000359BF /* SettingsViewController.m in Sources */,
 				B812393119D201F2005EABDB /* SongSearchViewController.m in Sources */,
 				B82647A119EBDF0300FBB21A /* BackgroundGlow.m in Sources */,
 				B8DEF87919E07A8F00F2F453 /* ArtistViewController.m in Sources */,

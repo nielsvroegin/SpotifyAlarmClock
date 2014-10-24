@@ -250,8 +250,8 @@
     //Delete next song from list, so it will only be played once
     [songList removeObjectAtIndex:newSongIndex];
     
-    [[SPSession sharedSession] trackForURL:[NSURL URLWithString:[alarmSong spotifyUrl]] callback:^(SPTrack *track){
-        //[[SpotifyPlayer sharedSpotifyPlayer] playTrack:track];
+    [[SPSession sharedSession] trackForURL:[NSURL URLWithString:[alarmSong spotifyUrl]] callback:^(SPTrack *track)
+    {
         [playBackManager playTrack:track callback:^(NSError *error)
         {
             if(error != nil)
@@ -339,15 +339,26 @@
     self.minutes.text = [timeFormatter stringFromDate:time];
     
     //Set colon and flip show colon
-    self.colon.hidden = !showColon;
+    if([[NSUserDefaults standardUserDefaults] boolForKey:@"BlinkSecondsMarker"])
+        self.colon.hidden = !showColon;
+    else
+        self.colon.hidden = YES;
     
     //Animate background glow on/off
-    [UIView animateWithDuration:1.0 animations:^(void) {
-        if(showColon)
-            self.backgroundGlow.alpha = 1.0f;
-        else
-            self.backgroundGlow.alpha = 0.5f;
-    }];
+    if([[NSUserDefaults standardUserDefaults] boolForKey:@"ShowBackgroundGlow"])
+    {
+        self.backgroundGlow.hidden = NO;
+        
+        [UIView animateWithDuration:1.0 animations:^(void) {
+            if(showColon)
+                self.backgroundGlow.alpha = 1.0f;
+            else
+                self.backgroundGlow.alpha = 0.5f;
+        }];
+    }
+    else
+        self.backgroundGlow.hidden = YES;
+    
     
     //--------- Check alarm ---------/
     if(!isPerformingAlarm && timeComponents.weekday == nextAlarm.alarmDateComponents.weekday && timeComponents.hour == nextAlarm.alarmDateComponents.hour && timeComponents.minute == nextAlarm.alarmDateComponents.minute)
