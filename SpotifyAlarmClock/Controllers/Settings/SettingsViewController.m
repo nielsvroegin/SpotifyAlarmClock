@@ -18,6 +18,7 @@
 
 @property (nonatomic, strong) NSUserDefaults * userDefaults;
 @property (nonatomic, assign) BOOL spotifyCredentialsChanged;
+@property (nonatomic, assign) BOOL checkingLogin;
 
 @property (weak, nonatomic) IBOutlet UISwitch *swBlinkSecondsMarker;
 @property (weak, nonatomic) IBOutlet UISwitch *swShowBackgroundGlow;
@@ -44,6 +45,7 @@
 @synthesize lbSpotifyUsername;
 @synthesize lbSpotifyPassword;
 @synthesize spotifyCredentialsChanged;
+@synthesize checkingLogin;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -95,9 +97,14 @@
     //Re-login when sptofy credentials changed
     if(spotifyCredentialsChanged)
     {
-        [[SPSession sharedSession] logout:^{
-            [[SPSession sharedSession] attemptLoginWithUserName:[userDefaults objectForKey:@"SpotifyUsername"] password:[userDefaults objectForKey:@"SpotifyPassword"]];
-        }];
+        if(!checkingLogin)
+        {
+            checkingLogin = YES;
+            [[SPSession sharedSession] logout:^{
+                [[SPSession sharedSession] attemptLoginWithUserName:[userDefaults objectForKey:@"SpotifyUsername"] password:[userDefaults objectForKey:@"SpotifyPassword"]];
+                checkingLogin = NO;
+            }];
+        }
         spotifyCredentialsChanged =  NO;
     }
     
