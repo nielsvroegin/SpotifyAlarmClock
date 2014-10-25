@@ -44,6 +44,9 @@
     
     [userDefaults synchronize];
     
+    //Set brightness for app
+    [[UIScreen mainScreen] setBrightness:[[NSUserDefaults standardUserDefaults] floatForKey:@"Brightness"]];
+    
     // Override point for customization after application launch.
     return YES;
 }
