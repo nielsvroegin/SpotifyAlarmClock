@@ -7,7 +7,9 @@
 //
 
 #import "AppDelegate.h"
+#import "appkey.h"
 #import <AVFoundation/AVAudioSession.h>
+#import "CocoaLibSpotify.h"
 
 @interface AppDelegate ()
 
@@ -47,7 +49,21 @@
     //Set brightness for app
     [[UIScreen mainScreen] setBrightness:[[NSUserDefaults standardUserDefaults] floatForKey:@"Brightness"]];
     
-    // Override point for customization after application launch.
+    //Initialize spotify session spotify
+    NSError *error = nil;
+    [SPSession initializeSharedSessionWithApplicationKey:[NSData dataWithBytes:&g_appkey length:g_appkey_size]  userAgent:@"nl.startsmart.SpotifyAlarmClock" loadingPolicy:SPAsyncLoadingManual error:&error];
+    if(error != nil)
+    {
+        [[[UIAlertView alloc] initWithTitle:@"Error" message:@"Could not initialize spotify!" delegate:nil cancelButtonTitle:@"Oke!" otherButtonTitles:nil] show];
+        NSLog(@"Could not initialize spotify, error: %@", error);
+    }
+    else
+    {
+        //Login when credentials are available
+        if([[userDefaults objectForKey:@"SpotifyUsername"] length] > 0 && [[userDefaults objectForKey:@"SpotifyPassword"] length] > 0)
+           [[SPSession sharedSession] attemptLoginWithUserName:[userDefaults objectForKey:@"SpotifyUsername"] password:[userDefaults objectForKey:@"SpotifyPassword"]];
+    }
+    
     return YES;
 }
 

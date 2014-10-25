@@ -9,7 +9,6 @@
 #import "ClockViewController.h"
 #import "Alarm.h"
 #import "AlarmSong.h"
-#import "appkey.h"
 #import "BackgroundGlow.h"
 #import "NextAlarm.h"
 #import "Tools.h"
@@ -124,24 +123,23 @@
     //Set timer to update clock
     [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(onTimer:) userInfo:nil repeats:YES];
     
-    //Perform login on spotify
-    NSError *error = nil;
-    [SPSession initializeSharedSessionWithApplicationKey:[NSData dataWithBytes:&g_appkey length:g_appkey_size]
-                                               userAgent:@"nl.startsmart.SpotifyAlarmClock"
-                                           loadingPolicy:SPAsyncLoadingManual
-                                                   error:&error];
-    
-    [[SPSession sharedSession] attemptLoginWithUserName:@"nielsvroegin" password:@"51casioc"];
-    
     //Init playbackmanager
     playBackManager = [SPPlaybackManager sharedPlaybackManager];
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
+    [super viewWillAppear:animated];
+    
     //Set delegates
     [[SPSession sharedSession] setDelegate:self];
     [playBackManager setDelegate:self];
+    
+    //Update connection state
+    [self updateSpotifyConnectionState];
+    
+    //Observe spotify connection state
+    [[SPSession sharedSession] addObserver:self forKeyPath:@"connectionState" options:0 context:NULL];
     
     //Determine next alarm
     nextAlarm = [NextAlarm provide];
@@ -152,11 +150,30 @@
 
 - (void) viewDidAppear:(BOOL)animated
 {
+    [super viewDidAppear:animated];
+    
     //Keep app awake
     [UIApplication sharedApplication].idleTimerDisabled = NO;
     [UIApplication sharedApplication].idleTimerDisabled = YES;
 }
 
+- (void) viewDidDisappear:(BOOL)animated
+{
+    [super viewDidDisappear:animated];
+    
+    [[SPSession sharedSession] removeObserver:self forKeyPath:@"connectionState"];
+}
+
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
+{
+    if([keyPath isEqual:@"connectionState"])
+    {
+        [self updateSpotifyConnectionState];
+     
+        if(performingAlarm && [[SPSession sharedSession] connectionState] != SP_CONNECTION_STATE_LOGGED_IN)
+            [self playBackupAlarmSound];
+    }
+}
 
 - (void) applyGlow:(UILabel*)label
 {
@@ -272,6 +289,10 @@
 
 - (void) playBackupAlarmSound
 {
+    //Return if already playing backup alarm sound
+    if(self.audioPlayer != nil)
+        return;
+    
     //Play new sound
     NSError *error;
     self.audioPlayer = [[AVAudioPlayer alloc] initWithData:[Tools dateForAlarmBackupSound:[userDefaults integerForKey:@"BackupAlarmSound"]] fileTypeHint:AVFileTypeMPEGLayer3 error:&error];
@@ -302,7 +323,6 @@
 - (void) onTimer:(NSTimer *) timer
 {
     [self updateClock];
-    [self updateSpotifyConnectionState];
     [self updateClockAlarm];
 }
 
@@ -311,7 +331,7 @@
     switch ([[SPSession sharedSession] connectionState])
     {
         case SP_CONNECTION_STATE_OFFLINE:
-            self.spotifyConnectionState.text = @"Connected";
+            self.spotifyConnectionState.text = @"Offline";
             break;            
         case SP_CONNECTION_STATE_DISCONNECTED:
             self.spotifyConnectionState.text = @"Disconnected";    
@@ -320,7 +340,7 @@
             self.spotifyConnectionState.text = @"Online";
             break;            
         case SP_CONNECTION_STATE_LOGGED_OUT:
-            self.spotifyConnectionState.text = @"Logged off";
+            self.spotifyConnectionState.text = @"Logged Out";
             break;            
         case SP_CONNECTION_STATE_UNDEFINED:
             self.spotifyConnectionState.text = @"Unknown";
@@ -492,14 +512,10 @@
 
 #pragma SPSessionDelegate methods
 
-- (void)sessionDidLoginSuccessfully:(SPSession *)aSession
-{
-    [self updateSpotifyConnectionState];
-}
-
 - (void)session:(SPSession *)aSession didFailToLoginWithError:(NSError *)error
 {
-//    [self showLoginScreen];
+    if(performingAlarm)
+        [self playBackupAlarmSound];
 }
 
 - (void)session:(SPSession *)aSession didEncounterNetworkError:(NSError *)error
@@ -510,10 +526,8 @@
 
 #pragma mark - SPPlackbackManager delegate
 
--(void)playbackManagerWillStartPlayingAudio:(SPPlaybackManager *)aPlaybackManager
-{
-    
-}
+-(void)playbackManagerWillStartPlayingAudio:(SPPlaybackManager *)aPlaybackManager { }
+-(void)playbackManagerAudioProgress:(SPPlaybackManager *)aPlaybackManager progress:(double) progress { }
 -(void)playbackManagerStoppedPlayingAudio:(SPPlaybackManager *)aPlaybackManager
 {
     //If alarm still active play new song
@@ -525,10 +539,7 @@
     if(performingAlarm)
         [self playBackupAlarmSound];
 }
--(void)playbackManagerAudioProgress:(SPPlaybackManager *)aPlaybackManager progress:(double) progress
-{
-    
-}
+
 -(void)playbackManagerDidEncounterStreamingError:(SPPlaybackManager *)aPlaybackManager error:(NSError *) error
 {
     if(performingAlarm)
