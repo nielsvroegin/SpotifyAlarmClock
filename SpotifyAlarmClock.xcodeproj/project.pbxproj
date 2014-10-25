@@ -50,6 +50,7 @@
 		B885FE9C19C488F500EC1D32 /* SpotifyAlarmClockTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B885FE9B19C488F500EC1D32 /* SpotifyAlarmClockTests.m */; };
 		B885FEF719C4C7CE00EC1D32 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B885FE7419C488F400EC1D32 /* UIKit.framework */; };
 		B8A7F18619FAED5C00BFEAD0 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8A7F18519FAED5C00BFEAD0 /* MediaPlayer.framework */; };
+		B8A7F3E119FC481B00BFEAD0 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B8A7F3E019FC481B00BFEAD0 /* LoginViewController.m */; };
 		B8A99D2E19F82D2D000359BF /* BackupAlarmSoundViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B8A99D2D19F82D2D000359BF /* BackupAlarmSoundViewController.m */; };
 		B8A99D3F19F82EAC000359BF /* alpha-beta.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B8A99D3B19F82EAC000359BF /* alpha-beta.mp3 */; };
 		B8A99D4019F82EAC000359BF /* day-by-day.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B8A99D3C19F82EAC000359BF /* day-by-day.mp3 */; };
@@ -172,6 +173,8 @@
 		B885FE9919C488F500EC1D32 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		B885FE9B19C488F500EC1D32 /* SpotifyAlarmClockTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SpotifyAlarmClockTests.m; sourceTree = "<group>"; };
 		B8A7F18519FAED5C00BFEAD0 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
+		B8A7F3DF19FC481B00BFEAD0 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		B8A7F3E019FC481B00BFEAD0 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		B8A99D2C19F82D2D000359BF /* BackupAlarmSoundViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BackupAlarmSoundViewController.h; sourceTree = "<group>"; };
 		B8A99D2D19F82D2D000359BF /* BackupAlarmSoundViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BackupAlarmSoundViewController.m; sourceTree = "<group>"; };
 		B8A99D3B19F82EAC000359BF /* alpha-beta.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "alpha-beta.mp3"; sourceTree = "<group>"; };
@@ -259,6 +262,7 @@
 		B812390C19D1FC28005EABDB /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				B8A7F3DE19FC480500BFEAD0 /* Login */,
 				B812390D19D1FC28005EABDB /* AddAlarm */,
 				B812391019D1FC28005EABDB /* Alarms */,
 				B8D7691519E7F1D500988A71 /* Album */,
@@ -517,6 +521,15 @@
 			path = Helpers;
 			sourceTree = "<group>";
 		};
+		B8A7F3DE19FC480500BFEAD0 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				B8A7F3DF19FC481B00BFEAD0 /* LoginViewController.h */,
+				B8A7F3E019FC481B00BFEAD0 /* LoginViewController.m */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
 		B8A99D2B19F82D2D000359BF /* BackupAlarmSound */ = {
 			isa = PBXGroup;
 			children = (
@@ -770,6 +783,7 @@
 				B8FC13B119E9B61A001E4C1D /* Tools.m in Sources */,
 				B8DEF86E19E0474900F2F453 /* ArtistBrowseCache.m in Sources */,
 				B8DEF86B19E041F700F2F453 /* AllArtistsViewController.m in Sources */,
+				B8A7F3E119FC481B00BFEAD0 /* LoginViewController.m in Sources */,
 				B8A99D2E19F82D2D000359BF /* BackupAlarmSoundViewController.m in Sources */,
 				B812392819D1FC28005EABDB /* OptionsSelectViewController.m in Sources */,
 				B885FE7D19C488F400EC1D32 /* main.m in Sources */,

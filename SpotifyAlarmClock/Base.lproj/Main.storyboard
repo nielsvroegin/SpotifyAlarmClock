@@ -19,6 +19,113 @@
         </mutableArray>
     </customFonts>
     <scenes>
+        <!--Login View Controller-->
+        <scene sceneID="94i-Iy-D9H">
+            <objects>
+                <viewController id="t7g-vl-T2D" customClass="LoginViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="4eJ-sR-rCh"/>
+                        <viewControllerLayoutGuide type="bottom" id="IbZ-sC-RCj"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Hly-b4-he7">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LoginBackground" translatesAutoresizingMaskIntoConstraints="NO" id="jwy-3d-SEJ">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                            </imageView>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username or Facebook e-mail" textAlignment="center" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="ddd-SZ-pVL">
+                                <rect key="frame" x="16" y="164" width="288" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="center" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="uv2-zA-TLN">
+                                <rect key="frame" x="16" y="200" width="288" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="Qj7-6X-h1V"/>
+                                    <constraint firstAttribute="width" constant="288" id="enI-wb-ySM"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wcy-ug-M07">
+                                <rect key="frame" x="46" y="308" width="228" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="CLD-5d-8mr"/>
+                                    <constraint firstAttribute="width" constant="228" id="JDb-iQ-3MZ"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <state key="normal" title="Use Alarm Clock without Spotify">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="skipLoginButtonClicked:" destination="t7g-vl-T2D" eventType="touchUpInside" id="wbD-CN-4RM"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HXp-MD-Bsa">
+                                <rect key="frame" x="25" y="248" width="270" height="52"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="HXp-MD-Bsa" secondAttribute="height" multiplier="135:26" id="Sqw-1K-k1t"/>
+                                </constraints>
+                                <state key="normal" image="SpotifyLoginButton">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="loginButtonClicked:" destination="t7g-vl-T2D" eventType="touchUpInside" id="aeG-cy-4Vj"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Login with Facebook or Spotify" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qpf-Hy-Nwl">
+                                <rect key="frame" x="58" y="82" width="246" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="B3q-K3-fjI"/>
+                                    <constraint firstAttribute="width" constant="246" id="Meh-qT-FXW"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="facebook" translatesAutoresizingMaskIntoConstraints="NO" id="Vuw-SW-nzP">
+                                <rect key="frame" x="16" y="78" width="30" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="7sQ-Nt-f97"/>
+                                    <constraint firstAttribute="width" constant="30" id="hEm-2I-BRe"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="Qpf-Hy-Nwl" firstAttribute="leading" secondItem="Vuw-SW-nzP" secondAttribute="trailing" constant="12" id="8wS-PX-wWD"/>
+                            <constraint firstItem="Wcy-ug-M07" firstAttribute="top" secondItem="HXp-MD-Bsa" secondAttribute="bottom" constant="8" id="DeC-pf-1hQ"/>
+                            <constraint firstItem="HXp-MD-Bsa" firstAttribute="centerX" secondItem="jwy-3d-SEJ" secondAttribute="centerX" id="Mvr-Gi-qNp"/>
+                            <constraint firstItem="uv2-zA-TLN" firstAttribute="leading" secondItem="ddd-SZ-pVL" secondAttribute="leading" id="Sf4-yF-mAd"/>
+                            <constraint firstItem="jwy-3d-SEJ" firstAttribute="centerX" secondItem="Wcy-ug-M07" secondAttribute="centerX" id="WCP-Vs-gfz"/>
+                            <constraint firstItem="jwy-3d-SEJ" firstAttribute="leading" secondItem="Hly-b4-he7" secondAttribute="leadingMargin" constant="-16" id="ZCN-I1-Kxx"/>
+                            <constraint firstItem="IbZ-sC-RCj" firstAttribute="top" secondItem="jwy-3d-SEJ" secondAttribute="bottom" id="fNE-9y-cyJ"/>
+                            <constraint firstItem="uv2-zA-TLN" firstAttribute="top" secondItem="ddd-SZ-pVL" secondAttribute="bottom" constant="6" id="gjf-FF-KJa"/>
+                            <constraint firstItem="ddd-SZ-pVL" firstAttribute="top" secondItem="Qpf-Hy-Nwl" secondAttribute="bottom" constant="61" id="iEY-yI-EVU"/>
+                            <constraint firstItem="Qpf-Hy-Nwl" firstAttribute="bottom" secondItem="Vuw-SW-nzP" secondAttribute="bottom" constant="-5" id="k2z-8j-pUQ"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="jwy-3d-SEJ" secondAttribute="trailing" constant="-16" id="nBK-Y2-aLY"/>
+                            <constraint firstItem="uv2-zA-TLN" firstAttribute="centerX" secondItem="jwy-3d-SEJ" secondAttribute="centerX" id="rfY-o5-V9s"/>
+                            <constraint firstItem="HXp-MD-Bsa" firstAttribute="top" secondItem="uv2-zA-TLN" secondAttribute="bottom" constant="18" id="tUl-Y9-p8J"/>
+                            <constraint firstItem="jwy-3d-SEJ" firstAttribute="top" secondItem="4eJ-sR-rCh" secondAttribute="bottom" constant="-20" id="wi5-pF-fwz"/>
+                            <constraint firstItem="IbZ-sC-RCj" firstAttribute="top" secondItem="Wcy-ug-M07" secondAttribute="bottom" constant="230" id="xfT-uQ-Tn2"/>
+                            <constraint firstItem="jwy-3d-SEJ" firstAttribute="centerX" secondItem="Qpf-Hy-Nwl" secondAttribute="centerX" constant="-21" id="zDJ-Gk-veM"/>
+                            <constraint firstItem="uv2-zA-TLN" firstAttribute="trailing" secondItem="ddd-SZ-pVL" secondAttribute="trailing" id="zq5-oV-FpW"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="qZW-tX-UfJ"/>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
+                    <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
+                    <connections>
+                        <outlet property="keyboardSpacingConstraint" destination="xfT-uQ-Tn2" id="Ctd-e2-7FD"/>
+                        <outlet property="txtPassword" destination="uv2-zA-TLN" id="aWC-cO-D6Y"/>
+                        <outlet property="txtUsername" destination="ddd-SZ-pVL" id="eoA-FK-Dvj"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="YYI-ZE-XNM" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="241" y="-579"/>
+        </scene>
         <!--Clock View Controller-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
@@ -130,6 +237,15 @@
                                 </state>
                                 <connections>
                                     <action selector="performAlarm" destination="vXZ-lx-hvc" eventType="touchUpInside" id="syh-qo-7cE"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1mo-yu-i5f">
+                                <rect key="frame" x="139" y="100" width="46" height="30"/>
+                                <state key="normal" title="Button">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="t7g-vl-T2D" kind="modal" id="sBQ-RT-yiy"/>
                                 </connections>
                             </button>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="waJ-n9-LAg">
@@ -1323,8 +1439,11 @@
     </scenes>
     <resources>
         <image name="AlarmClock" width="300" height="300"/>
+        <image name="LoginBackground" width="160" height="293"/>
         <image name="MiniAlarm" width="13" height="13"/>
         <image name="SettingsIcon" width="13" height="13"/>
+        <image name="SpotifyLoginButton" width="270" height="52"/>
+        <image name="facebook" width="30" height="30"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
