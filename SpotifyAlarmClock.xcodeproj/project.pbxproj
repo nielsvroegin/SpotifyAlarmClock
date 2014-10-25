@@ -49,7 +49,7 @@
 		B885FE9A19C488F500EC1D32 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = B885FE9819C488F500EC1D32 /* InfoPlist.strings */; };
 		B885FE9C19C488F500EC1D32 /* SpotifyAlarmClockTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B885FE9B19C488F500EC1D32 /* SpotifyAlarmClockTests.m */; };
 		B885FEF719C4C7CE00EC1D32 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B885FE7419C488F400EC1D32 /* UIKit.framework */; };
-		B8A7F18319FAA9B700BFEAD0 /* beep.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B8A7F18219FAA9B700BFEAD0 /* beep.mp3 */; };
+		B8A7F18619FAED5C00BFEAD0 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8A7F18519FAED5C00BFEAD0 /* MediaPlayer.framework */; };
 		B8A99D2E19F82D2D000359BF /* BackupAlarmSoundViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B8A99D2D19F82D2D000359BF /* BackupAlarmSoundViewController.m */; };
 		B8A99D3F19F82EAC000359BF /* alpha-beta.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B8A99D3B19F82EAC000359BF /* alpha-beta.mp3 */; };
 		B8A99D4019F82EAC000359BF /* day-by-day.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B8A99D3C19F82EAC000359BF /* day-by-day.mp3 */; };
@@ -171,7 +171,7 @@
 		B885FE9719C488F500EC1D32 /* SpotifyAlarmClockTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SpotifyAlarmClockTests-Info.plist"; sourceTree = "<group>"; };
 		B885FE9919C488F500EC1D32 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		B885FE9B19C488F500EC1D32 /* SpotifyAlarmClockTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SpotifyAlarmClockTests.m; sourceTree = "<group>"; };
-		B8A7F18219FAA9B700BFEAD0 /* beep.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = beep.mp3; sourceTree = "<group>"; };
+		B8A7F18519FAED5C00BFEAD0 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		B8A99D2C19F82D2D000359BF /* BackupAlarmSoundViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BackupAlarmSoundViewController.h; sourceTree = "<group>"; };
 		B8A99D2D19F82D2D000359BF /* BackupAlarmSoundViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BackupAlarmSoundViewController.m; sourceTree = "<group>"; };
 		B8A99D3B19F82EAC000359BF /* alpha-beta.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "alpha-beta.mp3"; sourceTree = "<group>"; };
@@ -216,6 +216,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B8A7F18619FAED5C00BFEAD0 /* MediaPlayer.framework in Frameworks */,
 				B826479E19EBD7F100FBB21A /* QuartzCore.framework in Frameworks */,
 				B86104CC19CD9671001DB753 /* CoreData.framework in Frameworks */,
 				B82A534C19C4FF5F000C40D8 /* libCocoaLibSpotify.a in Frameworks */,
@@ -435,6 +436,7 @@
 		B885FE6F19C488F400EC1D32 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B8A7F18519FAED5C00BFEAD0 /* MediaPlayer.framework */,
 				B826479D19EBD7F100FBB21A /* QuartzCore.framework */,
 				B86104CB19CD9671001DB753 /* CoreData.framework */,
 				B82A533F19C4F645000C40D8 /* Security.framework */,
@@ -527,7 +529,6 @@
 		B8A99D3A19F82EAC000359BF /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				B8A7F18219FAA9B700BFEAD0 /* beep.mp3 */,
 				B8A99D3B19F82EAC000359BF /* alpha-beta.mp3 */,
 				B8A99D3C19F82EAC000359BF /* day-by-day.mp3 */,
 				B8A99D3D19F82EAC000359BF /* forever.mp3 */,
@@ -693,7 +694,6 @@
 				B8D7690F19E5B22C00988A71 /* TrackCell.xib in Resources */,
 				B8D7691119E5B23A00988A71 /* LoadMoreCell.xib in Resources */,
 				B8D7690A19E5B1F300988A71 /* AlbumCell.xib in Resources */,
-				B8A7F18319FAA9B700BFEAD0 /* beep.mp3 in Resources */,
 				B8A99D3F19F82EAC000359BF /* alpha-beta.mp3 in Resources */,
 				B8A99D4019F82EAC000359BF /* day-by-day.mp3 in Resources */,
 				B885FE8419C488F400EC1D32 /* Main.storyboard in Resources */,

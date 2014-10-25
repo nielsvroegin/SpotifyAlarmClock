@@ -8,6 +8,7 @@
 
 #import "Tools.h"
 #import "MBProgressHud.h"
+#import <MediaPlayer/MediaPlayer.h>
 
 @implementation Tools
 
@@ -95,5 +96,19 @@
     
     return [NSData dataWithContentsOfFile:filePath];
 }
+
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
++ (void) setSystemVolume:(float)volume {
+    [[MPMusicPlayerController applicationMusicPlayer] setVolume:volume];
+}
+#pragma GCC diagnostic pop
+
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
++ (float) getSystemVolume {
+    return [[MPMusicPlayerController applicationMusicPlayer] volume];
+}
+#pragma GCC diagnostic pop
 
 @end

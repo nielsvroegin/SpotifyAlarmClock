@@ -383,7 +383,6 @@
                                                     <color key="tintColor" red="0.094117647058823528" green="0.42745098039215684" blue="0.15294117647058825" alpha="1" colorSpace="calibratedRGB"/>
                                                     <connections>
                                                         <action selector="maxVolumeSettingChanged:" destination="AeY-Tb-n7l" eventType="valueChanged" id="Lzf-Vw-xqj"/>
-                                                        <action selector="maxVolumeSliderEndDragging:" destination="AeY-Tb-n7l" eventType="touchUpInside" id="Spo-Hc-dyy"/>
                                                     </connections>
                                                 </slider>
                                             </subviews>

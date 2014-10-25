@@ -13,6 +13,7 @@
 #import "BackgroundGlow.h"
 #import "NextAlarm.h"
 #import "Tools.h"
+
 @import AVFoundation;
 
 @interface ClockViewController ()
@@ -27,6 +28,7 @@
 @property (nonatomic, strong) SPPlaybackManager * playBackManager;
 @property (nonatomic, strong) AVAudioPlayer * audioPlayer;
 @property (nonatomic, strong) NSUserDefaults * userDefaults;
+@property (nonatomic, assign) float systemVolume;
 
 @property (weak, nonatomic) IBOutlet UILabel *spotifyConnectionState;
 @property (weak, nonatomic) IBOutlet UILabel *hour;
@@ -221,6 +223,11 @@
         self.topBarAlarm.alpha = 1;
     }];
     
+    //Set volumes and remember volumes
+    self.systemVolume = [Tools getSystemVolume];
+    [playBackManager setVolume:0];
+    [Tools setSystemVolume:[userDefaults floatForKey:@"MaxVolume"]];
+    
     //Play song
     [self playSong];
 }
@@ -281,6 +288,12 @@
         return;
     }
     
+    //Set volume for progressive alarm volume
+    if(songList == nil || [songList count] == 0)
+        [self.audioPlayer setVolume:0];
+    else
+        [self.audioPlayer setVolume:[playBackManager volume]];
+    
     [self.audioPlayer setNumberOfLoops:-1];
     [self.audioPlayer play];
 }
@@ -322,7 +335,9 @@
 {
     NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
     NSDateFormatter* timeFormatter = [[NSDateFormatter alloc] init];
-    NSDateComponents * snoozeDateComponents = [gregorian components:(NSWeekdayCalendarUnit | NSHourCalendarUnit | NSMinuteCalendarUnit) fromDate:snoozeDate];
+    NSDateComponents * snoozeDateComponents = nil;
+    if(snoozeDate != nil)
+       snoozeDateComponents = [gregorian components:(NSWeekdayCalendarUnit | NSHourCalendarUnit | NSMinuteCalendarUnit) fromDate:snoozeDate];
     
     
     //Retrieve time
@@ -419,6 +434,13 @@
         self.topBarAlarm.backgroundColor = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.5];
         self.bottomBarAlarm.backgroundColor = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.5];
     }
+    
+    //Increase volume until max
+    float increaseVolume = 0.05;
+    if(audioPlayer != nil && [audioPlayer volume] < 1)
+        audioPlayer.volume += increaseVolume;
+    else if(audioPlayer == nil && [playBackManager volume] < 1)
+        playBackManager.volume += increaseVolume;
 }
     
 #pragma Alarm Handling Methods
@@ -428,6 +450,9 @@
      performingAlarm = nil;
      songList = nil;
      snoozeDate = nil;
+     playBackManager.volume = 1;
+     audioPlayer.volume = 1;
+     [Tools setSystemVolume:self.systemVolume];
      
      //Hide ClockAlarm view
      self.topBarAlarm.hidden = YES;
@@ -446,6 +471,9 @@
  - (IBAction) snoozeAlarm
  {
      isPerformingAlarm = NO;
+     playBackManager.volume = 1;
+     audioPlayer.volume = 1;
+     [Tools setSystemVolume:self.systemVolume];
      
      snoozeDate = [[NSDate date] dateByAddingTimeInterval:60*9];
      
