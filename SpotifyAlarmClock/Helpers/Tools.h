@@ -17,6 +17,7 @@
 + (NSDateComponents*)hourAndMinuteForDate:(NSDate*)date;
 + (NSString *) shortWeekDaySymbolForUnit:(NSInteger) unit;
 + (NSData *)dateForAlarmBackupSound:(NSUInteger)sound;
++ (NSString *)dottedString:(NSString*)text;
 + (void) setSystemVolume:(float)volume;
 + (float) getSystemVolume;
 

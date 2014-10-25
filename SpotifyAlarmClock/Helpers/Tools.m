@@ -97,6 +97,19 @@
     return [NSData dataWithContentsOfFile:filePath];
 }
 
++ (NSString *)dottedString:(NSString*)text
+{
+    // self.password is your password string
+    NSMutableString *dottedPassword = [[NSMutableString alloc] init];
+    
+    for (NSUInteger i = 0; i < [text length]; i++)
+    {
+        [dottedPassword appendString:@"●"]; // BLACK CIRCLE Unicode: U+25CF, UTF-8: E2 97 8F
+    }
+    
+    return dottedPassword;
+}
+
 #pragma GCC diagnostic push
 #pragma GCC diagnostic ignored "-Wdeprecated-declarations"
 + (void) setSystemVolume:(float)volume {

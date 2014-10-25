@@ -17,13 +17,16 @@
 @implementation TextEditViewController
 @synthesize txtField;
 @synthesize text;
+@synthesize tag;
 @synthesize delegate;
+@synthesize autocapitalizationType;
+@synthesize secureTextEntry;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
     self = [super initWithStyle:style];
     if (self) {
-        // Custom initialization
+        
     }
     return self;
 }
@@ -31,6 +34,8 @@
 - (void)viewDidLoad
 {
     [txtField setText:[self text]];
+    [txtField setAutocapitalizationType:autocapitalizationType];
+    [txtField setSecureTextEntry:secureTextEntry];
     [txtField becomeFirstResponder];
     
     [super viewDidLoad];

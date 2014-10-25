@@ -13,5 +13,8 @@
 
 @property (nonatomic, weak) id<TextEditDelegate> delegate;
 @property (nonatomic, strong) NSString *text;
+@property (nonatomic, assign) NSUInteger tag;
+@property (nonatomic, assign) BOOL secureTextEntry;
+@property (nonatomic, assign) UITextAutocapitalizationType autocapitalizationType;
 
 @end

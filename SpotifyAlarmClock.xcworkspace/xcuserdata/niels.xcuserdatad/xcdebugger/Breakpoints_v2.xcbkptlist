@@ -184,11 +184,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SpotifyAlarmClock/Controllers/Settings/SettingsViewController.m"
-            timestampString = "435925396.31503"
+            timestampString = "435931856.415737"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "58"
-            endingLineNumber = "58"
+            startingLineNumber = "75"
+            endingLineNumber = "75"
             landmarkName = "-blinkSecondsMarkerSettingChanged:"
             landmarkType = "5">
          </BreakpointContent>
@@ -200,11 +200,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SpotifyAlarmClock/Controllers/Settings/SettingsViewController.m"
-            timestampString = "435925396.31503"
+            timestampString = "435931856.415737"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "64"
-            endingLineNumber = "64"
+            startingLineNumber = "81"
+            endingLineNumber = "81"
             landmarkName = "-showBackgroundGlowSettingChanged:"
             landmarkType = "5">
          </BreakpointContent>
@@ -216,11 +216,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SpotifyAlarmClock/Controllers/Settings/SettingsViewController.m"
-            timestampString = "435925396.31503"
+            timestampString = "435931856.415737"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "44"
-            endingLineNumber = "44"
+            startingLineNumber = "51"
+            endingLineNumber = "51"
             landmarkName = "-viewDidLoad"
             landmarkType = "5">
          </BreakpointContent>

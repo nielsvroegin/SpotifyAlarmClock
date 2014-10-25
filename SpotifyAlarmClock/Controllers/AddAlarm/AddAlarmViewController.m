@@ -230,6 +230,7 @@
     else if([[segue identifier] isEqualToString:@"labelTextEdit"])
     {
         TextEditViewController* vw = [segue destinationViewController];
+        [vw setAutocapitalizationType:UITextAutocapitalizationTypeWords];
         [vw setTitle:@"Label"];
         [vw setDelegate:self];
         [vw setText:[self.lbLabel text]];
