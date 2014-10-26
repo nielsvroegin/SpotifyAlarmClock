@@ -95,8 +95,6 @@
         
     }
     
-    [cell.albumImage sizeToFit];
-    
     return cell;
 }
 
