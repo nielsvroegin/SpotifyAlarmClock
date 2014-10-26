@@ -74,7 +74,7 @@
     
     CGFloat height = keyboardFrame.size.height;
     
-    self.keyboardSpacingConstraint.constant = height + 40;
+    self.keyboardSpacingConstraint.constant = height + 10;
 }
 
 

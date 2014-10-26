@@ -938,6 +938,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SpotifyAlarmClock/SpotifyAlarmClock-Prefix.pch";
 				INFOPLIST_FILE = "SpotifyAlarmClock/SpotifyAlarmClock-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LIBRARY_SEARCH_PATHS = "";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
@@ -965,6 +966,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SpotifyAlarmClock/SpotifyAlarmClock-Prefix.pch";
 				INFOPLIST_FILE = "SpotifyAlarmClock/SpotifyAlarmClock-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LIBRARY_SEARCH_PATHS = "";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
