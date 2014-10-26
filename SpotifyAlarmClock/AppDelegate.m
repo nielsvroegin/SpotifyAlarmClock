@@ -44,6 +44,9 @@
     if([userDefaults objectForKey:@"Brightness"] == nil)
         [userDefaults setFloat:0.5 forKey:@"Brightness"];
     
+    if([userDefaults objectForKey:@"UseAlarmClockWithoutSpotify"] == nil)
+        [userDefaults setBool:NO forKey:@"UseAlarmClockWithoutSpotify"];
+    
     [userDefaults synchronize];
     
     //Set brightness for app
@@ -61,7 +64,9 @@
     {
         //Login when credentials are available
         if([[userDefaults objectForKey:@"SpotifyUsername"] length] > 0 && [[userDefaults objectForKey:@"SpotifyPassword"] length] > 0)
-           [[SPSession sharedSession] attemptLoginWithUserName:[userDefaults objectForKey:@"SpotifyUsername"] existingCredential:[userDefaults objectForKey:@"SpotifyPassword"]];
+            [[SPSession sharedSession] attemptLoginWithUserName:[userDefaults objectForKey:@"SpotifyUsername"] existingCredential:[userDefaults objectForKey:@"SpotifyPassword"]];
+        else
+            [[SPSession sharedSession] logout:nil];
     }
     
     return YES;

@@ -7,8 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "TextEditDelegate.h"
 
-@interface SettingsViewController : UITableViewController<TextEditDelegate>
+@interface SettingsViewController : UITableViewController
 
 @end

@@ -12,6 +12,7 @@
 #import "BackgroundGlow.h"
 #import "NextAlarm.h"
 #import "Tools.h"
+#import "LoginViewController.h"
 
 @import AVFoundation;
 
@@ -155,6 +156,14 @@
     //Keep app awake
     [UIApplication sharedApplication].idleTimerDisabled = NO;
     [UIApplication sharedApplication].idleTimerDisabled = YES;
+    
+    //Check if need to login
+    NSString * spotifyUsername = [userDefaults objectForKey:@"SpotifyUsername"];
+    NSString * spotifyPassword = [userDefaults objectForKey:@"SpotifyPassword"];
+    BOOL useAlarmClockWithoutSpotify = [userDefaults boolForKey:@"UseAlarmClockWithoutSpotify"];
+    
+    if(!useAlarmClockWithoutSpotify && (spotifyUsername == nil || spotifyPassword == nil || [spotifyUsername length] == 0 || [spotifyPassword length] == 0))
+        [self performSegueWithIdentifier:@"SpotifyLoginSegue" sender:self];
 }
 
 - (void) viewDidDisappear:(BOOL)animated
@@ -522,6 +531,14 @@
 {
     if(performingAlarm)
         [self playBackupAlarmSound];
+}
+
+-(UIViewController *)viewControllerToPresentLoginViewForSession:(SPSession *)aSession
+{
+    if(![userDefaults boolForKey:@"UseAlarmClockWithoutSpotify"])
+        return [[LoginViewController alloc] init];
+    else
+        return nil;
 }
 
 #pragma mark - SPPlackbackManager delegate

@@ -17,15 +17,11 @@
 @interface SettingsViewController ()
 
 @property (nonatomic, strong) NSUserDefaults * userDefaults;
-@property (nonatomic, assign) BOOL spotifyCredentialsChanged;
-@property (nonatomic, assign) BOOL checkingLogin;
 
 @property (weak, nonatomic) IBOutlet UISwitch *swBlinkSecondsMarker;
 @property (weak, nonatomic) IBOutlet UISwitch *swShowBackgroundGlow;
 @property (weak, nonatomic) IBOutlet UISlider *slMaxVolume;
 @property (weak, nonatomic) IBOutlet UISlider *slBrightness;
-@property (weak, nonatomic) IBOutlet UILabel *lbSpotifyUsername;
-@property (weak, nonatomic) IBOutlet UILabel *lbSpotifyPassword;
 @property (weak, nonatomic) IBOutlet UILabel *lbSpotifyConnectionState;
 
 - (IBAction)blinkSecondsMarkerSettingChanged:(id)sender;
@@ -42,10 +38,6 @@
 @synthesize swShowBackgroundGlow;
 @synthesize slMaxVolume;
 @synthesize slBrightness;
-@synthesize lbSpotifyUsername;
-@synthesize lbSpotifyPassword;
-@synthesize spotifyCredentialsChanged;
-@synthesize checkingLogin;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -57,16 +49,6 @@
     [swShowBackgroundGlow setOn:[userDefaults boolForKey:@"ShowBackgroundGlow"]];
     [slMaxVolume setValue:[userDefaults floatForKey:@"MaxVolume"]];
     [slBrightness setValue:[userDefaults floatForKey:@"Brightness"]];
-    
-    if([[userDefaults stringForKey:@"SpotifyUsername"] length] > 0)
-        [lbSpotifyUsername setText:[userDefaults stringForKey:@"SpotifyUsername"]];
-    else
-        [lbSpotifyUsername setText:@"Not specified"];
-    
-    if([[userDefaults stringForKey:@"SpotifyPassword"] length] > 0)
-        [lbSpotifyPassword setText:[Tools dottedString:[userDefaults stringForKey:@"SpotifyPassword"]]];
-    else
-        [lbSpotifyPassword setText:@"Not specified"];
 }
 
 - (void) viewWillAppear:(BOOL)animated
@@ -75,6 +57,9 @@
     
     //Observe spotify connection state
     [[SPSession sharedSession] addObserver:self forKeyPath:@"connectionState" options:0 context:NULL];
+    
+    [self updateSpotifyConnectionState];
+    
 }
 
 - (void) viewDidDisappear:(BOOL)animated
@@ -88,27 +73,6 @@
 {
     if([keyPath isEqual:@"connectionState"])
         [self updateSpotifyConnectionState];
-}
-
-- (void) viewDidAppear:(BOOL)animated
-{
-    [super viewDidAppear:animated];
-    
-    //Re-login when sptofy credentials changed
-    if(spotifyCredentialsChanged)
-    {
-        if(!checkingLogin)
-        {
-            checkingLogin = YES;
-            [[SPSession sharedSession] logout:^{
-                [[SPSession sharedSession] attemptLoginWithUserName:[userDefaults objectForKey:@"SpotifyUsername"] password:[userDefaults objectForKey:@"SpotifyPassword"]];
-                checkingLogin = NO;
-            }];
-        }
-        spotifyCredentialsChanged =  NO;
-    }
-    
-    [self updateSpotifyConnectionState];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -174,58 +138,18 @@
 }
 
 
-#pragma mark - Text edit delegate method(s)
-
-- (void) textEditChanged:(TextEditViewController *)textEdit value:(NSString *)newValue
-{
-    if([textEdit tag] == 1 && ![newValue isEqualToString:[userDefaults objectForKey:@"SpotifyUsername"]]) //Username
-    {
-        [userDefaults setObject:newValue forKey:@"SpotifyUsername"];
-        if([newValue length] > 0)
-            [lbSpotifyUsername setText:newValue];
-        else
-            [lbSpotifyUsername setText:@"Not specified"];
-        
-        spotifyCredentialsChanged = YES;
-    }
-    else if([textEdit tag] == 2 && ![newValue isEqualToString:[userDefaults objectForKey:@"SpotifyPassword"]]) //Password
-    {
-        [userDefaults setObject:newValue forKey:@"SpotifyPassword"];
-        if([newValue length] > 0)
-            [lbSpotifyPassword setText:[Tools dottedString:newValue]];
-        else
-            [lbSpotifyPassword setText:@"Not specified"];
-        
-        spotifyCredentialsChanged = YES;
-    }
-        
-    [userDefaults synchronize];
-}
-
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    if([[segue identifier] isEqualToString:@"spotifyUsernameSegue"])
+    if([[segue identifier] isEqualToString:@"resetLoginSegue"])
     {
-        TextEditViewController * vw = [segue destinationViewController];
-        [vw setTag:1];
-        [vw setTitle:@"Spotify Username"];
-        [vw setText:[userDefaults stringForKey:@"SpotifyUsername"]];
-        [vw setAutocapitalizationType:UITextAutocapitalizationTypeNone];
-        [vw setDelegate:self];
+        [[SPSession sharedSession] logout:nil];
+        [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"SpotifyUsername"];
+        [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"SpotifyPassword"];
+        [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"UseAlarmClockWithoutSpotify"];
     }
-    else if([[segue identifier] isEqualToString:@"spotifyPasswordSegue"])
-    {
-        TextEditViewController * vw = [segue destinationViewController];
-        [vw setTag:2];
-        [vw setTitle:@"Spotify Password"];
-        [vw setText:[userDefaults stringForKey:@"SpotifyPassword"]];
-        [vw setSecureTextEntry:YES];
-        [vw setAutocapitalizationType:UITextAutocapitalizationTypeNone];
-        [vw setDelegate:self];
-    }    
 }
 
 @end

@@ -54,6 +54,8 @@
 {
     [super viewWillDisappear:animated];
     
+    [[SPSession sharedSession] setDelegate:nil];
+    
     [txtUsername resignFirstResponder];
     [txtPassword resignFirstResponder];
 }
@@ -102,7 +104,10 @@
     if([alertView tag] == 1) //Skip Login alert
     {
         if (buttonIndex == [alertView firstOtherButtonIndex])
+        {
+            [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"UseAlarmClockWithoutSpotify"];
             [self dismissViewControllerAnimated:YES completion:nil];
+        }
     }
 }
 
