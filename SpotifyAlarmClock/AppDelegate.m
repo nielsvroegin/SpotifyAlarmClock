@@ -61,7 +61,7 @@
     {
         //Login when credentials are available
         if([[userDefaults objectForKey:@"SpotifyUsername"] length] > 0 && [[userDefaults objectForKey:@"SpotifyPassword"] length] > 0)
-           [[SPSession sharedSession] attemptLoginWithUserName:[userDefaults objectForKey:@"SpotifyUsername"] password:[userDefaults objectForKey:@"SpotifyPassword"]];
+           [[SPSession sharedSession] attemptLoginWithUserName:[userDefaults objectForKey:@"SpotifyUsername"] existingCredential:[userDefaults objectForKey:@"SpotifyPassword"]];
     }
     
     return YES;

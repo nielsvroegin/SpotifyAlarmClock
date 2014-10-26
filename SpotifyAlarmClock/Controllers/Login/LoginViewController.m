@@ -7,6 +7,7 @@
 //
 
 #import "LoginViewController.h"
+#import "MBProgressHud.h"
 
 @interface LoginViewController ()
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *keyboardSpacingConstraint;
@@ -16,6 +17,7 @@
 - (IBAction)loginButtonClicked:(id)sender;
 - (IBAction)skipLoginButtonClicked:(id)sender;
 - (void)keyboardWillShow:(NSNotification *)notification;
+- (void) login;
 @end
 
 @implementation LoginViewController
@@ -35,11 +37,25 @@
     
     //Show keyboard
     [txtUsername becomeFirstResponder];
+    
+    //Set delegates
+    [txtUsername setDelegate:self];
+    [txtPassword setDelegate:self];
+}
+
+- (void) viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    [[SPSession sharedSession] setDelegate:self];
 }
 
 - (void) viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
+    
+    [txtUsername resignFirstResponder];
+    [txtPassword resignFirstResponder];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -56,16 +72,40 @@
     return UIStatusBarStyleLightContent;
 }
 
-// The callback for frame-changing of keyboard
-- (IBAction)loginButtonClicked:(id)sender {
+- (void) login
+{
+    //Show loading HUD
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    hud.labelText = @"Logging In...";
+    
+    [[SPSession sharedSession] attemptLoginWithUserName:[txtUsername text] password:[txtPassword text]];
 }
 
-- (IBAction)skipLoginButtonClicked:(id)sender {
-    [txtUsername resignFirstResponder];
-    [txtPassword resignFirstResponder];
-    
-    [self dismissViewControllerAnimated:YES completion:nil];
+- (IBAction)loginButtonClicked:(id)sender
+{
+    [self login];
 }
+
+- (IBAction)skipLoginButtonClicked:(id)sender
+{
+    UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Spotify Usage"
+                                                   message:@"Are you sure you want to use the Alarm Clock without Spotify features? You can enter your credentials afterwards in the settings menu."
+                                                  delegate:self
+                                         cancelButtonTitle:@"No"
+                                         otherButtonTitles:@"Yes",nil];
+    [alert setTag:1];
+    [alert show];
+}
+
+- (void) alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if([alertView tag] == 1) //Skip Login alert
+    {
+        if (buttonIndex == [alertView firstOtherButtonIndex])
+            [self dismissViewControllerAnimated:YES completion:nil];
+    }
+}
+
 
 - (void)keyboardWillShow:(NSNotification *)notification {
     NSDictionary *info = [notification userInfo];
@@ -77,5 +117,73 @@
     self.keyboardSpacingConstraint.constant = height + 10;
 }
 
+#pragma SPSessionDelegate methods
+
+-(void)session:(SPSession *)aSession didGenerateLoginCredentials:(NSString *)credential forUserName:(NSString *)userName
+{
+    [[NSUserDefaults standardUserDefaults] setObject:userName forKey:@"SpotifyUsername"];
+    [[NSUserDefaults standardUserDefaults] setObject:credential forKey:@"SpotifyPassword"];
+    
+    [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void)session:(SPSession *)aSession didFailToLoginWithError:(NSError *)error
+{
+    [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+    
+    NSString * errorMessage;
+    switch ([error code])
+    {
+        case SP_ERROR_BAD_USERNAME_OR_PASSWORD:
+            errorMessage = @"Your username and/or password was not accepted for login.";
+            break;
+        case SP_ERROR_USER_NEEDS_PREMIUM:
+            errorMessage = @"Your Spotify account needs to be Premium.";
+            break;
+        case SP_ERROR_USER_BANNED:
+            errorMessage = @"The specified Spotify account is banned.";
+            break;
+        case SP_ERROR_OTHER_PERMANENT:
+            errorMessage = @"Could not login. Is your internet connection still active?";
+            break;
+        default:
+            errorMessage = [error localizedDescription];
+            break;
+    }
+    
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Spotify Login Failed"
+                                                   message:errorMessage
+                                                  delegate:self
+                                         cancelButtonTitle:@"Oke"
+                                          otherButtonTitles: nil];
+    
+    [alert show];
+}
+
+- (void)session:(SPSession *)aSession didEncounterNetworkError:(NSError *)error
+{
+   [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+    
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Spotify Login Failed"
+                                                    message:@"Could not check your credential due to a network error. Is your internet connection active?"
+                                                   delegate:self
+                                          cancelButtonTitle:@"Oke"
+                                          otherButtonTitles: nil];
+    
+    [alert show];
+}
+
+#pragma UITextField delegate methods
+
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    if(textField == txtUsername)
+        [txtPassword becomeFirstResponder];
+    else if(textField == txtPassword)
+        [self login];
+    
+    return YES;
+}
 
 @end
