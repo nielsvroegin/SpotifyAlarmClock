@@ -274,7 +274,7 @@
     //Find next song
     NSUInteger newSongIndex;
     if([performingAlarm.shuffle boolValue])
-        newSongIndex = arc4random() % [songList count];
+        newSongIndex = arc4random_uniform([songList count]);
     else
         newSongIndex = 0;
     

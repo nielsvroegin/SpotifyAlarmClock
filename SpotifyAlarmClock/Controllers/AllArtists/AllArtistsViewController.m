@@ -126,7 +126,7 @@
     //More cells loading
     if([self.searchResult.artists count] == [indexPath row])
     {
-        LoadMoreCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"loadingMoreArtists" forIndexPath:indexPath];
+        LoadMoreCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"loadingMoreCells" forIndexPath:indexPath];
         [cell.loadingText setText:@"Loading more artists..."];
         [cell.spinner startAnimating];
         

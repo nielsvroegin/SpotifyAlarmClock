@@ -120,7 +120,7 @@
     //More cells loading
     if([self.searchResult.albums count] == [indexPath row])
     {
-        LoadMoreCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"loadingMoreAlbums" forIndexPath:indexPath];
+        LoadMoreCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"loadingMoreCells" forIndexPath:indexPath];
         [cell.loadingText setText:@"Loading more albums..."];
         [cell.spinner startAnimating];
         

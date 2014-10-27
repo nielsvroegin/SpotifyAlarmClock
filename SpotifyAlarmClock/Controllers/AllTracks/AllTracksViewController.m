@@ -146,7 +146,7 @@
     //Show more cells loading cell
     if([self.searchResult.tracks count] == [indexPath row])
     {
-        LoadMoreCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"loadingMoreTracks" forIndexPath:indexPath];
+        LoadMoreCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"loadingMoreCells" forIndexPath:indexPath];
         [cell.loadingText setText:@"Loading more tracks..."];
         [cell.spinner startAnimating];
         
