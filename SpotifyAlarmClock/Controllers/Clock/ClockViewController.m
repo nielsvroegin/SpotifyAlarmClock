@@ -29,6 +29,7 @@
 @property (nonatomic, strong) AVAudioPlayer * audioPlayer;
 @property (nonatomic, strong) NSUserDefaults * userDefaults;
 @property (nonatomic, assign) float systemVolume;
+@property (nonatomic, assign) NSUInteger songPlayTryCount;
 
 @property (weak, nonatomic) IBOutlet UILabel *spotifyConnectionState;
 @property (weak, nonatomic) IBOutlet UILabel *hour;
@@ -82,6 +83,7 @@
 @synthesize playBackManager;
 @synthesize audioPlayer;
 @synthesize userDefaults;
+@synthesize songPlayTryCount;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -228,6 +230,7 @@
     isPerformingAlarm = true;
     performingAlarm = alarm;
     snoozeDate = nil;
+    songPlayTryCount = 0;
     
     //Show ClockAlarm
     self.topBarAlarm.hidden = NO;
@@ -264,12 +267,14 @@
     if(songList == nil || [songList count] == 0)
         songList = [NSMutableArray arrayWithArray:[performingAlarm.songs array]];
     
-    //When no songs selected for alarm play backup alarm sound
-    if(songList == nil || [songList count] == 0)
+    //When no songs selected for alarm or retry count exceeded play backup alarm sound
+    if(songList == nil || [songList count] == 0 || songPlayTryCount == [performingAlarm.songs count])
     {
         [self playBackupAlarmSound];
         return;
     }
+    
+    songPlayTryCount++;
 
     //Find next song
     NSUInteger newSongIndex;
@@ -285,14 +290,31 @@
     
     [[SPSession sharedSession] trackForURL:[NSURL URLWithString:[alarmSong spotifyUrl]] callback:^(SPTrack *track)
     {
-        [playBackManager playTrack:track callback:^(NSError *error)
+        if(track == nil)
         {
-            if(error != nil)
-            {
-                NSLog(@"PlaybackManager play error: %@", error);
-                [self playBackupAlarmSound];
-            }
-        }];
+            performingAlarm = [Tools removeCorruptAlarmSong:alarmSong fromAlarm:performingAlarm];
+            [self playSong];
+            return;
+        }
+        
+        [SPAsyncLoading waitUntilLoaded:track timeout:kSPAsyncLoadingDefaultTimeout then:^(NSArray *loadedItems, NSArray *notLoadedItems)
+         {
+             if(loadedItems == nil || [loadedItems count] != 1 || ![[loadedItems firstObject] isKindOfClass:[SPTrack class]])
+             {
+                 [self playBackupAlarmSound];
+                 return;
+             }
+             
+             [playBackManager playTrack:track callback:^(NSError *error)
+              {
+                  if(error != nil)
+                  {
+                      NSLog(@"PlaybackManager play error: %@", error);
+                      [self playBackupAlarmSound];
+                  }
+              }];
+         }];
+        
     }];
 }
 
@@ -481,6 +503,7 @@
      snoozeDate = nil;
      playBackManager.volume = 1;
      audioPlayer.volume = 1;
+     songPlayTryCount = 0;
      [Tools setSystemVolume:self.systemVolume];
      
      //Hide ClockAlarm view
@@ -502,6 +525,7 @@
      isPerformingAlarm = NO;
      playBackManager.volume = 1;
      audioPlayer.volume = 1;
+     songPlayTryCount = 0;
      [Tools setSystemVolume:self.systemVolume];
      
      snoozeDate = [[NSDate date] dateByAddingTimeInterval:60*9];
@@ -543,7 +567,10 @@
 
 #pragma mark - SPPlackbackManager delegate
 
--(void)playbackManagerWillStartPlayingAudio:(SPPlaybackManager *)aPlaybackManager { }
+-(void)playbackManagerWillStartPlayingAudio:(SPPlaybackManager *)aPlaybackManager
+{
+    songPlayTryCount = 0;
+}
 -(void)playbackManagerAudioProgress:(SPPlaybackManager *)aPlaybackManager progress:(double) progress { }
 -(void)playbackManagerStoppedPlayingAudio:(SPPlaybackManager *)aPlaybackManager
 {
@@ -560,7 +587,12 @@
 -(void)playbackManagerDidEncounterStreamingError:(SPPlaybackManager *)aPlaybackManager error:(NSError *) error
 {
     if(performingAlarm)
-        [self playBackupAlarmSound];
+    {
+        if([error code] == SP_ERROR_NO_STREAM_AVAILABLE)
+            [playBackManager stopTrack];//Stop track, so new track will be started
+        else
+            [self playBackupAlarmSound];
+    }
 }
 
 

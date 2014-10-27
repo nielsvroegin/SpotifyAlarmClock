@@ -251,7 +251,13 @@
 {
     [[SPPlaybackManager sharedPlaybackManager] stopTrack];
     
-    [[[UIAlertView alloc] initWithTitle:@"Error" message:@"Spotify Alarm Clock encountered a network error. Is your internet connection still active?" delegate:nil cancelButtonTitle:@"Oke!" otherButtonTitles:nil] show];
+    NSString * message;
+    if([error code] == SP_ERROR_NO_STREAM_AVAILABLE)
+        message = @"Could not stream song anymore, consider deleting song from playlist.";
+    else
+        message = @"Spotify Alarm Clock encountered a network error. Is your internet connection still active?";
+    
+    [[[UIAlertView alloc] initWithTitle:@"Error" message:message delegate:nil cancelButtonTitle:@"Oke!" otherButtonTitles:nil] show];
     NSLog(@"SongViewController network error");
 }
 

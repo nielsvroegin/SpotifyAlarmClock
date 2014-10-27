@@ -8,6 +8,9 @@
 
 #import <Foundation/Foundation.h>
 
+@class Alarm;
+@class AlarmSong;
+
 @interface Tools : NSObject
 
 + (UIView*) findSuperView:(Class)typeOfView forView:(UIView*)view;
@@ -20,5 +23,6 @@
 + (NSString *)dottedString:(NSString*)text;
 + (void) setSystemVolume:(float)volume;
 + (float) getSystemVolume;
++ (Alarm *) removeCorruptAlarmSong:(AlarmSong *) alarmSong fromAlarm:(Alarm *) alarm;
 
 @end

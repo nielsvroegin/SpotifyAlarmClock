@@ -9,6 +9,9 @@
 #import "Tools.h"
 #import "MBProgressHud.h"
 #import <MediaPlayer/MediaPlayer.h>
+#import "Alarm.h"
+#import "AlarmSong.h"
+#import "AppDelegate.h"
 
 @implementation Tools
 
@@ -108,6 +111,29 @@
     }
     
     return dottedPassword;
+}
+
++ (Alarm *) removeCorruptAlarmSong:(AlarmSong *) alarmSong fromAlarm:(Alarm *) alarm
+{
+    /****** Get refs to Managed object context ******/
+    AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
+    NSManagedObjectContext *context = [appDelegate managedObjectContext];
+    NSError *error;
+    
+    [context deleteObject:alarmSong];
+    
+    /****** Save alarmData object ******/
+    if(![context save:&error])
+    {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Could not remove not playbable song from Alarm!" delegate:nil cancelButtonTitle:@"Oke!" otherButtonTitles:nil];
+        [alert show];
+        
+        NSLog(@"Context save error: %@", error);
+    }
+    
+    [context refreshObject:alarm mergeChanges:NO];
+    
+    return alarm;
 }
 
 #pragma GCC diagnostic push
