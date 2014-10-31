@@ -62,6 +62,7 @@
 - (void) playSong;
 - (void) playBackupAlarmSound;
 - (void)enableTapGestures:(bool)enabled;
+- (void) stopAlarmConfirmed;
 
 
 @end
@@ -526,31 +527,37 @@
 }
     
 #pragma Alarm Handling Methods
- - (IBAction) stopAlarm
- {
-     isPerformingAlarm = NO;
-     performingAlarm = nil;
-     songList = nil;
-     snoozeDate = nil;
-     playBackManager.volume = 1;
-     audioPlayer.volume = 1;
-     songPlayTryCount = 0;
-     [Tools setSystemVolume:self.systemVolume];
+- (IBAction) stopAlarm
+{
+    UIActionSheet * confirm = [[UIActionSheet alloc] initWithTitle:@"Do you really want to stop the alarm?" delegate:self cancelButtonTitle:nil destructiveButtonTitle:@"Yes" otherButtonTitles:@"No", nil];
+    [confirm setActionSheetStyle:UIActionSheetStyleBlackTranslucent];
+    [confirm showInView:self.view];
+}
+
+- (void) stopAlarmConfirmed
+{
+    isPerformingAlarm = NO;
+    performingAlarm = nil;
+    songList = nil;
+    snoozeDate = nil;
+    playBackManager.volume = 1;
+    audioPlayer.volume = 1;
+    songPlayTryCount = 0;
+    [Tools setSystemVolume:self.systemVolume];
     [self enableTapGestures:YES];
-     
-     //Hide ClockAlarm view
-     self.topBarAlarm.hidden = YES;
-     self.bottomBarAlarm.hidden = YES;
-     self.alarmBackground.hidden = YES;
-     
-     [playBackManager stopTrack];
-     if(audioPlayer != nil)
-     {
-         [self.audioPlayer stop];
-         self.audioPlayer = nil;
-     }
-         
- }
+    
+    //Hide ClockAlarm view
+    self.topBarAlarm.hidden = YES;
+    self.bottomBarAlarm.hidden = YES;
+    self.alarmBackground.hidden = YES;
+    
+    [playBackManager stopTrack];
+    if(audioPlayer != nil)
+    {
+        [self.audioPlayer stop];
+        self.audioPlayer = nil;
+    }
+}
 
  - (IBAction) snoozeAlarm
  {
@@ -575,6 +582,14 @@
          self.audioPlayer = nil;
      }
  }
+
+#pragma UIActionsheet delegate methods
+
+- (void)actionSheet:(UIActionSheet *)popup clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if(buttonIndex == 0)
+        [self stopAlarmConfirmed];
+}
 
 #pragma SPSessionDelegate methods
 

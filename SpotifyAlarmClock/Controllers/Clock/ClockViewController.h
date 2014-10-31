@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "CocoaLibSpotify.h"
 
-@interface ClockViewController : UIViewController <SPSessionDelegate, SPPlaybackManagerDelegate>
+@interface ClockViewController : UIViewController <SPSessionDelegate, SPPlaybackManagerDelegate, UIActionSheetDelegate>
 {
     
 }
