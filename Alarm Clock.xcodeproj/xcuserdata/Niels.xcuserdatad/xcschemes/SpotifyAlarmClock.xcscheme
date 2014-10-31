@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "B885FE6C19C488F400EC1D32"
-               BuildableName = "Alarm Clock for Spotify.app"
+               BuildableName = "Alarm Clock.app"
                BlueprintName = "Alarm Clock"
                ReferencedContainer = "container:Alarm Clock.xcodeproj">
             </BuildableReference>
@@ -33,7 +33,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "B885FE8D19C488F500EC1D32"
-               BuildableName = "Alarm Clock for SpotifyTests.xctest"
+               BuildableName = "Alarm ClockTests.xctest"
                BlueprintName = "Alarm ClockTests"
                ReferencedContainer = "container:Alarm Clock.xcodeproj">
             </BuildableReference>
@@ -43,7 +43,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "B885FE6C19C488F400EC1D32"
-            BuildableName = "Alarm Clock for Spotify.app"
+            BuildableName = "Alarm Clock.app"
             BlueprintName = "Alarm Clock"
             ReferencedContainer = "container:Alarm Clock.xcodeproj">
          </BuildableReference>
@@ -62,7 +62,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "B885FE6C19C488F400EC1D32"
-            BuildableName = "Alarm Clock for Spotify.app"
+            BuildableName = "Alarm Clock.app"
             BlueprintName = "Alarm Clock"
             ReferencedContainer = "container:Alarm Clock.xcodeproj">
          </BuildableReference>
@@ -80,7 +80,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "B885FE6C19C488F400EC1D32"
-            BuildableName = "Alarm Clock for Spotify.app"
+            BuildableName = "Alarm Clock.app"
             BlueprintName = "Alarm Clock"
             ReferencedContainer = "container:Alarm Clock.xcodeproj">
          </BuildableReference>

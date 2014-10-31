@@ -15,12 +15,18 @@
 @interface AlarmsViewController ()
 
 @property (nonatomic, strong) NSMutableArray *alarms;
+
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *btEdit;
+
 - (IBAction)EditAlarms:(id)sender;
 - (IBAction)enabledSwitchChanged:(id)sender;
+- (void) editButtonCheck;
+
 @end
 
 @implementation AlarmsViewController
 @synthesize alarms;
+@synthesize btEdit;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -34,7 +40,7 @@
 - (void)viewDidLoad
 {
     [self loadAlarms];
-    
+    [self editButtonCheck];
     [super viewDidLoad];
 }
 
@@ -60,6 +66,14 @@
     }
 }
 
+- (void) editButtonCheck
+{
+    if(self.alarms != nil && [self.alarms count] > 0)
+        [btEdit setEnabled:YES];
+    else
+        [btEdit setEnabled:NO];
+}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -79,6 +93,9 @@
         if(self.tableView.editing)
             [self EditAlarms:nil];
         [self.tableView reloadData];
+        
+        //Check if edit button should be enabled/disabled
+        [self editButtonCheck];
     }
 }
 
@@ -180,7 +197,7 @@
     if(indexPath.row < [self.alarms count])
         return 90;
     else
-        return 45;
+        return 60;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
@@ -228,6 +245,14 @@
     [self.tableView beginUpdates];
     [self.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
     [self.tableView endUpdates];
+    
+
+    //Stop editing style when no alarms remaining
+    if((self.alarms == nil || [self.alarms count] == 0) && self.tableView.editing)
+        [self EditAlarms:self];
+    
+    //Check if edit button should be enabled/disabled
+    [self editButtonCheck];
 }
 
 #pragma mark - Table view data source

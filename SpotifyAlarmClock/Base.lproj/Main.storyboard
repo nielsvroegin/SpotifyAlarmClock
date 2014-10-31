@@ -1490,13 +1490,21 @@
                                     <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Add new alarm" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6dG-Jg-t38">
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add new alarm" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6dG-Jg-t38">
                                             <rect key="frame" x="15" y="11" width="157" height="21"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="21" id="62I-nI-7cS"/>
+                                                <constraint firstAttribute="width" constant="157" id="E3Z-QM-T75"/>
+                                            </constraints>
                                             <fontDescription key="fontDescription" name="Helvetica-Light" family="Helvetica" pointSize="20"/>
                                             <color key="textColor" red="0.093663677010000002" green="0.42857142860000003" blue="0.15435124059999999" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="centerY" secondItem="6dG-Jg-t38" secondAttribute="centerY" id="qHn-g2-4l2"/>
+                                        <constraint firstItem="6dG-Jg-t38" firstAttribute="leading" secondItem="qw4-6g-Bpp" secondAttribute="leadingMargin" constant="7" id="y3D-kv-Ek2"/>
+                                    </constraints>
                                 </tableViewCellContentView>
                                 <connections>
                                     <segue destination="P9Z-Ee-gP4" kind="modal" id="hke-nl-A7S"/>
@@ -1517,6 +1525,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="btEdit" destination="OaK-fa-Tpy" id="TiO-uu-XqD"/>
                         <segue destination="P9Z-Ee-gP4" kind="modal" identifier="editAlarm" id="i1N-E3-qx4"/>
                     </connections>
                 </tableViewController>
