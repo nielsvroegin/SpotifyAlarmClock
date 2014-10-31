@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "B885FE6C19C488F400EC1D32"
-               BuildableName = "SpotifyAlarmClock.app"
-               BlueprintName = "SpotifyAlarmClock"
-               ReferencedContainer = "container:SpotifyAlarmClock.xcodeproj">
+               BuildableName = "Alarm Clock for Spotify.app"
+               BlueprintName = "Alarm Clock"
+               ReferencedContainer = "container:Alarm Clock.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,9 +33,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "B885FE8D19C488F500EC1D32"
-               BuildableName = "SpotifyAlarmClockTests.xctest"
-               BlueprintName = "SpotifyAlarmClockTests"
-               ReferencedContainer = "container:SpotifyAlarmClock.xcodeproj">
+               BuildableName = "Alarm Clock for SpotifyTests.xctest"
+               BlueprintName = "Alarm ClockTests"
+               ReferencedContainer = "container:Alarm Clock.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -43,9 +43,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "B885FE6C19C488F400EC1D32"
-            BuildableName = "SpotifyAlarmClock.app"
-            BlueprintName = "SpotifyAlarmClock"
-            ReferencedContainer = "container:SpotifyAlarmClock.xcodeproj">
+            BuildableName = "Alarm Clock for Spotify.app"
+            BlueprintName = "Alarm Clock"
+            ReferencedContainer = "container:Alarm Clock.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </TestAction>
@@ -62,9 +62,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "B885FE6C19C488F400EC1D32"
-            BuildableName = "SpotifyAlarmClock.app"
-            BlueprintName = "SpotifyAlarmClock"
-            ReferencedContainer = "container:SpotifyAlarmClock.xcodeproj">
+            BuildableName = "Alarm Clock for Spotify.app"
+            BlueprintName = "Alarm Clock"
+            ReferencedContainer = "container:Alarm Clock.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -80,9 +80,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "B885FE6C19C488F400EC1D32"
-            BuildableName = "SpotifyAlarmClock.app"
-            BlueprintName = "SpotifyAlarmClock"
-            ReferencedContainer = "container:SpotifyAlarmClock.xcodeproj">
+            BuildableName = "Alarm Clock for Spotify.app"
+            BlueprintName = "Alarm Clock"
+            ReferencedContainer = "container:Alarm Clock.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

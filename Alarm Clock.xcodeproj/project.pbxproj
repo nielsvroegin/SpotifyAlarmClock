@@ -27,6 +27,7 @@
 		B82A533E19C4F63E000C40D8 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B82A533D19C4F63E000C40D8 /* AVFoundation.framework */; };
 		B82A534019C4F645000C40D8 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B82A533F19C4F645000C40D8 /* Security.framework */; };
 		B82A534C19C4FF5F000C40D8 /* libCocoaLibSpotify.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B82A534719C4FEF4000C40D8 /* libCocoaLibSpotify.a */; };
+		B844EF741A039996007A52C6 /* AboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B844EF731A039996007A52C6 /* AboutViewController.m */; };
 		B86104CC19CD9671001DB753 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B86104CB19CD9671001DB753 /* CoreData.framework */; };
 		B86104D419CDA16D001DB753 /* AlarmSong.m in Sources */ = {isa = PBXBuildFile; fileRef = B86104D319CDA16D001DB753 /* AlarmSong.m */; };
 		B86104D719CDA187001DB753 /* Alarm.m in Sources */ = {isa = PBXBuildFile; fileRef = B86104D619CDA187001DB753 /* Alarm.m */; };
@@ -139,6 +140,8 @@
 		B82A533D19C4F63E000C40D8 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		B82A533F19C4F645000C40D8 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		B82A534119C4FEF4000C40D8 /* CocoaLibSpotify iOS Library.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = "CocoaLibSpotify iOS Library.xcodeproj"; path = "Libraries/cocoalibspotify-2.4.5/iOS Library/CocoaLibSpotify iOS Library.xcodeproj"; sourceTree = "<group>"; };
+		B844EF721A039996007A52C6 /* AboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutViewController.h; sourceTree = "<group>"; };
+		B844EF731A039996007A52C6 /* AboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutViewController.m; sourceTree = "<group>"; };
 		B86104CB19CD9671001DB753 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		B86104D219CDA16D001DB753 /* AlarmSong.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlarmSong.h; sourceTree = "<group>"; };
 		B86104D319CDA16D001DB753 /* AlarmSong.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlarmSong.m; sourceTree = "<group>"; };
@@ -155,21 +158,21 @@
 		B885CC7A19E013BD003450F8 /* ArtistCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArtistCell.m; sourceTree = "<group>"; };
 		B885CC7B19E013BD003450F8 /* TrackCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrackCell.h; sourceTree = "<group>"; };
 		B885CC7C19E013BD003450F8 /* TrackCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TrackCell.m; sourceTree = "<group>"; };
-		B885FE6D19C488F400EC1D32 /* SpotifyAlarmClock.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpotifyAlarmClock.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B885FE6D19C488F400EC1D32 /* Alarm Clock.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Alarm Clock.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B885FE7019C488F400EC1D32 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		B885FE7219C488F400EC1D32 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		B885FE7419C488F400EC1D32 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
-		B885FE7819C488F400EC1D32 /* SpotifyAlarmClock-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SpotifyAlarmClock-Info.plist"; sourceTree = "<group>"; };
+		B885FE7819C488F400EC1D32 /* Alarm Clock-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Alarm Clock-Info.plist"; sourceTree = "<group>"; };
 		B885FE7A19C488F400EC1D32 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		B885FE7C19C488F400EC1D32 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		B885FE7E19C488F400EC1D32 /* SpotifyAlarmClock-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SpotifyAlarmClock-Prefix.pch"; sourceTree = "<group>"; };
+		B885FE7E19C488F400EC1D32 /* Alarm Clock-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Alarm Clock-Prefix.pch"; sourceTree = "<group>"; };
 		B885FE7F19C488F400EC1D32 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		B885FE8019C488F400EC1D32 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		B885FE8319C488F400EC1D32 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		B885FE8819C488F500EC1D32 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		B885FE8E19C488F500EC1D32 /* SpotifyAlarmClockTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SpotifyAlarmClockTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		B885FE8E19C488F500EC1D32 /* Alarm ClockTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Alarm ClockTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B885FE8F19C488F500EC1D32 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
-		B885FE9719C488F500EC1D32 /* SpotifyAlarmClockTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SpotifyAlarmClockTests-Info.plist"; sourceTree = "<group>"; };
+		B885FE9719C488F500EC1D32 /* Alarm ClockTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Alarm ClockTests-Info.plist"; sourceTree = "<group>"; };
 		B885FE9919C488F500EC1D32 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		B885FE9B19C488F500EC1D32 /* SpotifyAlarmClockTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SpotifyAlarmClockTests.m; sourceTree = "<group>"; };
 		B8A7F18519FAED5C00BFEAD0 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
@@ -262,7 +265,7 @@
 		B812390C19D1FC28005EABDB /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				B8A7F3DE19FC480500BFEAD0 /* Login */,
+				B844EF711A039978007A52C6 /* About */,
 				B812390D19D1FC28005EABDB /* AddAlarm */,
 				B812391019D1FC28005EABDB /* Alarms */,
 				B8D7691519E7F1D500988A71 /* Album */,
@@ -272,6 +275,7 @@
 				B8DEF87619E07A7C00F2F453 /* Artist */,
 				B8A99D2B19F82D2D000359BF /* BackupAlarmSound */,
 				B812391519D1FC28005EABDB /* Clock */,
+				B8A7F3DE19FC480500BFEAD0 /* Login */,
 				B812391819D1FC28005EABDB /* OptionsSelect */,
 				B8A99D5D19FA79FB000359BF /* Settings */,
 				B812392A19D20126005EABDB /* Songs */,
@@ -359,6 +363,15 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		B844EF711A039978007A52C6 /* About */ = {
+			isa = PBXGroup;
+			children = (
+				B844EF721A039996007A52C6 /* AboutViewController.h */,
+				B844EF731A039996007A52C6 /* AboutViewController.m */,
+			);
+			path = About;
+			sourceTree = "<group>";
+		};
 		B86104D119CDA139001DB753 /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -431,8 +444,8 @@
 		B885FE6E19C488F400EC1D32 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				B885FE6D19C488F400EC1D32 /* SpotifyAlarmClock.app */,
-				B885FE8E19C488F500EC1D32 /* SpotifyAlarmClockTests.xctest */,
+				B885FE6D19C488F400EC1D32 /* Alarm Clock.app */,
+				B885FE8E19C488F500EC1D32 /* Alarm ClockTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -478,10 +491,10 @@
 		B885FE7719C488F400EC1D32 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				B885FE7819C488F400EC1D32 /* SpotifyAlarmClock-Info.plist */,
+				B885FE7819C488F400EC1D32 /* Alarm Clock-Info.plist */,
 				B885FE7919C488F400EC1D32 /* InfoPlist.strings */,
 				B885FE7C19C488F400EC1D32 /* main.m */,
-				B885FE7E19C488F400EC1D32 /* SpotifyAlarmClock-Prefix.pch */,
+				B885FE7E19C488F400EC1D32 /* Alarm Clock-Prefix.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -498,7 +511,7 @@
 		B885FE9619C488F500EC1D32 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				B885FE9719C488F500EC1D32 /* SpotifyAlarmClockTests-Info.plist */,
+				B885FE9719C488F500EC1D32 /* Alarm ClockTests-Info.plist */,
 				B885FE9819C488F500EC1D32 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
@@ -598,9 +611,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		B885FE6C19C488F400EC1D32 /* SpotifyAlarmClock */ = {
+		B885FE6C19C488F400EC1D32 /* Alarm Clock */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = B885FE9F19C488F500EC1D32 /* Build configuration list for PBXNativeTarget "SpotifyAlarmClock" */;
+			buildConfigurationList = B885FE9F19C488F500EC1D32 /* Build configuration list for PBXNativeTarget "Alarm Clock" */;
 			buildPhases = (
 				359F0F1764F0F07C35A1BC8B /* Check Pods Manifest.lock */,
 				B885FE6919C488F400EC1D32 /* Sources */,
@@ -613,14 +626,14 @@
 			dependencies = (
 				B82A534B19C4FF33000C40D8 /* PBXTargetDependency */,
 			);
-			name = SpotifyAlarmClock;
+			name = "Alarm Clock";
 			productName = SpotifyAlarmClock;
-			productReference = B885FE6D19C488F400EC1D32 /* SpotifyAlarmClock.app */;
+			productReference = B885FE6D19C488F400EC1D32 /* Alarm Clock.app */;
 			productType = "com.apple.product-type.application";
 		};
-		B885FE8D19C488F500EC1D32 /* SpotifyAlarmClockTests */ = {
+		B885FE8D19C488F500EC1D32 /* Alarm ClockTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = B885FEA219C488F500EC1D32 /* Build configuration list for PBXNativeTarget "SpotifyAlarmClockTests" */;
+			buildConfigurationList = B885FEA219C488F500EC1D32 /* Build configuration list for PBXNativeTarget "Alarm ClockTests" */;
 			buildPhases = (
 				B885FE8A19C488F500EC1D32 /* Sources */,
 				B885FE8B19C488F500EC1D32 /* Frameworks */,
@@ -631,9 +644,9 @@
 			dependencies = (
 				B885FE9419C488F500EC1D32 /* PBXTargetDependency */,
 			);
-			name = SpotifyAlarmClockTests;
+			name = "Alarm ClockTests";
 			productName = SpotifyAlarmClockTests;
-			productReference = B885FE8E19C488F500EC1D32 /* SpotifyAlarmClockTests.xctest */;
+			productReference = B885FE8E19C488F500EC1D32 /* Alarm ClockTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -653,7 +666,7 @@
 					};
 				};
 			};
-			buildConfigurationList = B885FE6819C488F400EC1D32 /* Build configuration list for PBXProject "SpotifyAlarmClock" */;
+			buildConfigurationList = B885FE6819C488F400EC1D32 /* Build configuration list for PBXProject "Alarm Clock" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -672,8 +685,8 @@
 			);
 			projectRoot = "";
 			targets = (
-				B885FE6C19C488F400EC1D32 /* SpotifyAlarmClock */,
-				B885FE8D19C488F500EC1D32 /* SpotifyAlarmClockTests */,
+				B885FE6C19C488F400EC1D32 /* Alarm Clock */,
+				B885FE8D19C488F500EC1D32 /* Alarm ClockTests */,
 			);
 		};
 /* End PBXProject section */
@@ -789,6 +802,7 @@
 				B885FE7D19C488F400EC1D32 /* main.m in Sources */,
 				B8D7691419E5C17600988A71 /* CellConstructHelper.m in Sources */,
 				B8D16E0919E1CBF900B375D2 /* BlurredHeaderView.m in Sources */,
+				B844EF741A039996007A52C6 /* AboutViewController.m in Sources */,
 				B86104D419CDA16D001DB753 /* AlarmSong.m in Sources */,
 				B812392519D1FC28005EABDB /* AlarmsViewController.m in Sources */,
 				B8FC13B419EA812E001E4C1D /* NSMutableArray+Convenience.m in Sources */,
@@ -817,7 +831,7 @@
 		};
 		B885FE9419C488F500EC1D32 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = B885FE6C19C488F400EC1D32 /* SpotifyAlarmClock */;
+			target = B885FE6C19C488F400EC1D32 /* Alarm Clock */;
 			targetProxy = B885FE9319C488F500EC1D32 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -936,8 +950,8 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = "";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "SpotifyAlarmClock/SpotifyAlarmClock-Prefix.pch";
-				INFOPLIST_FILE = "SpotifyAlarmClock/SpotifyAlarmClock-Info.plist";
+				GCC_PREFIX_HEADER = "SpotifyAlarmClock/Alarm Clock-Prefix.pch";
+				INFOPLIST_FILE = "SpotifyAlarmClock/Alarm Clock-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LIBRARY_SEARCH_PATHS = "";
 				OTHER_LDFLAGS = (
@@ -945,7 +959,7 @@
 					"-ObjC",
 					"-all_load",
 				);
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Alarm Clock";
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALID_ARCHS = "armv7 armv7s";
@@ -964,8 +978,8 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = "";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "SpotifyAlarmClock/SpotifyAlarmClock-Prefix.pch";
-				INFOPLIST_FILE = "SpotifyAlarmClock/SpotifyAlarmClock-Info.plist";
+				GCC_PREFIX_HEADER = "SpotifyAlarmClock/Alarm Clock-Prefix.pch";
+				INFOPLIST_FILE = "SpotifyAlarmClock/Alarm Clock-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LIBRARY_SEARCH_PATHS = "";
 				OTHER_LDFLAGS = (
@@ -973,7 +987,7 @@
 					"-ObjC",
 					"-all_load",
 				);
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Alarm Clock";
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALID_ARCHS = "armv7 armv7s";
@@ -996,8 +1010,8 @@
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = "SpotifyAlarmClockTests/SpotifyAlarmClockTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				INFOPLIST_FILE = "SpotifyAlarmClockTests/Alarm ClockTests-Info.plist";
+				PRODUCT_NAME = "Alarm ClockTests";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
 			};
@@ -1014,8 +1028,8 @@
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SpotifyAlarmClock/SpotifyAlarmClock-Prefix.pch";
-				INFOPLIST_FILE = "SpotifyAlarmClockTests/SpotifyAlarmClockTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				INFOPLIST_FILE = "SpotifyAlarmClockTests/Alarm ClockTests-Info.plist";
+				PRODUCT_NAME = "Alarm ClockTests";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
 			};
@@ -1024,7 +1038,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		B885FE6819C488F400EC1D32 /* Build configuration list for PBXProject "SpotifyAlarmClock" */ = {
+		B885FE6819C488F400EC1D32 /* Build configuration list for PBXProject "Alarm Clock" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				B885FE9D19C488F500EC1D32 /* Debug */,
@@ -1033,7 +1047,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		B885FE9F19C488F500EC1D32 /* Build configuration list for PBXNativeTarget "SpotifyAlarmClock" */ = {
+		B885FE9F19C488F500EC1D32 /* Build configuration list for PBXNativeTarget "Alarm Clock" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				B885FEA019C488F500EC1D32 /* Debug */,
@@ -1042,7 +1056,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		B885FEA219C488F500EC1D32 /* Build configuration list for PBXNativeTarget "SpotifyAlarmClockTests" */ = {
+		B885FEA219C488F500EC1D32 /* Build configuration list for PBXNativeTarget "Alarm ClockTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				B885FEA319C488F500EC1D32 /* Debug */,
