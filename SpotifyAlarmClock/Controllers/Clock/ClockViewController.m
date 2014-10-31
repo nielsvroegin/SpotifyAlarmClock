@@ -174,6 +174,16 @@
     
     if(!useAlarmClockWithoutSpotify && (spotifyUsername == nil || spotifyPassword == nil || [spotifyUsername length] == 0 || [spotifyPassword length] == 0))
         [self performSegueWithIdentifier:@"SpotifyLoginSegue" sender:self];
+    else
+    {
+        //Check for AlarmClock foreground warning
+        if(![userDefaults boolForKey:@"alarmClockForegroundWarningDisplayed"])
+        {
+            [[[UIAlertView alloc] initWithTitle:@"Warning" message:@"The Alarm Clock must be running in foreground to perform an alarm. Please remember to leave the app open in this clock view when you go to bed!" delegate:nil cancelButtonTitle:@"Oke!" otherButtonTitles:nil] show];
+            
+            [userDefaults setBool:YES forKey:@"alarmClockForegroundWarningDisplayed"];
+        }
+    }
 }
 
 - (void) viewDidDisappear:(BOOL)animated
