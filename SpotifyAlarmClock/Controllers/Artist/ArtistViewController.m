@@ -282,6 +282,10 @@
         else
             [trackCell setAddMusicButton:AddMusic animated:NO];
         
+        //Hide add/remove button when track not available
+        if(track.availability != SP_TRACK_AVAILABILITY_AVAILABLE)
+            [trackCell setAddMusicButton:hidden animated:NO];
+        
         cell = trackCell;
     }
     else if(section == albumSection)

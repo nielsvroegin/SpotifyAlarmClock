@@ -34,7 +34,23 @@
     bool trackPlaying = ([[SPPlaybackManager sharedPlaybackManager] currentTrack] == track);
     [cell showPlayProgress:trackPlaying];
     
-    [cell setAddMusicButton:AddMusic animated:NO];
+    if(track.availability == SP_TRACK_AVAILABILITY_AVAILABLE)
+    {
+        [cell setUserInteractionEnabled:YES];
+        [cell.vwPlay setAlpha:1];
+        [cell.lbArtist setEnabled:YES];
+        [cell.lbTrack setEnabled:YES];
+        [cell setAddMusicButton:AddMusic animated:NO];
+    }
+    else
+    {
+        [cell setUserInteractionEnabled:NO];
+        [cell.vwPlay setAlpha:0.5];
+        [cell.lbArtist setEnabled:NO];
+        [cell.lbTrack setEnabled:NO];
+        [cell setAddMusicButton:hidden animated:NO];
+    }
+
     
     return cell;
 }
