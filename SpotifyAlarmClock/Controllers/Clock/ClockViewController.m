@@ -31,6 +31,7 @@
 @property (nonatomic, strong) NSUserDefaults * userDefaults;
 @property (nonatomic, assign) float systemVolume;
 @property (nonatomic, assign) NSUInteger songPlayTryCount;
+@property (nonatomic, strong) NSMutableArray * backgroundTapGestures;
 
 @property (weak, nonatomic) IBOutlet UILabel *spotifyConnectionState;
 @property (weak, nonatomic) IBOutlet UILabel *hour;
@@ -40,6 +41,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *lbDate;
 @property (weak, nonatomic) IBOutlet UILabel *lbNextAlarm;
 @property (weak, nonatomic) IBOutlet UIImageView *miniAlarmImage;
+@property (weak, nonatomic) IBOutlet UIButton *btStopAlarm;
+@property (weak, nonatomic) IBOutlet UIButton *btSnoozeAlarm;
 
 @property (weak, nonatomic) IBOutlet UIView *topBarAlarm;
 @property (weak, nonatomic) IBOutlet UIView *bottomBarAlarm;
@@ -53,12 +56,12 @@
 - (IBAction)unwindToClock:(UIStoryboardSegue *)unwindSegue;
 - (void) applyGlow:(UILabel*)label;
 - (void)applyBackgroundTapRecursive:(UIView *)vw;
-- (IBAction) performAlarm;
 - (void) performAlarm:(Alarm *)alarm;
 - (IBAction) stopAlarm;
 - (IBAction) snoozeAlarm;
 - (void) playSong;
 - (void) playBackupAlarmSound;
+- (void)enableTapGestures:(bool)enabled;
 
 
 @end
@@ -85,6 +88,9 @@
 @synthesize audioPlayer;
 @synthesize userDefaults;
 @synthesize songPlayTryCount;
+@synthesize btStopAlarm;
+@synthesize btSnoozeAlarm;
+@synthesize backgroundTapGestures;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -108,7 +114,7 @@
 {
     [super viewDidLoad];
     
-    //loginChecked = NO;
+    self.backgroundTapGestures = [[NSMutableArray alloc] init];
     
     self.userDefaults = [NSUserDefaults standardUserDefaults];
     
@@ -203,27 +209,28 @@
 
 - (void)applyBackgroundTapRecursive:(UIView *)vw
 {
-     UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(backgroundTap)];
+    UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(backgroundTap)];
+    [self.backgroundTapGestures addObject:tapGesture];
     
-     vw.userInteractionEnabled = YES;
-     [vw addGestureRecognizer:tapGesture];
-     for(UIView* subView in [vw subviews])
-     {
-         if([subView class] != [UIButton class])
-             [self applyBackgroundTapRecursive:subView];
-     }
+    vw.userInteractionEnabled = YES;
+    [vw addGestureRecognizer:tapGesture];
+    for(UIView* subView in [vw subviews])
+    {
+        if(subView != btStopAlarm && subView != btSnoozeAlarm)
+            [self applyBackgroundTapRecursive:subView];
+    }
+}
+
+- (void)enableTapGestures:(bool)enabled
+{
+    for(UITapGestureRecognizer *tapGesture in self.backgroundTapGestures)
+        [tapGesture setEnabled:enabled];
 }
 
 - (void) timeChangedSignificant
 {
     self.nextAlarm = [NextAlarm provide];
     [self updateClock];
-}
-
-
-- (IBAction) performAlarm
-{
-    [self performAlarm:nextAlarm.alarm];
 }
 
 - (void) performAlarm:(Alarm *)alarm
@@ -257,6 +264,9 @@
     self.systemVolume = [Tools getSystemVolume];
     [playBackManager setVolume:0];
     [Tools setSystemVolume:[userDefaults floatForKey:@"MaxVolume"]];
+    
+    //Disable background tap
+    [self enableTapGestures:NO];
     
     //Disable alarm in case repeat is never
     if(performingAlarm.repeat == nil || [performingAlarm.repeat length] == 0)
@@ -526,6 +536,7 @@
      audioPlayer.volume = 1;
      songPlayTryCount = 0;
      [Tools setSystemVolume:self.systemVolume];
+    [self enableTapGestures:YES];
      
      //Hide ClockAlarm view
      self.topBarAlarm.hidden = YES;
@@ -548,6 +559,7 @@
      audioPlayer.volume = 1;
      songPlayTryCount = 0;
      [Tools setSystemVolume:self.systemVolume];
+     [self enableTapGestures:YES];
      
      snoozeDate = [[NSDate date] dateByAddingTimeInterval:60*9];
      

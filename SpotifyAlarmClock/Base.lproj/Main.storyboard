@@ -247,15 +247,6 @@
                                     <constraint firstAttribute="height" constant="13" id="caR-pA-T17"/>
                                 </constraints>
                             </imageView>
-                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="whE-9B-b8z">
-                                <rect key="frame" x="160" y="160" width="77" height="30"/>
-                                <state key="normal" title="Start Alarm">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="performAlarm" destination="vXZ-lx-hvc" eventType="touchUpInside" id="syh-qo-7cE"/>
-                                </connections>
-                            </button>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="waJ-n9-LAg">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <subviews>
@@ -361,6 +352,8 @@
                         <outlet property="alarmBackground" destination="waJ-n9-LAg" id="KXa-ol-t7S"/>
                         <outlet property="backgroundGlow" destination="iSV-ic-TLJ" id="8p2-N9-hDW"/>
                         <outlet property="bottomBarAlarm" destination="1BW-wG-NGv" id="A1O-UZ-7MK"/>
+                        <outlet property="btSnoozeAlarm" destination="bpS-uo-94F" id="NZf-rh-qQU"/>
+                        <outlet property="btStopAlarm" destination="SYk-CD-841" id="jRa-Gb-4wJ"/>
                         <outlet property="colon" destination="2cN-Oz-7Hd" id="P8q-m1-c5f"/>
                         <outlet property="hour" destination="L9C-Eb-VC4" id="zHT-nr-5ci"/>
                         <outlet property="lbDate" destination="esr-r2-Iz8" id="EbU-Xo-AFr"/>
