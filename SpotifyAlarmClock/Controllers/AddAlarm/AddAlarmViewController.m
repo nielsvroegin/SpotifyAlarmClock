@@ -76,7 +76,11 @@
         [self.snoozeSwitch setOn:[[self.alarmData snooze] boolValue]];
         [self.shuffleSwitch setOn:[[self.alarmData shuffle] boolValue]];
         [self.timePicker setDate:[Tools dateForHour:[[self.alarmData hour] intValue] andMinute:[[self.alarmData minute] intValue]]];
+        
+        [self setTitle:@"Edit Alarm"];
     }
+    else
+        [self setTitle:@"Add Alarm"];
     
     [super viewDidLoad];
 }
@@ -96,7 +100,10 @@
     
     /****** Create new object if managed object not exists ******/
     if(self.alarmData == nil)
+    {
         self.alarmData = [NSEntityDescription insertNewObjectForEntityForName:@"Alarm" inManagedObjectContext:context];
+        [self.alarmData setEnabled:[NSNumber numberWithBool:YES]];
+    }
     
     /****** Set new values ******/
     NSDateComponents *dateComponents = [Tools hourAndMinuteForDate:[self.timePicker date]];

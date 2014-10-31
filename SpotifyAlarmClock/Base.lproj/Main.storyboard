@@ -1141,7 +1141,7 @@
                         <barButtonItem key="leftBarButtonItem" title="Cancel" id="H37-vx-rZr">
                             <color key="tintColor" red="0.093663677010000002" green="0.42857142860000003" blue="0.15435124059999999" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
-                                <segue destination="Vui-ll-yCO" kind="unwind" unwindAction="unwindToAlarms:" id="f6q-Nr-Pu2"/>
+                                <segue destination="Vui-ll-yCO" kind="unwind" identifier="cancelAlarm" unwindAction="unwindToAlarms:" id="f6q-Nr-Pu2"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Save" id="q5P-OX-SSB">
