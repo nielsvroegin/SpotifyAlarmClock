@@ -630,7 +630,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Licences" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="zwI-Hg-zRl">
+                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Third-Party Licenses" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="zwI-Hg-zRl">
                                                     <rect key="frame" x="15" y="0.0" width="270" height="43"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -639,6 +639,9 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="IoD-SY-Kmc" kind="push" id="vFb-a9-uG6"/>
+                                        </connections>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -846,6 +849,43 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9zx-SH-nB0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1874" y="749"/>
+        </scene>
+        <!--Third-Party Licenses-->
+        <scene sceneID="vY1-J1-vEL">
+            <objects>
+                <viewController id="IoD-SY-Kmc" customClass="LicensesViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="UaB-P3-Jyb"/>
+                        <viewControllerLayoutGuide type="bottom" id="NLk-h4-iMz"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="V8T-ac-JU7">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JfG-qK-6ug">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <dataDetectorType key="dataDetectorTypes" link="YES"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="JfG-qK-6ug" firstAttribute="leading" secondItem="V8T-ac-JU7" secondAttribute="leadingMargin" constant="-16" id="PdV-rA-GOz"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="JfG-qK-6ug" secondAttribute="trailing" constant="-16" id="cCE-db-xPB"/>
+                            <constraint firstItem="JfG-qK-6ug" firstAttribute="top" secondItem="UaB-P3-Jyb" secondAttribute="bottom" id="kc9-Tb-Vmt"/>
+                            <constraint firstItem="NLk-h4-iMz" firstAttribute="top" secondItem="JfG-qK-6ug" secondAttribute="bottom" id="sBD-Zk-cAi"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Third-Party Licenses" id="JSE-Oc-Zhz"/>
+                    <connections>
+                        <outlet property="tvLicenses" destination="JfG-qK-6ug" id="nKA-sv-y9u"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rvo-LS-Q8Y" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2230" y="401"/>
         </scene>
         <!--Options Select View Controller-->
         <scene sceneID="Fty-ou-TWg">

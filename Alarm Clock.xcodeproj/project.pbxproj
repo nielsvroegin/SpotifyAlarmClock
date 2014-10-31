@@ -28,6 +28,8 @@
 		B82A534019C4F645000C40D8 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B82A533F19C4F645000C40D8 /* Security.framework */; };
 		B82A534C19C4FF5F000C40D8 /* libCocoaLibSpotify.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B82A534719C4FEF4000C40D8 /* libCocoaLibSpotify.a */; };
 		B844EF741A039996007A52C6 /* AboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B844EF731A039996007A52C6 /* AboutViewController.m */; };
+		B844EF761A03B9B1007A52C6 /* licences.rtf in Resources */ = {isa = PBXBuildFile; fileRef = B844EF751A03B9B1007A52C6 /* licences.rtf */; };
+		B844EF7A1A03BA0C007A52C6 /* LicensesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B844EF791A03BA0C007A52C6 /* LicensesViewController.m */; };
 		B86104CC19CD9671001DB753 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B86104CB19CD9671001DB753 /* CoreData.framework */; };
 		B86104D419CDA16D001DB753 /* AlarmSong.m in Sources */ = {isa = PBXBuildFile; fileRef = B86104D319CDA16D001DB753 /* AlarmSong.m */; };
 		B86104D719CDA187001DB753 /* Alarm.m in Sources */ = {isa = PBXBuildFile; fileRef = B86104D619CDA187001DB753 /* Alarm.m */; };
@@ -142,6 +144,9 @@
 		B82A534119C4FEF4000C40D8 /* CocoaLibSpotify iOS Library.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = "CocoaLibSpotify iOS Library.xcodeproj"; path = "Libraries/cocoalibspotify-2.4.5/iOS Library/CocoaLibSpotify iOS Library.xcodeproj"; sourceTree = "<group>"; };
 		B844EF721A039996007A52C6 /* AboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutViewController.h; sourceTree = "<group>"; };
 		B844EF731A039996007A52C6 /* AboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutViewController.m; sourceTree = "<group>"; };
+		B844EF751A03B9B1007A52C6 /* licences.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = licences.rtf; sourceTree = "<group>"; };
+		B844EF781A03BA0C007A52C6 /* LicensesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LicensesViewController.h; sourceTree = "<group>"; };
+		B844EF791A03BA0C007A52C6 /* LicensesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LicensesViewController.m; sourceTree = "<group>"; };
 		B86104CB19CD9671001DB753 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		B86104D219CDA16D001DB753 /* AlarmSong.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlarmSong.h; sourceTree = "<group>"; };
 		B86104D319CDA16D001DB753 /* AlarmSong.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlarmSong.m; sourceTree = "<group>"; };
@@ -265,6 +270,7 @@
 		B812390C19D1FC28005EABDB /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				B844EF771A03B9F6007A52C6 /* Licenses */,
 				B844EF711A039978007A52C6 /* About */,
 				B812390D19D1FC28005EABDB /* AddAlarm */,
 				B812391019D1FC28005EABDB /* Alarms */,
@@ -370,6 +376,15 @@
 				B844EF731A039996007A52C6 /* AboutViewController.m */,
 			);
 			path = About;
+			sourceTree = "<group>";
+		};
+		B844EF771A03B9F6007A52C6 /* Licenses */ = {
+			isa = PBXGroup;
+			children = (
+				B844EF781A03BA0C007A52C6 /* LicensesViewController.h */,
+				B844EF791A03BA0C007A52C6 /* LicensesViewController.m */,
+			);
+			path = Licenses;
 			sourceTree = "<group>";
 		};
 		B86104D119CDA139001DB753 /* Models */ = {
@@ -555,6 +570,7 @@
 		B8A99D3A19F82EAC000359BF /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				B844EF751A03B9B1007A52C6 /* licences.rtf */,
 				B8A99D3B19F82EAC000359BF /* alpha-beta.mp3 */,
 				B8A99D3C19F82EAC000359BF /* day-by-day.mp3 */,
 				B8A99D3D19F82EAC000359BF /* forever.mp3 */,
@@ -714,6 +730,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B8D7690D19E5B20F00988A71 /* ArtistCell.xib in Resources */,
+				B844EF761A03B9B1007A52C6 /* licences.rtf in Resources */,
 				B885FE8919C488F500EC1D32 /* Images.xcassets in Resources */,
 				B8A99D4219F82EAC000359BF /* LCD-BOLD.TTF in Resources */,
 				B885FE7B19C488F400EC1D32 /* InfoPlist.strings in Resources */,
@@ -792,6 +809,7 @@
 				B82647A419ED972F00FBB21A /* NextAlarm.m in Sources */,
 				B885FE8119C488F400EC1D32 /* AppDelegate.m in Sources */,
 				B812392E19D201A4005EABDB /* SongsViewController.m in Sources */,
+				B844EF7A1A03BA0C007A52C6 /* LicensesViewController.m in Sources */,
 				B86104DA19CDA28E001DB753 /* SpotifyAlarmClock.xcdatamodeld in Sources */,
 				B8FC13B119E9B61A001E4C1D /* Tools.m in Sources */,
 				B8DEF86E19E0474900F2F453 /* ArtistBrowseCache.m in Sources */,
