@@ -131,6 +131,12 @@
     [self applyGlow:colon];
     [self applyGlow:minutes];
     
+    //Create gadient for alarm background
+    CAGradientLayer *gradient = [CAGradientLayer layer];
+    gradient.frame = alarmBackground.bounds;
+    gradient.colors = [NSArray arrayWithObjects:(id)[[UIColor colorWithRed:(22.0/255.0) green:(107.0 / 255.0) blue:(47.0 / 255.0) alpha:1] CGColor], (id)[[UIColor colorWithRed:(27.0/255.0) green:(134.0 / 255.0) blue:(54.0 / 255.0) alpha:1] CGColor], nil];
+    [alarmBackground.layer insertSublayer:gradient atIndex:0];
+    
     //Set timer to update clock
     [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(onTimer:) userInfo:nil repeats:YES];
     
