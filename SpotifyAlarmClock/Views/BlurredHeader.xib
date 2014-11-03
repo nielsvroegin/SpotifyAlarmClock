@@ -11,9 +11,6 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="150"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BlurredHeader" translatesAutoresizingMaskIntoConstraints="NO" id="8Oa-7O-78z">
-                    <rect key="frame" x="0.0" y="0.0" width="320" height="150"/>
-                </imageView>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ArtistPortrait" translatesAutoresizingMaskIntoConstraints="NO" id="CwU-po-xhU">
                     <rect key="frame" x="110" y="25" width="100" height="100"/>
                     <constraints>
@@ -22,25 +19,19 @@
                     </constraints>
                 </imageView>
             </subviews>
-            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
-                <constraint firstAttribute="trailing" secondItem="8Oa-7O-78z" secondAttribute="trailing" id="CG0-H8-pFz"/>
-                <constraint firstItem="8Oa-7O-78z" firstAttribute="top" secondItem="Lq1-7d-X9O" secondAttribute="top" id="K6c-8F-Y5l"/>
-                <constraint firstItem="8Oa-7O-78z" firstAttribute="leading" secondItem="Lq1-7d-X9O" secondAttribute="leading" id="PYm-YB-nyK"/>
-                <constraint firstItem="CwU-po-xhU" firstAttribute="centerX" secondItem="8Oa-7O-78z" secondAttribute="centerX" id="aDQ-et-6xy"/>
-                <constraint firstAttribute="bottom" secondItem="8Oa-7O-78z" secondAttribute="bottom" id="k0Z-KZ-3x8"/>
-                <constraint firstItem="CwU-po-xhU" firstAttribute="top" secondItem="8Oa-7O-78z" secondAttribute="bottom" constant="-125" id="slE-ij-r5N"/>
+                <constraint firstAttribute="centerX" secondItem="CwU-po-xhU" secondAttribute="centerX" id="BTt-cy-8gC"/>
+                <constraint firstAttribute="centerY" secondItem="CwU-po-xhU" secondAttribute="centerY" id="re9-t5-KnR"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
-                <outlet property="backgroundImage" destination="8Oa-7O-78z" id="Owy-Tf-PLW"/>
                 <outlet property="image" destination="CwU-po-xhU" id="BmC-L5-E9x"/>
             </connections>
             <point key="canvasLocation" x="140" y="139"/>
         </view>
     </objects>
     <resources>
-        <image name="ArtistPortrait" width="278" height="278"/>
-        <image name="BlurredHeader" width="320" height="320"/>
+        <image name="ArtistPortrait" width="100" height="100"/>
     </resources>
 </document>
