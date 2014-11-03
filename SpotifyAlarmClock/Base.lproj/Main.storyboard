@@ -1027,7 +1027,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Songs" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="xmc-xi-lIY">
+                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Playlist" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="xmc-xi-lIY">
                                                     <rect key="frame" x="15" y="11" width="49" height="21"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -1057,8 +1057,8 @@
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LLN-KM-YWd">
                                                     <rect key="frame" x="256" y="6" width="51" height="31"/>
                                                 </switch>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Shuffle songs" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8vH-ib-nLs">
-                                                    <rect key="frame" x="15" y="11" width="105" height="21"/>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Shuffle playlist" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8vH-ib-nLs">
+                                                    <rect key="frame" x="15" y="11" width="112" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -1158,7 +1158,7 @@
             </objects>
             <point key="canvasLocation" x="3006" y="-329"/>
         </scene>
-        <!--Songs-->
+        <!--Playlist-->
         <scene sceneID="1Fr-U2-4J1">
             <objects>
                 <tableViewController id="Anl-o5-ySN" customClass="SongsViewController" sceneMemberID="viewController">
@@ -1176,7 +1176,7 @@
                             <outlet property="delegate" destination="Anl-o5-ySN" id="ZoY-s5-X86"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Songs" id="qpm-pd-6Wt">
+                    <navigationItem key="navigationItem" title="Playlist" id="qpm-pd-6Wt">
                         <barButtonItem key="rightBarButtonItem" title="Add" id="bpD-l4-CX4">
                             <connections>
                                 <segue destination="OY4-PY-rDx" kind="modal" identifier="songSearchSegue" id="eTe-xm-DIW"/>

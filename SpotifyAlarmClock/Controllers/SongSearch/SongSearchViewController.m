@@ -53,6 +53,10 @@
     artistBrowseCache = [[ArtistBrowseCache alloc] init];
     [artistBrowseCache setDelegate:self];
     
+    //Show search background
+    UIView * backgroundView = [[[NSBundle mainBundle] loadNibNamed:@"SongSearchBackground" owner:self options:nil] firstObject];
+    [self.tableView setBackgroundView:backgroundView];
+    
     //Show searchbar keyboard
     [searchBar becomeFirstResponder];
 
@@ -173,8 +177,15 @@
     //No need to search if searchtext is empty
     if([self.searchBar.text length] == 0)
     {
+        UIView * backgroundView = [[[NSBundle mainBundle] loadNibNamed:@"SongSearchBackground" owner:self options:nil] firstObject];
+        [self.tableView setBackgroundView:backgroundView];
+        
         [MBProgressHUD hideAllHUDsForView:self.tableView animated:YES];
         return;
+    }
+    else
+    {
+        [self.tableView setBackgroundView:nil];
     }
     
     //Enable loading HUD

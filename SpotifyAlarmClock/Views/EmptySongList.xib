@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6250" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="64" width="320" height="568"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="EmptySongList" translatesAutoresizingMaskIntoConstraints="NO" id="4WH-YS-R4v">
+                    <rect key="frame" x="0.0" y="144" width="320" height="320"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="4WH-YS-R4v" secondAttribute="height" multiplier="1:1" id="85v-kA-dMb"/>
+                    </constraints>
+                </imageView>
+            </subviews>
+            <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="4WH-YS-R4v" firstAttribute="top" relation="greaterThanOrEqual" secondItem="iN0-l3-epB" secondAttribute="top" constant="45" id="DBw-dp-faM"/>
+                <constraint firstAttribute="centerY" secondItem="4WH-YS-R4v" secondAttribute="centerY" constant="-20" id="Vbf-Rk-56x"/>
+                <constraint firstAttribute="centerX" secondItem="4WH-YS-R4v" secondAttribute="centerX" id="f4I-KP-FZw"/>
+                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="4WH-YS-R4v" secondAttribute="bottom" constant="10" id="sCu-dq-37Y"/>
+            </constraints>
+            <nil key="simulatedTopBarMetrics"/>
+            <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="EmptySongList" width="320" height="320"/>
+    </resources>
+</document>

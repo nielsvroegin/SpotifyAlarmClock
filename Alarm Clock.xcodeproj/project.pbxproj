@@ -27,6 +27,8 @@
 		B82A533E19C4F63E000C40D8 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B82A533D19C4F63E000C40D8 /* AVFoundation.framework */; };
 		B82A534019C4F645000C40D8 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B82A533F19C4F645000C40D8 /* Security.framework */; };
 		B82A534C19C4FF5F000C40D8 /* libCocoaLibSpotify.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B82A534719C4FEF4000C40D8 /* libCocoaLibSpotify.a */; };
+		B8403BE71A07CB2700CD74FE /* EmptySongList.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8403BE61A07CB2700CD74FE /* EmptySongList.xib */; };
+		B8403BEA1A07D8BD00CD74FE /* SongSearchBackground.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8403BE91A07D8BD00CD74FE /* SongSearchBackground.xib */; };
 		B844EF741A039996007A52C6 /* AboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B844EF731A039996007A52C6 /* AboutViewController.m */; };
 		B844EF761A03B9B1007A52C6 /* licences.rtf in Resources */ = {isa = PBXBuildFile; fileRef = B844EF751A03B9B1007A52C6 /* licences.rtf */; };
 		B844EF7A1A03BA0C007A52C6 /* LicensesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B844EF791A03BA0C007A52C6 /* LicensesViewController.m */; };
@@ -142,6 +144,8 @@
 		B82A533D19C4F63E000C40D8 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		B82A533F19C4F645000C40D8 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		B82A534119C4FEF4000C40D8 /* CocoaLibSpotify iOS Library.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = "CocoaLibSpotify iOS Library.xcodeproj"; path = "Libraries/cocoalibspotify-2.4.5/iOS Library/CocoaLibSpotify iOS Library.xcodeproj"; sourceTree = "<group>"; };
+		B8403BE61A07CB2700CD74FE /* EmptySongList.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EmptySongList.xib; sourceTree = "<group>"; };
+		B8403BE91A07D8BD00CD74FE /* SongSearchBackground.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SongSearchBackground.xib; sourceTree = "<group>"; };
 		B844EF721A039996007A52C6 /* AboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutViewController.h; sourceTree = "<group>"; };
 		B844EF731A039996007A52C6 /* AboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutViewController.m; sourceTree = "<group>"; };
 		B844EF751A03B9B1007A52C6 /* licences.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = licences.rtf; sourceTree = "<group>"; };
@@ -413,6 +417,8 @@
 			children = (
 				B885FE8219C488F400EC1D32 /* Main.storyboard */,
 				B8D16E0419E1C94500B375D2 /* BlurredHeader.xib */,
+				B8403BE61A07CB2700CD74FE /* EmptySongList.xib */,
+				B8403BE91A07D8BD00CD74FE /* SongSearchBackground.xib */,
 				B8D16E0719E1CBF900B375D2 /* BlurredHeaderView.h */,
 				B8D16E0819E1CBF900B375D2 /* BlurredHeaderView.m */,
 				B826479F19EBDF0300FBB21A /* BackgroundGlow.h */,
@@ -735,10 +741,12 @@
 				B8A99D4219F82EAC000359BF /* LCD-BOLD.TTF in Resources */,
 				B885FE7B19C488F400EC1D32 /* InfoPlist.strings in Resources */,
 				B8D7690F19E5B22C00988A71 /* TrackCell.xib in Resources */,
+				B8403BEA1A07D8BD00CD74FE /* SongSearchBackground.xib in Resources */,
 				B8D7691119E5B23A00988A71 /* LoadMoreCell.xib in Resources */,
 				B8D7690A19E5B1F300988A71 /* AlbumCell.xib in Resources */,
 				B8A99D3F19F82EAC000359BF /* alpha-beta.mp3 in Resources */,
 				B8A99D4019F82EAC000359BF /* day-by-day.mp3 in Resources */,
+				B8403BE71A07CB2700CD74FE /* EmptySongList.xib in Resources */,
 				B885FE8419C488F400EC1D32 /* Main.storyboard in Resources */,
 				B8A99D4119F82EAC000359BF /* forever.mp3 in Resources */,
 				B8D16E0519E1C94500B375D2 /* BlurredHeader.xib in Resources */,

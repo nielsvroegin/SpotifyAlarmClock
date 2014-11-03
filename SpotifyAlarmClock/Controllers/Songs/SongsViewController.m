@@ -19,6 +19,7 @@
 
 @property (nonatomic, strong) NSMutableArray* tracks;
 @property (nonatomic, assign) NSInteger missingTracksCount;
+@property (nonatomic, assign) bool songsLoaded;
 
 - (void) LoadTracks;
 -(void) updateLoadingProgress;
@@ -30,6 +31,7 @@
 @synthesize tracks;
 @synthesize alarmSongs;
 @synthesize missingTracksCount;
+@synthesize songsLoaded;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -71,12 +73,14 @@
 {
     //Check if any tracks should be loaded
     if([self.alarmSongs count] == 0)
+    {
+        self.songsLoaded = YES;
+        [self.tableView reloadData];
         return;
+    }
     
     //Show loading HUD
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.tableView animated:YES];
-    hud.mode = MBProgressHUDModeDeterminate;
-    hud.progress = 0;
     hud.labelText = @"Loading";
     
     for(AlarmSong *alarmSong in alarmSongs)
@@ -107,13 +111,11 @@
 
 -(void) updateLoadingProgress
 {
-    //Update progress
-    [[MBProgressHUD HUDForView:self.tableView] setProgress:(1 * ((tracks.count + missingTracksCount) / alarmSongs.count))];
-    
     //Check if all loaded
     if((tracks.count + missingTracksCount) == alarmSongs.count)
     {
         [MBProgressHUD hideAllHUDsForView:self.tableView animated:YES];
+        songsLoaded = YES;
         [self.tableView reloadData];
     }
 }
@@ -126,7 +128,18 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [tracks count];
+    NSUInteger numberOfRows = [tracks count];
+    
+    if(numberOfRows == 0 && self.songsLoaded)
+    {
+        //Set background view
+        UIView * backgroundView = [[[NSBundle mainBundle] loadNibNamed:@"EmptySongList" owner:self options:nil] firstObject];
+        [self.tableView setBackgroundView:backgroundView];
+    }
+    else
+        [self.tableView setBackgroundView:nil];
+    
+    return numberOfRows;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
