@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		349CEB9FD7339389AF16EA91 /* libPods-SpotifyAlarmClock.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C92F5708CCED2BA4D9ECCF61 /* libPods-SpotifyAlarmClock.a */; };
+		B80F0F281A081A71009F86F0 /* SongSearchBackgroundView.m in Sources */ = {isa = PBXBuildFile; fileRef = B80F0F271A081A71009F86F0 /* SongSearchBackgroundView.m */; };
 		B812392319D1FC28005EABDB /* AddAlarmViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B812390F19D1FC28005EABDB /* AddAlarmViewController.m */; };
 		B812392519D1FC28005EABDB /* AlarmsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B812391419D1FC28005EABDB /* AlarmsViewController.m */; };
 		B812392619D1FC28005EABDB /* ClockViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B812391719D1FC28005EABDB /* ClockViewController.m */; };
@@ -112,6 +113,8 @@
 
 /* Begin PBXFileReference section */
 		8E9EC42A6CF7103BBBA32316 /* Pods-SpotifyAlarmClock.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SpotifyAlarmClock.release.xcconfig"; path = "Pods/Target Support Files/Pods-SpotifyAlarmClock/Pods-SpotifyAlarmClock.release.xcconfig"; sourceTree = "<group>"; };
+		B80F0F261A081A71009F86F0 /* SongSearchBackgroundView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SongSearchBackgroundView.h; sourceTree = "<group>"; };
+		B80F0F271A081A71009F86F0 /* SongSearchBackgroundView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SongSearchBackgroundView.m; sourceTree = "<group>"; };
 		B812390E19D1FC28005EABDB /* AddAlarmViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddAlarmViewController.h; sourceTree = "<group>"; };
 		B812390F19D1FC28005EABDB /* AddAlarmViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddAlarmViewController.m; sourceTree = "<group>"; };
 		B812391319D1FC28005EABDB /* AlarmsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlarmsViewController.h; sourceTree = "<group>"; };
@@ -416,9 +419,11 @@
 			isa = PBXGroup;
 			children = (
 				B885FE8219C488F400EC1D32 /* Main.storyboard */,
-				B8D16E0419E1C94500B375D2 /* BlurredHeader.xib */,
 				B8403BE61A07CB2700CD74FE /* EmptySongList.xib */,
 				B8403BE91A07D8BD00CD74FE /* SongSearchBackground.xib */,
+				B80F0F271A081A71009F86F0 /* SongSearchBackgroundView.m */,
+				B80F0F261A081A71009F86F0 /* SongSearchBackgroundView.h */,
+				B8D16E0419E1C94500B375D2 /* BlurredHeader.xib */,
 				B8D16E0719E1CBF900B375D2 /* BlurredHeaderView.h */,
 				B8D16E0819E1CBF900B375D2 /* BlurredHeaderView.m */,
 				B826479F19EBDF0300FBB21A /* BackgroundGlow.h */,
@@ -818,6 +823,7 @@
 				B885FE8119C488F400EC1D32 /* AppDelegate.m in Sources */,
 				B812392E19D201A4005EABDB /* SongsViewController.m in Sources */,
 				B844EF7A1A03BA0C007A52C6 /* LicensesViewController.m in Sources */,
+				B80F0F281A081A71009F86F0 /* SongSearchBackgroundView.m in Sources */,
 				B86104DA19CDA28E001DB753 /* SpotifyAlarmClock.xcdatamodeld in Sources */,
 				B8FC13B119E9B61A001E4C1D /* Tools.m in Sources */,
 				B8DEF86E19E0474900F2F453 /* ArtistBrowseCache.m in Sources */,

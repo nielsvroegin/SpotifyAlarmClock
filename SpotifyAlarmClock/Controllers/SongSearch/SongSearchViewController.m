@@ -19,12 +19,14 @@
 #import "AlbumViewController.h"
 #import "CellConstructHelper.h"
 #import "Tools.h"
+#import "SongSearchBackgroundView.h"
 
 
 @interface SongSearchViewController ()
     @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
     @property (nonatomic, strong) SPSearch *searchResult;
     @property (nonatomic, strong) ArtistBrowseCache *artistBrowseCache;
+    @property (nonatomic, strong) SongSearchBackgroundView * backgroundView;
 
     @property (atomic, assign) BOOL loading;
     @property (nonatomic, assign) NSInteger artistSection;
@@ -33,6 +35,8 @@
 
     - (void) performSearch;
     - (void) addSongButtonClicked:(id)sender;
+    - (void)keyboardWillShow:(NSNotification *)notification;
+    - (void)keyboardWillHide:(NSNotification *)notification;
 @end
 
 @implementation SongSearchViewController
@@ -41,6 +45,7 @@
 @synthesize artistSection, albumSection, trackSection;
 @synthesize artistBrowseCache;
 @synthesize songSearchDelegate;
+@synthesize backgroundView;
 
 - (void)viewDidLoad {
     //Register cells
@@ -54,12 +59,13 @@
     [artistBrowseCache setDelegate:self];
     
     //Show search background
-    UIView * backgroundView = [[[NSBundle mainBundle] loadNibNamed:@"SongSearchBackground" owner:self options:nil] firstObject];
+    backgroundView = [[[NSBundle mainBundle] loadNibNamed:@"SongSearchBackground" owner:self options:nil] firstObject];
+    [backgroundView.keyboardConstraint setConstant:0];
     [self.tableView setBackgroundView:backgroundView];
     
     //Show searchbar keyboard
     [searchBar becomeFirstResponder];
-
+    
     [super viewDidLoad];
 }
 
@@ -67,22 +73,70 @@
 {
     [super viewWillAppear:animated];
     
+    //Register for notifications
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillChangeFrameNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
+    
+    //Reload table
     [self.tableView reloadData];
     
+    //Set self as playbackmanager delegate
     SPPlaybackManager * playBackManager = [SPPlaybackManager sharedPlaybackManager];
     [playBackManager setDelegate:self];
+}
+
+- (void) viewDidLayoutSubviews
+{
+    [super viewDidLayoutSubviews];
+    
+    [backgroundView.topSpaceConstraint setConstant:self.topLayoutGuide.length + 54.0f];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
     
+    //Unregister notifications
+    [[NSNotificationCenter defaultCenter]removeObserver:self name:UIKeyboardWillChangeFrameNotification object:nil];
+    [[NSNotificationCenter defaultCenter]removeObserver:self name:UIKeyboardWillHideNotification object:nil];
+    
+    //Stop track when view will disappear
     [[SPPlaybackManager sharedPlaybackManager] stopTrack];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+// The callback for frame-changing of keyboard
+- (void)keyboardWillShow:(NSNotification *)notification {
+    NSDictionary *info = [notification userInfo];
+    NSValue *kbFrame = [info objectForKey:UIKeyboardFrameEndUserInfoKey];
+    NSTimeInterval animationDuration = [[info objectForKey:UIKeyboardAnimationDurationUserInfoKey] doubleValue];
+    CGRect keyboardFrame = [kbFrame CGRectValue];
+    keyboardFrame = [self.view convertRect:keyboardFrame fromView:nil];
+
+    CGFloat height = keyboardFrame.size.height;
+    
+    [backgroundView.topSpaceConstraint setConstant:self.topLayoutGuide.length + 54.0f];
+    [backgroundView.keyboardConstraint setConstant:height+10];
+    
+    [UIView animateWithDuration:animationDuration animations:^{
+        [self.view layoutIfNeeded];
+    }];
+}
+
+- (void)keyboardWillHide:(NSNotification *)notification {
+    NSDictionary *info = [notification userInfo];
+    NSTimeInterval animationDuration = [[info objectForKey:UIKeyboardAnimationDurationUserInfoKey] doubleValue];
+    
+    [backgroundView.topSpaceConstraint setConstant:self.topLayoutGuide.length + 54.0f];
+    [backgroundView.keyboardConstraint setConstant:0];
+    
+    [UIView animateWithDuration:animationDuration animations:^{
+        [self.view layoutIfNeeded];
+    }];
 }
 
 -(void) performSearch
@@ -177,7 +231,6 @@
     //No need to search if searchtext is empty
     if([self.searchBar.text length] == 0)
     {
-        UIView * backgroundView = [[[NSBundle mainBundle] loadNibNamed:@"SongSearchBackground" owner:self options:nil] firstObject];
         [self.tableView setBackgroundView:backgroundView];
         
         [MBProgressHUD hideAllHUDsForView:self.tableView animated:YES];

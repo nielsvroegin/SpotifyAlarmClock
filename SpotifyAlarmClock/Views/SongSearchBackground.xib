@@ -3,28 +3,47 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" id="iN0-l3-epB">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="SongSearchBackgroundView">
+            <rect key="frame" x="0.0" y="94" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="SongSearchBackground" translatesAutoresizingMaskIntoConstraints="NO" id="JQc-uz-gcK">
-                    <rect key="frame" x="0.0" y="184" width="320" height="200"/>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WQr-dQ-OXp">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="418"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="SongSearchBackground" translatesAutoresizingMaskIntoConstraints="NO" id="JQc-uz-gcK">
+                            <rect key="frame" x="0.0" y="109" width="320" height="200"/>
+                            <constraints>
+                                <constraint firstAttribute="width" secondItem="JQc-uz-gcK" secondAttribute="height" multiplier="8:5" id="CEF-UK-oVt"/>
+                                <constraint firstAttribute="width" relation="lessThanOrEqual" constant="320" id="fxb-bG-pNo"/>
+                                <constraint firstAttribute="height" relation="lessThanOrEqual" constant="200" id="m0q-rM-8F3"/>
+                            </constraints>
+                        </imageView>
+                    </subviews>
                     <constraints>
-                        <constraint firstAttribute="width" constant="320" id="L8b-mz-sbs"/>
-                        <constraint firstAttribute="height" constant="200" id="bsn-s6-PQx"/>
+                        <constraint firstAttribute="centerX" secondItem="JQc-uz-gcK" secondAttribute="centerX" id="8Vx-5x-neu"/>
+                        <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="JQc-uz-gcK" secondAttribute="bottom" id="9nL-au-7LP"/>
+                        <constraint firstAttribute="centerY" secondItem="JQc-uz-gcK" secondAttribute="centerY" id="Lm8-eh-Yya"/>
+                        <constraint firstItem="JQc-uz-gcK" firstAttribute="top" relation="greaterThanOrEqual" secondItem="WQr-dQ-OXp" secondAttribute="top" id="pAN-J7-hqO"/>
                     </constraints>
-                </imageView>
+                </view>
             </subviews>
             <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
             <constraints>
-                <constraint firstAttribute="centerY" secondItem="JQc-uz-gcK" secondAttribute="centerY" id="DDw-1N-uJ6"/>
-                <constraint firstAttribute="centerX" secondItem="JQc-uz-gcK" secondAttribute="centerX" id="lqs-Ja-eKS"/>
+                <constraint firstAttribute="trailing" secondItem="WQr-dQ-OXp" secondAttribute="trailing" id="WA0-xl-tE3"/>
+                <constraint firstItem="WQr-dQ-OXp" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="opM-U6-LZf"/>
+                <constraint firstItem="WQr-dQ-OXp" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="qnb-Jl-1EA"/>
+                <constraint firstAttribute="bottom" secondItem="WQr-dQ-OXp" secondAttribute="bottom" constant="150" id="vKf-kO-tCK"/>
             </constraints>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+            <connections>
+                <outlet property="keyboardConstraint" destination="vKf-kO-tCK" id="JEp-cz-udB"/>
+                <outlet property="topSpaceConstraint" destination="opM-U6-LZf" id="noQ-oJ-3w5"/>
+            </connections>
         </view>
     </objects>
     <resources>
