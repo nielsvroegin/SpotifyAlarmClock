@@ -17,6 +17,7 @@
 #import "CellConstructHelper.h"
 #import "AlbumViewController.h"
 #import "Tools.h"
+#import "TableBackgroundView.h"
 
 @interface ArtistViewController ()
 
@@ -28,6 +29,7 @@
 @property (nonatomic, assign) NSInteger trackSection;
 @property (nonatomic, strong) NSArray *albums;
 @property (nonatomic, strong) NSArray *singles;
+@property (nonatomic, strong) TableBackgroundView * backgroundView;
 
 - (void)loadArtistBrowse;
 - (void)renderArtistHeader:(UIImage *)portrait;
@@ -43,6 +45,7 @@
 @synthesize headerRendered;
 @synthesize albums;
 @synthesize singles;
+@synthesize backgroundView;
 @synthesize songSearchDelegate;
 
 
@@ -57,6 +60,11 @@
     //Load header view from nib
     NSArray* nibViews = [[NSBundle mainBundle] loadNibNamed:@"BlurredHeader" owner:self options:nil];
     blurredHeaderView = [nibViews firstObject];
+    
+    //Prepare backgroundview
+    backgroundView = [[[NSBundle mainBundle] loadNibNamed:@"TableBackgroundView" owner:self options:nil] firstObject];
+    [backgroundView.backgroundImageView setImage:[UIImage imageNamed:@"NoContentForArtist"]];
+    [backgroundView.keyboardConstraint setConstant:25];
     
     //Set header to max width
     CGRect frame = blurredHeaderView.frame;
@@ -73,6 +81,13 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void) viewDidLayoutSubviews
+{
+    [super viewDidLayoutSubviews];
+    
+    [backgroundView.topSpaceConstraint setConstant:self.topLayoutGuide.length + 175.0f];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -120,6 +135,10 @@
          //Get albums/singles of artist
          albums = [self.artistBrowse.albums filteredArrayUsingPredicate:[NSPredicate predicateWithFormat: @"(type = %d OR type = %d) AND available = YES AND artist = %@", SP_ALBUMTYPE_ALBUM, SP_ALBUMTYPE_UNKNOWN, artist]];
          singles = [self.artistBrowse.albums filteredArrayUsingPredicate:[NSPredicate predicateWithFormat: @"type = %d AND available = YES AND artist = %@", SP_ALBUMTYPE_SINGLE, artist]];
+         
+         //Check if any content for artist, other wise show no content background image
+         if([[self.artistBrowse topTracks] count] == 0 && [self.albums count] == 0 && [self.singles count] == 0)
+             [self.tableView setBackgroundView:backgroundView];
          
          //Disable loading HUD
          [MBProgressHUD hideAllHUDsForView:self.tableView animated:YES];

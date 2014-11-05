@@ -1,5 +1,5 @@
 //
-//  SongSearchBackgroundView.h
+//  TableBackgroundView.h
 //  Alarm Clock
 //
 //  Created by Niels Vroegindeweij on 03-11-14.
@@ -8,9 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SongSearchBackgroundView : UIView
+@interface TableBackgroundView : UIView
+
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *keyboardConstraint;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *topSpaceConstraint;
+@property (weak, nonatomic) IBOutlet UIImageView *backgroundImageView;
 
 
 @end

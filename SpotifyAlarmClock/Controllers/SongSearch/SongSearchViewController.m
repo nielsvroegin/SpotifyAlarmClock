@@ -19,14 +19,14 @@
 #import "AlbumViewController.h"
 #import "CellConstructHelper.h"
 #import "Tools.h"
-#import "SongSearchBackgroundView.h"
+#import "TableBackgroundView.h"
 
 
 @interface SongSearchViewController ()
     @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
     @property (nonatomic, strong) SPSearch *searchResult;
     @property (nonatomic, strong) ArtistBrowseCache *artistBrowseCache;
-    @property (nonatomic, strong) SongSearchBackgroundView * backgroundView;
+    @property (nonatomic, strong) TableBackgroundView * backgroundView;
 
     @property (atomic, assign) BOOL loading;
     @property (nonatomic, assign) NSInteger artistSection;
@@ -59,7 +59,8 @@
     [artistBrowseCache setDelegate:self];
     
     //Show search background
-    backgroundView = [[[NSBundle mainBundle] loadNibNamed:@"SongSearchBackground" owner:self options:nil] firstObject];
+    backgroundView = [[[NSBundle mainBundle] loadNibNamed:@"TableBackgroundView" owner:self options:nil] firstObject];
+    [backgroundView.backgroundImageView setImage:[UIImage imageNamed:@"NoSearchQuery"]];
     [backgroundView.keyboardConstraint setConstant:0];
     [self.tableView setBackgroundView:backgroundView];
     
@@ -178,8 +179,16 @@
          //Search successful, add to search result and reload table
          [artistBrowseCache clear];
          self.searchResult = search;
-         [self.tableView reloadData];
+
          
+         //Check if any results, otherwise show no results background
+         if([self.searchResult.tracks count] == 0 && [self.searchResult.artists count] == 0 && [self.searchResult.albums count] == 0)
+         {
+             [backgroundView.backgroundImageView setImage:[UIImage imageNamed:@"NoSearchResults"]];
+             [self.tableView setBackgroundView:backgroundView];
+         }
+         
+         [self.tableView reloadData];
          self.loading = false;
      }];
     
@@ -231,6 +240,7 @@
     //No need to search if searchtext is empty
     if([self.searchBar.text length] == 0)
     {
+        [backgroundView.backgroundImageView setImage:[UIImage imageNamed:@"NoSearchQuery"]];
         [self.tableView setBackgroundView:backgroundView];
         
         [MBProgressHUD hideAllHUDsForView:self.tableView animated:YES];
