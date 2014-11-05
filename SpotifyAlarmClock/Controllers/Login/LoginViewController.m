@@ -50,6 +50,19 @@
     [[SPSession sharedSession] setDelegate:self];
 }
 
+- (void) viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Spotify Usage"
+                                                    message:@"This alarm clock allows you to select Spotify songs for the alarm function. To use the Spotify features a Spotify Premium account is required. Please specify how you want to proceed?"
+                                                   delegate:self
+                                          cancelButtonTitle:nil
+                                          otherButtonTitles:@"Use alarm clock without Spotify", @"Sign up for Spotify", @"Log in to Spotify",nil];
+    [alert setTag:1];
+    [alert show];
+}
+
 - (void) viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
@@ -91,17 +104,28 @@
 - (IBAction)skipLoginButtonClicked:(id)sender
 {
     UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Spotify Usage"
-                                                   message:@"Are you sure you want to use the Alarm Clock without Spotify features? You can enter your credentials afterwards in the settings menu."
+                                                   message:@"Are you sure you want to use the alarm clock without Spotify features? You can enter your credentials afterwards in the settings menu."
                                                   delegate:self
                                          cancelButtonTitle:@"No"
                                          otherButtonTitles:@"Yes",nil];
-    [alert setTag:1];
+    [alert setTag:2];
     [alert show];
 }
 
 - (void) alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
-    if([alertView tag] == 1) //Skip Login alert
+    if([alertView tag] == 1) //Spotify Usage alert
+    {
+        if (buttonIndex == 0)//Use alarm clock without Spotify
+        {
+            [self skipLoginButtonClicked:self];
+        }
+        else if (buttonIndex == 1)// Sign up for Spotify
+        {
+            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://www.spotify.com/nl/signup/"]];
+        }
+    }
+    else if([alertView tag] == 2) //Skip Login alert
     {
         if (buttonIndex == [alertView firstOtherButtonIndex])
         {
