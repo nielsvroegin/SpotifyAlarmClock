@@ -1286,9 +1286,16 @@
                             <outlet property="delegate" destination="SGl-ET-oql" id="67I-Ih-E3J"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="s1a-Sl-bEs"/>
+                    <navigationItem key="navigationItem" id="s1a-Sl-bEs">
+                        <barButtonItem key="rightBarButtonItem" title="Done" id="iJC-V7-f8G">
+                            <connections>
+                                <segue destination="CDF-dC-n7T" kind="unwind" unwindAction="unwindToSongs:" id="9DB-kC-itr"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8Nk-8H-VQW" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="CDF-dC-n7T" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="5030" y="-891"/>
         </scene>
@@ -1317,9 +1324,16 @@
                             <outlet property="delegate" destination="moy-Xe-ReM" id="aFP-f6-hGf"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="Wor-ki-BNB"/>
+                    <navigationItem key="navigationItem" id="Wor-ki-BNB">
+                        <barButtonItem key="rightBarButtonItem" title="Done" id="E00-lm-uMW">
+                            <connections>
+                                <segue destination="xg7-Sd-CMh" kind="unwind" unwindAction="unwindToSongs:" id="Rci-xg-ylv"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rem-zl-KMY" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="xg7-Sd-CMh" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="5494" y="-897"/>
         </scene>
@@ -1340,12 +1354,23 @@
                             <outlet property="delegate" destination="9ua-46-BX1" id="aLL-Fa-FKc"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="smO-dq-qfH"/>
+                    <toolbarItems>
+                        <barButtonItem title="Done" id="wA6-hh-aaP"/>
+                    </toolbarItems>
+                    <navigationItem key="navigationItem" id="smO-dq-qfH">
+                        <barButtonItem key="rightBarButtonItem" title="Done" id="xAt-4f-hdA">
+                            <connections>
+                                <segue destination="x8M-sX-HPs" kind="unwind" unwindAction="unwindToSongs:" id="FP6-nd-dPz"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <segue destination="kEK-8t-cMN" kind="push" identifier="artistSegue" id="dpd-fJ-gwS"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="q5G-c0-rPE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="x8M-sX-HPs" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="5030" y="-252"/>
         </scene>
@@ -1362,12 +1387,19 @@
                             <outlet property="delegate" destination="kEK-8t-cMN" id="lrM-vt-yT1"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="uj6-Zi-Nyz"/>
+                    <navigationItem key="navigationItem" id="uj6-Zi-Nyz">
+                        <barButtonItem key="rightBarButtonItem" title="Done" id="fda-eM-nJG">
+                            <connections>
+                                <segue destination="9mr-Cj-XaA" kind="unwind" unwindAction="unwindToSongs:" id="yuG-me-xKP"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <segue destination="moy-Xe-ReM" kind="push" identifier="albumSegue" id="1oT-SB-l6V"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NIi-4g-uqr" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="9mr-Cj-XaA" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="5516" y="-255"/>
         </scene>
@@ -1388,12 +1420,19 @@
                             <outlet property="delegate" destination="kgr-FC-5RO" id="exY-M9-EmE"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="2M5-PA-pVk"/>
+                    <navigationItem key="navigationItem" id="2M5-PA-pVk">
+                        <barButtonItem key="rightBarButtonItem" title="Done" id="FB5-Nr-eKI">
+                            <connections>
+                                <segue destination="ja4-Xr-moM" kind="unwind" unwindAction="unwindToSongs:" id="28P-oJ-1SP"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <segue destination="moy-Xe-ReM" kind="push" identifier="albumSegue" id="SDo-MT-6ED"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zSY-ro-j5T" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="ja4-Xr-moM" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="5034" y="395"/>
         </scene>
@@ -1563,6 +1602,6 @@
         <segue reference="i1N-E3-qx4"/>
         <segue reference="uqD-jD-qTx"/>
         <segue reference="jc4-iH-A1a"/>
-        <segue reference="odI-h1-XeF"/>
+        <segue reference="dpd-fJ-gwS"/>
     </inferredMetricsTieBreakers>
 </document>
