@@ -13,7 +13,7 @@
 
 @class Alarm;
 
-@interface AddAlarmViewController : UITableViewController<OptionsSelectDelegate, TextEditDelegate, SongsDelegate>
+@interface AddAlarmViewController : UITableViewController<OptionsSelectDelegate, TextEditDelegate, SongsDelegate, UIAlertViewDelegate>
 
 @property (nonatomic, strong) Alarm *alarmData;
 

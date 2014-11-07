@@ -1043,9 +1043,6 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
-                                        <connections>
-                                            <segue destination="Anl-o5-ySN" kind="push" identifier="songsSegue" id="DUa-Sj-wiQ"/>
-                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="pJ3-CV-XIl">
                                         <rect key="frame" x="0.0" y="187" width="320" height="44"/>
@@ -1151,6 +1148,8 @@
                         <outlet property="shuffleSwitch" destination="LLN-KM-YWd" id="83D-VK-QVc"/>
                         <outlet property="snoozeSwitch" destination="iGH-Qh-FdL" id="h5G-UB-40r"/>
                         <outlet property="timePicker" destination="8hp-KM-Crj" id="7T5-qO-yed"/>
+                        <segue destination="Anl-o5-ySN" kind="push" identifier="playlistSegue" id="Fww-HJ-kvG"/>
+                        <segue destination="t7g-vl-T2D" kind="modal" identifier="resetLoginSegue" id="uqD-jD-qTx"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bL0-Yh-GO3" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1561,8 +1560,8 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="894-fV-ljj"/>
         <segue reference="i1N-E3-qx4"/>
+        <segue reference="uqD-jD-qTx"/>
         <segue reference="jc4-iH-A1a"/>
         <segue reference="odI-h1-XeF"/>
     </inferredMetricsTieBreakers>

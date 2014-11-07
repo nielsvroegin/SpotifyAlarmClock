@@ -34,6 +34,7 @@
 - (NSString *) repeatOptionsText;
 - (NSString *)repeatOptionsToString;
 - (void)repeatOptionsFromString:(NSString *)rpOptions;
+- (void) playListRowSelected;
 
 @end
 
@@ -220,7 +221,40 @@
     self.songsChanged = YES;
 }
 
+#pragma mark - Table view delegate
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    if([indexPath row] == 1)
+        [self playListRowSelected];
+}
 
+
+- (void) playListRowSelected
+{
+    //Check if user uses Spotify
+    if([[NSUserDefaults standardUserDefaults] objectForKey:@"SpotifyUsername"] == nil || [[NSUserDefaults standardUserDefaults] boolForKey:@"UseAlarmClockWithoutSpotify"])
+    {
+        //User doesn't use spotify, let him choose to enable it or cancel
+        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Spotify Required"
+                                                       message:@"Your Spotify account isn't linked with this alarm clock yet. This is mandatory to select Spotify songs for your alarm playlist. Please choose how to proceed?"
+                                                      delegate:self
+                                             cancelButtonTitle:@"Cancel"
+                                             otherButtonTitles:@"Log in to Spotify",nil];
+        [alert show];
+    }
+    else
+        [self performSegueWithIdentifier:@"playlistSegue" sender:self];
+}
+
+#pragma mark - Alert view delegate
+
+- (void) alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if(buttonIndex == [alertView firstOtherButtonIndex])
+        [self performSegueWithIdentifier:@"resetLoginSegue" sender:self];
+}
 
 #pragma mark - Navigation
 
@@ -242,7 +276,7 @@
         [vw setDelegate:self];
         [vw setText:[self.lbLabel text]];
     }
-    else if([[segue identifier] isEqualToString:@"songsSegue"])
+    else if([[segue identifier] isEqualToString:@"playlistSegue"])
     {
         SongsViewController* vw = [segue destinationViewController];
         [vw setDelegate:self];
@@ -251,6 +285,13 @@
     else if([[segue identifier] isEqualToString:@"saveAlarm"])
     {
         [self SaveAlarm];
+    }
+    else if([[segue identifier] isEqualToString:@"resetLoginSegue"])
+    {
+        [[SPSession sharedSession] logout:nil];
+        [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"SpotifyUsername"];
+        [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"SpotifyPassword"];
+        [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"UseAlarmClockWithoutSpotify"];
     }
 }
 @end
