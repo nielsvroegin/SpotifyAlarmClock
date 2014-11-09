@@ -3,7 +3,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -18,7 +17,7 @@
                         <rect key="frame" x="13" y="10" width="20" height="20"/>
                     </activityIndicatorView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading more cells..." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a4k-lZ-MYy">
-                        <rect key="frame" x="43" y="10" width="259" height="21"/>
+                        <rect key="frame" x="43" y="9" width="259" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
@@ -26,10 +25,10 @@
                 </subviews>
                 <constraints>
                     <constraint firstItem="a4k-lZ-MYy" firstAttribute="leading" secondItem="GME-i2-Odq" secondAttribute="trailing" constant="10" id="0dP-lF-9tO"/>
-                    <constraint firstAttribute="trailingMargin" secondItem="a4k-lZ-MYy" secondAttribute="trailing" constant="10" id="NX4-dx-xL7"/>
+                    <constraint firstAttribute="trailing" secondItem="a4k-lZ-MYy" secondAttribute="trailing" constant="18" id="NX4-dx-xL7"/>
                     <constraint firstAttribute="centerY" secondItem="GME-i2-Odq" secondAttribute="centerY" constant="-0.5" id="dQ6-ju-m8S"/>
-                    <constraint firstAttribute="centerY" secondItem="a4k-lZ-MYy" secondAttribute="centerY" constant="-1" id="xnd-L3-ZNn"/>
-                    <constraint firstItem="GME-i2-Odq" firstAttribute="leading" secondItem="3FN-Cx-m0t" secondAttribute="leadingMargin" constant="5" id="yYP-Xy-0OT"/>
+                    <constraint firstAttribute="centerY" secondItem="a4k-lZ-MYy" secondAttribute="centerY" id="xnd-L3-ZNn"/>
+                    <constraint firstItem="GME-i2-Odq" firstAttribute="leading" secondItem="3FN-Cx-m0t" secondAttribute="leading" constant="13" id="yYP-Xy-0OT"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>

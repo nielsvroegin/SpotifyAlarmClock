@@ -4,7 +4,6 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -18,9 +17,7 @@
                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ieY-B0-iS8">
                         <rect key="frame" x="13" y="8" width="58" height="58"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="58" id="FUG-9h-oIl"/>
                             <constraint firstAttribute="width" secondItem="ieY-B0-iS8" secondAttribute="height" multiplier="1:1" id="bly-BJ-D1F"/>
-                            <constraint firstAttribute="height" constant="58" id="hmw-8z-nwu"/>
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Artist" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iUZ-do-COJ">
@@ -33,11 +30,10 @@
                 <constraints>
                     <constraint firstItem="iUZ-do-COJ" firstAttribute="leading" secondItem="ieY-B0-iS8" secondAttribute="trailing" constant="10" id="57q-zX-67J"/>
                     <constraint firstAttribute="centerY" secondItem="iUZ-do-COJ" secondAttribute="centerY" constant="0.5" id="D75-qZ-qns"/>
-                    <constraint firstItem="ieY-B0-iS8" firstAttribute="top" secondItem="GfF-SS-5RA" secondAttribute="topMargin" id="JQR-c2-bPD"/>
-                    <constraint firstAttribute="trailingMargin" secondItem="iUZ-do-COJ" secondAttribute="trailing" constant="5" id="Tu4-av-3S6"/>
-                    <constraint firstItem="ieY-B0-iS8" firstAttribute="leading" secondItem="GfF-SS-5RA" secondAttribute="leadingMargin" constant="5" id="UER-Fn-qAt"/>
-                    <constraint firstAttribute="centerY" secondItem="ieY-B0-iS8" secondAttribute="centerY" constant="0.5" id="gdW-fA-ijM"/>
-                    <constraint firstAttribute="bottomMargin" secondItem="ieY-B0-iS8" secondAttribute="bottom" id="jH0-ze-qvc"/>
+                    <constraint firstItem="ieY-B0-iS8" firstAttribute="top" secondItem="GfF-SS-5RA" secondAttribute="top" constant="8" id="JQR-c2-bPD"/>
+                    <constraint firstAttribute="trailing" secondItem="iUZ-do-COJ" secondAttribute="trailing" constant="13" id="Tu4-av-3S6"/>
+                    <constraint firstItem="ieY-B0-iS8" firstAttribute="leading" secondItem="GfF-SS-5RA" secondAttribute="leading" constant="13" id="UER-Fn-qAt"/>
+                    <constraint firstAttribute="bottom" secondItem="ieY-B0-iS8" secondAttribute="bottom" constant="8" id="jH0-ze-qvc"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>

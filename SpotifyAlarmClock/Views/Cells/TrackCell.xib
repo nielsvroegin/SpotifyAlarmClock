@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6245" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6250" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -20,21 +21,20 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Track" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2fS-Sz-1dW">
-                        <rect key="frame" x="63" y="9" width="191" height="21"/>
+                        <rect key="frame" x="63" y="9" width="181" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SO0-Dg-8CN">
-                        <rect key="frame" x="13" y="8" width="40" height="40"/>
+                        <rect key="frame" x="13" y="7" width="40" height="40"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="40" id="QIp-PE-hYH"/>
-                            <constraint firstAttribute="width" constant="40" id="vDH-ZH-ozB"/>
+                            <constraint firstAttribute="width" secondItem="SO0-Dg-8CN" secondAttribute="height" multiplier="1:1" id="ZUS-Xh-crI"/>
                         </constraints>
                     </view>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2FK-CX-1ht">
-                        <rect key="frame" x="262" y="3" width="50" height="50"/>
+                        <rect key="frame" x="262" y="2" width="50" height="50"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="50" id="UaI-6R-OYI"/>
                             <constraint firstAttribute="height" constant="50" id="eB8-el-4H3"/>
@@ -46,16 +46,16 @@
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="centerY" secondItem="2fS-Sz-1dW" secondAttribute="centerY" constant="7.5" id="AKe-Ij-Myc"/>
-                    <constraint firstItem="SO0-Dg-8CN" firstAttribute="leading" secondItem="QzJ-5H-bTu" secondAttribute="leadingMargin" constant="5" id="Aj3-Fr-Lyh"/>
-                    <constraint firstAttribute="trailingMargin" secondItem="2FK-CX-1ht" secondAttribute="trailing" id="CJo-kR-ScI"/>
-                    <constraint firstItem="cHu-oG-A9w" firstAttribute="trailing" secondItem="2fS-Sz-1dW" secondAttribute="trailing" constant="-10" id="JQJ-RR-HDt"/>
+                    <constraint firstItem="SO0-Dg-8CN" firstAttribute="leading" secondItem="QzJ-5H-bTu" secondAttribute="leading" constant="13" id="Aj3-Fr-Lyh"/>
+                    <constraint firstAttribute="trailing" secondItem="2FK-CX-1ht" secondAttribute="trailing" constant="8" id="CJo-kR-ScI"/>
                     <constraint firstItem="2FK-CX-1ht" firstAttribute="leading" secondItem="cHu-oG-A9w" secondAttribute="trailing" constant="18" id="M3D-om-dC9"/>
                     <constraint firstItem="2fS-Sz-1dW" firstAttribute="leading" secondItem="cHu-oG-A9w" secondAttribute="leading" id="NFw-0t-bcS"/>
                     <constraint firstItem="2fS-Sz-1dW" firstAttribute="leading" secondItem="SO0-Dg-8CN" secondAttribute="trailing" constant="10" id="VtJ-oe-ll6"/>
-                    <constraint firstItem="SO0-Dg-8CN" firstAttribute="top" secondItem="QzJ-5H-bTu" secondAttribute="topMargin" id="dIY-vn-vAy"/>
+                    <constraint firstItem="SO0-Dg-8CN" firstAttribute="top" secondItem="QzJ-5H-bTu" secondAttribute="top" constant="7" id="dIY-vn-vAy"/>
                     <constraint firstItem="cHu-oG-A9w" firstAttribute="top" secondItem="2fS-Sz-1dW" secondAttribute="bottom" constant="1" id="g3J-qa-JS4"/>
-                    <constraint firstAttribute="bottomMargin" secondItem="SO0-Dg-8CN" secondAttribute="bottom" constant="-2" id="i3B-cJ-h5C"/>
-                    <constraint firstAttribute="centerY" secondItem="2FK-CX-1ht" secondAttribute="centerY" constant="-1" id="x3V-0r-KBg"/>
+                    <constraint firstAttribute="bottom" secondItem="SO0-Dg-8CN" secondAttribute="bottom" constant="7" id="i3B-cJ-h5C"/>
+                    <constraint firstItem="2FK-CX-1ht" firstAttribute="leading" secondItem="2fS-Sz-1dW" secondAttribute="trailing" constant="18" id="qRi-Mg-ABy"/>
+                    <constraint firstAttribute="centerY" secondItem="2FK-CX-1ht" secondAttribute="centerY" id="x3V-0r-KBg"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
