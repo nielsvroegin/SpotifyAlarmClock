@@ -134,7 +134,7 @@
     
     //Create gadient for alarm background
     CAGradientLayer *gradient = [CAGradientLayer layer];
-    gradient.frame = alarmBackground.bounds;
+    gradient.frame = self.view.bounds;
     gradient.colors = [NSArray arrayWithObjects:(id)[[UIColor colorWithRed:(22.0/255.0) green:(107.0 / 255.0) blue:(47.0 / 255.0) alpha:1] CGColor], (id)[[UIColor colorWithRed:(27.0/255.0) green:(134.0 / 255.0) blue:(54.0 / 255.0) alpha:1] CGColor], nil];
     [alarmBackground.layer insertSublayer:gradient atIndex:0];
     
@@ -198,6 +198,12 @@
     [super viewDidDisappear:animated];
     
     [[SPSession sharedSession] removeObserver:self forKeyPath:@"connectionState"];
+}
+
+- (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
+{
+    // resize your layers based on the view’s new bounds
+    [[[self.alarmBackground.layer sublayers] objectAtIndex:0] setFrame:self.view.bounds];
 }
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
