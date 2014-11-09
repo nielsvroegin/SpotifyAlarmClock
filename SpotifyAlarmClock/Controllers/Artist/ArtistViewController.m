@@ -108,6 +108,14 @@
     [self loadArtistBrowse];
 }
 
+- (void) viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    
+    //IOS 7 fix: http://stackoverflow.com/questions/25654850/uitableview-contentsize-zero-after-uiviewcontroller-updateviewconstraints-is-c
+    [self.tableView reloadRowsAtIndexPaths:nil withRowAnimation:UITableViewRowAnimationNone];
+}
+
 - (void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
