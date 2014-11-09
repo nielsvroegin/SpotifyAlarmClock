@@ -14,6 +14,7 @@
 #import "Tools.h"
 #import "LoginViewController.h"
 #import "AppDelegate.h"
+#import "MBProgressHUD.h"
 
 @import AVFoundation;
 
@@ -653,7 +654,16 @@
     if(performingAlarm)
     {
         if([error code] == SP_ERROR_NO_STREAM_AVAILABLE)
+        {
+            MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+            hud.mode  = MBProgressHUDModeCustomView;
+            hud.progress = 1.0f;
+            hud.labelText = [NSString stringWithFormat:@"'%@' unavailable!", [aPlaybackManager.currentTrack name]];
+            hud.detailsLabelText = @" Skipping to next track...";
+            [hud hide:YES afterDelay:3.0f];
+            
             [playBackManager stopTrack];//Stop track, so new track will be started
+        }
         else
             [self playBackupAlarmSound];
     }
