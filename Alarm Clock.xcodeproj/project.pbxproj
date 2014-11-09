@@ -983,6 +983,15 @@
 				FRAMEWORK_SEARCH_PATHS = "";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SpotifyAlarmClock/Alarm Clock-Prefix.pch";
+				HEADER_SEARCH_PATHS = (
+					"\"${PODS_ROOT}/Headers/Public\"",
+					"\"${PODS_ROOT}/Headers/Public/APParallaxHeader\"",
+					"\"${PODS_ROOT}/Headers/Public/FFCircularProgressView\"",
+					"\"${PODS_ROOT}/Headers/Public/MBProgressHUD\"",
+					"\"${PODS_ROOT}/Headers/Public/UIImageEffects\"",
+					"\"$(SRCROOT)/Libraries/cocoalibspotify-2.4.5/\"/**",
+					"\"$(SRCROOT)/Libraries/cocoalibspotify-2.4.5/iOS Library/libspotify-12.1.64-iOS-universal/libspotify.framework/Versions/12.1.64/Headers/\"",
+				);
 				INFOPLIST_FILE = "SpotifyAlarmClock/Alarm Clock-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LIBRARY_SEARCH_PATHS = "";
@@ -1006,11 +1015,20 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Niels Vroegindeweij (46H439Z8Z5)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Niels Vroegindeweij (46H439Z8Z5)";
 				FRAMEWORK_SEARCH_PATHS = "";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SpotifyAlarmClock/Alarm Clock-Prefix.pch";
+				HEADER_SEARCH_PATHS = (
+					"\"${PODS_ROOT}/Headers/Public\"",
+					"\"${PODS_ROOT}/Headers/Public/APParallaxHeader\"",
+					"\"${PODS_ROOT}/Headers/Public/FFCircularProgressView\"",
+					"\"${PODS_ROOT}/Headers/Public/MBProgressHUD\"",
+					"\"${PODS_ROOT}/Headers/Public/UIImageEffects\"",
+					"\"$(SRCROOT)/Libraries/cocoalibspotify-2.4.5/\"/**",
+					"\"$(SRCROOT)/Libraries/cocoalibspotify-2.4.5/iOS Library/libspotify-12.1.64-iOS-universal/libspotify.framework/Versions/12.1.64/Headers/\"",
+				);
 				INFOPLIST_FILE = "SpotifyAlarmClock/Alarm Clock-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LIBRARY_SEARCH_PATHS = "";
@@ -1020,7 +1038,7 @@
 					"-all_load",
 				);
 				PRODUCT_NAME = "Alarm Clock";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "a3cc0ce0-3ec2-4c66-8bed-0d30ff5c525a";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALID_ARCHS = "armv7 armv7s";
 				WRAPPER_EXTENSION = app;

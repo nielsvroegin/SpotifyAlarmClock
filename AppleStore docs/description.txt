@@ -1,0 +1,16 @@
+Alarm Clock for Spotify is an Alarm Clock app, which allows you to wake up with your favorite Spotify songs. It supports multiple alarms and allows you to compile a playlist for your alarm.
+
+To use the Spotify functionality of this application, a Spotify Premium account is mandatory.
+
+Features
+
+- LCD Clock 
+- Support for multiple alarms
+- Compile playlists for alarms
+- Shuffle playlist
+- Select days to repeat alarm
+- Snooze functionality
+
+Legal
+
+This product uses Music by Spotify but is not endorsed, certified or otherwise approved in any way by Spotify. Spotify is the registered trademark of the Spotify Group.
