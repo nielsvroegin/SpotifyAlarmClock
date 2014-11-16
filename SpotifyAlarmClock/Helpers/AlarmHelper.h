@@ -1,5 +1,5 @@
 //
-//  NextAlarm.h
+//  AlarmHelper.h
 //  SpotifyAlarmClock
 //
 //  Created by Niels Vroegindeweij on 14-10-14.
@@ -9,10 +9,16 @@
 #import <Foundation/Foundation.h>
 
 @class Alarm;
+@class NextAlarm;
+
+@interface AlarmHelper : NSObject
+
++ (NextAlarm*) provideNextAlarm;
++ (void) configureBackgroundAlarms;
+
+@end
 
 @interface NextAlarm : NSObject
-
-+ (NextAlarm*) provide;
 
 @property (nonatomic, strong) Alarm * alarm;
 @property (nonatomic, strong) NSDateComponents * alarmDateComponents;

@@ -9,10 +9,14 @@
 #import "AppDelegate.h"
 #import "appkey.h"
 #import <AVFoundation/AVAudioSession.h>
+#import <AVFoundation/AVAudioPlayer.h>
 #import "CocoaLibSpotify.h"
+#import "Tools.h"
+#import "Alarm.h"
 
 @interface AppDelegate ()
 
+@property (nonatomic, strong) AVAudioPlayer * audioPlayer;
 
 @end
 
@@ -21,6 +25,9 @@
 @synthesize managedObjectContext = _managedObjectContext;
 @synthesize managedObjectModel = _managedObjectModel;
 @synthesize persistentStoreCoordinator = _persistentStoreCoordinator;
+@synthesize clockVisible;
+@synthesize audioPlayer;
+@synthesize startedWithAlarm;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
@@ -42,7 +49,7 @@
         [userDefaults setFloat:0.5 forKey:@"MaxVolume"];
     
     if([userDefaults objectForKey:@"Brightness"] == nil)
-        [userDefaults setFloat:0.5 forKey:@"Brightness"];
+        [userDefaults setFloat:[[UIScreen mainScreen] brightness] forKey:@"Brightness"];
     
     if([userDefaults objectForKey:@"UseAlarmClockWithoutSpotify"] == nil)
         [userDefaults setBool:NO forKey:@"UseAlarmClockWithoutSpotify"];
@@ -67,6 +74,32 @@
             [[SPSession sharedSession] attemptLoginWithUserName:[userDefaults objectForKey:@"SpotifyUsername"] existingCredential:[userDefaults objectForKey:@"SpotifyPassword"]];
         else
             [[SPSession sharedSession] logout:nil];
+    }
+    
+    //Register notification types
+    if ([application respondsToSelector:@selector(registerUserNotificationSettings:)])
+    {
+        UIUserNotificationSettings * notificationSettings = [UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeAlert | UIUserNotificationTypeSound categories:nil];
+        [[UIApplication sharedApplication] registerUserNotificationSettings:notificationSettings];
+    }
+    
+    //Check for start by notification
+    UILocalNotification *locationNotification = [launchOptions objectForKey:UIApplicationLaunchOptionsLocalNotificationKey];
+    if (locationNotification)
+    {
+        NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+        NSDate *time = [NSDate date];
+        NSDateComponents * timeComponents = [gregorian components:NSHourCalendarUnit | NSMinuteCalendarUnit | NSWeekdayCalendarUnit fromDate:time];
+        NSDateComponents * alarmDateComponents = [gregorian components:NSHourCalendarUnit | NSMinuteCalendarUnit | NSWeekdayCalendarUnit fromDate:[locationNotification fireDate]];
+        
+        if (timeComponents.weekday == alarmDateComponents.weekday && timeComponents.hour == alarmDateComponents.hour && timeComponents.minute == alarmDateComponents.minute)
+        {
+            NSURL * alarmUrl = [NSURL URLWithString:[locationNotification.userInfo objectForKey:@"Alarm"]];
+            Alarm * alarm = (Alarm *)[[self managedObjectContext] objectWithURI:alarmUrl];
+            
+            if(alarm != nil)
+                startedWithAlarm = alarm;
+        }
     }
     
     return YES;
@@ -98,6 +131,36 @@
 - (void)applicationWillTerminate:(UIApplication *)application
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+}
+
+- (void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notification
+{
+    UIApplicationState state = [application applicationState];
+    NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+    NSDate *time = [NSDate date];
+    NSDateComponents * timeComponents = [gregorian components:NSHourCalendarUnit | NSMinuteCalendarUnit | NSWeekdayCalendarUnit fromDate:time];
+    NSDateComponents * alarmDateComponents = [gregorian components:NSHourCalendarUnit | NSMinuteCalendarUnit | NSWeekdayCalendarUnit fromDate:[notification fireDate]];
+    
+    if (state == UIApplicationStateInactive && (timeComponents.weekday != alarmDateComponents.weekday || timeComponents.hour != alarmDateComponents.hour || timeComponents.minute != alarmDateComponents.minute))
+        return;
+    
+    //Return when clock visible
+    if(clockVisible)
+        return;
+    
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Alarm" message:@"Your alarm goes off!" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil];
+    audioPlayer = [[AVAudioPlayer alloc] initWithData:[Tools dataForAlarmBackupSound:[[NSUserDefaults standardUserDefaults] integerForKey:@"BackupAlarmSound"]] error:nil];
+    audioPlayer.numberOfLoops = -1;
+    [audioPlayer play];
+    [alert show];
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+    if (buttonIndex==0)
+    {
+        [audioPlayer stop];
+        audioPlayer = nil;
+    }
 }
 
 - (void)saveContext

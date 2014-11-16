@@ -19,10 +19,14 @@
 + (NSDate*)dateForHour:(NSInteger)hour andMinute:(NSInteger)minute;
 + (NSDateComponents*)hourAndMinuteForDate:(NSDate*)date;
 + (NSString *) shortWeekDaySymbolForUnit:(NSInteger) unit;
-+ (NSData *)dateForAlarmBackupSound:(NSUInteger)sound;
++ (NSData *)dataForAlarmBackupSound:(NSUInteger)sound;
 + (NSString *)dottedString:(NSString*)text;
 + (void) setSystemVolume:(float)volume;
 + (float) getSystemVolume;
 + (Alarm *) removeCorruptAlarmSong:(AlarmSong *) alarmSong fromAlarm:(Alarm *) alarm;
 
+@end
+
+@interface NSManagedObjectContext (FetchedObjectFromURI)
+- (NSManagedObject *)objectWithURI:(NSURL *)uri;
 @end

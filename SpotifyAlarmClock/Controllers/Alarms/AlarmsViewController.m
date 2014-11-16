@@ -11,6 +11,7 @@
 #import "AppDelegate.h"
 #import "AlarmCell.h"
 #import "Alarm.h"
+#import "AlarmHelper.h"
 
 @interface AlarmsViewController ()
 
@@ -128,6 +129,9 @@
         
         NSLog(@"Context save error: %@", error);
     }
+    
+    //Load new background alarms
+    [AlarmHelper configureBackgroundAlarms];
 }
 
 - (IBAction)EditAlarms:(id)sender
@@ -253,6 +257,9 @@
     
     //Check if edit button should be enabled/disabled
     [self editButtonCheck];
+    
+    //Load new background alarms
+    [AlarmHelper configureBackgroundAlarms];
 }
 
 #pragma mark - Table view data source

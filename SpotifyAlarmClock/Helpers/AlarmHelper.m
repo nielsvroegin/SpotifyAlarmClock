@@ -6,39 +6,42 @@
 //  Copyright (c) 2014 Niels Vroegindeweij. All rights reserved.
 //
 
-#import "NextAlarm.h"
+#import "AlarmHelper.h"
 #import "Alarm.h"
 #import "AppDelegate.h"
 
-@interface NextAlarm ()
+@interface AlarmHelper ()
 
 + (NSDate*)nextAlarmForAlarm:(Alarm*)alarm;
 + (NSArray*)getEnabledAlarms;
 + (NSDate*) fixDateDuringWinterTimeTransistion:(NSDate*)potentialWinterTime;
 
+@end
+
+@interface NextAlarm ()
+
 @property (nonatomic, strong) NSDate * alarmDate;
 
 @end
 
-@implementation NextAlarm
-@synthesize alarm;
-@synthesize alarmDateComponents;
-@synthesize alarmDate;
+@implementation AlarmHelper
 
-+ (NextAlarm*) provide
++ (NextAlarm*) provideNextAlarm
 {
     NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
     NSArray* alarms = [self getEnabledAlarms];
     
-    //Return when no enabled alarms could be found
+    // Return when no enabled alarms could be found
     if(alarms == nil || [alarms count] == 0)
         return nil;
     
-    //Find next alarm for listed alarms
+    // Find next alarm for listed alarms
     NextAlarm* nextAlarm = [[NextAlarm alloc] init];
+    NSMutableArray * backgroundAlarms = [[NSMutableArray alloc] initWithCapacity:[alarms count]];
     for(Alarm* alarm in alarms)
     {
         NSDate *nextAlarmForAlarm = [self nextAlarmForAlarm:alarm];
+        [backgroundAlarms addObject:[NSArray arrayWithObjects:alarm, nextAlarmForAlarm, nil]];
         
         if(nextAlarm.alarm == nil || [nextAlarm.alarmDate compare:nextAlarmForAlarm] == NSOrderedDescending)
         {
@@ -47,11 +50,64 @@
         }
     }
     
-    //Convert to DayOfWeek / Hour / Minute components because rest of NSDate information is not relevant
+    // Convert to DayOfWeek / Hour / Minute components because rest of NSDate information is not relevant
     if(nextAlarm.alarm != nil)
         nextAlarm.alarmDateComponents = [gregorian components:(NSWeekdayCalendarUnit | NSHourCalendarUnit | NSMinuteCalendarUnit) fromDate:nextAlarm.alarmDate];
-
+    
     return nextAlarm;
+}
+
++ (void) configureBackgroundAlarms
+{
+    //Check if user notifications enabled
+    if ([[UIApplication sharedApplication] respondsToSelector:@selector(currentUserNotificationSettings)])
+    {
+        UIUserNotificationSettings * notificationSettings = [[UIApplication sharedApplication] currentUserNotificationSettings];
+        if (!notificationSettings || (notificationSettings.types == UIUserNotificationTypeNone))
+            return;
+    }
+    
+    // Cancel current local notifications
+    [[UIApplication sharedApplication] cancelAllLocalNotifications];
+    
+    //Load enabled alarms
+    NSArray* alarms = [self getEnabledAlarms];
+    if(alarms == nil || [alarms count] == 0)
+        return;
+    
+    // Schedule the notifications
+    for(Alarm* alarm in alarms)
+    {
+        for(int i = 1; i <= 7; i++)
+        {
+            NSInteger testDayOnRepeat = ((i + 7 - 2) % 7);
+            
+            if([[alarm repeat] rangeOfString:[NSString stringWithFormat:@"%d", testDayOnRepeat]].location != NSNotFound || [[alarm repeat] length] == 0)
+            {
+                //Determine fire date for local notification
+                NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+                NSDate *now = [NSDate date];
+                NSDateComponents *componentsForFireDate = [calendar components:(NSYearCalendarUnit | NSWeekCalendarUnit|  NSHourCalendarUnit | NSMinuteCalendarUnit| NSSecondCalendarUnit | NSWeekdayCalendarUnit) fromDate: now];
+                [componentsForFireDate setWeekday: i];
+                [componentsForFireDate setHour:[alarm.hour intValue]];
+                [componentsForFireDate setMinute:[alarm.minute intValue]];
+                [componentsForFireDate setSecond:0] ;
+                NSDate *fireDateOfNotification = [calendar dateFromComponents: componentsForFireDate];
+                
+                //Set local notification
+                NSDictionary * userInfo = [NSDictionary dictionaryWithObject:[[[alarm objectID] URIRepresentation] absoluteString] forKey:@"Alarm"];
+                UILocalNotification* localNotification = [[UILocalNotification alloc] init];
+                localNotification.fireDate = fireDateOfNotification;
+                localNotification.repeatInterval = NSWeekCalendarUnit;
+                localNotification.alertBody = @"Your alarm goes off!";
+                localNotification.timeZone = [NSTimeZone defaultTimeZone];
+                localNotification.soundName = @"background.mp3";
+                localNotification.userInfo = userInfo;
+                
+                [[UIApplication sharedApplication] scheduleLocalNotification:localNotification];
+            }
+        }
+    }
 }
 
 + (NSArray*)getEnabledAlarms
@@ -143,7 +199,10 @@
         return  potentialWinterTime;
 }
 
+@end
 
-
-
+@implementation NextAlarm
+@synthesize alarm;
+@synthesize alarmDateComponents;
+@synthesize alarmDate;
 @end

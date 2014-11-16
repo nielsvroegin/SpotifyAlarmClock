@@ -19,7 +19,7 @@
 		B812393119D201F2005EABDB /* SongSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B812393019D201F2005EABDB /* SongSearchViewController.m */; };
 		B826479E19EBD7F100FBB21A /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B826479D19EBD7F100FBB21A /* QuartzCore.framework */; };
 		B82647A119EBDF0300FBB21A /* BackgroundGlow.m in Sources */ = {isa = PBXBuildFile; fileRef = B82647A019EBDF0300FBB21A /* BackgroundGlow.m */; };
-		B82647A419ED972F00FBB21A /* NextAlarm.m in Sources */ = {isa = PBXBuildFile; fileRef = B82647A319ED972F00FBB21A /* NextAlarm.m */; };
+		B82647A419ED972F00FBB21A /* AlarmHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = B82647A319ED972F00FBB21A /* AlarmHelper.m */; };
 		B82A533419C4F5E6000C40D8 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B82A533319C4F5E6000C40D8 /* SystemConfiguration.framework */; };
 		B82A533619C4F5F1000C40D8 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B82A533519C4F5F1000C40D8 /* CFNetwork.framework */; };
 		B82A533819C4F612000C40D8 /* libstdc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B82A533719C4F612000C40D8 /* libstdc++.dylib */; };
@@ -37,6 +37,7 @@
 		B86104D419CDA16D001DB753 /* AlarmSong.m in Sources */ = {isa = PBXBuildFile; fileRef = B86104D319CDA16D001DB753 /* AlarmSong.m */; };
 		B86104D719CDA187001DB753 /* Alarm.m in Sources */ = {isa = PBXBuildFile; fileRef = B86104D619CDA187001DB753 /* Alarm.m */; };
 		B86104DA19CDA28E001DB753 /* SpotifyAlarmClock.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B86104D819CDA28E001DB753 /* SpotifyAlarmClock.xcdatamodeld */; };
+		B878508A1A15527F00354EA8 /* background.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B87850891A15527F00354EA8 /* background.mp3 */; };
 		B885CC7119E010E5003450F8 /* AllTracksViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B885CC7019E010E5003450F8 /* AllTracksViewController.m */; };
 		B885CC7D19E013BD003450F8 /* AlarmCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B885CC7619E013BD003450F8 /* AlarmCell.m */; };
 		B885CC7E19E013BD003450F8 /* AlbumCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B885CC7819E013BD003450F8 /* AlbumCell.m */; };
@@ -136,8 +137,8 @@
 		B826479D19EBD7F100FBB21A /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		B826479F19EBDF0300FBB21A /* BackgroundGlow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BackgroundGlow.h; sourceTree = "<group>"; };
 		B82647A019EBDF0300FBB21A /* BackgroundGlow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BackgroundGlow.m; sourceTree = "<group>"; };
-		B82647A219ED972F00FBB21A /* NextAlarm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NextAlarm.h; sourceTree = "<group>"; };
-		B82647A319ED972F00FBB21A /* NextAlarm.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NextAlarm.m; sourceTree = "<group>"; };
+		B82647A219ED972F00FBB21A /* AlarmHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlarmHelper.h; sourceTree = "<group>"; };
+		B82647A319ED972F00FBB21A /* AlarmHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlarmHelper.m; sourceTree = "<group>"; };
 		B82A530D19C4E641000C40D8 /* appkey.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = appkey.h; path = SpotifyAlarmClock/appkey.h; sourceTree = "<group>"; };
 		B82A533319C4F5E6000C40D8 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		B82A533519C4F5F1000C40D8 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
@@ -160,6 +161,7 @@
 		B86104D519CDA187001DB753 /* Alarm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Alarm.h; sourceTree = "<group>"; };
 		B86104D619CDA187001DB753 /* Alarm.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Alarm.m; sourceTree = "<group>"; };
 		B86104D919CDA28E001DB753 /* SpotifyAlarmClock.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SpotifyAlarmClock.xcdatamodel; sourceTree = "<group>"; };
+		B87850891A15527F00354EA8 /* background.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = background.mp3; sourceTree = "<group>"; };
 		B885CC6F19E010E5003450F8 /* AllTracksViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AllTracksViewController.h; sourceTree = "<group>"; };
 		B885CC7019E010E5003450F8 /* AllTracksViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AllTracksViewController.m; sourceTree = "<group>"; };
 		B885CC7519E013BD003450F8 /* AlarmCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlarmCell.h; sourceTree = "<group>"; };
@@ -554,8 +556,8 @@
 				B8FC13B019E9B61A001E4C1D /* Tools.m */,
 				B8FC13B219EA812E001E4C1D /* NSMutableArray+Convenience.h */,
 				B8FC13B319EA812E001E4C1D /* NSMutableArray+Convenience.m */,
-				B82647A219ED972F00FBB21A /* NextAlarm.h */,
-				B82647A319ED972F00FBB21A /* NextAlarm.m */,
+				B82647A219ED972F00FBB21A /* AlarmHelper.h */,
+				B82647A319ED972F00FBB21A /* AlarmHelper.m */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -581,6 +583,7 @@
 		B8A99D3A19F82EAC000359BF /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				B87850891A15527F00354EA8 /* background.mp3 */,
 				B844EF751A03B9B1007A52C6 /* licences.rtf */,
 				B8A99D3B19F82EAC000359BF /* alpha-beta.mp3 */,
 				B8A99D3C19F82EAC000359BF /* day-by-day.mp3 */,
@@ -752,6 +755,7 @@
 				B8A99D3F19F82EAC000359BF /* alpha-beta.mp3 in Resources */,
 				B8A99D4019F82EAC000359BF /* day-by-day.mp3 in Resources */,
 				B8403BE71A07CB2700CD74FE /* EmptySongList.xib in Resources */,
+				B878508A1A15527F00354EA8 /* background.mp3 in Resources */,
 				B885FE8419C488F400EC1D32 /* Main.storyboard in Resources */,
 				B8A99D4119F82EAC000359BF /* forever.mp3 in Resources */,
 				B8D16E0519E1C94500B375D2 /* BlurredHeader.xib in Resources */,
@@ -819,7 +823,7 @@
 				B812392619D1FC28005EABDB /* ClockViewController.m in Sources */,
 				B885CC7E19E013BD003450F8 /* AlbumCell.m in Sources */,
 				B8DEF87519E06FA100F2F453 /* AllAlbumsViewController.m in Sources */,
-				B82647A419ED972F00FBB21A /* NextAlarm.m in Sources */,
+				B82647A419ED972F00FBB21A /* AlarmHelper.m in Sources */,
 				B885FE8119C488F400EC1D32 /* AppDelegate.m in Sources */,
 				B812392E19D201A4005EABDB /* SongsViewController.m in Sources */,
 				B844EF7A1A03BA0C007A52C6 /* LicensesViewController.m in Sources */,

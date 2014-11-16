@@ -16,6 +16,7 @@
 #import "SongsViewController.h"
 #import "Option.h"
 #import "Tools.h"
+#import "AlarmHelper.h"
 
 @interface AddAlarmViewController ()
 
@@ -135,6 +136,9 @@
         
         NSLog(@"Context save error: %@", error);
     }
+    
+    //Load new background alarms
+    [AlarmHelper configureBackgroundAlarms];
 }
 
 - (NSString *)repeatOptionsToString

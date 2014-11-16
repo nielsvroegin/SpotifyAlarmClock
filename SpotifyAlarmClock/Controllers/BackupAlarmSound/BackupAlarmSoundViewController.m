@@ -96,7 +96,7 @@
 
     //Play new sound
     NSError *error;
-    self.audioPlayer = [[AVAudioPlayer alloc] initWithData:[Tools dateForAlarmBackupSound:selectedSound] fileTypeHint:AVFileTypeMPEGLayer3 error:&error];
+    self.audioPlayer = [[AVAudioPlayer alloc] initWithData:[Tools dataForAlarmBackupSound:selectedSound] fileTypeHint:AVFileTypeMPEGLayer3 error:&error];
     
     //Check if init successful
     if(error != nil)

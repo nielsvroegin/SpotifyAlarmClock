@@ -10,7 +10,7 @@
 #import "Alarm.h"
 #import "AlarmSong.h"
 #import "BackgroundGlow.h"
-#import "NextAlarm.h"
+#import "AlarmHelper.h"
 #import "Tools.h"
 #import "LoginViewController.h"
 #import "AppDelegate.h"
@@ -123,7 +123,7 @@
     //Receive notification for significant time change/Locale change
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(timeChangedSignificant) name:UIApplicationSignificantTimeChangeNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(timeChangedSignificant) name:NSCurrentLocaleDidChangeNotification object:nil];
-        
+    
     //Register all views for background tap
     [self applyBackgroundTapRecursive:self.view];
     
@@ -160,7 +160,7 @@
     [[SPSession sharedSession] addObserver:self forKeyPath:@"connectionState" options:0 context:NULL];
     
     //Determine next alarm
-    nextAlarm = [NextAlarm provide];
+    nextAlarm = [AlarmHelper provideNextAlarm];
     
     //Update clock
     [self updateClock];
@@ -169,6 +169,10 @@
 - (void) viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
+    
+    //Notify delegate clock visible
+    AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
+    [appDelegate setClockVisible:YES];
     
     //Keep app awake
     [UIApplication sharedApplication].idleTimerDisabled = NO;
@@ -190,7 +194,23 @@
             
             [userDefaults setBool:YES forKey:@"alarmClockForegroundWarningDisplayed"];
         }
+        
+        //Check if started with alarm by notification
+        if([appDelegate startedWithAlarm] != nil)
+        {
+            [self performAlarm:[appDelegate startedWithAlarm]];            
+            [appDelegate setStartedWithAlarm:nil];
+        }
     }
+}
+
+- (void) viewWillDisappear:(BOOL)animated
+{
+    //Notify delegate clock visible
+    AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
+    [appDelegate setClockVisible:NO];
+    
+    [super viewWillDisappear:animated];
 }
 
 - (void) viewDidDisappear:(BOOL)animated
@@ -253,7 +273,7 @@
 
 - (void) timeChangedSignificant
 {
-    self.nextAlarm = [NextAlarm provide];
+    self.nextAlarm = [AlarmHelper provideNextAlarm];
     [self updateClock];
 }
 
@@ -263,6 +283,7 @@
     performingAlarm = alarm;
     snoozeDate = nil;
     songPlayTryCount = 0;
+    self.nextAlarm = [AlarmHelper provideNextAlarm];
     
     //Show ClockAlarm
     self.topBarAlarm.hidden = NO;
@@ -381,7 +402,7 @@
     
     //Play new sound
     NSError *error;
-    self.audioPlayer = [[AVAudioPlayer alloc] initWithData:[Tools dateForAlarmBackupSound:[userDefaults integerForKey:@"BackupAlarmSound"]] fileTypeHint:AVFileTypeMPEGLayer3 error:&error];
+    self.audioPlayer = [[AVAudioPlayer alloc] initWithData:[Tools dataForAlarmBackupSound:[userDefaults integerForKey:@"BackupAlarmSound"]] fileTypeHint:AVFileTypeMPEGLayer3 error:&error];
     
     //Stop current spotify track
     [playBackManager stopTrack];
@@ -495,7 +516,7 @@
     //--------- Set next alarm ---------/
     //Determine next alarm every minute
     if([[gregorian components:NSSecondCalendarUnit fromDate:time] second] == 0)
-        nextAlarm = [NextAlarm provide];
+        nextAlarm = [AlarmHelper provideNextAlarm];
     
     //Check if snooze date is in future
     if(snoozeDate != nil && [[NSDate date] compare:snoozeDate] == NSOrderedDescending)
