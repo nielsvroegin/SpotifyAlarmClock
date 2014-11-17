@@ -115,6 +115,7 @@
     [self.alarmData setShuffle:[NSNumber numberWithBool:[self.shuffleSwitch isOn]]];
     [self.alarmData setHour:[NSNumber numberWithInt:[dateComponents hour]]];
     [self.alarmData setMinute:[NSNumber numberWithInt:[dateComponents minute]]];
+    [self.alarmData setLastEdited:[NSDate date]];
     
     /***** Set Alarm Songs ******/
     if(songsChanged)

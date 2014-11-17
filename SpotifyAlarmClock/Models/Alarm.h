@@ -21,6 +21,7 @@
 @property (nonatomic, retain) NSNumber * snooze;
 @property (nonatomic, retain) NSNumber * shuffle;
 @property (nonatomic, retain) NSOrderedSet *songs;
+@property (nonatomic, retain) NSDate *lastEdited;
 @end
 
 @interface Alarm (CoreDataGeneratedAccessors)

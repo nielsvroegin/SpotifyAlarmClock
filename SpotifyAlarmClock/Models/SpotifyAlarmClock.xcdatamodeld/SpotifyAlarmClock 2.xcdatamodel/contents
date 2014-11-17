@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="6252" systemVersion="14A389" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="Alarm" representedClassName="Alarm">
+        <attribute name="enabled" optional="YES" attributeType="Boolean" defaultValueString="NO">
+            <userInfo/>
+        </attribute>
+        <attribute name="hour" attributeType="Integer 16" defaultValueString="0">
+            <userInfo/>
+        </attribute>
+        <attribute name="lastEdited" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="minute" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="name" attributeType="String">
+            <userInfo/>
+        </attribute>
+        <attribute name="repeat" attributeType="String">
+            <userInfo/>
+        </attribute>
+        <attribute name="shuffle" optional="YES" attributeType="Boolean" defaultValueString="0" syncable="YES"/>
+        <attribute name="snooze" attributeType="Boolean" defaultValueString="NO">
+            <userInfo/>
+        </attribute>
+        <relationship name="songs" optional="YES" toMany="YES" deletionRule="Cascade" ordered="YES" destinationEntity="AlarmSong" inverseName="alarm" inverseEntity="AlarmSong" syncable="YES"/>
+        <userInfo/>
+    </entity>
+    <entity name="AlarmSong" representedClassName="AlarmSong" syncable="YES">
+        <attribute name="spotifyUrl" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="alarm" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Alarm" inverseName="songs" inverseEntity="Alarm" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Alarm" positionX="160" positionY="192" width="128" height="180"/>
+        <element name="AlarmSong" positionX="133" positionY="387" width="128" height="73"/>
+    </elements>
+</model>

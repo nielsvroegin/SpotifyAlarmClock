@@ -15,6 +15,7 @@
 + (NSDate*)nextAlarmForAlarm:(Alarm*)alarm;
 + (NSArray*)getEnabledAlarms;
 + (NSDate*) fixDateDuringWinterTimeTransistion:(NSDate*)potentialWinterTime;
++ (NSArray *)removeExceededOneTimeAlarms:(NSArray *)alarms;
 
 @end
 
@@ -134,7 +135,51 @@
         NSLog(@"Context fetch error: %@", error);
     }
     
+    /****** remove exceeded one time alarms ******/
+    alarms = [self removeExceededOneTimeAlarms:alarms];
+    
     return alarms;
+}
+
++ (NSArray *)removeExceededOneTimeAlarms:(NSArray *)alarms
+{
+    NSMutableArray * validAlarms = [[NSMutableArray alloc] init];
+    NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+    NSDate *now = [NSDate date];
+    
+    for(Alarm * alarm in alarms)
+    {
+        //Check alarm date on top of today, so we can see if alarm before or after now
+        NSDateComponents * alarmComponents = [gregorian components:(NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit | NSHourCalendarUnit | NSMinuteCalendarUnit) fromDate:now];
+        alarmComponents.hour = [alarm.hour intValue];
+        alarmComponents.minute = [alarm.minute intValue];
+        NSDate * alarmDate = [gregorian dateFromComponents:alarmComponents];
+        
+        if([alarm repeat] == nil || [alarm.repeat length] > 0 || [alarmDate compare:now] == NSOrderedDescending || [alarm.lastEdited compare:alarmDate] == NSOrderedDescending)
+            [validAlarms addObject:alarm];
+        else
+        {
+            //------ Disable the Alarm ------//
+            // Get refs to Managed object context
+            AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
+            NSManagedObjectContext *context = [appDelegate managedObjectContext];
+            NSError *error;
+            
+            [alarm setEnabled:[NSNumber numberWithBool:NO]];
+            
+            // Save alarmData object
+            if(![context save:&error])
+            {
+                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Could not disable non-repeating alarm!" delegate:nil cancelButtonTitle:@"Oke!" otherButtonTitles:nil];
+                [alert show];
+                
+                NSLog(@"Context save error: %@", error);
+            }
+        }
+
+    }
+    
+    return validAlarms;
 }
 
 + (NSDate*)nextAlarmForAlarm:(Alarm*)alarm

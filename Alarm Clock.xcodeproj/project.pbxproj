@@ -114,6 +114,7 @@
 
 /* Begin PBXFileReference section */
 		8E9EC42A6CF7103BBBA32316 /* Pods-SpotifyAlarmClock.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SpotifyAlarmClock.release.xcconfig"; path = "Pods/Target Support Files/Pods-SpotifyAlarmClock/Pods-SpotifyAlarmClock.release.xcconfig"; sourceTree = "<group>"; };
+		B80775251A1A84140045B79C /* SpotifyAlarmClock 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "SpotifyAlarmClock 2.xcdatamodel"; sourceTree = "<group>"; };
 		B80F0F261A081A71009F86F0 /* TableBackgroundView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableBackgroundView.h; sourceTree = "<group>"; };
 		B80F0F271A081A71009F86F0 /* TableBackgroundView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableBackgroundView.m; sourceTree = "<group>"; };
 		B812390E19D1FC28005EABDB /* AddAlarmViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddAlarmViewController.h; sourceTree = "<group>"; };
@@ -1125,9 +1126,10 @@
 		B86104D819CDA28E001DB753 /* SpotifyAlarmClock.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				B80775251A1A84140045B79C /* SpotifyAlarmClock 2.xcdatamodel */,
 				B86104D919CDA28E001DB753 /* SpotifyAlarmClock.xcdatamodel */,
 			);
-			currentVersion = B86104D919CDA28E001DB753 /* SpotifyAlarmClock.xcdatamodel */;
+			currentVersion = B80775251A1A84140045B79C /* SpotifyAlarmClock 2.xcdatamodel */;
 			path = SpotifyAlarmClock.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

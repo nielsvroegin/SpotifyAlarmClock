@@ -20,5 +20,6 @@
 @dynamic snooze;
 @dynamic shuffle;
 @dynamic songs;
+@dynamic lastEdited;
 
 @end

@@ -14,7 +14,7 @@
 
 @property (strong, nonatomic) UIWindow *window;
 @property (nonatomic, assign) bool clockVisible;
-@property (nonatomic, assign) Alarm * startedWithAlarm;
+@property (nonatomic, strong) Alarm * startedWithAlarm;
 
 @property (readonly, strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 @property (readonly, strong, nonatomic) NSManagedObjectModel *managedObjectModel;

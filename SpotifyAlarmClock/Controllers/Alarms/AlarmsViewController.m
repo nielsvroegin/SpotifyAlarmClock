@@ -118,6 +118,7 @@
     
     Alarm *alarm = [self.alarms objectAtIndex:[[self.tableView indexPathForCell:alarmCell] row]] ;
     [alarm setEnabled:[NSNumber numberWithBool:[sw isOn]]];
+    [alarm setLastEdited:[NSDate date]];
     
     //Save alarm
     if(![context save:&error])

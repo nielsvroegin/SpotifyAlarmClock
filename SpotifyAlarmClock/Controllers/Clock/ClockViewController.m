@@ -313,26 +313,6 @@
     //Disable background tap
     [self enableTapGestures:NO];
     
-    //Disable alarm in case repeat is never
-    if(performingAlarm.repeat == nil || [performingAlarm.repeat length] == 0)
-    {
-        /****** Get refs to Managed object context ******/
-        AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
-        NSManagedObjectContext *context = [appDelegate managedObjectContext];
-        NSError *error;
-        
-        [performingAlarm setEnabled:[NSNumber numberWithBool:NO]];
-        
-        /****** Save alarmData object ******/
-        if(![context save:&error])
-        {
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Could not disable non-repeating alarm!" delegate:nil cancelButtonTitle:@"Oke!" otherButtonTitles:nil];
-            [alert show];
-            
-            NSLog(@"Context save error: %@", error);
-        }
-    }
-    
     //Play song
     [self playSong];
 }
