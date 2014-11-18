@@ -71,6 +71,10 @@
     // Cancel current local notifications
     [[UIApplication sharedApplication] cancelAllLocalNotifications];
     
+    //Don't add background alarms when disabled
+    if(![[NSUserDefaults standardUserDefaults] boolForKey:@"BackgroundAlarm"])
+        return;
+    
     //Load enabled alarms
     NSArray* alarms = [self getEnabledAlarms];
     if(alarms == nil || [alarms count] == 0)

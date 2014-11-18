@@ -28,6 +28,7 @@
 		B82A533E19C4F63E000C40D8 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B82A533D19C4F63E000C40D8 /* AVFoundation.framework */; };
 		B82A534019C4F645000C40D8 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B82A533F19C4F645000C40D8 /* Security.framework */; };
 		B82A534C19C4FF5F000C40D8 /* libCocoaLibSpotify.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B82A534719C4FEF4000C40D8 /* libCocoaLibSpotify.a */; };
+		B834AE761A1BD49B00989C4C /* BackgroundAlarmsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B834AE751A1BD49B00989C4C /* BackgroundAlarmsViewController.m */; };
 		B8403BE71A07CB2700CD74FE /* EmptySongList.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8403BE61A07CB2700CD74FE /* EmptySongList.xib */; };
 		B8403BEA1A07D8BD00CD74FE /* TableBackgroundView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8403BE91A07D8BD00CD74FE /* TableBackgroundView.xib */; };
 		B844EF741A039996007A52C6 /* AboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B844EF731A039996007A52C6 /* AboutViewController.m */; };
@@ -149,6 +150,8 @@
 		B82A533D19C4F63E000C40D8 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		B82A533F19C4F645000C40D8 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		B82A534119C4FEF4000C40D8 /* CocoaLibSpotify iOS Library.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = "CocoaLibSpotify iOS Library.xcodeproj"; path = "Libraries/cocoalibspotify-2.4.5/iOS Library/CocoaLibSpotify iOS Library.xcodeproj"; sourceTree = "<group>"; };
+		B834AE741A1BD49B00989C4C /* BackgroundAlarmsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BackgroundAlarmsViewController.h; sourceTree = "<group>"; };
+		B834AE751A1BD49B00989C4C /* BackgroundAlarmsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BackgroundAlarmsViewController.m; sourceTree = "<group>"; };
 		B8403BE61A07CB2700CD74FE /* EmptySongList.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EmptySongList.xib; sourceTree = "<group>"; };
 		B8403BE91A07D8BD00CD74FE /* TableBackgroundView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TableBackgroundView.xib; sourceTree = "<group>"; };
 		B844EF721A039996007A52C6 /* AboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutViewController.h; sourceTree = "<group>"; };
@@ -280,6 +283,7 @@
 		B812390C19D1FC28005EABDB /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				B834AE721A1BD47800989C4C /* BackgroundAlarms */,
 				B844EF771A03B9F6007A52C6 /* Licenses */,
 				B844EF711A039978007A52C6 /* About */,
 				B812390D19D1FC28005EABDB /* AddAlarm */,
@@ -377,6 +381,15 @@
 				B82A534919C4FEF4000C40D8 /* CocoaLSTests.app */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		B834AE721A1BD47800989C4C /* BackgroundAlarms */ = {
+			isa = PBXGroup;
+			children = (
+				B834AE741A1BD49B00989C4C /* BackgroundAlarmsViewController.h */,
+				B834AE751A1BD49B00989C4C /* BackgroundAlarmsViewController.m */,
+			);
+			path = BackgroundAlarms;
 			sourceTree = "<group>";
 		};
 		B844EF711A039978007A52C6 /* About */ = {
@@ -838,6 +851,7 @@
 				B812392819D1FC28005EABDB /* OptionsSelectViewController.m in Sources */,
 				B885FE7D19C488F400EC1D32 /* main.m in Sources */,
 				B8D7691419E5C17600988A71 /* CellConstructHelper.m in Sources */,
+				B834AE761A1BD49B00989C4C /* BackgroundAlarmsViewController.m in Sources */,
 				B8D16E0919E1CBF900B375D2 /* BlurredHeaderView.m in Sources */,
 				B844EF741A039996007A52C6 /* AboutViewController.m in Sources */,
 				B86104D419CDA16D001DB753 /* AlarmSong.m in Sources */,

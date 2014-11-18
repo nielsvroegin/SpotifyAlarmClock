@@ -23,6 +23,7 @@
 @property (weak, nonatomic) IBOutlet UISlider *slMaxVolume;
 @property (weak, nonatomic) IBOutlet UISlider *slBrightness;
 @property (weak, nonatomic) IBOutlet UILabel *lbSpotifyConnectionState;
+@property (weak, nonatomic) IBOutlet UILabel *lbBackgroundAlarmsState;
 
 - (IBAction)blinkSecondsMarkerSettingChanged:(id)sender;
 - (IBAction)showBackgroundGlowSettingChanged:(id)sender;
@@ -38,6 +39,7 @@
 @synthesize swShowBackgroundGlow;
 @synthesize slMaxVolume;
 @synthesize slBrightness;
+@synthesize lbBackgroundAlarmsState;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -60,6 +62,11 @@
     
     [self updateSpotifyConnectionState];
     
+    //Set background alarm state
+    if([[NSUserDefaults standardUserDefaults] boolForKey:@"BackgroundAlarm"])
+        [self.lbBackgroundAlarmsState setText:@"On"];
+    else
+        [self.lbBackgroundAlarmsState setText:@"Off"];
 }
 
 - (void) viewDidDisappear:(BOOL)animated

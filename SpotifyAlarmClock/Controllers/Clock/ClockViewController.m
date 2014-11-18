@@ -23,7 +23,7 @@
 @property (nonatomic, assign) bool showColon;
 @property (nonatomic, assign) bool loginChecked;
 @property (nonatomic, assign) bool isPerformingAlarm;
-@property (nonatomic, assign) Alarm * performingAlarm;
+@property (nonatomic, strong) Alarm * performingAlarm;
 @property (nonatomic, strong) NextAlarm * nextAlarm;
 @property (nonatomic, strong) NSMutableArray * songList;
 @property (nonatomic, strong) NSDate * snoozeDate;
