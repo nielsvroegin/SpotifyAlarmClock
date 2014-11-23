@@ -38,6 +38,9 @@
 		B86104D419CDA16D001DB753 /* AlarmSong.m in Sources */ = {isa = PBXBuildFile; fileRef = B86104D319CDA16D001DB753 /* AlarmSong.m */; };
 		B86104D719CDA187001DB753 /* Alarm.m in Sources */ = {isa = PBXBuildFile; fileRef = B86104D619CDA187001DB753 /* Alarm.m */; };
 		B86104DA19CDA28E001DB753 /* SpotifyAlarmClock.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B86104D819CDA28E001DB753 /* SpotifyAlarmClock.xcdatamodeld */; };
+		B869FED81A21E82B004BB7AC /* StartScreenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B869FED71A21E82B004BB7AC /* StartScreenViewController.m */; };
+		B869FEDB1A2217F3004BB7AC /* UINavigationController+autoRotate.m in Resources */ = {isa = PBXBuildFile; fileRef = B869FEDA1A2217F3004BB7AC /* UINavigationController+autoRotate.m */; };
+		B869FEDF1A222010004BB7AC /* StartNavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B869FEDE1A222010004BB7AC /* StartNavigationViewController.m */; };
 		B878508A1A15527F00354EA8 /* background.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B87850891A15527F00354EA8 /* background.mp3 */; };
 		B885CC7119E010E5003450F8 /* AllTracksViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B885CC7019E010E5003450F8 /* AllTracksViewController.m */; };
 		B885CC7D19E013BD003450F8 /* AlarmCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B885CC7619E013BD003450F8 /* AlarmCell.m */; };
@@ -165,6 +168,12 @@
 		B86104D519CDA187001DB753 /* Alarm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Alarm.h; sourceTree = "<group>"; };
 		B86104D619CDA187001DB753 /* Alarm.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Alarm.m; sourceTree = "<group>"; };
 		B86104D919CDA28E001DB753 /* SpotifyAlarmClock.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SpotifyAlarmClock.xcdatamodel; sourceTree = "<group>"; };
+		B869FED61A21E82B004BB7AC /* StartScreenViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StartScreenViewController.h; sourceTree = "<group>"; };
+		B869FED71A21E82B004BB7AC /* StartScreenViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StartScreenViewController.m; sourceTree = "<group>"; };
+		B869FED91A2217F3004BB7AC /* UINavigationController+autoRotate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationController+autoRotate.h"; sourceTree = "<group>"; };
+		B869FEDA1A2217F3004BB7AC /* UINavigationController+autoRotate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationController+autoRotate.m"; sourceTree = "<group>"; };
+		B869FEDD1A222010004BB7AC /* StartNavigationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StartNavigationViewController.h; sourceTree = "<group>"; };
+		B869FEDE1A222010004BB7AC /* StartNavigationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StartNavigationViewController.m; sourceTree = "<group>"; };
 		B87850891A15527F00354EA8 /* background.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = background.mp3; sourceTree = "<group>"; };
 		B885CC6F19E010E5003450F8 /* AllTracksViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AllTracksViewController.h; sourceTree = "<group>"; };
 		B885CC7019E010E5003450F8 /* AllTracksViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AllTracksViewController.m; sourceTree = "<group>"; };
@@ -283,6 +292,8 @@
 		B812390C19D1FC28005EABDB /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				B869FEDC1A221FE6004BB7AC /* StartNavigation */,
+				B869FED41A21E817004BB7AC /* StartScreen */,
 				B834AE721A1BD47800989C4C /* BackgroundAlarms */,
 				B844EF771A03B9F6007A52C6 /* Licenses */,
 				B844EF711A039978007A52C6 /* About */,
@@ -420,6 +431,24 @@
 				B86104D619CDA187001DB753 /* Alarm.m */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		B869FED41A21E817004BB7AC /* StartScreen */ = {
+			isa = PBXGroup;
+			children = (
+				B869FED61A21E82B004BB7AC /* StartScreenViewController.h */,
+				B869FED71A21E82B004BB7AC /* StartScreenViewController.m */,
+			);
+			path = StartScreen;
+			sourceTree = "<group>";
+		};
+		B869FEDC1A221FE6004BB7AC /* StartNavigation */ = {
+			isa = PBXGroup;
+			children = (
+				B869FEDD1A222010004BB7AC /* StartNavigationViewController.h */,
+				B869FEDE1A222010004BB7AC /* StartNavigationViewController.m */,
+			);
+			path = StartNavigation;
 			sourceTree = "<group>";
 		};
 		B885CC6D19E010C2003450F8 /* AllTracks */ = {
@@ -572,6 +601,8 @@
 				B8FC13B319EA812E001E4C1D /* NSMutableArray+Convenience.m */,
 				B82647A219ED972F00FBB21A /* AlarmHelper.h */,
 				B82647A319ED972F00FBB21A /* AlarmHelper.m */,
+				B869FED91A2217F3004BB7AC /* UINavigationController+autoRotate.h */,
+				B869FEDA1A2217F3004BB7AC /* UINavigationController+autoRotate.m */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -759,6 +790,7 @@
 			files = (
 				B8D7690D19E5B20F00988A71 /* ArtistCell.xib in Resources */,
 				B844EF761A03B9B1007A52C6 /* licences.rtf in Resources */,
+				B869FEDB1A2217F3004BB7AC /* UINavigationController+autoRotate.m in Resources */,
 				B885FE8919C488F500EC1D32 /* Images.xcassets in Resources */,
 				B8A99D4219F82EAC000359BF /* LCD-BOLD.TTF in Resources */,
 				B885FE7B19C488F400EC1D32 /* InfoPlist.strings in Resources */,
@@ -827,6 +859,7 @@
 				B812392719D1FC28005EABDB /* Option.m in Sources */,
 				B812392319D1FC28005EABDB /* AddAlarmViewController.m in Sources */,
 				B885CC8019E013BD003450F8 /* TrackCell.m in Sources */,
+				B869FEDF1A222010004BB7AC /* StartNavigationViewController.m in Sources */,
 				B8A99D6019FA79FB000359BF /* SettingsViewController.m in Sources */,
 				B812393119D201F2005EABDB /* SongSearchViewController.m in Sources */,
 				B82647A119EBDF0300FBB21A /* BackgroundGlow.m in Sources */,
@@ -839,6 +872,7 @@
 				B8DEF87519E06FA100F2F453 /* AllAlbumsViewController.m in Sources */,
 				B82647A419ED972F00FBB21A /* AlarmHelper.m in Sources */,
 				B885FE8119C488F400EC1D32 /* AppDelegate.m in Sources */,
+				B869FED81A21E82B004BB7AC /* StartScreenViewController.m in Sources */,
 				B812392E19D201A4005EABDB /* SongsViewController.m in Sources */,
 				B844EF7A1A03BA0C007A52C6 /* LicensesViewController.m in Sources */,
 				B80F0F281A081A71009F86F0 /* TableBackgroundView.m in Sources */,

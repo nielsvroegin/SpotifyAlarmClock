@@ -10,33 +10,40 @@
 #import "MBProgressHud.h"
 
 @interface LoginViewController ()
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *keyboardSpacingConstraint;
 @property (weak, nonatomic) IBOutlet UITextField *txtUsername;
 @property (weak, nonatomic) IBOutlet UITextField *txtPassword;
+@property (weak, nonatomic) IBOutlet UIButton *btLogin;
 
 - (IBAction)loginButtonClicked:(id)sender;
-- (IBAction)skipLoginButtonClicked:(id)sender;
-- (void)keyboardWillShow:(NSNotification *)notification;
 - (void) login;
+- (IBAction)textValueChanged:(id)sender;
 @end
 
 @implementation LoginViewController
-@synthesize keyboardSpacingConstraint;
 @synthesize txtUsername;
 @synthesize txtPassword;
-
-- (void)observeKeyboard {
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillChangeFrameNotification object:nil];
-}
+@synthesize btLogin;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    // Begin observing the keyboard notifications when the view is loaded.
-    [self observeKeyboard];
+    //Make navigationbar completely transculent
+    [self.navigationController.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
+    self.navigationController.navigationBar.shadowImage = [UIImage new];
+    self.navigationController.navigationBar.translucent = YES;
+    self.navigationController.view.backgroundColor = [UIColor clearColor];
+    
+    //Add background to table view
+    UIImageView *tempImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"LoginBackground"]];
+    [tempImageView setFrame:self.tableView.frame];
+    self.tableView.backgroundView = tempImageView;
     
     //Show keyboard
     [txtUsername becomeFirstResponder];
+    
+    //Set placeholders username/password
+    txtUsername.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"Spotify username or Facebook e-mail" attributes:@{NSForegroundColorAttributeName: [UIColor whiteColor]}];
+    txtPassword.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"Password" attributes:@{NSForegroundColorAttributeName: [UIColor whiteColor]}];
     
     //Set delegates
     [txtUsername setDelegate:self];
@@ -48,19 +55,13 @@
     [super viewWillAppear:animated];
     
     [[SPSession sharedSession] setDelegate:self];
+    
+    [btLogin setAlpha:0.5f];
 }
 
 - (void) viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Spotify Usage"
-                                                    message:@"This alarm clock allows you to select Spotify songs for the alarm function. To use the Spotify features a Spotify Premium account is required. Please specify how you want to proceed?"
-                                                   delegate:self
-                                          cancelButtonTitle:nil
-                                          otherButtonTitles:@"Use alarm clock without Spotify", @"Sign up for Spotify", @"Log in to Spotify",nil];
-    [alert setTag:1];
-    [alert show];
 }
 
 - (void) viewWillDisappear:(BOOL)animated
@@ -99,51 +100,6 @@
 - (IBAction)loginButtonClicked:(id)sender
 {
     [self login];
-}
-
-- (IBAction)skipLoginButtonClicked:(id)sender
-{
-    UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Spotify Usage"
-                                                   message:@"Are you sure you want to use the alarm clock without Spotify features? You can enter your credentials afterwards in the settings menu."
-                                                  delegate:self
-                                         cancelButtonTitle:@"No"
-                                         otherButtonTitles:@"Yes",nil];
-    [alert setTag:2];
-    [alert show];
-}
-
-- (void) alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
-{
-    if([alertView tag] == 1) //Spotify Usage alert
-    {
-        if (buttonIndex == 0)//Use alarm clock without Spotify
-        {
-            [self skipLoginButtonClicked:self];
-        }
-        else if (buttonIndex == 1)// Sign up for Spotify
-        {
-            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://www.spotify.com/nl/signup/"]];
-        }
-    }
-    else if([alertView tag] == 2) //Skip Login alert
-    {
-        if (buttonIndex == [alertView firstOtherButtonIndex])
-        {
-            [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"UseAlarmClockWithoutSpotify"];
-            [self dismissViewControllerAnimated:YES completion:nil];
-        }
-    }
-}
-
-
-- (void)keyboardWillShow:(NSNotification *)notification {
-    NSDictionary *info = [notification userInfo];
-    NSValue *kbFrame = [info objectForKey:UIKeyboardFrameEndUserInfoKey];
-    CGRect keyboardFrame = [kbFrame CGRectValue];
-    
-    CGFloat height = keyboardFrame.size.height;
-    
-    self.keyboardSpacingConstraint.constant = height + 10;
 }
 
 #pragma SPSessionDelegate methods
@@ -203,16 +159,42 @@
     [alert show];
 }
 
+- (IBAction)textValueChanged:(id)sender
+{
+    if([txtUsername.text length] > 0 && [txtPassword.text length] > 0)
+    {
+        [btLogin setAlpha:1.0f];
+        [btLogin setEnabled:YES];
+    }
+    else
+    {
+        [btLogin setAlpha:0.5f];
+        [btLogin setEnabled:NO];
+    }
+}
+
+
+
 #pragma UITextField delegate methods
-
-
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
     if(textField == txtUsername)
         [txtPassword becomeFirstResponder];
     else if(textField == txtPassword)
-        [self login];
+    {
+        if([txtUsername.text length] > 0 && [txtPassword.text length] > 0)
+            [self login];
+        else
+            [txtUsername becomeFirstResponder];
+    }
     
     return YES;
+}
+
+#pragma UITableView delegate methods
+
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [cell setBackgroundColor:[UIColor clearColor]];
 }
 
 @end

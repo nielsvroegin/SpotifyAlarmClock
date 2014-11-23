@@ -2,7 +2,18 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "LoginBackground.pdf"
+      "scale" : "1x",
+      "filename" : "LoginBackground1x.png"
+    },
+    {
+      "idiom" : "universal",
+      "scale" : "2x",
+      "filename" : "LoginBackground2x.png"
+    },
+    {
+      "idiom" : "universal",
+      "scale" : "3x",
+      "filename" : "LoginBackGround3x.png"
     }
   ],
   "info" : {
