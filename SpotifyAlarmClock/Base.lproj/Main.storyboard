@@ -1467,10 +1467,10 @@
             </objects>
             <point key="canvasLocation" x="3605" y="-329"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Portrait Navigation Controller-->
         <scene sceneID="df4-9G-34q">
             <objects>
-                <navigationController id="OY4-PY-rDx" sceneMemberID="viewController">
+                <navigationController id="OY4-PY-rDx" customClass="PortraitNavigationController" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="nwf-9s-FAK">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -1708,10 +1708,10 @@
             </objects>
             <point key="canvasLocation" x="5034" y="395"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Portrait Navigation Controller-->
         <scene sceneID="mlx-uY-shS">
             <objects>
-                <navigationController definesPresentationContext="YES" id="P9Z-Ee-gP4" sceneMemberID="viewController">
+                <navigationController definesPresentationContext="YES" id="P9Z-Ee-gP4" customClass="PortraitNavigationController" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="MEd-Dm-DcZ"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="E6G-Tn-2rY">
                         <autoresizingMask key="autoresizingMask"/>
@@ -1836,10 +1836,10 @@
             </objects>
             <point key="canvasLocation" x="1931" y="-331"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Portrait Navigation Controller-->
         <scene sceneID="XgX-cU-njt">
             <objects>
-                <navigationController definesPresentationContext="YES" id="4QZ-jy-vp4" sceneMemberID="viewController">
+                <navigationController definesPresentationContext="YES" id="4QZ-jy-vp4" customClass="PortraitNavigationController" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="HLW-gS-05z"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="pCp-AU-8Y6">
                         <autoresizingMask key="autoresizingMask"/>
@@ -1855,31 +1855,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dTA-XH-aVP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="854" y="165"/>
-        </scene>
-        <!--Table View Controller-->
-        <scene sceneID="tv0-sl-rnh">
-            <objects>
-                <tableViewController id="WaK-tn-krm" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="nQm-Ws-SV7">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="8Ya-tH-QSt">
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="8Ya-tH-QSt" id="g0T-wF-FRH">
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="WaK-tn-krm" id="L5Y-vM-tdX"/>
-                            <outlet property="delegate" destination="WaK-tn-krm" id="RVD-MY-LC5"/>
-                        </connections>
-                    </tableView>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="r12-mv-QX2" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
         </scene>
     </scenes>
     <resources>

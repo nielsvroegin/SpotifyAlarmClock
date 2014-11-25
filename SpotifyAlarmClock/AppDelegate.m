@@ -154,7 +154,7 @@
         return;
     
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Alarm" message:@"Your alarm goes off!" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil];
-    audioPlayer = [[AVAudioPlayer alloc] initWithData:[Tools dataForAlarmBackupSound:[[NSUserDefaults standardUserDefaults] integerForKey:@"BackupAlarmSound"]] error:nil];
+    audioPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"background" withExtension:@"mp3"] fileTypeHint:@"AVFileTypeMPEGLayer3" error:nil];
     audioPlayer.numberOfLoops = -1;
     [audioPlayer play];
     [alert show];

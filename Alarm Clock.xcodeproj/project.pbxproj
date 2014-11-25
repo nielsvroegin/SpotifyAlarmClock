@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		349CEB9FD7339389AF16EA91 /* libPods-SpotifyAlarmClock.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C92F5708CCED2BA4D9ECCF61 /* libPods-SpotifyAlarmClock.a */; };
+		B809EF921A25195B00E5F892 /* PortraitNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = B809EF911A25195B00E5F892 /* PortraitNavigationController.m */; };
 		B80F0F281A081A71009F86F0 /* TableBackgroundView.m in Sources */ = {isa = PBXBuildFile; fileRef = B80F0F271A081A71009F86F0 /* TableBackgroundView.m */; };
 		B812392319D1FC28005EABDB /* AddAlarmViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B812390F19D1FC28005EABDB /* AddAlarmViewController.m */; };
 		B812392519D1FC28005EABDB /* AlarmsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B812391419D1FC28005EABDB /* AlarmsViewController.m */; };
@@ -119,6 +120,8 @@
 /* Begin PBXFileReference section */
 		8E9EC42A6CF7103BBBA32316 /* Pods-SpotifyAlarmClock.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SpotifyAlarmClock.release.xcconfig"; path = "Pods/Target Support Files/Pods-SpotifyAlarmClock/Pods-SpotifyAlarmClock.release.xcconfig"; sourceTree = "<group>"; };
 		B80775251A1A84140045B79C /* SpotifyAlarmClock 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "SpotifyAlarmClock 2.xcdatamodel"; sourceTree = "<group>"; };
+		B809EF901A25195B00E5F892 /* PortraitNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PortraitNavigationController.h; sourceTree = "<group>"; };
+		B809EF911A25195B00E5F892 /* PortraitNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PortraitNavigationController.m; sourceTree = "<group>"; };
 		B80F0F261A081A71009F86F0 /* TableBackgroundView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableBackgroundView.h; sourceTree = "<group>"; };
 		B80F0F271A081A71009F86F0 /* TableBackgroundView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableBackgroundView.m; sourceTree = "<group>"; };
 		B812390E19D1FC28005EABDB /* AddAlarmViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddAlarmViewController.h; sourceTree = "<group>"; };
@@ -289,9 +292,19 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		B809EF8E1A25192D00E5F892 /* PortraitNavigation */ = {
+			isa = PBXGroup;
+			children = (
+				B809EF901A25195B00E5F892 /* PortraitNavigationController.h */,
+				B809EF911A25195B00E5F892 /* PortraitNavigationController.m */,
+			);
+			path = PortraitNavigation;
+			sourceTree = "<group>";
+		};
 		B812390C19D1FC28005EABDB /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				B809EF8E1A25192D00E5F892 /* PortraitNavigation */,
 				B869FEDC1A221FE6004BB7AC /* StartNavigation */,
 				B869FED41A21E817004BB7AC /* StartScreen */,
 				B834AE721A1BD47800989C4C /* BackgroundAlarms */,
@@ -866,6 +879,7 @@
 				B8DEF87919E07A8F00F2F453 /* ArtistViewController.m in Sources */,
 				B812392919D1FC28005EABDB /* TextEditViewController.m in Sources */,
 				B885CC7119E010E5003450F8 /* AllTracksViewController.m in Sources */,
+				B809EF921A25195B00E5F892 /* PortraitNavigationController.m in Sources */,
 				B86104D719CDA187001DB753 /* Alarm.m in Sources */,
 				B812392619D1FC28005EABDB /* ClockViewController.m in Sources */,
 				B885CC7E19E013BD003450F8 /* AlbumCell.m in Sources */,
