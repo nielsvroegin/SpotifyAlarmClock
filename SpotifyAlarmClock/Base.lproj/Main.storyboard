@@ -21,7 +21,6 @@
         <!--Start Navigation View Controller-->
         <scene sceneID="kwN-dV-AOi">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="T71-iv-ZTI" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController id="D00-VP-2Lq" customClass="StartNavigationViewController" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="NxI-vm-blj">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -35,6 +34,7 @@
                         <segue destination="qj9-CV-fCa" kind="relationship" relationship="rootViewController" id="Kj6-kv-XBn"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="T71-iv-ZTI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-606" y="-455"/>
         </scene>
@@ -169,6 +169,10 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="yYX-Nc-lJ0"/>
+                    <connections>
+                        <outlet property="loginCell" destination="gZ2-2x-jd3" id="mkT-rs-Q11"/>
+                        <outlet property="signupCell" destination="hi1-x2-PbU" id="ZAL-Y5-SXp"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="20O-KF-Jx5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

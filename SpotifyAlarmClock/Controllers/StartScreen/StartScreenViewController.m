@@ -11,20 +11,34 @@
 @interface StartScreenViewController ()
 
 - (IBAction)skipLoginButtonClicked:(id)sender;
+@property (weak, nonatomic) IBOutlet UITableViewCell *loginCell;
+@property (weak, nonatomic) IBOutlet UITableViewCell *signupCell;
 
 @end
 
 @implementation StartScreenViewController
+@synthesize loginCell;
+@synthesize signupCell;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
     [self setNeedsStatusBarAppearanceUpdate];
     
+    //Set background
     UIImageView *tempImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"LoginBackground"]];
     [tempImageView setFrame:self.tableView.frame];
-   
     self.tableView.backgroundView = tempImageView;
+    
+    //Set disclosure indicators
+    loginCell.accessoryView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"DisclosureIndicator"]];
+    signupCell.accessoryView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"DisclosureIndicator"]];
+    
+    //Set select cell background
+    UIView *bgColorView = [[UIView alloc] init];
+    bgColorView.backgroundColor = [UIColor grayColor];
+    [loginCell setSelectedBackgroundView:bgColorView];
+    [signupCell setSelectedBackgroundView:bgColorView];
 }
 
 -(UIStatusBarStyle)preferredStatusBarStyle{
