@@ -188,11 +188,11 @@
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <color key="separatorColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <view key="tableHeaderView" contentMode="scaleToFill" id="7yQ-MX-Hmn">
-                            <rect key="frame" x="0.0" y="64" width="320" height="70"/>
+                            <rect key="frame" x="0.0" y="64" width="320" height="50"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Log in with Facebook or Spotify" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B6A-ls-LZt">
-                                    <rect key="frame" x="56" y="24" width="251" height="21"/>
+                                    <rect key="frame" x="56" y="14" width="251" height="21"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="251" id="Dtt-hc-uNg"/>
                                         <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="21" id="aoF-Ma-Yc8"/>
@@ -204,7 +204,7 @@
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="facebook" translatesAutoresizingMaskIntoConstraints="NO" id="sKW-q3-Jpn">
-                                    <rect key="frame" x="16" y="20" width="30" height="30"/>
+                                    <rect key="frame" x="16" y="10" width="30" height="30"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="30" id="XbX-9r-OEt"/>
                                         <constraint firstAttribute="height" constant="30" id="aY6-G2-RgP"/>
@@ -219,11 +219,11 @@
                             </constraints>
                         </view>
                         <view key="tableFooterView" contentMode="scaleToFill" id="EBv-AO-6Q4">
-                            <rect key="frame" x="0.0" y="232" width="320" height="80"/>
+                            <rect key="frame" x="0.0" y="217" width="320" height="60"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zna-PT-Xca">
-                                    <rect key="frame" x="0.0" y="20" width="320" height="40"/>
+                                    <rect key="frame" x="0.0" y="10" width="320" height="40"/>
                                     <color key="backgroundColor" red="0.32549019607843138" green="0.50196078431372548" blue="0.015686274509803921" alpha="1" colorSpace="calibratedRGB"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="40" id="ISd-Gh-kcc"/>
@@ -1028,13 +1028,13 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="qTq-sK-Vqd" id="q16-Lx-TOl">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="E-mail" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="gvQ-90-Oii">
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Support" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="gvQ-90-Oii">
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="alarmclock@startsmart.nl" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Y4S-oT-ztT">
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="alarmclock.startsmart.nl" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Y4S-oT-ztT">
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="calibratedRGB"/>
@@ -1263,13 +1263,25 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
-                        <datePicker key="tableFooterView" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="1" id="8hp-KM-Crj">
-                            <rect key="frame" x="0.0" y="285" width="320" height="216"/>
-                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                            <date key="date" timeIntervalSinceReferenceDate="432504663.36077899">
-                                <!--2014-09-15 20:11:03 +0000-->
-                            </date>
-                        </datePicker>
+                        <view key="tableHeaderView" contentMode="scaleToFill" id="Z6e-9E-8vB">
+                            <rect key="frame" x="0.0" y="64" width="320" height="250"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="8hp-KM-Crj">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="216"/>
+                                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <date key="date" timeIntervalSinceReferenceDate="432504663.36077899">
+                                        <!--2014-09-15 20:11:03 +0000-->
+                                    </date>
+                                </datePicker>
+                            </subviews>
+                            <constraints>
+                                <constraint firstItem="8hp-KM-Crj" firstAttribute="top" secondItem="Z6e-9E-8vB" secondAttribute="top" id="3NF-J3-9pW"/>
+                                <constraint firstItem="8hp-KM-Crj" firstAttribute="leading" secondItem="Z6e-9E-8vB" secondAttribute="leading" id="CgN-t6-RFI"/>
+                                <constraint firstAttribute="bottom" secondItem="8hp-KM-Crj" secondAttribute="bottom" constant="34" id="KpL-Vo-nux"/>
+                                <constraint firstAttribute="trailing" secondItem="8hp-KM-Crj" secondAttribute="trailing" id="huu-Ab-9I2"/>
+                            </constraints>
+                        </view>
                         <sections>
                             <tableViewSection id="wDP-oR-ZTJ">
                                 <cells>
@@ -1872,8 +1884,8 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="OZb-U4-aSq"/>
         <segue reference="i1N-E3-qx4"/>
+        <segue reference="kWa-eh-0oN"/>
         <segue reference="odI-h1-XeF"/>
         <segue reference="jc4-iH-A1a"/>
     </inferredMetricsTieBreakers>

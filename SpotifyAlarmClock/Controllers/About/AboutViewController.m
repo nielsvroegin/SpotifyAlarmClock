@@ -37,7 +37,7 @@
             [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://www.linkedin.com/pub/niels-vroegindeweij/21/980/24b"]];
             break;
         case 3: //E-Mail
-            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"mailto:alarmclock@startsmart.nl"]];
+            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://alarmclock.startsmart.nl"]];
             break;
     }
 }

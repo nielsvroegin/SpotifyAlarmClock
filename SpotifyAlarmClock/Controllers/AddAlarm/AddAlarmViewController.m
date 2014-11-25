@@ -60,6 +60,8 @@
 
 - (void)viewDidLoad
 {
+    self.timePicker.backgroundColor = [UIColor whiteColor];
+    
     self.repeatOptions = [NSArray arrayWithObjects: [[Option alloc] initWithLabel:@"Every Monday" abbreviate:@"Mon" selected:FALSE],
                             [[Option alloc] initWithLabel:@"Every Tuesday" abbreviate:@"Tue" selected:FALSE],
                             [[Option alloc] initWithLabel:@"Every Wednesday" abbreviate:@"Wed" selected:FALSE],
@@ -104,7 +106,6 @@
     if(self.alarmData == nil)
     {
         self.alarmData = [NSEntityDescription insertNewObjectForEntityForName:@"Alarm" inManagedObjectContext:context];
-        [self.alarmData setEnabled:[NSNumber numberWithBool:YES]];
     }
     
     /****** Set new values ******/
@@ -116,6 +117,7 @@
     [self.alarmData setHour:[NSNumber numberWithInt:[dateComponents hour]]];
     [self.alarmData setMinute:[NSNumber numberWithInt:[dateComponents minute]]];
     [self.alarmData setLastEdited:[NSDate date]];
+    [self.alarmData setEnabled:[NSNumber numberWithBool:YES]];
     
     /***** Set Alarm Songs ******/
     if(songsChanged)

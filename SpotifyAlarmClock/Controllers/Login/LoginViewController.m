@@ -90,6 +90,9 @@
 
 - (void) login
 {
+    [txtUsername resignFirstResponder];
+    [txtPassword resignFirstResponder];
+    
     //Show loading HUD
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     hud.labelText = @"Logging In...";
