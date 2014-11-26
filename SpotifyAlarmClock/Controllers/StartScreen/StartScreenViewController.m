@@ -10,7 +10,6 @@
 
 @interface StartScreenViewController ()
 
-- (IBAction)skipLoginButtonClicked:(id)sender;
 @property (weak, nonatomic) IBOutlet UITableViewCell *loginCell;
 @property (weak, nonatomic) IBOutlet UITableViewCell *signupCell;
 
@@ -65,17 +64,6 @@
 }
 
 
-
-- (IBAction)skipLoginButtonClicked:(id)sender
-{
-    UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Spotify Usage"
-                                                   message:@"Are you sure you want to use the Alarm Clock without Spotify features? You can enter your credentials afterwards in the settings menu."
-                                                  delegate:self
-                                         cancelButtonTitle:@"No"
-                                         otherButtonTitles:@"Yes",nil];
-    [alert show];
-}
-
 - (void) alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
     if (buttonIndex == [alertView firstOtherButtonIndex])
@@ -92,7 +80,14 @@
     
     switch ([indexPath row]) {
         case 1: //Linked In
-            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://www.spotify.com/nl/signup/"]];
+        {
+            UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Spotify Usage"
+                                                           message:@"Are you sure you want to use the Alarm Clock without Spotify features? You can set your credentials afterwards via the settings menu."
+                                                          delegate:self
+                                                 cancelButtonTitle:@"No"
+                                                 otherButtonTitles:@"Yes",nil];
+            [alert show];
+        }
     }
 }
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath

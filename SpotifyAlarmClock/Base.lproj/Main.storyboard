@@ -80,22 +80,8 @@
                             <rect key="frame" x="0.0" y="197" width="320" height="371"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZVH-AP-M2t">
-                                    <rect key="frame" x="0.0" y="-1" width="320" height="30"/>
-                                    <constraints>
-                                        <constraint firstAttribute="height" constant="30" id="KOp-Pb-HST"/>
-                                    </constraints>
-                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                    <state key="normal" title="Use Alarm Clock without Spotify?">
-                                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                    </state>
-                                    <connections>
-                                        <action selector="skipLoginButtonClicked:" destination="qj9-CV-fCa" eventType="touchUpInside" id="uDt-7K-YTs"/>
-                                    </connections>
-                                </button>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Why to link your Spotify account" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GpB-q8-xD5">
-                                    <rect key="frame" x="0.0" y="50" width="320" height="21"/>
+                                    <rect key="frame" x="0.0" y="32" width="320" height="21"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="21" id="wjG-pg-aff"/>
                                     </constraints>
@@ -104,7 +90,7 @@
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="KRX-7P-cKi">
-                                    <rect key="frame" x="8" y="68" width="304" height="103"/>
+                                    <rect key="frame" x="8" y="50" width="304" height="103"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="103" id="LKU-yy-vmz"/>
                                     </constraints>
@@ -116,13 +102,10 @@
                             </subviews>
                             <constraints>
                                 <constraint firstItem="KRX-7P-cKi" firstAttribute="leading" secondItem="ego-Rz-8hK" secondAttribute="leading" constant="8" id="2Pv-rg-IMW"/>
-                                <constraint firstItem="ZVH-AP-M2t" firstAttribute="top" secondItem="ego-Rz-8hK" secondAttribute="top" constant="-1" id="4b0-J9-BO0"/>
                                 <constraint firstItem="GpB-q8-xD5" firstAttribute="leading" secondItem="ego-Rz-8hK" secondAttribute="leading" id="Enp-wx-diA"/>
-                                <constraint firstItem="ZVH-AP-M2t" firstAttribute="leading" secondItem="ego-Rz-8hK" secondAttribute="leading" id="FC6-u3-5oF"/>
-                                <constraint firstAttribute="trailing" secondItem="ZVH-AP-M2t" secondAttribute="trailing" id="TtM-7i-6is"/>
+                                <constraint firstItem="GpB-q8-xD5" firstAttribute="top" secondItem="ego-Rz-8hK" secondAttribute="top" constant="32" id="VFI-iC-8yJ"/>
                                 <constraint firstItem="KRX-7P-cKi" firstAttribute="top" secondItem="GpB-q8-xD5" secondAttribute="bottom" constant="-3" id="Vix-GR-u56"/>
                                 <constraint firstAttribute="trailing" secondItem="KRX-7P-cKi" secondAttribute="trailing" constant="8" id="Wbm-Z7-ZgW"/>
-                                <constraint firstItem="GpB-q8-xD5" firstAttribute="top" secondItem="ZVH-AP-M2t" secondAttribute="bottom" constant="21" id="bKP-k6-D93"/>
                                 <constraint firstAttribute="trailing" secondItem="GpB-q8-xD5" secondAttribute="trailing" id="xcv-gQ-dd5"/>
                             </constraints>
                         </view>
@@ -151,7 +134,7 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="hi1-x2-PbU" id="JfU-q0-F4V">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Sign up for a Spotify account" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="a7W-dT-Lcx">
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Use Alarm Clock without Spotify" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="a7W-dT-Lcx">
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>

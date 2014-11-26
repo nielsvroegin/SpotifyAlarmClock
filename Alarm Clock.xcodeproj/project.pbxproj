@@ -40,7 +40,6 @@
 		B86104D719CDA187001DB753 /* Alarm.m in Sources */ = {isa = PBXBuildFile; fileRef = B86104D619CDA187001DB753 /* Alarm.m */; };
 		B86104DA19CDA28E001DB753 /* SpotifyAlarmClock.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B86104D819CDA28E001DB753 /* SpotifyAlarmClock.xcdatamodeld */; };
 		B869FED81A21E82B004BB7AC /* StartScreenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B869FED71A21E82B004BB7AC /* StartScreenViewController.m */; };
-		B869FEDB1A2217F3004BB7AC /* UINavigationController+autoRotate.m in Resources */ = {isa = PBXBuildFile; fileRef = B869FEDA1A2217F3004BB7AC /* UINavigationController+autoRotate.m */; };
 		B869FEDF1A222010004BB7AC /* StartNavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B869FEDE1A222010004BB7AC /* StartNavigationViewController.m */; };
 		B878508A1A15527F00354EA8 /* background.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B87850891A15527F00354EA8 /* background.mp3 */; };
 		B885CC7119E010E5003450F8 /* AllTracksViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B885CC7019E010E5003450F8 /* AllTracksViewController.m */; };
@@ -173,8 +172,6 @@
 		B86104D919CDA28E001DB753 /* SpotifyAlarmClock.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SpotifyAlarmClock.xcdatamodel; sourceTree = "<group>"; };
 		B869FED61A21E82B004BB7AC /* StartScreenViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StartScreenViewController.h; sourceTree = "<group>"; };
 		B869FED71A21E82B004BB7AC /* StartScreenViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StartScreenViewController.m; sourceTree = "<group>"; };
-		B869FED91A2217F3004BB7AC /* UINavigationController+autoRotate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationController+autoRotate.h"; sourceTree = "<group>"; };
-		B869FEDA1A2217F3004BB7AC /* UINavigationController+autoRotate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationController+autoRotate.m"; sourceTree = "<group>"; };
 		B869FEDD1A222010004BB7AC /* StartNavigationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StartNavigationViewController.h; sourceTree = "<group>"; };
 		B869FEDE1A222010004BB7AC /* StartNavigationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StartNavigationViewController.m; sourceTree = "<group>"; };
 		B87850891A15527F00354EA8 /* background.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = background.mp3; sourceTree = "<group>"; };
@@ -614,8 +611,6 @@
 				B8FC13B319EA812E001E4C1D /* NSMutableArray+Convenience.m */,
 				B82647A219ED972F00FBB21A /* AlarmHelper.h */,
 				B82647A319ED972F00FBB21A /* AlarmHelper.m */,
-				B869FED91A2217F3004BB7AC /* UINavigationController+autoRotate.h */,
-				B869FEDA1A2217F3004BB7AC /* UINavigationController+autoRotate.m */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -803,7 +798,6 @@
 			files = (
 				B8D7690D19E5B20F00988A71 /* ArtistCell.xib in Resources */,
 				B844EF761A03B9B1007A52C6 /* licences.rtf in Resources */,
-				B869FEDB1A2217F3004BB7AC /* UINavigationController+autoRotate.m in Resources */,
 				B885FE8919C488F500EC1D32 /* Images.xcassets in Resources */,
 				B8A99D4219F82EAC000359BF /* LCD-BOLD.TTF in Resources */,
 				B885FE7B19C488F400EC1D32 /* InfoPlist.strings in Resources */,

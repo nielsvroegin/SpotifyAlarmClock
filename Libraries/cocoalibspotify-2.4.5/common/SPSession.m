@@ -516,51 +516,6 @@ static void private_session_mode_changed(sp_session *session, bool is_private) {
 	}
 }
 
-#if TARGET_OS_IPHONE
-
-#import "SPLoginViewController.h"
-#import "SPLoginViewControllerInternal.h"
-
-static void show_signup_page(sp_session *session, sp_signup_page page, bool pageIsLoading, int featureMask, const char *recentUserName) {
-	
-	SPSession *sess = (__bridge SPSession *)sp_session_userdata(session);
-	@autoreleasepool {
-		dispatch_async(dispatch_get_main_queue(), ^{
-			[[SPLoginViewController loginControllerForSession:sess] handleShowSignupPage:page
-																				 loading:pageIsLoading
-																			 featureMask:featureMask
-																		  recentUserName:[NSString stringWithUTF8String:recentUserName]];
-		});
-	}
-}
-
-static void show_signup_error_page(sp_session *session, sp_signup_page page, sp_error error) {
-	
-	SPSession *sess = (__bridge SPSession *)sp_session_userdata(session);
-	@autoreleasepool {
-		dispatch_async(dispatch_get_main_queue(), ^{
-			[[SPLoginViewController loginControllerForSession:sess] handleShowSignupErrorPage:page
-																						error:[NSError spotifyErrorWithCode:error]];
-		});
-	}
-}
-
-static void connect_to_facebook(sp_session *session, const char **permissions, int permission_count) {
-	
-	SPSession *sess = (__bridge SPSession *)sp_session_userdata(session);
-	@autoreleasepool {
-		NSMutableArray *permissionStrs = [NSMutableArray arrayWithCapacity:permission_count];
-		for (int i = 0; i < permission_count; i++)
-			[permissionStrs addObject:[NSString stringWithUTF8String:permissions[i]]];
-		
-		dispatch_async(dispatch_get_main_queue(), ^{
-			[[SPLoginViewController loginControllerForSession:sess] handleConnectToFacebookWithPermissions:permissionStrs];
-		});
-	}
-}
-
-#endif
-
 static sp_session_callbacks _callbacks = {
 	.logged_in = &logged_in,
 	.logged_out = &logged_out,
@@ -577,11 +532,6 @@ static sp_session_callbacks _callbacks = {
 	.offline_error = &offline_error,
 	.credentials_blob_updated = &credentials_blob_updated,
 	.connectionstate_updated = &connectionstate_updated,
-#if TARGET_OS_IPHONE
-	.show_signup_page = &show_signup_page,
-	.show_signup_error_page = &show_signup_error_page,
-	.connect_to_facebook = &connect_to_facebook,
-#endif
 	.scrobble_error = &scrobble_error,
 	.private_session_mode_changed = &private_session_mode_changed
 };
