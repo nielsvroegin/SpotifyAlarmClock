@@ -180,8 +180,11 @@
                 NSLog(@"Context save error: %@", error);
             }
         }
-
     }
+    
+    //Recalculate background alarms, when one time alarms are disabled
+    if([validAlarms count] != [alarms count])
+        [self configureBackgroundAlarms];
     
     return validAlarms;
 }
