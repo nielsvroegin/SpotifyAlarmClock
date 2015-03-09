@@ -32,7 +32,6 @@
 		B834AE761A1BD49B00989C4C /* BackgroundAlarmsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B834AE751A1BD49B00989C4C /* BackgroundAlarmsViewController.m */; };
 		B8403BE71A07CB2700CD74FE /* EmptySongList.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8403BE61A07CB2700CD74FE /* EmptySongList.xib */; };
 		B8403BEA1A07D8BD00CD74FE /* TableBackgroundView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8403BE91A07D8BD00CD74FE /* TableBackgroundView.xib */; };
-		B844EF741A039996007A52C6 /* AboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B844EF731A039996007A52C6 /* AboutViewController.m */; };
 		B844EF761A03B9B1007A52C6 /* licences.rtf in Resources */ = {isa = PBXBuildFile; fileRef = B844EF751A03B9B1007A52C6 /* licences.rtf */; };
 		B844EF7A1A03BA0C007A52C6 /* LicensesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B844EF791A03BA0C007A52C6 /* LicensesViewController.m */; };
 		B86104CC19CD9671001DB753 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B86104CB19CD9671001DB753 /* CoreData.framework */; };
@@ -68,6 +67,7 @@
 		B8A99D4119F82EAC000359BF /* forever.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B8A99D3D19F82EAC000359BF /* forever.mp3 */; };
 		B8A99D4219F82EAC000359BF /* LCD-BOLD.TTF in Resources */ = {isa = PBXBuildFile; fileRef = B8A99D3E19F82EAC000359BF /* LCD-BOLD.TTF */; };
 		B8A99D6019FA79FB000359BF /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B8A99D5F19FA79FB000359BF /* SettingsViewController.m */; };
+		B8B2ACC11AAE2B6F00CEAC33 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8B2ACC01AAE2B6F00CEAC33 /* AboutViewController.swift */; };
 		B8D16E0519E1C94500B375D2 /* BlurredHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8D16E0419E1C94500B375D2 /* BlurredHeader.xib */; };
 		B8D16E0919E1CBF900B375D2 /* BlurredHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = B8D16E0819E1CBF900B375D2 /* BlurredHeaderView.m */; };
 		B8D7690A19E5B1F300988A71 /* AlbumCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8D7690919E5B1F300988A71 /* AlbumCell.xib */; };
@@ -159,8 +159,6 @@
 		B834AE751A1BD49B00989C4C /* BackgroundAlarmsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BackgroundAlarmsViewController.m; sourceTree = "<group>"; };
 		B8403BE61A07CB2700CD74FE /* EmptySongList.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EmptySongList.xib; sourceTree = "<group>"; };
 		B8403BE91A07D8BD00CD74FE /* TableBackgroundView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TableBackgroundView.xib; sourceTree = "<group>"; };
-		B844EF721A039996007A52C6 /* AboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutViewController.h; sourceTree = "<group>"; };
-		B844EF731A039996007A52C6 /* AboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutViewController.m; sourceTree = "<group>"; };
 		B844EF751A03B9B1007A52C6 /* licences.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = licences.rtf; sourceTree = "<group>"; };
 		B844EF781A03BA0C007A52C6 /* LicensesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LicensesViewController.h; sourceTree = "<group>"; };
 		B844EF791A03BA0C007A52C6 /* LicensesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LicensesViewController.m; sourceTree = "<group>"; };
@@ -213,6 +211,8 @@
 		B8A99D3E19F82EAC000359BF /* LCD-BOLD.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = "LCD-BOLD.TTF"; sourceTree = "<group>"; };
 		B8A99D5E19FA79FB000359BF /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
 		B8A99D5F19FA79FB000359BF /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
+		B8B2ACB81AAE248700CEAC33 /* Alarm Clock-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Alarm Clock-Bridging-Header.h"; sourceTree = "<group>"; };
+		B8B2ACC01AAE2B6F00CEAC33 /* AboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		B8D16E0419E1C94500B375D2 /* BlurredHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BlurredHeader.xib; sourceTree = "<group>"; };
 		B8D16E0719E1CBF900B375D2 /* BlurredHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlurredHeaderView.h; sourceTree = "<group>"; };
 		B8D16E0819E1CBF900B375D2 /* BlurredHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlurredHeaderView.m; sourceTree = "<group>"; };
@@ -301,12 +301,12 @@
 		B812390C19D1FC28005EABDB /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				B8B2ACC01AAE2B6F00CEAC33 /* AboutViewController.swift */,
 				B809EF8E1A25192D00E5F892 /* PortraitNavigation */,
 				B869FEDC1A221FE6004BB7AC /* StartNavigation */,
 				B869FED41A21E817004BB7AC /* StartScreen */,
 				B834AE721A1BD47800989C4C /* BackgroundAlarms */,
 				B844EF771A03B9F6007A52C6 /* Licenses */,
-				B844EF711A039978007A52C6 /* About */,
 				B812390D19D1FC28005EABDB /* AddAlarm */,
 				B812391019D1FC28005EABDB /* Alarms */,
 				B8D7691519E7F1D500988A71 /* Album */,
@@ -411,15 +411,6 @@
 				B834AE751A1BD49B00989C4C /* BackgroundAlarmsViewController.m */,
 			);
 			path = BackgroundAlarms;
-			sourceTree = "<group>";
-		};
-		B844EF711A039978007A52C6 /* About */ = {
-			isa = PBXGroup;
-			children = (
-				B844EF721A039996007A52C6 /* AboutViewController.h */,
-				B844EF731A039996007A52C6 /* AboutViewController.m */,
-			);
-			path = About;
 			sourceTree = "<group>";
 		};
 		B844EF771A03B9F6007A52C6 /* Licenses */ = {
@@ -564,6 +555,7 @@
 				B8A99D3A19F82EAC000359BF /* Resources */,
 				B885FE7F19C488F400EC1D32 /* AppDelegate.h */,
 				B885FE8019C488F400EC1D32 /* AppDelegate.m */,
+				B8B2ACB81AAE248700CEAC33 /* Alarm Clock-Bridging-Header.h */,
 				B885FE8819C488F500EC1D32 /* Images.xcassets */,
 			);
 			path = SpotifyAlarmClock;
@@ -895,8 +887,8 @@
 				B8D7691419E5C17600988A71 /* CellConstructHelper.m in Sources */,
 				B834AE761A1BD49B00989C4C /* BackgroundAlarmsViewController.m in Sources */,
 				B8D16E0919E1CBF900B375D2 /* BlurredHeaderView.m in Sources */,
-				B844EF741A039996007A52C6 /* AboutViewController.m in Sources */,
 				B86104D419CDA16D001DB753 /* AlarmSong.m in Sources */,
+				B8B2ACC11AAE2B6F00CEAC33 /* AboutViewController.swift in Sources */,
 				B812392519D1FC28005EABDB /* AlarmsViewController.m in Sources */,
 				B8FC13B419EA812E001E4C1D /* NSMutableArray+Convenience.m in Sources */,
 				B8D7691819E7F1D500988A71 /* AlbumViewController.m in Sources */,
@@ -1039,6 +1031,7 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = "";
@@ -1055,6 +1048,7 @@
 				);
 				INFOPLIST_FILE = "SpotifyAlarmClock/Alarm Clock-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = "";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
@@ -1063,6 +1057,8 @@
 				);
 				PRODUCT_NAME = "Alarm Clock";
 				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "SpotifyAlarmClock/Alarm Clock-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALID_ARCHS = "armv7 armv7s";
 				WRAPPER_EXTENSION = app;
@@ -1076,6 +1072,7 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Niels Vroegindeweij (46H439Z8Z5)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Niels Vroegindeweij (46H439Z8Z5)";
 				FRAMEWORK_SEARCH_PATHS = "";
@@ -1092,6 +1089,7 @@
 				);
 				INFOPLIST_FILE = "SpotifyAlarmClock/Alarm Clock-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = "";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
@@ -1100,6 +1098,7 @@
 				);
 				PRODUCT_NAME = "Alarm Clock";
 				PROVISIONING_PROFILE = "a3cc0ce0-3ec2-4c66-8bed-0d30ff5c525a";
+				SWIFT_OBJC_BRIDGING_HEADER = "SpotifyAlarmClock/Alarm Clock-Bridging-Header.h";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALID_ARCHS = "armv7 armv7s";
 				WRAPPER_EXTENSION = app;
