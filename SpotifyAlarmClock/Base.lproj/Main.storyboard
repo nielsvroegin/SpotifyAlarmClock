@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="vXZ-lx-hvc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14C1510" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="vXZ-lx-hvc">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
@@ -18,10 +18,10 @@
         </mutableArray>
     </customFonts>
     <scenes>
-        <!--Start Navigation View Controller-->
+        <!--Start Navigation Controller-->
         <scene sceneID="kwN-dV-AOi">
             <objects>
-                <navigationController id="D00-VP-2Lq" customClass="StartNavigationViewController" sceneMemberID="viewController">
+                <navigationController id="D00-VP-2Lq" customClass="StartNavigationController" customModule="Alarm_Clock" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="NxI-vm-blj">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -41,7 +41,7 @@
         <!--Start Screen View Controller-->
         <scene sceneID="k4A-9O-RuU">
             <objects>
-                <tableViewController id="qj9-CV-fCa" customClass="StartScreenViewController" sceneMemberID="viewController">
+                <tableViewController id="qj9-CV-fCa" customClass="StartScreenViewController" customModule="Alarm_Clock" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="xcj-4n-WNx">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -153,8 +153,8 @@
                     </tableView>
                     <navigationItem key="navigationItem" id="yYX-Nc-lJ0"/>
                     <connections>
-                        <outlet property="loginCell" destination="gZ2-2x-jd3" id="mkT-rs-Q11"/>
-                        <outlet property="signupCell" destination="hi1-x2-PbU" id="ZAL-Y5-SXp"/>
+                        <outlet property="loginCell" destination="gZ2-2x-jd3" id="8Nv-d9-f68"/>
+                        <outlet property="noSpotifyCell" destination="hi1-x2-PbU" id="FwI-h9-F5E"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="20O-KF-Jx5" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1465,7 +1465,7 @@
         <!--Portrait Navigation Controller-->
         <scene sceneID="df4-9G-34q">
             <objects>
-                <navigationController id="OY4-PY-rDx" customClass="PortraitNavigationController" sceneMemberID="viewController">
+                <navigationController id="OY4-PY-rDx" customClass="PortraitNavigationController" customModule="Alarm_Clock" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="nwf-9s-FAK">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -1706,7 +1706,7 @@
         <!--Portrait Navigation Controller-->
         <scene sceneID="mlx-uY-shS">
             <objects>
-                <navigationController definesPresentationContext="YES" id="P9Z-Ee-gP4" customClass="PortraitNavigationController" sceneMemberID="viewController">
+                <navigationController definesPresentationContext="YES" id="P9Z-Ee-gP4" customClass="PortraitNavigationController" customModule="Alarm_Clock" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="MEd-Dm-DcZ"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="E6G-Tn-2rY">
                         <autoresizingMask key="autoresizingMask"/>
@@ -1834,7 +1834,7 @@
         <!--Portrait Navigation Controller-->
         <scene sceneID="XgX-cU-njt">
             <objects>
-                <navigationController definesPresentationContext="YES" id="4QZ-jy-vp4" customClass="PortraitNavigationController" sceneMemberID="viewController">
+                <navigationController definesPresentationContext="YES" id="4QZ-jy-vp4" customClass="PortraitNavigationController" customModule="Alarm_Clock" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="HLW-gS-05z"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="pCp-AU-8Y6">
                         <autoresizingMask key="autoresizingMask"/>

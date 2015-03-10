@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		349CEB9FD7339389AF16EA91 /* libPods-SpotifyAlarmClock.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C92F5708CCED2BA4D9ECCF61 /* libPods-SpotifyAlarmClock.a */; };
-		B809EF921A25195B00E5F892 /* PortraitNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = B809EF911A25195B00E5F892 /* PortraitNavigationController.m */; };
 		B80F0F281A081A71009F86F0 /* TableBackgroundView.m in Sources */ = {isa = PBXBuildFile; fileRef = B80F0F271A081A71009F86F0 /* TableBackgroundView.m */; };
 		B812392319D1FC28005EABDB /* AddAlarmViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B812390F19D1FC28005EABDB /* AddAlarmViewController.m */; };
 		B812392519D1FC28005EABDB /* AlarmsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B812391419D1FC28005EABDB /* AlarmsViewController.m */; };
@@ -38,8 +37,6 @@
 		B86104D419CDA16D001DB753 /* AlarmSong.m in Sources */ = {isa = PBXBuildFile; fileRef = B86104D319CDA16D001DB753 /* AlarmSong.m */; };
 		B86104D719CDA187001DB753 /* Alarm.m in Sources */ = {isa = PBXBuildFile; fileRef = B86104D619CDA187001DB753 /* Alarm.m */; };
 		B86104DA19CDA28E001DB753 /* SpotifyAlarmClock.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B86104D819CDA28E001DB753 /* SpotifyAlarmClock.xcdatamodeld */; };
-		B869FED81A21E82B004BB7AC /* StartScreenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B869FED71A21E82B004BB7AC /* StartScreenViewController.m */; };
-		B869FEDF1A222010004BB7AC /* StartNavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B869FEDE1A222010004BB7AC /* StartNavigationViewController.m */; };
 		B878508A1A15527F00354EA8 /* background.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B87850891A15527F00354EA8 /* background.mp3 */; };
 		B885CC7119E010E5003450F8 /* AllTracksViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B885CC7019E010E5003450F8 /* AllTracksViewController.m */; };
 		B885CC7D19E013BD003450F8 /* AlarmCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B885CC7619E013BD003450F8 /* AlarmCell.m */; };
@@ -68,6 +65,9 @@
 		B8A99D4219F82EAC000359BF /* LCD-BOLD.TTF in Resources */ = {isa = PBXBuildFile; fileRef = B8A99D3E19F82EAC000359BF /* LCD-BOLD.TTF */; };
 		B8A99D6019FA79FB000359BF /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B8A99D5F19FA79FB000359BF /* SettingsViewController.m */; };
 		B8B2ACC11AAE2B6F00CEAC33 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8B2ACC01AAE2B6F00CEAC33 /* AboutViewController.swift */; };
+		B8B2ACC31AAF77D300CEAC33 /* PortraitNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8B2ACC21AAF77D300CEAC33 /* PortraitNavigationController.swift */; };
+		B8B723801AAF802900AB7F39 /* StartNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8B7237F1AAF802900AB7F39 /* StartNavigationController.swift */; };
+		B8B723831AAF81E800AB7F39 /* StartScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8B723821AAF81E800AB7F39 /* StartScreenViewController.swift */; };
 		B8D16E0519E1C94500B375D2 /* BlurredHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8D16E0419E1C94500B375D2 /* BlurredHeader.xib */; };
 		B8D16E0919E1CBF900B375D2 /* BlurredHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = B8D16E0819E1CBF900B375D2 /* BlurredHeaderView.m */; };
 		B8D7690A19E5B1F300988A71 /* AlbumCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8D7690919E5B1F300988A71 /* AlbumCell.xib */; };
@@ -119,8 +119,6 @@
 /* Begin PBXFileReference section */
 		8E9EC42A6CF7103BBBA32316 /* Pods-SpotifyAlarmClock.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SpotifyAlarmClock.release.xcconfig"; path = "Pods/Target Support Files/Pods-SpotifyAlarmClock/Pods-SpotifyAlarmClock.release.xcconfig"; sourceTree = "<group>"; };
 		B80775251A1A84140045B79C /* SpotifyAlarmClock 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "SpotifyAlarmClock 2.xcdatamodel"; sourceTree = "<group>"; };
-		B809EF901A25195B00E5F892 /* PortraitNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PortraitNavigationController.h; sourceTree = "<group>"; };
-		B809EF911A25195B00E5F892 /* PortraitNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PortraitNavigationController.m; sourceTree = "<group>"; };
 		B80F0F261A081A71009F86F0 /* TableBackgroundView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableBackgroundView.h; sourceTree = "<group>"; };
 		B80F0F271A081A71009F86F0 /* TableBackgroundView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableBackgroundView.m; sourceTree = "<group>"; };
 		B812390E19D1FC28005EABDB /* AddAlarmViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddAlarmViewController.h; sourceTree = "<group>"; };
@@ -168,10 +166,6 @@
 		B86104D519CDA187001DB753 /* Alarm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Alarm.h; sourceTree = "<group>"; };
 		B86104D619CDA187001DB753 /* Alarm.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Alarm.m; sourceTree = "<group>"; };
 		B86104D919CDA28E001DB753 /* SpotifyAlarmClock.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SpotifyAlarmClock.xcdatamodel; sourceTree = "<group>"; };
-		B869FED61A21E82B004BB7AC /* StartScreenViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StartScreenViewController.h; sourceTree = "<group>"; };
-		B869FED71A21E82B004BB7AC /* StartScreenViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StartScreenViewController.m; sourceTree = "<group>"; };
-		B869FEDD1A222010004BB7AC /* StartNavigationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StartNavigationViewController.h; sourceTree = "<group>"; };
-		B869FEDE1A222010004BB7AC /* StartNavigationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StartNavigationViewController.m; sourceTree = "<group>"; };
 		B87850891A15527F00354EA8 /* background.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = background.mp3; sourceTree = "<group>"; };
 		B885CC6F19E010E5003450F8 /* AllTracksViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AllTracksViewController.h; sourceTree = "<group>"; };
 		B885CC7019E010E5003450F8 /* AllTracksViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AllTracksViewController.m; sourceTree = "<group>"; };
@@ -213,6 +207,9 @@
 		B8A99D5F19FA79FB000359BF /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
 		B8B2ACB81AAE248700CEAC33 /* Alarm Clock-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Alarm Clock-Bridging-Header.h"; sourceTree = "<group>"; };
 		B8B2ACC01AAE2B6F00CEAC33 /* AboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
+		B8B2ACC21AAF77D300CEAC33 /* PortraitNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PortraitNavigationController.swift; sourceTree = "<group>"; };
+		B8B7237F1AAF802900AB7F39 /* StartNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartNavigationController.swift; sourceTree = "<group>"; };
+		B8B723821AAF81E800AB7F39 /* StartScreenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartScreenViewController.swift; sourceTree = "<group>"; };
 		B8D16E0419E1C94500B375D2 /* BlurredHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BlurredHeader.xib; sourceTree = "<group>"; };
 		B8D16E0719E1CBF900B375D2 /* BlurredHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlurredHeaderView.h; sourceTree = "<group>"; };
 		B8D16E0819E1CBF900B375D2 /* BlurredHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlurredHeaderView.m; sourceTree = "<group>"; };
@@ -289,22 +286,9 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
-		B809EF8E1A25192D00E5F892 /* PortraitNavigation */ = {
-			isa = PBXGroup;
-			children = (
-				B809EF901A25195B00E5F892 /* PortraitNavigationController.h */,
-				B809EF911A25195B00E5F892 /* PortraitNavigationController.m */,
-			);
-			path = PortraitNavigation;
-			sourceTree = "<group>";
-		};
 		B812390C19D1FC28005EABDB /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				B8B2ACC01AAE2B6F00CEAC33 /* AboutViewController.swift */,
-				B809EF8E1A25192D00E5F892 /* PortraitNavigation */,
-				B869FEDC1A221FE6004BB7AC /* StartNavigation */,
-				B869FED41A21E817004BB7AC /* StartScreen */,
 				B834AE721A1BD47800989C4C /* BackgroundAlarms */,
 				B844EF771A03B9F6007A52C6 /* Licenses */,
 				B812390D19D1FC28005EABDB /* AddAlarm */,
@@ -322,6 +306,10 @@
 				B812392A19D20126005EABDB /* Songs */,
 				B812392B19D20177005EABDB /* SongSearch */,
 				B812391F19D1FC28005EABDB /* TextEdit */,
+				B8B2ACC21AAF77D300CEAC33 /* PortraitNavigationController.swift */,
+				B8B2ACC01AAE2B6F00CEAC33 /* AboutViewController.swift */,
+				B8B7237F1AAF802900AB7F39 /* StartNavigationController.swift */,
+				B8B723821AAF81E800AB7F39 /* StartScreenViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -432,24 +420,6 @@
 				B86104D619CDA187001DB753 /* Alarm.m */,
 			);
 			path = Models;
-			sourceTree = "<group>";
-		};
-		B869FED41A21E817004BB7AC /* StartScreen */ = {
-			isa = PBXGroup;
-			children = (
-				B869FED61A21E82B004BB7AC /* StartScreenViewController.h */,
-				B869FED71A21E82B004BB7AC /* StartScreenViewController.m */,
-			);
-			path = StartScreen;
-			sourceTree = "<group>";
-		};
-		B869FEDC1A221FE6004BB7AC /* StartNavigation */ = {
-			isa = PBXGroup;
-			children = (
-				B869FEDD1A222010004BB7AC /* StartNavigationViewController.h */,
-				B869FEDE1A222010004BB7AC /* StartNavigationViewController.m */,
-			);
-			path = StartNavigation;
 			sourceTree = "<group>";
 		};
 		B885CC6D19E010C2003450F8 /* AllTracks */ = {
@@ -858,21 +828,19 @@
 				B812392719D1FC28005EABDB /* Option.m in Sources */,
 				B812392319D1FC28005EABDB /* AddAlarmViewController.m in Sources */,
 				B885CC8019E013BD003450F8 /* TrackCell.m in Sources */,
-				B869FEDF1A222010004BB7AC /* StartNavigationViewController.m in Sources */,
 				B8A99D6019FA79FB000359BF /* SettingsViewController.m in Sources */,
 				B812393119D201F2005EABDB /* SongSearchViewController.m in Sources */,
 				B82647A119EBDF0300FBB21A /* BackgroundGlow.m in Sources */,
 				B8DEF87919E07A8F00F2F453 /* ArtistViewController.m in Sources */,
+				B8B723831AAF81E800AB7F39 /* StartScreenViewController.swift in Sources */,
 				B812392919D1FC28005EABDB /* TextEditViewController.m in Sources */,
 				B885CC7119E010E5003450F8 /* AllTracksViewController.m in Sources */,
-				B809EF921A25195B00E5F892 /* PortraitNavigationController.m in Sources */,
 				B86104D719CDA187001DB753 /* Alarm.m in Sources */,
 				B812392619D1FC28005EABDB /* ClockViewController.m in Sources */,
 				B885CC7E19E013BD003450F8 /* AlbumCell.m in Sources */,
 				B8DEF87519E06FA100F2F453 /* AllAlbumsViewController.m in Sources */,
 				B82647A419ED972F00FBB21A /* AlarmHelper.m in Sources */,
 				B885FE8119C488F400EC1D32 /* AppDelegate.m in Sources */,
-				B869FED81A21E82B004BB7AC /* StartScreenViewController.m in Sources */,
 				B812392E19D201A4005EABDB /* SongsViewController.m in Sources */,
 				B844EF7A1A03BA0C007A52C6 /* LicensesViewController.m in Sources */,
 				B80F0F281A081A71009F86F0 /* TableBackgroundView.m in Sources */,
@@ -882,12 +850,14 @@
 				B8DEF86B19E041F700F2F453 /* AllArtistsViewController.m in Sources */,
 				B8A7F3E119FC481B00BFEAD0 /* LoginViewController.m in Sources */,
 				B8A99D2E19F82D2D000359BF /* BackupAlarmSoundViewController.m in Sources */,
+				B8B2ACC31AAF77D300CEAC33 /* PortraitNavigationController.swift in Sources */,
 				B812392819D1FC28005EABDB /* OptionsSelectViewController.m in Sources */,
 				B885FE7D19C488F400EC1D32 /* main.m in Sources */,
 				B8D7691419E5C17600988A71 /* CellConstructHelper.m in Sources */,
 				B834AE761A1BD49B00989C4C /* BackgroundAlarmsViewController.m in Sources */,
 				B8D16E0919E1CBF900B375D2 /* BlurredHeaderView.m in Sources */,
 				B86104D419CDA16D001DB753 /* AlarmSong.m in Sources */,
+				B8B723801AAF802900AB7F39 /* StartNavigationController.swift in Sources */,
 				B8B2ACC11AAE2B6F00CEAC33 /* AboutViewController.swift in Sources */,
 				B812392519D1FC28005EABDB /* AlarmsViewController.m in Sources */,
 				B8FC13B419EA812E001E4C1D /* NSMutableArray+Convenience.m in Sources */,
