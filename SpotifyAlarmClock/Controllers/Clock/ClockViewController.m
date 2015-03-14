@@ -12,7 +12,7 @@
 #import "BackgroundGlow.h"
 #import "AlarmHelper.h"
 #import "Tools.h"
-#import "LoginViewController.h"
+#import "Alarm_Clock-Swift.h"
 #import "AppDelegate.h"
 #import "MBProgressHUD.h"
 

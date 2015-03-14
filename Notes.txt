@@ -1,0 +1,19 @@
+Todo: 
+
+Background Alarm:
+- Consider playing Spotify alarm also when in menu..
+- Background alarm view
+- Do something with warning
+
+Login:
+- Acessory view to white color
+- Click on cell color
+
+
+
+
+
+
+
+
+

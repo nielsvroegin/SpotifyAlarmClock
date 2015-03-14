@@ -10,8 +10,8 @@ import UIKit
 
 class StartScreenViewController: UITableViewController, UIAlertViewDelegate {
 
-    @IBOutlet weak var loginCell : UITableViewCell!
-    @IBOutlet weak var noSpotifyCell : UITableViewCell!
+    @IBOutlet weak private var loginCell : UITableViewCell!
+    @IBOutlet weak private var noSpotifyCell : UITableViewCell!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,7 +21,7 @@ class StartScreenViewController: UITableViewController, UIAlertViewDelegate {
         //Set background
         let tempImageView = UIImageView(image: UIImage(named: "LoginBackground"))
         tempImageView.frame = self.tableView.frame
-        self.tableView.backgroundView = tempImageView;
+        self.tableView.backgroundView = tempImageView
         
         //Set disclosure indicators
         loginCell.accessoryView = UIImageView(image: UIImage(named: "DisclosureIndicator"))
@@ -46,14 +46,19 @@ class StartScreenViewController: UITableViewController, UIAlertViewDelegate {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
-        self.navigationController?.setNavigationBarHidden(true, animated: animated)
+        if let nvController = self.navigationController {
+            nvController.setNavigationBarHidden(true, animated: animated)
+        }
+        
         UIDevice.currentDevice().setValue(UIInterfaceOrientation.Portrait.rawValue, forKey: "orientation")
     }
     
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
         
-        self.navigationController?.setNavigationBarHidden(false, animated: animated)
+        if let nvController = self.navigationController {
+            nvController.setNavigationBarHidden(false, animated: animated)
+        }
     }
 
     // MARK: - Alert view delegate

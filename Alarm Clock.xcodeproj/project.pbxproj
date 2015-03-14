@@ -28,6 +28,7 @@
 		B82A533E19C4F63E000C40D8 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B82A533D19C4F63E000C40D8 /* AVFoundation.framework */; };
 		B82A534019C4F645000C40D8 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B82A533F19C4F645000C40D8 /* Security.framework */; };
 		B82A534C19C4FF5F000C40D8 /* libCocoaLibSpotify.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B82A534719C4FEF4000C40D8 /* libCocoaLibSpotify.a */; };
+		B82ABD9A1AB437B200930EF1 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B82ABD991AB437B200930EF1 /* LoginViewController.swift */; };
 		B834AE761A1BD49B00989C4C /* BackgroundAlarmsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B834AE751A1BD49B00989C4C /* BackgroundAlarmsViewController.m */; };
 		B8403BE71A07CB2700CD74FE /* EmptySongList.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8403BE61A07CB2700CD74FE /* EmptySongList.xib */; };
 		B8403BEA1A07D8BD00CD74FE /* TableBackgroundView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8403BE91A07D8BD00CD74FE /* TableBackgroundView.xib */; };
@@ -57,7 +58,6 @@
 		B885FE9C19C488F500EC1D32 /* SpotifyAlarmClockTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B885FE9B19C488F500EC1D32 /* SpotifyAlarmClockTests.m */; };
 		B885FEF719C4C7CE00EC1D32 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B885FE7419C488F400EC1D32 /* UIKit.framework */; };
 		B8A7F18619FAED5C00BFEAD0 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8A7F18519FAED5C00BFEAD0 /* MediaPlayer.framework */; };
-		B8A7F3E119FC481B00BFEAD0 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B8A7F3E019FC481B00BFEAD0 /* LoginViewController.m */; };
 		B8A99D2E19F82D2D000359BF /* BackupAlarmSoundViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B8A99D2D19F82D2D000359BF /* BackupAlarmSoundViewController.m */; };
 		B8A99D3F19F82EAC000359BF /* alpha-beta.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B8A99D3B19F82EAC000359BF /* alpha-beta.mp3 */; };
 		B8A99D4019F82EAC000359BF /* day-by-day.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B8A99D3C19F82EAC000359BF /* day-by-day.mp3 */; };
@@ -153,6 +153,7 @@
 		B82A533D19C4F63E000C40D8 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		B82A533F19C4F645000C40D8 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		B82A534119C4FEF4000C40D8 /* CocoaLibSpotify iOS Library.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = "CocoaLibSpotify iOS Library.xcodeproj"; path = "Libraries/cocoalibspotify-2.4.5/iOS Library/CocoaLibSpotify iOS Library.xcodeproj"; sourceTree = "<group>"; };
+		B82ABD991AB437B200930EF1 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		B834AE741A1BD49B00989C4C /* BackgroundAlarmsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BackgroundAlarmsViewController.h; sourceTree = "<group>"; };
 		B834AE751A1BD49B00989C4C /* BackgroundAlarmsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BackgroundAlarmsViewController.m; sourceTree = "<group>"; };
 		B8403BE61A07CB2700CD74FE /* EmptySongList.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EmptySongList.xib; sourceTree = "<group>"; };
@@ -195,8 +196,6 @@
 		B885FE9919C488F500EC1D32 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		B885FE9B19C488F500EC1D32 /* SpotifyAlarmClockTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SpotifyAlarmClockTests.m; sourceTree = "<group>"; };
 		B8A7F18519FAED5C00BFEAD0 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
-		B8A7F3DF19FC481B00BFEAD0 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
-		B8A7F3E019FC481B00BFEAD0 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		B8A99D2C19F82D2D000359BF /* BackupAlarmSoundViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BackupAlarmSoundViewController.h; sourceTree = "<group>"; };
 		B8A99D2D19F82D2D000359BF /* BackupAlarmSoundViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BackupAlarmSoundViewController.m; sourceTree = "<group>"; };
 		B8A99D3B19F82EAC000359BF /* alpha-beta.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "alpha-beta.mp3"; sourceTree = "<group>"; };
@@ -300,7 +299,6 @@
 				B8DEF87619E07A7C00F2F453 /* Artist */,
 				B8A99D2B19F82D2D000359BF /* BackupAlarmSound */,
 				B812391519D1FC28005EABDB /* Clock */,
-				B8A7F3DE19FC480500BFEAD0 /* Login */,
 				B812391819D1FC28005EABDB /* OptionsSelect */,
 				B8A99D5D19FA79FB000359BF /* Settings */,
 				B812392A19D20126005EABDB /* Songs */,
@@ -310,6 +308,7 @@
 				B8B2ACC01AAE2B6F00CEAC33 /* AboutViewController.swift */,
 				B8B7237F1AAF802900AB7F39 /* StartNavigationController.swift */,
 				B8B723821AAF81E800AB7F39 /* StartScreenViewController.swift */,
+				B82ABD991AB437B200930EF1 /* LoginViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -577,15 +576,6 @@
 			path = Helpers;
 			sourceTree = "<group>";
 		};
-		B8A7F3DE19FC480500BFEAD0 /* Login */ = {
-			isa = PBXGroup;
-			children = (
-				B8A7F3DF19FC481B00BFEAD0 /* LoginViewController.h */,
-				B8A7F3E019FC481B00BFEAD0 /* LoginViewController.m */,
-			);
-			path = Login;
-			sourceTree = "<group>";
-		};
 		B8A99D2B19F82D2D000359BF /* BackupAlarmSound */ = {
 			isa = PBXGroup;
 			children = (
@@ -827,6 +817,7 @@
 			files = (
 				B812392719D1FC28005EABDB /* Option.m in Sources */,
 				B812392319D1FC28005EABDB /* AddAlarmViewController.m in Sources */,
+				B82ABD9A1AB437B200930EF1 /* LoginViewController.swift in Sources */,
 				B885CC8019E013BD003450F8 /* TrackCell.m in Sources */,
 				B8A99D6019FA79FB000359BF /* SettingsViewController.m in Sources */,
 				B812393119D201F2005EABDB /* SongSearchViewController.m in Sources */,
@@ -848,7 +839,6 @@
 				B8FC13B119E9B61A001E4C1D /* Tools.m in Sources */,
 				B8DEF86E19E0474900F2F453 /* ArtistBrowseCache.m in Sources */,
 				B8DEF86B19E041F700F2F453 /* AllArtistsViewController.m in Sources */,
-				B8A7F3E119FC481B00BFEAD0 /* LoginViewController.m in Sources */,
 				B8A99D2E19F82D2D000359BF /* BackupAlarmSoundViewController.m in Sources */,
 				B8B2ACC31AAF77D300CEAC33 /* PortraitNavigationController.swift in Sources */,
 				B812392819D1FC28005EABDB /* OptionsSelectViewController.m in Sources */,

@@ -164,7 +164,7 @@
         <!--Log In-->
         <scene sceneID="MDW-W4-tgB">
             <objects>
-                <tableViewController id="oMv-uL-NV4" customClass="LoginViewController" sceneMemberID="viewController">
+                <tableViewController id="oMv-uL-NV4" customClass="LoginViewController" customModule="Alarm_Clock" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="Smc-fJ-bFo">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

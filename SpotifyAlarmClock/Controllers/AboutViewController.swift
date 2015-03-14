@@ -10,7 +10,7 @@ import UIKit
 
 class AboutViewController: UITableViewController {
 
-    @IBOutlet weak var lbVersion : UILabel!
+    @IBOutlet weak private var lbVersion : UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
